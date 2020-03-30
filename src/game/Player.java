@@ -76,7 +76,7 @@ import java.util.ArrayList;
 		
 		//Level 1 - testing
 		if (treasure.isTreasureInRoom(1)) {//fix this parameter
-			String result = treasure.addTreasure("");
+			String result = treasure.addTreasure("");//fix this parameter
 			
 			switch (result) {
 			case "bitcoin" :
@@ -101,7 +101,11 @@ import java.util.ArrayList;
 				break;
 			default:
 				if (lifePoints > 0) {
-					this.setLifePoints(-1);
+					int x = -1;
+					int currentLifePoints = this.getLifePoints();
+					int updatedLifePoints = currentLifePoints - x;
+					this.setLifePoints(updatedLifePoints);
+					
 					System.out.println("Sorry, wrong answer. Don't worry, "
 							+ "you'll get the next one! (hopefully)");
 					System.out.println("Current Life Points: " +
