@@ -76,7 +76,11 @@ import java.util.ArrayList;
 		
 		//Level 1 - testing
 		if (treasure.isTreasureInRoom(1)) {//fix this parameter
+<<<<<<< HEAD
 			String result = treasure.addTreasure("");
+=======
+			String result = treasure.addTreasure("");//fix this parameter
+>>>>>>> 462f6b75a00f4eeea46094e6c1638669ad571006
 			
 			switch (result) {
 			case "bitcoin" :
@@ -101,7 +105,15 @@ import java.util.ArrayList;
 				break;
 			default:
 				if (lifePoints > 0) {
+<<<<<<< HEAD
 					this.setLifePoints(-1);
+=======
+					int x = -1;
+					int currentLifePoints = this.getLifePoints();
+					int updatedLifePoints = currentLifePoints - x;
+					this.setLifePoints(updatedLifePoints);
+					
+>>>>>>> 462f6b75a00f4eeea46094e6c1638669ad571006
 					System.out.println("Sorry, wrong answer. Don't worry, "
 							+ "you'll get the next one! (hopefully)");
 					System.out.println("Current Life Points: " +
