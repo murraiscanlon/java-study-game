@@ -1,87 +1,112 @@
+package game;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Treasures {
     
     /**
      * Contains objects the player collects for points
-     * Interacts with Player, Score & Room Classes
+     * Interacts with Room Class
+     * @author Team 30
      **/
-    private HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>(); 
-    //private Room roomID;
     
-    public Treasures() {
+    /*
+     * Instance variables
+     * Remove "static" after testing
+     */
+    private static ArrayList<Treasure> treasureValues = new ArrayList<Treasure>(); 
+    
+    /*
+     * Constructor
+     */
+    public Treasures(ArrayList<Treasure> treasures) {
+        this.treasureValues = treasures;
         
     }
-
+    
+    /**
+     * Assigns Treasure type, value and room location to ArrayList
+     * Additional Treasures can be added later
+     * @param
+     */
+    public ArrayList<Treasure> assignTreasureTypes() {
+        String bitcoin = "bitcoin";
+        String dungeon = "Dungeon";
+        String jewel = "jewel";
+        String kitchen = "Kitchen";
+        String sword = "sword"; 
+        String library = "Library";
+        String magicIDE = "magicIDE";
+        String tower = "Tower";
+        
+        treasureValues.add(new Treasure(bitcoin, 2, dungeon));
+        treasureValues.add(new Treasure(jewel, 2, kitchen));
+        treasureValues.add(new Treasure(sword, 2, library));
+        treasureValues.add(new Treasure (magicIDE, 2, tower));
+        
+        return treasureValues;
+    }
+    
     /**
      * HashMap to assign values to treasures
-     * 
+     * If we want to use a HashMap instead of ArrayList
+     * @param 
      */ 
-    public void assignTreasureValues(){
+    public void assignTreasures(){
         
         /***Local Variables***/
-        String bitcoin = "Bitcoin";
-        String jewel = "Jewel";
-        String sword = "Sword";
-        String magicIDE = "Magic IDE";
-        Treasure t = new Treasure(bitcoin, jewel, sword, magicIDE);
-             
-        t.getBitcoin();
-        t.getJewel();
-        t.getSword();
-        t.getMagicIDE();
+        String bitcoin = "bitcoin";
+        String jewel = "jewel";
+        String sword = "sword";
+        String magicIDE = "magicIDE";
+        HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>();
         
-        /***Assigns Treasure as Key - Integer is point Value***/
-        treasurePoints.put(bitcoin, 2);
-        treasurePoints.put(jewel, 3);
-        treasurePoints.put(sword, 4);
-        treasurePoints.put(magicIDE, 5);
+        /**Instantiate treasure objects***/
+        Treasure t = new Treasure(bitcoin, 2, "");
+        Treasure t1 = new Treasure(jewel, 2, "");     
+        Treasure t2 = new Treasure(sword, 2, "");
+        Treasure t3 = new Treasure(magicIDE, 2, "");
+                   
+        /***Assigns Treasure type as Key - Integer is point Value***/
+        treasurePoints.put(t.getTreasureType(), t.getPoints());
+        treasurePoints.put(t1.getTreasureType(), t1.getPoints());
+        treasurePoints.put(t2.getTreasureType(), t2.getPoints());
+        treasurePoints.put(t3.getTreasureType(), t3.getPoints());
                
     }
-    
-    public HashMap<String, Integer> getTreasureValues(){
-        return treasurePoints;
-    }
-    
-    public void setTreasureValues(HashMap<String, Integer> newTreasurePoints) {
-        this.treasurePoints = newTreasurePoints;
-    }
-    
-    public void putTreasuresInRoom() {
-       //Need to figure this out 
-        
-        
-    }
+   
     /**
      * Checks if Treasure is in Room*
+     * @param
      */
-    public boolean isTreasureInRoom(int id) { //Room id?
-        //where/how to integrate Room portion?
-        if (treasurePoints.containsKey(id)) {
-         return true; 
-     }
-     else
-         return false;
+    public boolean isTreasureInRoom(Treasure t, Treasure id) {//replace w/Room id
+        if (t.getRoomName().equals(id.getRoomName())){
+            
+        }
+        return true;
+             
     }
     
     /**
-     * Adds treasure to Player
+     * Adds treasure to Inventory List when player answers question
      */ 
-    public String addTreasure(String question) { 
+       
+    public void addTreasure(boolean isCorrect, //checks if answer is correct
+                              ArrayList<Treasure> inventoryList) { 
         /***Local Variables***/
-        String treasure = getTreasureValues().toString();
-        if (question == "correct") {
-            return treasure;
+        Treasure treasure = null;//will be replaced with object in room
+        
+        if (isCorrect == true) {
+            inventoryList.add(treasure);
         }
-        else
-            return ("Sorry that is not correct.");
-        
-        
     }
+    
     public static void main (String[] args) {
-        Treasures test = new Treasures();
-        test.addTreasure("correct");
-        
+       Treasures t = new Treasures(treasureValues);
+       System.out.println(t.assignTreasureTypes());
+       
+       
     }
     
 }

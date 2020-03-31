@@ -1,60 +1,55 @@
-
+package game;
 public class Treasure {
     
     /**
      * Contains objects for player to collect
-     * 
+     * @author Team 30
      */
     
     /***Instance variables for Treasure Class***/
-    private String bitcoin; 
-    private String jewel;
-    private String sword;
-    private String magicIDE;
-    
-    public Treasure(String bitcoin, String jewel, String sword, String magicIDE) {
-        this.bitcoin = bitcoin;
-        this.jewel = jewel;
-        this.sword = sword;
-        this.magicIDE = magicIDE;
-    }
-
-    
-    /***Getters and Setters***/
-    
-    public String getBitcoin() {
-        return bitcoin;
-    }
-
-    public void setBitcoin(String bitcoin) {
-        this.bitcoin = bitcoin;
-    }
-
-    public String getJewel() {
-        return jewel;
-    }
-
-    public void setJewel(String jewel) {
-        this.jewel = jewel;
-    }
-
-    public String getSword() {
-        return sword;
-    }
-
-    public void setSword(String sword) {
-        this.sword = sword;
-    }
-
-    public String getMagicIDE() {
-        return magicIDE;
-    }
-
-    public void setMagicIDE(String magicIDE) {
-        this.magicIDE = magicIDE;
+    private String treasureType;
+    private int points;
+    private String roomName;
+           
+    public Treasure(String treasureType, int points, String roomName) {
+        this.treasureType = treasureType;
+        this.points = points;
+        this.roomName = roomName;
     }
     
-   
+    /**
+     * toString method & Getters + Setters
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
+    }
+
+    public String getTreasureType() {
+        return treasureType;
+    }
+
+    public void setTreasureType(String treasureType) {
+        this.treasureType = treasureType;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+    
     
     
 }
