@@ -1,16 +1,28 @@
 package game;
+/**
+ * Treasure contains objects for player to collect
+ * 
+ * Treasure objects have a points value and a room location
+ * 
+ * @author Team 30
+ */
+
 public class Treasure {
     
+   
     /**
-     * Contains objects for player to collect
-     * @author Team 30
+     *Instance variables for Treasure Class
      */
-    
-    /***Instance variables for Treasure Class***/
     private String treasureType;
     private int points;
     private String roomName;
-           
+    
+    /**
+     * Constructor       
+     * @param treasureType
+     * @param points
+     * @param roomName
+     */
     public Treasure(String treasureType, int points, String roomName) {
         this.treasureType = treasureType;
         this.points = points;

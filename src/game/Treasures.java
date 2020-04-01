@@ -11,7 +11,7 @@ public class Treasures {
      * @author Team 30
      **/
     
-    /*
+    /**
      * Instance variables
      * Remove "static" after testing
      */
@@ -31,19 +31,11 @@ public class Treasures {
      * @param
      */
     public ArrayList<Treasure> assignTreasureTypes() {
-        String bitcoin = "bitcoin";
-        String dungeon = "Dungeon";
-        String jewel = "jewel";
-        String kitchen = "Kitchen";
-        String sword = "sword"; 
-        String library = "Library";
-        String magicIDE = "magicIDE";
-        String tower = "Tower";
         
-        treasureValues.add(new Treasure(bitcoin, 2, dungeon));
-        treasureValues.add(new Treasure(jewel, 2, kitchen));
-        treasureValues.add(new Treasure(sword, 2, library));
-        treasureValues.add(new Treasure (magicIDE, 2, tower));
+        treasureValues.add(new Treasure("Bitcoin", 2, "Dungeon"));
+        treasureValues.add(new Treasure("Jewel", 2, "Kitchen"));
+        treasureValues.add(new Treasure("Sword", 2, "Library"));
+        treasureValues.add(new Treasure ("MagicIDE", 2, "Tower"));
         
         return treasureValues;
     }
@@ -89,7 +81,9 @@ public class Treasures {
     }
     
     /**
-     * Adds treasure to Inventory List when player answers question
+     * Adds treasure to Inventory List when player correctly answers question
+     * @param isCorrect
+     * @param inventoryList
      */ 
        
     public void addTreasure(boolean isCorrect, //checks if answer is correct
