@@ -142,11 +142,15 @@ public class SwingInterface extends JFrame {
 		
 		if(nextRoom != null) {
 			currentRoom = nextRoom;
+			String treasureType = "";
+			if (currentRoom.getTreasure() != null) {
+				treasureType=currentRoom.getTreasureType();
+			}
 			if (currentRoom.wasVisited()) {
-				description.setText(currentRoom.getShortDesc());
+				description.setText((currentRoom.getShortDesc()) + " " + treasureType);
 			}
 			else {
-				description.setText(currentRoom.getLongDesc());
+				description.setText((currentRoom.getLongDesc()) + " " + treasureType);
 				currentRoom.setVisited();
 			}
 			checkoutLocation();

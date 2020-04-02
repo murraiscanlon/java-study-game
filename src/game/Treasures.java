@@ -20,8 +20,8 @@ public class Treasures {
     /*
      * Constructor
      */
-    public Treasures(ArrayList<Treasure> treasures) {
-        this.treasureValues = treasures;
+    public Treasures() {
+       // this.treasureValues = treasures;
         
     }
     
@@ -72,11 +72,12 @@ public class Treasures {
      * Checks if Treasure is in Room*
      * @param
      */
-    public boolean isTreasureInRoom(Treasure t, Treasure id) {//replace w/Room id
-        if (t.getRoomName().equals(id.getRoomName())){
-            
+    public Treasure isTreasureInRoom(int id) {//replace w/Room id
+//        if (t.getRoomName().equals(id.getRoomName())){
+    	if (id < treasureValues.size()) {
+            return treasureValues.get(id);
         }
-        return true;
+        return null;
              
     }
     
@@ -97,7 +98,7 @@ public class Treasures {
     }
     
     public static void main (String[] args) {
-       Treasures t = new Treasures(treasureValues);
+       Treasures t = new Treasures();
        System.out.println(t.assignTreasureTypes());
        
        

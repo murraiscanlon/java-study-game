@@ -27,7 +27,7 @@ public class Room {
 	private String longDesc;
 	private boolean visited = false;
 	private HashMap<String, Room> adjacentRooms = new HashMap<String, Room>();
-//	private ArrayList<String> treasures = new ArrayList<String>(); // Change to objects
+	private Treasure treasure;
 //	private ArrayList<String> characters = new ArrayList<String>();
 	
 	/**
@@ -118,5 +118,21 @@ public class Room {
 			room = adjacentRooms.get(direction);
 		}
 		return room;
+	}
+	
+	public void setTreasure(Treasure treasure) {
+		this.treasure = treasure;
+	}
+	
+	public Treasure getTreasure() {
+		return treasure;
+	}
+	
+	public String getTreasureType() {
+		String treasureType = "";
+		if (treasure != null) {
+			treasureType = treasure.getTreasureType();
+		}
+		return treasureType;		
 	}
 }

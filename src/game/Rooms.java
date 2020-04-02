@@ -22,12 +22,14 @@ public class Rooms {
 
 	HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
 	HashMap<Integer, Integer[]> roomLinks = new HashMap<Integer, Integer[]>();
+	Treasures treasures = new Treasures();
 
 	/**
 	 * Rooms Constructor - takes as an argument the file name of the CSV containing the room data
 	 * @param roomFilename - CSV containing the room data
 	 */
 	public Rooms(String roomFilename) {
+		treasures.assignTreasureTypes();
 		loadRoomCSV(roomFilename);
 	}
 
@@ -116,6 +118,11 @@ public class Rooms {
 		}	
 
 		Room room = new Room(id, name, xCor, yCor, shortDesc, longDesc);
+		
+		Treasure treasure = treasures.isTreasureInRoom(id-1);
+		System.out.println(treasure);
+		room.setTreasure(treasure);
+		
 		rooms.put(id, room);
 		Integer[] adjacentRooms = {n, e, s, w};
 		roomLinks.put(id, adjacentRooms);
