@@ -17,6 +17,7 @@ import java.util.HashMap;
  * visited: Default false until player enters the room
  * adjacentRooms: maps directions (north, east, south, west) to the unique ID of the room in that direction
  * 		Not all rooms will have adjacent rooms in each direction
+ * treasure: The treasure in the room.  Could be null
  */
 public class Room {
 	private int id;
@@ -94,7 +95,35 @@ public class Room {
 	public void setVisited() {
 		this.visited = true;
 	}
-
+	
+	/**
+	 * Method to set the treasure in the room
+	 * @param treasure : treasure in the room
+	 */
+	public void setTreasure(Treasure treasure) {
+		this.treasure = treasure;
+	}
+	
+	/**
+	 * Method to get the treasure in the room
+	 * @return : treasure, note could be null
+	 */
+	public Treasure getTreasure() {
+		return treasure;
+	}
+	
+	/**
+	 * Method to get the treasure type
+	 * @return : treasure type
+	 */
+	public String getTreasureType() {
+		String treasureType = "";
+		if (treasure != null) {
+			treasureType = treasure.getTreasureType();
+		}
+		return treasureType;		
+	}
+	
 	/**
 	 * Method to set up the adjacent rooms.  Note that all rooms must be created
 	 * before you can set up the room connections
@@ -120,19 +149,5 @@ public class Room {
 		return room;
 	}
 	
-	public void setTreasure(Treasure treasure) {
-		this.treasure = treasure;
-	}
-	
-	public Treasure getTreasure() {
-		return treasure;
-	}
-	
-	public String getTreasureType() {
-		String treasureType = "";
-		if (treasure != null) {
-			treasureType = treasure.getTreasureType();
-		}
-		return treasureType;		
-	}
+
 }

@@ -119,11 +119,14 @@ public class Rooms {
 
 		Room room = new Room(id, name, xCor, yCor, shortDesc, longDesc);
 		
+		// Get the treasure for the room
 		Treasure treasure = treasures.isTreasureInRoom(id-1);
-		System.out.println(treasure);
 		room.setTreasure(treasure);
 		
+		// Add the room to the ArrayList rooms
 		rooms.put(id, room);
+		
+		// Update roomLinks for processing
 		Integer[] adjacentRooms = {n, e, s, w};
 		roomLinks.put(id, adjacentRooms);
 	}
