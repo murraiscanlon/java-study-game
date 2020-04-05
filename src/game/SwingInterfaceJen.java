@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author Team 30
  * 3/31/2020
  */
-public class SwingInterface extends JFrame {
+public class SwingInterfaceJen extends JFrame {
 
 	private static final long serialVersionUID = 1L; // Something needed for Swing
 	Room currentRoom; // Track current room
@@ -29,7 +29,7 @@ public class SwingInterface extends JFrame {
 	/**
 	 * Constructor
 	 */
-	public SwingInterface() {
+	public SwingInterfaceJen() {
 		initComponents();
 	}
 
