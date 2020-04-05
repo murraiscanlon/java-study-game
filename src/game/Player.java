@@ -3,20 +3,22 @@ package game;
 import java.util.ArrayList;
 
 /**
- * The Player class contains the name of the player, the lifePoints, and 
- * a list of the items collected.
+ * The Player class contains the name of the player and list of the items collected.
  * 
- * It interacts with the treasure(s) class and question(s) class I think.
  *  
  * @author Team 30
  *
  */
 
 	public class Player {
+		
+	//Member variables	
 	private String name;
 	private ArrayList<String> inventoryOfTreasures;
 	private int lifePoints;
-	//Room room = new Room();
+	//private ArrayList<Treasure> inventoryList = new ArrayList<Treasure>();//connect this to addTreasures() in Treasures class??
+		
+	
 	Treasures treasure = new Treasures();
 	
 	//Constructor
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 		this.name = name;
 		this.inventoryOfTreasures = new ArrayList<String>();
 		this.lifePoints = 20;
-		
+		//this.inventoryList = null;//if using this list
 	}
 	
 
@@ -65,25 +67,27 @@ import java.util.ArrayList;
 	
 	
 	/**
+	 * THIS NEEDS TO BE MOVED TO GAME MANAGER
+	 * 
 	 * After the user enters a room, they can look and receive information
-	 * about whether there is treasure in the room.
+	 * about whether there is treasure in the room. For the first level of testing, we just want 
+	 * the player to be able to collect the treasure in the current room and store it
+	 * in the inventory list.
+	 * 
 	 */
-	public void look() {
+	public void lookInRoom() {
 		
 		//call isTreasureInRoom(room iD)
 		//if true, call askQuestion()
 		//else return to game play/choices
 		
 		
-		/*
+		
 		//Level 1 - testing
 		if (treasure.isTreasureInRoom(1) != null) {//fix this parameter
-
-			String result = treasure.addTreasure("");
-
-			String result = treasure.addTreasure("");//fix this parameter
-
 			
+			String result = "bitcoin"; //This needs to come from the treasure type in the currentRoom. Not sure how to get at it.
+
 			switch (result) {
 			case "bitcoin" :
 				this.inventoryOfTreasures.add(result);
@@ -105,7 +109,7 @@ import java.util.ArrayList;
 				System.out.println("Congratulations, you have earned a MAGIC IDE!"
 						+ "(not redeemable during 591 finals)");
 				break;
-			default:
+			default://this may or may not be a part of the method/game. Change default as needed
 				if (lifePoints > 0) {
 
 					this.setLifePoints(-1);
@@ -132,27 +136,8 @@ import java.util.ArrayList;
 			//give the user options like go to the next room, etc.
 			//maybe call Room(s) or gameManager
 		}
-	*/	
+	
 	}
 	
 	
-	
-	/**
-	 * If there is treasure in a room when the player "looks", they will 
-	 * be asked a question. Correct/incorrect answers result in add to inventory 
-	 * or decreased lifepoints.
-	 */
-	public void askQuestion() {
-		//parameter might be Question question
-		//if question answered correctly . . .
-		//call addTreasure() from Treasure(s) 
-		//if question incorrect . . .
-		//decrease lifepoints and return to game play/choices
-	}
-	
-	public static void main(String[] args) {
-		
-
-	}
-
 }
