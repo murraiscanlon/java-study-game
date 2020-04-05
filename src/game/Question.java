@@ -12,6 +12,7 @@ public class Question {
     private String answer1;
     private String answer2;
     private String answer3;
+    private String correctAnswer;
     private String hint;
     
     /**
@@ -23,15 +24,20 @@ public class Question {
      * @param hint
      */
     public Question (String question, String answer1, String answer2,
-                     String answer3, String hint) {
+                     String answer3, String hint, String correctAnswer) {
         this.question = question;
         this.answer1 = answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
+        this.correctAnswer = correctAnswer;
         this.hint = hint;
     }
 
-     /**
+     public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	/**
      * Getters and Setters
      * @return
      */
@@ -40,9 +46,6 @@ public class Question {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
 
     public String getAnswer1() {
         return answer1;
@@ -73,6 +76,14 @@ public class Question {
 
     public void setHint(String hint) {
         this.hint = hint;
+    }
+    
+    @Override
+    public String toString() {
+    	return "Question [question= " + question + "answer1= " + answer1 + " answer2= " + answer2 + 
+    			" answer3= " + answer3 + "correctAnswer= " + correctAnswer + " hint= " + hint + "]";
+    	
+       // return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
     }
     
 
