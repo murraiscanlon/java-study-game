@@ -2,14 +2,13 @@ package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+/**
+ * Contains objects the player collects for points
+ * Interacts with Room Class
+ * @author Team 30
+ **/
 
 public class Treasures {
-    
-    /**
-     * Contains objects the player collects for points
-     * Interacts with Room Class
-     * @author Team 30
-     **/
     
     /**
      * Instance variables
@@ -17,17 +16,16 @@ public class Treasures {
      */
     private static ArrayList<Treasure> treasureValues = new ArrayList<Treasure>(); 
     
-    /*
+    /**
      * Constructor
      */
     public Treasures() {
-       // this.treasureValues = treasures;
         
     }
     
     /**
      * Assigns Treasure type, value and room location to ArrayList
-     * Additional Treasures can be added later
+     * Additional Treasures will be added later
      * @param
      */
     public ArrayList<Treasure> assignTreasureTypes() {
@@ -47,20 +45,20 @@ public class Treasures {
      */ 
     public void assignTreasures(){
         
-        /***Local Variables***/
+        //Local Variables
         String bitcoin = "bitcoin";
         String jewel = "jewel";
         String sword = "sword";
         String magicIDE = "magicIDE";
         HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>();
         
-        /**Instantiate treasure objects***/
+        //Instantiate treasure objects
         Treasure t = new Treasure(bitcoin, 2, "");
         Treasure t1 = new Treasure(jewel, 2, "");     
         Treasure t2 = new Treasure(sword, 2, "");
         Treasure t3 = new Treasure(magicIDE, 2, "");
                    
-        /***Assigns Treasure type as Key - Integer is point Value***/
+        //Assigns Treasure type as Key - Integer is point Value
         treasurePoints.put(t.getTreasureType(), t.getPoints());
         treasurePoints.put(t1.getTreasureType(), t1.getPoints());
         treasurePoints.put(t2.getTreasureType(), t2.getPoints());
@@ -69,11 +67,11 @@ public class Treasures {
     }
    
     /**
-     * Checks if Treasure is in Room*
+     * Checks if Treasure is in Room
      * @param
      */
-    public Treasure isTreasureInRoom(int id) {//replace w/Room id
-//        if (t.getRoomName().equals(id.getRoomName())){
+    public Treasure isTreasureInRoom(int id) {
+
     	if (id < treasureValues.size()) {
             return treasureValues.get(id);
         }
@@ -89,14 +87,14 @@ public class Treasures {
        
     public void addTreasure(boolean isCorrect, //checks if answer is correct
                               ArrayList<Treasure> inventoryList) { 
-        /***Local Variables***/
+        //Local Variables
         Treasure treasure = null;//will be replaced with object in room
         
         if (isCorrect == true) {
             inventoryList.add(treasure);
         }
     }
-    
+    //For local testing purposes only
     public static void main (String[] args) {
        Treasures t = new Treasures();
        System.out.println(t.assignTreasureTypes());
