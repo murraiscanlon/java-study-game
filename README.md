@@ -18,7 +18,7 @@ Javenture is an adventure game where a player traverses a castle, collecting tre
 * Created classes to support game play 
 * Rooms contains a substantial method
 * Rooms contains JUnit Tests
-* Treasures, SwingInterface, Questions and Characters also contain some methods
+* Treasures, SwingInterface, SwingEnterPage, Questions and Characters also contain some methods
 * Remaining Classes contain basic structures and placeholder methods
 
 #### Class Descriptions
@@ -28,7 +28,8 @@ Javenture is an adventure game where a player traverses a castle, collecting tre
 * Character/Characters - Sets up character attributes and populates an ArrayList of Characters to go in Rooms 
 * Question/QuestionReader/Questions - Sets up multiple choice question with hint, reads in .csv of questions, and populates method to feed questions when player attempts to collect Treasures. 
 * Score - Keeps track of running score and displays final score at the end of game
-* Player - Contains player attributes and inventory list
+* Player - Contains player attributes; may eventually carry inventory list
+* SwingEnterPage - Contains game splash page; will eventually link to SwingInterface
 * SwingInterface - Manages the rooms and interacts with Treasures; will eventually interact with Characters
 * Game Manager - Manages player interactions and controls flow of the game
 * GamePlayer - Contains the main method
