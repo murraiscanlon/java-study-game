@@ -42,31 +42,22 @@ public class SwingEnterPage {
      */
     private void initialize() {
     	
-       
-    	/**
-    	 * This is the code that will allow a background image
-    	 * but need to figure out why the layout is hiding the image.
-    	 */
-    	//add background image
-		Icon icon = new ImageIcon("enter2.jpg");
-		JLabel image = new JLabel(icon, JLabel.CENTER);
-		
-		
-		
+     	
+		//create the base frame
         frame = new JFrame();
-        
         frame.setBounds(100, 100, 900, 600);
+        frame.setLocationRelativeTo(null);//centering the frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);//THIS IS THE LINE HIDING THE IMAGE
-        frame.getContentPane().add(image);
+        //frame.getContentPane().setLayout(null);//THIS IS THE LINE HIDING THE IMAGE
         frame.setVisible(true);
         
-       
+               
         //Blank text field
         textNameField = new JTextField();
         textNameField.setBounds(305, 315, 230, 40);
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
+        
         
         //Label above blank text field w/instructions to enter name
         JLabel playerNameLabel = new JLabel("Enter Player Name");
@@ -79,6 +70,15 @@ public class SwingEnterPage {
         gameTitle.setFont(new Font("Tahoma", Font.BOLD, 40));
         gameTitle.setBounds(255, 50, 355, 80);
         frame.getContentPane().add(gameTitle);
+        
+        
+    	/**
+    	 * This is the code that will allow a background image
+    	 * but need to figure out why the layout is hiding the image.
+    	 */
+        Icon icon = new ImageIcon("enter2.jpg");
+        JLabel image = new JLabel(icon, JLabel.CENTER);
+        frame.add(image);        
         
 
     }
