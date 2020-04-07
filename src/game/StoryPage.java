@@ -6,12 +6,15 @@ import java.awt.EventQueue;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class StoryPage extends JFrame {
 
@@ -35,7 +38,22 @@ public class StoryPage extends JFrame {
         image2.setBounds(5, 27, 392, 480);
         contentPane.add(image2);
         
+        JButton enter = new JButton("ENTER");
+        enter.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                SwingRoom room = new SwingRoom();//link to second page
+                room.setVisible(true); //brings up next screen
+                
+                //need to figure out how to close current screen
+            }
+            
+        });
+        enter.setFont(new Font("Castellar", Font.PLAIN, 27));
+        enter.setBounds(444, 340, 171, 41);
+        contentPane.add(enter);
         
-    }
 
 }
+} 
+
