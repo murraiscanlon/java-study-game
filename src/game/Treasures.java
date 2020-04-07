@@ -13,12 +13,14 @@ public class Treasures {
 	/**
 	 * ArrayList of treasures
 	 */
-	private  ArrayList<Treasure> treasureValues = new ArrayList<Treasure>(); 
+	private  ArrayList<Treasure> treasures = new ArrayList<Treasure>(); 
+	HashMap<Integer, Treasure> roomToTreasures = new HashMap<Integer, Treasure>();
 
 	/**
 	 * Constructor
 	 */
 	public Treasures() {
+		assignTreasureTypes();
 	}
 
 	/**
@@ -28,40 +30,65 @@ public class Treasures {
 	 */
 	public ArrayList<Treasure> assignTreasureTypes() {
 
-		treasureValues.add(new Treasure("Bitcoin", 2, "Dungeon"));
-		treasureValues.add(new Treasure("Jewel", 2, "Kitchen"));
-		treasureValues.add(new Treasure("Sword", 2, "Library"));
-		treasureValues.add(new Treasure ("MagicIDE", 2, "Tower"));
+		treasures.add(new Treasure("Bitcoin", 2, ""));
+		treasures.add(new Treasure("Jewel", 2, ""));
+		treasures.add(new Treasure("Sword", 2, ""));
+		treasures.add(new Treasure ("MagicIDE", 2, ""));
 
-		return treasureValues;
+		return treasures;
 	}
 
+	public void setTreasuresToRooms(int numberRooms, boolean random) {
+		
+		int[] roomList = new int[numberRooms];
+		if(random) {
+			roomList = RandomOrderGenerator.getRandomOrder(numberRooms);
+		} else {
+			for(int index = 0; index < numberRooms; index++) {
+				roomList[index] = index + 1;
+			}
+		}
+		for (int index = 0; index < treasures.size(); index++ ) {
+			if (index < numberRooms) {
+				roomToTreasures.put(roomList[index], treasures.get(index));
+				treasures.get(index).setRoomId(roomList[index]);
+			}
+		}
+	}
+	
+	public Treasure getTreasureForRoom(int id) {
+		if(roomToTreasures.containsKey(id)) {
+			return roomToTreasures.get(id);
+		}
+		return null;
+	}
+	
 	/**
 	 * HashMap to assign values to treasures
 	 * If we want to use a HashMap instead of ArrayList
 	 * @param 
 	 */ 
-	public void assignTreasures(){
-
-		//Local Variables
-		String bitcoin = "bitcoin";
-		String jewel = "jewel";
-		String sword = "sword";
-		String magicIDE = "magicIDE";
-		HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>();
-
-		//Instantiate treasure objects
-		Treasure t = new Treasure(bitcoin, 2, "");
-		Treasure t1 = new Treasure(jewel, 2, "");     
-		Treasure t2 = new Treasure(sword, 2, "");
-		Treasure t3 = new Treasure(magicIDE, 2, "");
-
-		//Assigns Treasure type as Key - Integer is point Value
-		treasurePoints.put(t.getTreasureType(), t.getPoints());
-		treasurePoints.put(t1.getTreasureType(), t1.getPoints());
-		treasurePoints.put(t2.getTreasureType(), t2.getPoints());
-		treasurePoints.put(t3.getTreasureType(), t3.getPoints());         
-	}
+//	public void assignTreasures(){
+//
+//		//Local Variables
+//		String bitcoin = "bitcoin";
+//		String jewel = "jewel";
+//		String sword = "sword";
+//		String magicIDE = "magicIDE";
+//		HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>();
+//
+//		//Instantiate treasure objects
+//		Treasure t = new Treasure(bitcoin, 2, "");
+//		Treasure t1 = new Treasure(jewel, 2, "");     
+//		Treasure t2 = new Treasure(sword, 2, "");
+//		Treasure t3 = new Treasure(magicIDE, 2, "");
+//
+//		//Assigns Treasure type as Key - Integer is point Value
+//		treasurePoints.put(t.getTreasureType(), t.getPoints());
+//		treasurePoints.put(t1.getTreasureType(), t1.getPoints());
+//		treasurePoints.put(t2.getTreasureType(), t2.getPoints());
+//		treasurePoints.put(t3.getTreasureType(), t3.getPoints());         
+//	}
 
 	/**
 	 * Checks if Treasure is in Room
@@ -69,8 +96,8 @@ public class Treasures {
 	 */
 	public Treasure isTreasureInRoom(int id) {
 
-		if (id < treasureValues.size()) {
-			return treasureValues.get(id);
+		if (id < treasures.size()) {
+			return treasures.get(id);
 		}
 		return null;
 	}
@@ -80,15 +107,15 @@ public class Treasures {
 	 * @param isCorrect
 	 * @param inventoryList
 	 */ 
-	public void addTreasure(boolean isCorrect, //checks if answer is correct
-			ArrayList<Treasure> inventoryList) { 
-		//Local Variables
-		Treasure treasure = null;//will be replaced with object in room
-
-		if (isCorrect == true) {
-			inventoryList.add(treasure);
-		}
-	}
+//	public void addTreasure(boolean isCorrect, //checks if answer is correct
+//			ArrayList<Treasure> inventoryList) { 
+//		//Local Variables
+//		Treasure treasure = null;//will be replaced with object in room
+//
+//		if (isCorrect == true) {
+//			inventoryList.add(treasure);
+//		}
+//	}
 	//For local testing purposes only
 	public static void main (String[] args) {
 		Treasures t = new Treasures();

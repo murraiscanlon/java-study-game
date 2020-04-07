@@ -48,5 +48,17 @@ class TreasureTest {
 		t1.setRoomName("Kitchen");
 		assertEquals(t1.getRoomName(), "Kitchen");
 	}
+	
+	@Test
+	void testGetRoomId() {
+		assertEquals(t.getRoomId(), -1);
+	}
+	
+	@Test
+	void testSetRoomId() {
+		Treasure t1 = new Treasure("Diamond", 5, "Entry");
+		t1.setRoomId(5);		
+		assertEquals(t1.getRoomId(), 5);
+	}
 
 }

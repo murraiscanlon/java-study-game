@@ -16,8 +16,10 @@ public class Treasure {
     private String treasureType;
     private int points;
     private String roomName;
+    private int roomId = -1;
     
-    /**
+
+	/**
      * Constructor       
      * @param treasureType
      * @param points
@@ -62,6 +64,13 @@ public class Treasure {
         this.roomName = roomName;
     }
     
-    
+    public int getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
+	}
+
     
 }

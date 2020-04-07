@@ -29,7 +29,7 @@ public class Rooms {
 	 * @param roomFilename - CSV containing the room data
 	 */
 	public Rooms(String roomFilename) {
-		treasures.assignTreasureTypes();
+		//treasures.assignTreasureTypes();
 		loadRoomCSV(roomFilename);
 	}
 
@@ -48,8 +48,10 @@ public class Rooms {
 				input = roomFileScanner.nextLine();
 				processFileLine(input); // Creates each room based on the CSV data
 			}
-			processRoomLinks(); // Creates the link between rooms after all the rooms have been created
 			roomFileScanner.close();
+			processRoomLinks(); // Creates the link between rooms after all the rooms have been created
+			processTreasures(); // Creates links to the treasures
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("Cannot find file <" + roomFilename + ">");
 		}
@@ -120,8 +122,8 @@ public class Rooms {
 		Room room = new Room(id, name, xCor, yCor, shortDesc, longDesc);
 		
 		// Get the treasure for the room
-		Treasure treasure = treasures.isTreasureInRoom(id-1);
-		room.setTreasure(treasure);
+//		Treasure treasure = treasures.isTreasureInRoom(id-1);
+//		room.setTreasure(treasure);
 		
 		// Add the room to the ArrayList rooms
 		rooms.put(id, room);
@@ -156,6 +158,18 @@ public class Rooms {
 			if((w > 0) && rooms.containsKey(w)) { // check for valid room Link
 				rooms.get(id).setAdjacentRoom("west", rooms.get(w));
 			}
+		}
+	}
+	
+	/**
+	 * This method sets the treasures in each room
+	 */
+	public void processTreasures() {
+		treasures.setTreasuresToRooms(rooms.size(), true);
+		
+		for (int id : rooms.keySet()) {
+			Treasure treasure = treasures.getTreasureForRoom(id);
+			rooms.get(id).setTreasure(treasure);
 		}
 	}
 
