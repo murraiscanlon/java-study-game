@@ -7,7 +7,11 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import java.awt.Font;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,6 +24,7 @@ public class SwingEnterPage {
     private JFrame frame;
     private JTextField textNameField;
     private JLabel gameTitle;
+
 
     /**
      * Constructor for SwingEnterPage
@@ -36,15 +41,27 @@ public class SwingEnterPage {
      * Establishes Start button and Text Field to enter name
      */
     private void initialize() {
+    	
+       
+    	/**
+    	 * This is the code that will allow a background image
+    	 * but need to figure out why the layout is hiding the image.
+    	 */
+    	//add background image
+		Icon icon = new ImageIcon("enter2.jpg");
+		JLabel image = new JLabel(icon, JLabel.CENTER);
+		
+		
+		
         frame = new JFrame();
+        
         frame.setBounds(100, 100, 900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+        frame.getContentPane().setLayout(null);//THIS IS THE LINE HIDING THE IMAGE
+        frame.getContentPane().add(image);
+        frame.setVisible(true);
         
-        JButton startButton = new JButton("START");
-        startButton.setBounds(330, 380, 170, 40);
-        frame.getContentPane().add(startButton);
-        
+       
         //Blank text field
         textNameField = new JTextField();
         textNameField.setBounds(305, 315, 230, 40);
@@ -62,6 +79,8 @@ public class SwingEnterPage {
         gameTitle.setFont(new Font("Tahoma", Font.BOLD, 40));
         gameTitle.setBounds(255, 50, 355, 80);
         frame.getContentPane().add(gameTitle);
+        
+
     }
 
     /**
