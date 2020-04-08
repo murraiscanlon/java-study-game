@@ -1,5 +1,6 @@
 package game;
 
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -19,6 +20,8 @@ import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 /**
  * Class to initiate Game Start with an entrance page
@@ -58,6 +61,7 @@ public class SwingEnterPage {
         startButton.setFont(new Font("Castellar", Font.PLAIN, 27));
         startButton.setForeground(Color.WHITE);
         startButton.setBackground(Color.DARK_GRAY);
+        startButton.setOpaque(true);
         
         //Adds functionality for clicking on Start button
         startButton.addMouseListener(new MouseAdapter() {
@@ -75,6 +79,8 @@ public class SwingEnterPage {
         
         //Blank text field
         textNameField = new JTextField();
+        textNameField.setBackground(Color.LIGHT_GRAY);
+        textNameField.setHorizontalAlignment(SwingConstants.CENTER);
         textNameField.addKeyListener(new KeyAdapter() {
             //need to figure out where to store name input
             @Override
@@ -90,8 +96,11 @@ public class SwingEnterPage {
         
         //Label above blank text field w/instructions to enter name
         JLabel playerNameLabel = new JLabel("Player Name:");
-        playerNameLabel.setBackground(Color.WHITE);
+        playerNameLabel.setLabelFor(textNameField);
+        playerNameLabel.setIcon(null);
+        playerNameLabel.setBackground(SystemColor.window);
         playerNameLabel.setForeground(Color.WHITE);
+        playerNameLabel.setOpaque(false);
         playerNameLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         playerNameLabel.setBounds(294, 400, 91, 30);
         frame.getContentPane().add(playerNameLabel);
@@ -100,7 +109,7 @@ public class SwingEnterPage {
         gameTitle.setForeground(new Color(112, 128, 144));
         gameTitle.setIcon(null);
         gameTitle.setFont(new Font("Castellar", Font.BOLD, 43));
-        gameTitle.setBounds(162, 61, 455, 50);
+        gameTitle.setBounds(162, 61, 455, 49);
         frame.getContentPane().add(gameTitle);
         
         Icon icon = new ImageIcon("enterpic.jpg");          
