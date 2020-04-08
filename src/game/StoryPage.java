@@ -39,6 +39,8 @@ public class StoryPage extends JFrame {
         contentPane.add(image2);
         
         JButton enter = new JButton("ENTER");
+        enter.setBackground(Color.LIGHT_GRAY);
+        enter.setOpaque(true);
         enter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -54,6 +56,6 @@ public class StoryPage extends JFrame {
         contentPane.add(enter);
         
 
-}
+    }
 } 
 
