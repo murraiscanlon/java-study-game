@@ -100,7 +100,7 @@ public class SwingEnterPage {
         gameTitle.setForeground(new Color(112, 128, 144));
         gameTitle.setIcon(null);
         gameTitle.setFont(new Font("Castellar", Font.BOLD, 43));
-        gameTitle.setBounds(162, 61, 455, 49);
+        gameTitle.setBounds(162, 61, 455, 50);
         frame.getContentPane().add(gameTitle);
         
         Icon icon = new ImageIcon("enterpic.jpg");          
