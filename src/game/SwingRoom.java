@@ -26,6 +26,8 @@ import java.awt.Font;
 public class SwingRoom extends JFrame {
 
     private JPanel roomArea;
+    JLabel scrollLabel = new JLabel();
+    Room currentRoom; // Track current room
 
     /**
      * Launch the room template
@@ -42,6 +44,10 @@ public class SwingRoom extends JFrame {
      * Create the frame.
      */
     public SwingRoom() {
+    	
+    	//initialize rooms
+    	initRooms();
+    	
         //initial setup
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 900, 600);
@@ -61,6 +67,8 @@ public class SwingRoom extends JFrame {
         roomN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+        		Room nextRoom = currentRoom.getRoomAtDirection("north");
+        		processNextRoom(nextRoom);
             }
         });
         roomN.setIcon(null);
@@ -74,6 +82,8 @@ public class SwingRoom extends JFrame {
         roomW.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+        		Room nextRoom = currentRoom.getRoomAtDirection("west");
+        		processNextRoom(nextRoom);
             }
         });
         roomW.setIcon(null);
@@ -88,6 +98,8 @@ public class SwingRoom extends JFrame {
         roomS.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+        		Room nextRoom = currentRoom.getRoomAtDirection("south");
+        		processNextRoom(nextRoom);
             }
         });
         roomS.setIcon(null);
@@ -101,6 +113,8 @@ public class SwingRoom extends JFrame {
         roomE.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+        		Room nextRoom = currentRoom.getRoomAtDirection("east");
+        		processNextRoom(nextRoom);
             }
         });
         roomE.setIcon(null);
@@ -131,7 +145,8 @@ public class SwingRoom extends JFrame {
         //this will be the room description scroll
         //need to figure out how to get descriptions to swap out
         Icon scroll = new ImageIcon("scroll2.png");
-        JLabel scrollLabel = new JLabel(scroll, JLabel.CENTER);
+        scrollLabel = new JLabel(scroll, JLabel.CENTER);
+        scrollLabel.setText(currentRoom.getLongDesc());
         scrollLabel.setBounds(0, 0, 687, 124);
         layeredPane.add(scrollLabel);
         
@@ -168,4 +183,45 @@ public class SwingRoom extends JFrame {
         backgroundLbl.setBounds(0, 0, 858, 502);
         layeredPane.add(backgroundLbl); 
     }
+    
+    public void initRooms() {
+		String roomFilename = "rooms9.csv"; // File with rooms
+		Rooms rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
+		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
+    }
+    
+	
+	/**
+	 * Method processes the next room.  It checks if it exists, and if so if it was 
+	 * visited or not
+	 * @param nextRoom : Room to enter, can be null
+	 */
+	public void processNextRoom(Room nextRoom) {
+		System.out.println("Current Room: "+ currentRoom.getName());
+		
+		if(nextRoom != null) {
+			currentRoom = nextRoom;
+			String treasureType = "";
+			if (currentRoom.getTreasure() != null) {
+				treasureType=currentRoom.getTreasureType();
+			}
+			if (currentRoom.wasVisited()) {
+				scrollLabel.setText((currentRoom.getShortDesc()) + " " + treasureType);
+			}
+			else {
+				scrollLabel.setText((currentRoom.getLongDesc()) + " " + treasureType);
+				currentRoom.setVisited();
+			}
+			checkoutLocation();
+		}
+		System.out.println("Next Room: "+ currentRoom.getName());		
+	}
+
+	/**
+	 * Tester method to check for location 
+	 */
+	public void checkoutLocation() {
+//		Need to add code to process being a room
+	}
+	
 }
