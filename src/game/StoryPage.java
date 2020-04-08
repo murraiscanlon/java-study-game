@@ -34,9 +34,6 @@ public class StoryPage extends JFrame {
           
         Icon icon2 = new ImageIcon("scroll_copy.png");
         contentPane.setLayout(null);
-        JLabel image2 = new JLabel(icon2, JLabel.CENTER);
-        image2.setBounds(5, 27, 392, 480);
-        contentPane.add(image2);
         
         JButton enter = new JButton("ENTER");
         enter.setBackground(Color.LIGHT_GRAY);
@@ -54,8 +51,17 @@ public class StoryPage extends JFrame {
         enter.setFont(new Font("Castellar", Font.PLAIN, 27));
         enter.setBounds(444, 340, 171, 41);
         contentPane.add(enter);
+        JLabel image2 = new JLabel(icon2, JLabel.CENTER);
+        image2.setBounds(5, 27, 392, 480);
+        contentPane.add(image2);
+        
+        Icon bgImage = new ImageIcon("enterdoor.jpg");
+        JLabel background = new JLabel((Icon) bgImage, JLabel.CENTER);
+        background.setBounds(0, 0, 784, 561);
+        contentPane.add(background);
         
 
     }
 } 
+
 
