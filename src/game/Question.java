@@ -78,13 +78,10 @@ public class Question {
         this.hint = hint;
     }
     
-    @Override
-    public String toString() {
-    	return "Question [question= " + question + "answer1= " + answer1 + " answer2= " + answer2 + 
-    			" answer3= " + answer3 + "correctAnswer= " + correctAnswer + " hint= " + hint + "]";
-    	
-       // return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
-    }
+public static void main(String[] args) {
+	
+	
+}
     
 
 }

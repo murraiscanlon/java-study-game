@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class QuestionReader {
 	
 	//instance variables
-	static ArrayList<Question> questions = new ArrayList<Question>();
 	
 	
     /**
@@ -23,7 +22,7 @@ public class QuestionReader {
      * @return ArrayList of Questions/Answers/Hints
      */
     public static ArrayList<Question> readCSVFile(){
-        
+    	ArrayList<Question> questions = new ArrayList<Question>();
         File questionsFile = new File("jquestions0.csv");
         
         try {
@@ -58,7 +57,11 @@ public class QuestionReader {
     //main method for testing purposes only
     public static void main(String[] args) {
     	
-
+    	
+    	for (Question q : QuestionReader.readCSVFile()) {
+    		System.out.println(q.getQuestion());
+    		
+    	}
     	
     	
     	
