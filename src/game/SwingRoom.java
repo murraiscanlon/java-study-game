@@ -58,52 +58,71 @@ public class SwingRoom extends JFrame {
         
         //these are the room direction buttons - need to link them to backgrounds
         JButton roomN = new JButton("N");
+        roomN.setIcon(null);
+        roomN.setEnabled(false);        
+        roomN.setBackground(new Color(128, 128, 128));
+        roomN.setOpaque(true);
+        roomN.setBounds(730, 354, 80, 41);
         roomN.addMouseListener(new MouseAdapter() {
             @Override//TO DO
             public void mouseClicked(MouseEvent e) {
             }
         });
-        roomN.setBackground(new Color(128, 128, 128));
-        roomN.setBounds(730, 354, 80, 41);
         layeredPane.add(roomN);
         
         JButton roomW = new JButton("W");
-        roomW.setForeground(new Color(0, 0, 0));
+        roomW.setIcon(null);
+        roomW.setEnabled(false);
+        roomW.setForeground(new Color(0, 0, 0));         
+        roomW.setBackground(new Color(128, 128, 128));
+        roomW.setOpaque(true);
+        roomW.setBounds(685, 394, 80, 41);        
         roomW.addMouseListener(new MouseAdapter() {
             @Override//To DO
             public void mouseClicked(MouseEvent e) {
             }
         });
-        
-        roomW.setBackground(new Color(128, 128, 128));
-        roomW.setBounds(685, 394, 80, 41);
         layeredPane.add(roomW);
         
         JButton roomS = new JButton("S");
+        roomS.setIcon(null);
+        roomS.setEnabled(false);        
+        roomS.setBackground(new Color(128, 128, 128));
+        roomS.setOpaque(true);
+        roomS.setBounds(730, 433, 80, 41);
         roomS.addMouseListener(new MouseAdapter() {
             @Override//TO DO
             public void mouseClicked(MouseEvent e) {
             }
         });
-        roomS.setBackground(new Color(128, 128, 128));
-        roomS.setBounds(730, 433, 80, 41);
         layeredPane.add(roomS);
         
         JButton roomE = new JButton("E");
+        roomE.setIcon(null);
+        roomE.setEnabled(false);        
+        roomE.setBackground(new Color(128, 128, 128));
+        roomE.setOpaque(true);
+        roomE.setBounds(777, 394, 80, 41);
         roomE.addMouseListener(new MouseAdapter() {
             @Override//TO DO
             public void mouseClicked(MouseEvent e) {
             }
         });
-        roomE.setBackground(new Color(128, 128, 128));
-        roomE.setBounds(777, 394, 80, 41);
         layeredPane.add(roomE);
         //
         //Exit button upper right corner
-        JButton exitButton = new JButton("EXIT");
+        JButton exitButton = new JButton("EXIT");        
+        exitButton.setEnabled(false);
+        exitButton.setIcon(null);
         exitButton.setForeground(new Color(0, 0, 0));
         exitButton.setBackground(new Color(128, 128, 128));
+        exitButton.setOpaque(true);
         exitButton.setBounds(743, 0, 114, 41);
+        exitButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+            }//TO DO
+        });
         layeredPane.add(exitButton);
         
         //this will be the room description scroll
@@ -128,14 +147,14 @@ public class SwingRoom extends JFrame {
         layeredPane.add(fairyPlace);
         
         //take treasure button - can't get this to work right now
-        JButton treasureButton = new JButton(new ImageIcon("treasure.png"));
+        JButton treasureButton = new JButton(new ImageIcon("treasure.png"));        
+        treasureButton.setBounds(408, 330, 171, 124);
         treasureButton.addMouseListener(new MouseAdapter() {
             //write method to have something happen when click on treasure
             @Override
             public void mouseClicked(MouseEvent e) {
             }
-        });;
-        treasureButton.setBounds(408, 330, 171, 124);
+        });
         layeredPane.add(treasureButton);
         
         //need to write a method that swaps out background images  
