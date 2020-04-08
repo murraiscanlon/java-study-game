@@ -13,12 +13,13 @@ public class Questions1 {
 	ArrayList<Question> qlist;
 	static int questionCounter;
 	Question currentQuestion;
-	// String currentQuestion;
+	String currentHint;
 
 	// Constructor
 	Questions1() {
 		this.qlist = QuestionReader.readCSVFile();
-		this.questionCounter++;
+		this.questionCounter = 0;
+		this.currentHint = " ";
 		// this.currentQuestion ;
 	}
 
@@ -34,9 +35,10 @@ public class Questions1 {
 	 * 
 	 */
 	public Question getCurrentQuestion() {
-		if (questionCounter <= qlist.size()) {
+		if (questionCounter < qlist.size()) {
 			currentQuestion = qlist.get(questionCounter);
 			qlist.remove(currentQuestion);
+			questionCounter++;
 			return currentQuestion;
 		} else {
 			return null; // game over??
@@ -44,11 +46,31 @@ public class Questions1 {
 		}
 
 	}
+	
+	
+	
+	public String getCurrentHint() {
+		
+		for (Question q : qlist) {
+			String locateHint = q.getHint();
+			if (questionCounter == locateHint.indexOf(locateHint)) {
+				currentHint = locateHint;
+				//break;
+			}
+		}
+		return currentHint;
+	}
+	
+	
+	
+	
 
 	// main method for testing
 	public static void main(String[] args) {
 		Questions1 q1 = new Questions1();
 		System.out.println(q1.getCurrentQuestion());
+		System.out.println(q1.getCurrentQuestion());
+		System.out.println(q1.getCurrentHint());
 
 	}
 
