@@ -1,51 +1,60 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
- * 
- * The Questions class generates questions for the player to answer.
- *
+ * The Questions class uses the data from QuestionReader to generate
+ * a package of variables using the getCurrentQuestion method.
  */
 
 public class Questions1 {
 	// Instance variables
-	ArrayList<Question> qlist;
+	ArrayList<Question> questions;
 	static int questionCounter;
 	Question currentQuestion;
-	String currentHint;
-	HashMap<String, String> hints;
+	HashMap<String, String> hints;//not currently in use
 
+	
 	// Constructor
 	Questions1() {
-		this.qlist = QuestionReader.readCSVFile();
-		this.questionCounter = 0;
-		this.currentHint = " ";
-		// this.currentQuestion ;
+		this.questions = QuestionReader.readCSVFile();
+		questionCounter = 0;
+		//this.currentHint = " ";
 		this.hints =  new HashMap<String, String>();
 		
 		//fill hints hashMap
-		for (Question q : qlist) {
+		for (Question q : questions) {
 			hints.put(q.getQuestion(), q.getHint());
 		}
 	}
+	
+	
 
 	// Methods
+	
+	
+	/**
+	 * Method to provide random questions
+	 * 
+	 * @param questions
+	 */
+	public void shuffleQuestions(ArrayList<Question> questions) {
+		Collections.shuffle(questions);
+	}
+
 
 	
 	/**
-	 * This method returns all components of the current question and then 
-	 * removes all the components related to that question from the list of 
-	 * available questions.
-	 * 
-	 * When we run out of questions, the game will be over. Another class will deal with that issue.
+	 * This method returns all components of the question class
+	 * question, answer1 - 3, hint, and correctAnswer
+	 * for one question at a time.
 	 * 
 	 */
 	public Question getCurrentQuestion() {
-		if (questionCounter < qlist.size()) {
-			currentQuestion = qlist.get(questionCounter);
-			qlist.remove(currentQuestion);
+		if (questionCounter < questions.size()) {
+			currentQuestion = questions.get(questionCounter);
 			questionCounter++;
 			return currentQuestion;
 		} else {
@@ -54,64 +63,14 @@ public class Questions1 {
 		}
 
 	}
-	
-	/**
-	 * This method uses the hashmap of questions and hints to return the currentHint
-	 * that matches the currentQuestion
-	 * @return
-	 */
-	
-	public String getCurrentHint() {
-		System.out.println("in the method");
-		for (String h : hints.keySet()) {
-			System.out.println("in the for loop");
-			if (h.equals(currentQuestion)) {
-				System.out.println("in the if");
-				String locateHint = hints.get(h);
-				currentHint = locateHint;
-				return currentHint;
-			}
-			
-		} return null;
 		
-		
-		
-		
-		
-	}
-	
-	
-	/**
-	 * this is attempt 1 and I can't get into the if condition. .. So now I am trying the hashmap
-	 * @param args
-	 */
-		
-//		for (Question q : qlist) {
-//			//System.out.println("in the hint loop");
-//			String locateHint = q.getHint();
-//			//System.out.println(locateHint);
-//			if (this.currentQuestion.getHint().contains(locateHint) ) {
-//				System.out.println("in the if");
-//				currentHint = locateHint;
-//				break;
-//			}
-//		}
-//		return currentHint;
 
-	
-	
-	
-	
-
-	// main method for testing
-	public static void main(String[] args) {
-		Questions1 q1 = new Questions1();
-		//System.out.println(q1.getCurrentQuestion());
-		System.out.println(q1.getCurrentQuestion());
-		System.out.println(q1.getCurrentHint());
-		//System.out.println(q1.hints);
-		//q1.getCurrentHint();
-
-	}
+//	// main method for testing
+//	public static void main(String[] args) {
+//		Questions1 q1 = new Questions1();
+//		System.out.println(q1.getCurrentQuestion());
+//		
+//
+//	}
 
 }
