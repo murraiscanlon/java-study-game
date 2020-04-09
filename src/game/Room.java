@@ -1,5 +1,4 @@
 package game;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -22,29 +21,23 @@ import java.util.HashMap;
 public class Room {
 	private int id;
 	private String name;
-	private int xCor;
-	private int yCor;
 	private String shortDesc;
 	private String longDesc;
 	private boolean visited = false;
 	private HashMap<String, Room> adjacentRooms = new HashMap<String, Room>();
 	private Treasure treasure;
-//	private ArrayList<String> characters = new ArrayList<String>();
+	private HashMap<Direction, Room> adjRoomsEnum = new HashMap<Direction, Room>();
 	
 	/**
 	 * Constructor
 	 * @param id : Unique ID for each room
 	 * @param name : Name of the room
-	 * @param xCor : x coordinate of the room in a 2D grid
-	 * @param yCor : y coordinate of the room in a 2D grid
 	 * @param shortDesc : Short description of the room
 	 * @param longDesc : Long (detailed) description of the room
 	 */
-	public Room(int id, String name, int xCor, int yCor, String shortDesc, String longDesc) {
+	public Room(int id, String name, String shortDesc, String longDesc) {
 		this.id = id;
 		this.name = name;
-		this.xCor = xCor;
-		this.yCor = yCor;
 		this.shortDesc = shortDesc;
 		this.longDesc = longDesc;
 	}
@@ -135,6 +128,16 @@ public class Room {
 	}
 	
 	/**
+	 * Method to set up the adjacent rooms.  Note that all rooms must be created
+	 * before you can set up the room connections
+	 * @param direction : direction out of the room
+	 * @param room : room in the direction specified
+	 */
+	public void setAdjRoomEnum(Direction direction, Room room) {
+		adjRoomsEnum.put(direction, room);
+	}
+	
+	/**
 	 * Method to return the room in the direction specified
 	 * Note that the room can be null and the caller must handle that case.
 	 * @param direction : direction from the room
@@ -145,6 +148,21 @@ public class Room {
 		
 		if(adjacentRooms.containsKey(direction) && adjacentRooms.get(direction) != null) {
 			room = adjacentRooms.get(direction);
+		}
+		return room;
+	}
+	
+	/**
+	 * Method to return the room in the direction specified
+	 * Note that the room can be null and the caller must handle that case.
+	 * @param direction : direction from the room
+	 * @return : Room object in that direction, can be null
+	 */
+	public Room getRoomAtDirEnum(Direction direction) {
+		Room room = null;
+		
+		if(adjRoomsEnum.containsKey(direction) && adjRoomsEnum.get(direction) != null) {
+			room = adjRoomsEnum.get(direction);
 		}
 		return room;
 	}

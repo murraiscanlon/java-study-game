@@ -68,8 +68,6 @@ public class Rooms {
 		// Set default data for the room object
 		int id = -1;
 		String name = "";
-		int xCor = -1;
-		int yCor = -1;
 		String shortDesc = "";
 		String longDesc = "";
 		int n = -1;
@@ -85,16 +83,6 @@ public class Rooms {
 			System.out.println("Bad id <" + data[0] + ">");
 		}
 		name = data[1];
-		try {
-			xCor = Integer.parseInt(data[2]);
-		} catch (NumberFormatException e1) {
-			System.out.println("Bad xCor <" + data[2] + ">");
-		}
-		try {
-			yCor = Integer.parseInt(data[3]);
-		} catch (NumberFormatException e1) {
-			System.out.println("Bad yCor <" + data[3] + ">");
-		}
 		shortDesc = data[4];
 		longDesc = data[5];
 
@@ -119,7 +107,7 @@ public class Rooms {
 			System.out.println("Bad w <" + data[9] + ">");
 		}	
 
-		Room room = new Room(id, name, xCor, yCor, shortDesc, longDesc);
+		Room room = new Room(id, name, shortDesc, longDesc);
 		
 		// Get the treasure for the room
 //		Treasure treasure = treasures.isTreasureInRoom(id-1);

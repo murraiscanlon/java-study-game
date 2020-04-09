@@ -18,6 +18,10 @@ public class SwingInterface extends JFrame {
 	Room currentRoom; // Track current room
 	JLabel description = new JLabel(); // Description of the current room
 	boolean foundTreasure = false; // Flag to show treasure was found (testing purposes)
+	JButton northButton;
+	JButton southButton;
+	JButton westButton;
+	JButton eastButton;
 
 	public void initializeGame() {
 
@@ -60,7 +64,7 @@ public class SwingInterface extends JFrame {
 		
 		// North Button
 		c.gridx = 1; c.gridy = 0;
-		JButton northButton = new JButton("NORTH");
+		northButton = new JButton("NORTH");
 		northButton.addActionListener(e->{
 			northButtonPushed();
 		});
@@ -68,21 +72,21 @@ public class SwingInterface extends JFrame {
 		
 		// West Button
 		c.gridx = 0; c.gridy = 1;
-		JButton westButton = new JButton("WEST");
+		westButton = new JButton("WEST");
 		westButton.addActionListener(e->{
 			westButtonPushed();
 		});		buttonPanel.add(westButton, c);
 
 		// East Button
 		c.gridx = 2; c.gridy = 1;
-		JButton eastButton = new JButton("EAST");
+		eastButton = new JButton("EAST");
 		eastButton.addActionListener(e->{
 			eastButtonPushed();
 		});		buttonPanel.add(eastButton, c);
 		
 		// South Button
 		c.gridx = 1; c.gridy = 2;
-		JButton southButton = new JButton("SOUTH");
+		southButton = new JButton("SOUTH");
 		southButton.addActionListener(e->{
 			southButtonPushed();
 		});		buttonPanel.add(southButton, c);
@@ -154,6 +158,7 @@ public class SwingInterface extends JFrame {
 				currentRoom.setVisited();
 			}
 			checkoutLocation();
+			showHideDirButtons();
 		}
 		System.out.println("Next Room: "+ currentRoom.getName());		
 	}
@@ -167,6 +172,40 @@ public class SwingInterface extends JFrame {
 		}
 		if ((currentRoom.getId() == 1) && (foundTreasure == true)) {
 			description.setText("You Won!");
+		}
+	}
+	
+	public void showHideDirButtons(){
+		if(currentRoom.getRoomAtDirection("north") == null) {
+			System.out.println("No room to the north");
+			northButton.setVisible(false);
+		}
+		else {
+			northButton.setVisible(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("south") == null) {
+			System.out.println("No room to the south");
+			southButton.setVisible(false);
+		}
+		else {
+			southButton.setVisible(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("west") == null) {
+			System.out.println("No room to the west");
+			westButton.setVisible(false);
+		}
+		else {
+			westButton.setVisible(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("east") == null) {
+			System.out.println("No room to the east");
+			eastButton.setVisible(false);
+		}
+		else {
+			eastButton.setVisible(true);
 		}
 	}
 	

@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class RoomTest {
 	
-	Room room1 = new Room(1, "Room1", 0, 0, "Room 1 Short", "Room 1 Long");
-	Room room2 = new Room(2, "Room1", 0, 0, "Room 1 Short", "Room 1 Long");
+	Room room1 = new Room(1, "Room1", "Room 1 Short", "Room 1 Long");
+	Room room2 = new Room(2, "Room1", "Room 1 Short", "Room 1 Long");
 	
 	@BeforeEach
 	void setUp() throws Exception {

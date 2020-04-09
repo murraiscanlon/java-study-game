@@ -2,7 +2,6 @@ package game;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,12 +21,18 @@ import java.awt.event.MouseEvent;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Graphics;
 
 public class SwingRoom extends JFrame {
 
     private JPanel roomArea;
     JLabel scrollLabel = new JLabel();
     Room currentRoom; // Track current room
+    Rooms rooms;
+    JButton roomN;
+    JButton roomS;
+    JButton roomE;
+    JButton roomW;
 
     /**
      * Launch the room template
@@ -63,7 +68,7 @@ public class SwingRoom extends JFrame {
         layeredPane.setLayout(null);
         
         //these are the room direction buttons - need to link them to backgrounds
-        JButton roomN = new JButton("N");
+        roomN = new JButton("N");
         roomN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -78,7 +83,7 @@ public class SwingRoom extends JFrame {
         roomN.setBounds(730, 354, 80, 41);        
         layeredPane.add(roomN);
         
-        JButton roomW = new JButton("W");
+        roomW = new JButton("W");
         roomW.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -94,7 +99,7 @@ public class SwingRoom extends JFrame {
         roomW.setBounds(685, 394, 80, 41);        
         layeredPane.add(roomW);
         
-        JButton roomS = new JButton("S");
+        roomS = new JButton("S");
         roomS.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -109,7 +114,7 @@ public class SwingRoom extends JFrame {
         roomS.setBounds(730, 433, 80, 41);        
         layeredPane.add(roomS);
         
-        JButton roomE = new JButton("E");
+        roomE = new JButton("E");
         roomE.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -141,14 +146,16 @@ public class SwingRoom extends JFrame {
         exitButton.setBounds(743, 0, 114, 41);
        
         layeredPane.add(exitButton);
-        
-        //this will be the room description scroll
-        //need to figure out how to get descriptions to swap out
-        Icon scroll = new ImageIcon("scroll2.png");
-        scrollLabel = new JLabel(scroll, JLabel.CENTER);
+             
+        JLabel background = new JLabel(new ImageIcon("scroll2.png"));
+        layeredPane.add(background);
+        background.setBounds(0, 0, 687, 124);
+        background.setLayout(new BorderLayout());
+        scrollLabel = new JLabel();
         scrollLabel.setText(currentRoom.getLongDesc());
-        scrollLabel.setBounds(0, 0, 687, 124);
-        layeredPane.add(scrollLabel);
+        scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        scrollLabel.setOpaque(false);
+        background.add(scrollLabel, BorderLayout.CENTER);
         
         //this will be list of treasures or points
         JLabel inventory = new JLabel(" Inventory List Placeholder");
@@ -182,12 +189,18 @@ public class SwingRoom extends JFrame {
         backgroundLbl.setBackground(new Color(128, 128, 0));
         backgroundLbl.setBounds(0, 0, 858, 502);
         layeredPane.add(backgroundLbl); 
+        
+        postUISetup();
     }
     
     public void initRooms() {
 		String roomFilename = "rooms9.csv"; // File with rooms
-		Rooms rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
+		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
+    }
+    
+    public void postUISetup() {
+    	showHideDirButtons();
     }
     
 	
@@ -213,6 +226,7 @@ public class SwingRoom extends JFrame {
 				currentRoom.setVisited();
 			}
 			checkoutLocation();
+			showHideDirButtons();
 		}
 		System.out.println("Next Room: "+ currentRoom.getName());		
 	}
@@ -222,6 +236,39 @@ public class SwingRoom extends JFrame {
 	 */
 	public void checkoutLocation() {
 //		Need to add code to process being a room
+	}
+	
+	/**
+	 * Method shows or hides buttons depending on if there is an adjacent room.
+	 */
+	public void showHideDirButtons(){
+		if(currentRoom.getRoomAtDirection("north") == null) {
+			roomN.setEnabled(false);
+		}
+		else {
+			roomN.setEnabled(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("south") == null) {
+			roomS.setEnabled(false);
+		}
+		else {
+			roomS.setEnabled(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("west") == null) {
+			roomW.setEnabled(false);
+		}
+		else {
+			roomW.setEnabled(true);
+		}		
+		
+		if(currentRoom.getRoomAtDirection("east") == null) {
+			roomE.setEnabled(false);
+		}
+		else {
+			roomE.setEnabled(true);
+		}
 	}
 	
 }
