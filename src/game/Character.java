@@ -10,7 +10,6 @@ public class Character {
      * Instance variables to generate Character
      */
     private String name;
-    private String location;
     private String interaction;
     
     /**
@@ -21,21 +20,20 @@ public class Character {
      * @param location
      * @param interaction
      */
-    public Character(String name, String location, String interaction) {
+    public Character(String name, String interaction) {
         this.name = name;
-        this.location = location;
         this.interaction = interaction;
         
     }
    
-    /**
+        /**
      * toString() method to obtain Character info
      * Getters & Setters
      * @return
      */
     @Override
     public String toString() {
-        return "Character [name=" + name + ", location=" + location + ", interaction=" + interaction + "]";
+        return "Character [name=" + name + ", interaction=" + interaction + "]";
     }
 
     public String getName() {
@@ -44,14 +42,6 @@ public class Character {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getInteraction() {
@@ -64,3 +54,4 @@ public class Character {
     
 
 }
+
