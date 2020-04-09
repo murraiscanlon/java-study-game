@@ -45,12 +45,12 @@ public class Characters {
                 
         String question1 = question.toString();
         
-        addCharacter("Null Pointer Ninja", question1 );
+        addCharacter("Null Pointer Dragon", question1 );
         addCharacter("HashMap Assassin", question1 );
-        addCharacter("Infinite Loopy", question1);
-        addCharacter("Attack Array", question1);
+        addCharacter("Infinite Loop Ghost", question1);
+        addCharacter("Zombie Array", question1);
         addCharacter("Github Gremlin", question1);
-        addCharacter("Immortal Bug", question1);
+        addCharacter("Dead Code Mummy", question1);
         addCharacter("Headless Exception", question1);
         addCharacter("IndexOutOfBounds Ogre", question1);
                 
