@@ -14,14 +14,16 @@ public class Characters {
      * Instance variable
      */
     private ArrayList<Character> characters = new ArrayList<Character>();
-    
-   /**
+    private Question question;
+    private Question hint;
+    private Character wizard; 
+    private Character fairy; 
+    /**
     * Constructor
-    * @param c
+    * 
     */
-    public Characters(ArrayList<Character> c) {
-        characters = c;
-     
+    public Characters() {
+            
     }
     /**
      * Method to add one Character
@@ -29,27 +31,46 @@ public class Characters {
      * @param location
      * @param interaction
      */
-    public void addCharacter(String name, String location, String interaction) {
-        Character newChar = new Character(name, location, interaction);
+    public void addCharacter(String name, String interaction) {
+        Character newChar = new Character(name, interaction);
         characters.add(newChar);
         }
     /**
      * Method to create list of Characters 
-     * Wizard Arvind, Fairy GodTA & Java Monsters
+     * Java Monsters
      * @return characters
      */
-    public ArrayList<Character> generateCharacterList(){
-        //Interactions will be replaced later with variables/method from other classes
-        addCharacter("Wizard Arvind", "Finish", "Thank you for freeing me!");
-        addCharacter("Fairy GodTA", "Every Room", "Generate Hint");
-        addCharacter("Null Pointer Ninja", "Dungeon", "Question");
-        addCharacter("HashMap Assassin", "Kitchen", "Question");
-        addCharacter("Infinite Loopy", "Tower", "Question");
-        addCharacter("Attack Array", "Library", "Question");
         
+    public ArrayList<Character> generateMonsters(){
+                
+        String question1 = question.toString();
+        
+        addCharacter("Null Pointer Ninja", question1 );
+        addCharacter("HashMap Assassin", question1 );
+        addCharacter("Infinite Loopy", question1);
+        addCharacter("Attack Array", question1);
+        addCharacter("Github Gremlin", question1);
+        addCharacter("Immortal Bug", question1);
+        addCharacter("Headless Exception", question1);
+        addCharacter("IndexOutOfBounds Ogre", question1);
+                
         return characters;
     }
-    
+    /**
+     * Method to create Wizard Arvind & Fairy GodTA
+     * @return
+     */
+    public String[] createWizardAndFairy() {
+        String [] addChars = new String [2];
+        String hint1 = hint.getHint();
+        wizard = new Character("Wizard Arvind", "Thank you for saving me!");
+        fairy = new Character("Fairy GodTA Jami", hint1);
+        
+        addChars[0] = wizard.toString();
+        addChars[1] = fairy.toString();        
+        
+        return addChars;
+    }
     
 }
 
