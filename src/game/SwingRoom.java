@@ -38,7 +38,13 @@ public class SwingRoom extends JFrame {
 	JButton treasureButton;
 	JButton questionReturnButton;
 	Questions1 questions;
+	Question q;
 	JPanel questionBox;
+	JLabel question;
+	JLabel answer1;
+	JLabel answer2;
+	JLabel answer3;
+	JLabel answer4;
 
 	/**
 	 * Launch the room template
@@ -83,9 +89,27 @@ public class SwingRoom extends JFrame {
 		questionBox.setBounds(50, 100, 800, 600);
 		questionBox.setBackground(Color.CYAN);
 		questionBox.setLayout(new GridBagLayout());
-		JLabel question = new JLabel("Test Question");
-		c.gridx = 0; c.gridy = 0; // Put description information at 0,0
+		
+		question = new JLabel();
+		c.gridx = 0; c.gridy = 0;
 		questionBox.add(question,c);
+		
+		answer1 = new JLabel();
+		c.gridx = 0; c.gridy = 1;
+		questionBox.add(answer1,c);
+		
+		answer2 = new JLabel();
+		c.gridx = 0; c.gridy = 2;
+		questionBox.add(answer2,c);
+		
+		answer3 = new JLabel();
+		c.gridx = 0; c.gridy = 3;
+		questionBox.add(answer3,c);
+		
+		answer4 = new JLabel();
+		c.gridx = 0; c.gridy = 4;
+		questionBox.add(answer4,c);
+		
 		layeredPane.add(questionBox);
 
 		questionReturnButton = new JButton("Go Back!");
@@ -97,11 +121,12 @@ public class SwingRoom extends JFrame {
 				roomS.setVisible(true);
 				roomE.setVisible(true);
 				roomW.setVisible(true);
+				treasureButton.setVisible(true);
 				showHideDirButtons();
 			}
 		});
 		questionReturnButton.setVisible(true);
-		c.gridx = 0; c.gridy = 1; // Put description information at 0,0
+		c.gridx = 0; c.gridy = 5; // Put description information at 0,0
 		questionBox.add(questionReturnButton,c);
 		questionBox.setVisible(false);
 
@@ -328,11 +353,17 @@ public class SwingRoom extends JFrame {
 
 	public void treasureButtonPushed() {
 		System.out.println("TreasureButtonPushed");
-		Question q = questions.getCurrentQuestion();
+		q = questions.getCurrentQuestion();
 		roomN.setVisible(false);
 		roomS.setVisible(false);
 		roomE.setVisible(false);
 		roomW.setVisible(false);
+		treasureButton.setVisible(false);
+		question.setText(q.getQuestion());
+		answer1.setText(q.getAnswer1());
+		answer2.setText(q.getAnswer2());
+		answer3.setText(q.getAnswer3());
+		answer4.setText(q.getCorrectAnswer());		
 		questionBox.setVisible(true);
 	}
 
