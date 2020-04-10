@@ -54,7 +54,7 @@ public class StoryPage extends JFrame {
             
         });
         //enter.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        //enter.setBounds(578, 344, 140, 40);
+        enter.setBounds(578, 344, 140, 40);
         contentPane.add(enter);
         
         JTextPane story = new JTextPane();
