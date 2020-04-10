@@ -60,7 +60,7 @@ public class SwingEnterPage {
         //Sets the button to go to next screen
         ImageIcon buttonPic = new ImageIcon("startButton.png");
         JButton startButton = new JButton("", buttonPic);
-        startButton.setPreferredSize(new Dimension(140, 40));
+        startButton.setPreferredSize(new Dimension(140, 35));
         startButton.setOpaque(true);
         
         //Adds functionality for clicking on Start button
@@ -74,7 +74,7 @@ public class SwingEnterPage {
 
         });
         frame.getContentPane().setLayout(null);
-        startButton.setBounds(272, 458, 140, 49);
+        startButton.setBounds(330, 458, 140, 45);
         frame.getContentPane().add(startButton);
         
         //Blank text field
@@ -88,8 +88,8 @@ public class SwingEnterPage {
                 String name = textNameField.getText();
             }
         });
-        textNameField.setForeground(Color.WHITE);
-        textNameField.setBounds(282, 431, 115, 20);
+        textNameField.setForeground(Color.BLACK);
+        textNameField.setBounds(340, 431, 115, 20);
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
         
@@ -101,19 +101,19 @@ public class SwingEnterPage {
         playerNameLabel.setForeground(Color.WHITE);
         playerNameLabel.setOpaque(false);
         playerNameLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-        playerNameLabel.setBounds(294, 400, 91, 30);
+        playerNameLabel.setBounds(350, 400, 91, 30);
         frame.getContentPane().add(playerNameLabel);
         
         gameTitle = new JLabel("J A V E N T U R E");
-        gameTitle.setForeground(new Color(112, 128, 144));
+        gameTitle.setForeground(Color.GRAY);
         gameTitle.setIcon(null);
-        gameTitle.setFont(new Font("Castellar", gameTitle.getFont().getStyle(), 41));
-        gameTitle.setBounds(162, 61, 455, 49);
+        gameTitle.setFont(new Font("Castellar", gameTitle.getFont().getStyle(), 43));
+        gameTitle.setBounds(232, 45, 455, 49);
         frame.getContentPane().add(gameTitle);
         
         Icon icon = new ImageIcon("enterpic.jpg");          
         JLabel image = new JLabel(icon, JLabel.CENTER);
-        image.setBounds(0, 49, 768, 463);
+        image.setBounds(0, 0, 900, 600);
         frame.getContentPane().add(image);        
     }
 
