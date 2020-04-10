@@ -80,36 +80,7 @@ public class SwingRoom extends JFrame {
 		layeredPane.setLayout(null);
 
 		//Set up Question Box
-
-		//		GridBagConstraints c = new GridBagConstraints(); // Create a constraint variable to define interface
-		//		c.anchor = GridBagConstraints.LINE_START; 
-		//		c.insets = new Insets(5, 5, 5, 5);
-		//
-		//		questionBox = new JPanel();
-		//		questionBox.setBounds(50, 100, 800, 600);
-		//		questionBox.setBackground(Color.CYAN);
-		//		questionBox.setLayout(new GridBagLayout());
-		//		
-		//		question = new JLabel();
-		//		c.gridx = 0; c.gridy = 0;
-		//		questionBox.add(question,c);
-		//		
-		//		answer1 = new JLabel();
-		//		c.gridx = 0; c.gridy = 1;
-		//		questionBox.add(answer1,c);
-		//		
-		//		answer2 = new JLabel();
-		//		c.gridx = 0; c.gridy = 2;
-		//		questionBox.add(answer2,c);
-		//		
-		//		answer3 = new JLabel();
-		//		c.gridx = 0; c.gridy = 3;
-		//		questionBox.add(answer3,c);
-		//		
-		//		answer4 = new JLabel();
-		//		c.gridx = 0; c.gridy = 4;
-		//		questionBox.add(answer4,c);
-		//		
+	
 		questionBox = new QuestionBox();
 		layeredPane.add(questionBox);
 		questionBox.addQuestionBoxListener(new QuestionBoxListener() {
@@ -124,22 +95,6 @@ public class SwingRoom extends JFrame {
 			}
 		});
 
-		//		questionReturnButton = new JButton("Go Back!");
-		//		questionReturnButton.addMouseListener(new MouseAdapter() {
-		//			@Override
-		//			public void mouseClicked(MouseEvent e) {
-		//				questionBox.setVisible(false);
-		//				roomN.setVisible(true);
-		//				roomS.setVisible(true);
-		//				roomE.setVisible(true);
-		//				roomW.setVisible(true);
-		//				treasureButton.setVisible(true);
-		//				showHideDirButtons();
-		//			}
-		//		});
-		//		questionReturnButton.setVisible(true);
-		//		c.gridx = 0; c.gridy = 5; // Put description information at 0,0
-		//		questionBox.add(questionReturnButton,c);
 		questionBox.setVisible(false);
 
 		//these are the room direction buttons - need to link them to backgrounds
@@ -372,11 +327,6 @@ public class SwingRoom extends JFrame {
 		roomW.setVisible(false);
 		treasureButton.setVisible(false);
 		questionBox.setUpLabels(q);
-		//		question.setText(q.getQuestion());
-		//		answer1.setText(q.getAnswer1());
-		//		answer2.setText(q.getAnswer2());
-		//		answer3.setText(q.getAnswer3());
-		//		answer4.setText(q.getCorrectAnswer());		
 		questionBox.setVisible(true);
 	}
 
