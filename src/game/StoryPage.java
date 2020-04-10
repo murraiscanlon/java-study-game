@@ -43,6 +43,7 @@ public class StoryPage extends JFrame {
             public void mouseClicked(MouseEvent arg0) {
                 SwingRoom room = new SwingRoom();//link to second page
                 room.setVisible(true); //brings up next screen
+                contentPane.setVisible(false);
                 
                 //need to figure out how to close current screen
             }
