@@ -23,7 +23,7 @@ public class QuestionReader {
      */
     public static ArrayList<Question> readCSVFile(){
     	ArrayList<Question> questions = new ArrayList<Question>();
-        File questionsFile = new File("jquestions0.csv");
+        File questionsFile = new File("jquestions1.csv");
         
         try {
             Scanner fileReader = new Scanner(questionsFile);
@@ -37,12 +37,13 @@ public class QuestionReader {
                 String answer1 = lineComponents[1];
                 String answer2 = lineComponents[2];
                 String answer3 = lineComponents[3];
-                String hint = lineComponents[4];
-                String correctAnswer = lineComponents[5];
+                String answer4 = lineComponents[4];
+                String hint = lineComponents[5];
+                String correctAnswer = lineComponents[6];
                 //check file for parseInt issues
                 //add another try/catch block if needed
                                 
-                Question questionAndAnswer = new Question(question, answer1, answer2, answer3, hint, correctAnswer);
+                Question questionAndAnswer = new Question(question, answer1, answer2, answer3, answer4, hint, correctAnswer);
                 questions.add(questionAndAnswer);
             }
             fileReader.close();
