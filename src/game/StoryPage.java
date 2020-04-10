@@ -29,7 +29,7 @@ public class StoryPage extends JFrame {
      */
     public StoryPage() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 800, 600);
+        setBounds(100, 100, 900, 600);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setBackground(Color.DARK_GRAY);
@@ -41,7 +41,7 @@ public class StoryPage extends JFrame {
         
         ImageIcon buttonPic1 = new ImageIcon("enterButton.png");
         JButton enter = new JButton("", buttonPic1);
-        enter.setPreferredSize(new Dimension(140, 40));
+        enter.setPreferredSize(new Dimension(140, 35));
         enter.setOpaque(true);
         enter.addMouseListener(new MouseAdapter() {
             @Override
@@ -54,7 +54,7 @@ public class StoryPage extends JFrame {
             
         });
         //enter.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        enter.setBounds(578, 344, 140, 40);
+        enter.setBounds(640, 360, 130, 40);
         contentPane.add(enter);
         
         JTextPane story = new JTextPane();
@@ -72,20 +72,20 @@ public class StoryPage extends JFrame {
                         + "enough treasure, Wizard Arvind will be freed, and "
                         + "the Java Monsters will be banished from the realm."
                         + " Your Fairy GodTA will guide you on your journey. Good luck!");
-        story.setBounds(134, 36, 264, 365);
+        story.setBounds(144, 46, 264, 365);
         story.setOpaque(false);
         story.setVisible(true);
         contentPane.add(story);
         JLabel image2 = new JLabel(icon2, SwingConstants.CENTER);
         image2.setFont(new Font("Tahoma", Font.PLAIN, 20));
         image2.setVerticalAlignment(SwingConstants.TOP);
-        image2.setBounds(65, 24, 400, 500);
+        image2.setBounds(75, 30, 400, 500);
         contentPane.add(image2);
         
         Icon bgImage = new ImageIcon("enterdoor.jpg");
         
         JLabel background = new JLabel((Icon) bgImage, JLabel.CENTER);
-        background.setBounds(0, 0, 784, 561);
+        background.setBounds(0, 0, 900, 600);
         contentPane.add(background);
         
         
