@@ -31,10 +31,12 @@ public class Treasures {
 	public ArrayList<Treasure> assignTreasureTypes() {
 
 		treasures.add(new Treasure("Bitcoin", 2, ""));
-		treasures.add(new Treasure("Jewel", 2, ""));
-		treasures.add(new Treasure("Sword", 2, ""));
-		treasures.add(new Treasure ("MagicIDE", 2, ""));
-
+		treasures.add(new Treasure("Jewel Editor", 2, ""));
+		treasures.add(new Treasure("Java Sword", 2, ""));
+		treasures.add(new Treasure ("Magic IDE", 2, ""));
+		treasures.add(new Treasure ("Diamond Debugger", 2, ""));
+		treasures.add(new Treasure ("Key Compiler", 2, ""));
+		
 		return treasures;
 	}
 
