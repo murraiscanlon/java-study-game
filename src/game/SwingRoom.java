@@ -160,7 +160,7 @@ public class SwingRoom extends JFrame {
 		layeredPane.add(roomE);
 		//
 		//Exit button upper right corner
-		JButton exitButton = new JButton("EXIT");        
+		JButton exitButton = new JButton("QUIT");        
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -173,7 +173,7 @@ public class SwingRoom extends JFrame {
 		exitButton.setBackground(new Color(128, 128, 128));
 
 		exitButton.setOpaque(true);
-		exitButton.setBounds(743, 0, 114, 41);
+		exitButton.setBounds(775, 0, 100, 41);
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -226,7 +226,7 @@ public class SwingRoom extends JFrame {
 		JLabel backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
 		backgroundLbl.setForeground(new Color(0, 0, 0));
 		backgroundLbl.setBackground(new Color(128, 128, 0));
-		backgroundLbl.setBounds(0, 0, 858, 502);
+		backgroundLbl.setBounds(0, 0, 900, 600);
 		layeredPane.add(backgroundLbl); 
 
 		postUISetup();
