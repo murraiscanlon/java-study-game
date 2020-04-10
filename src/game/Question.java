@@ -13,7 +13,7 @@ public class Question {
     private String answer2;
     private String answer3;
     private String answer4;
-    private String correctAnswer;
+    private int correctAnswer;
     private String hint;
     
     /**
@@ -25,7 +25,7 @@ public class Question {
      * @param hint
      */
     public Question (String question, String answer1, String answer2,
-                     String answer3, String answer4, String hint, String correctAnswer) {
+                     String answer3, String answer4, String hint, int correctAnswer) {
         this.question = question;
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -35,7 +35,7 @@ public class Question {
         this.hint = hint;
     }
 
-     public String getCorrectAnswer() {
+     public int getCorrectAnswer() {
 		return correctAnswer;
 	}
 

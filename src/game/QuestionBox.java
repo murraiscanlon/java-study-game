@@ -21,6 +21,8 @@ public class QuestionBox extends JPanel {
 	JLabel answer2;
 	JLabel answer3;
 	JLabel answer4;
+	JLabel hint;
+	JLabel correctAnswer;
 	JButton returnButton;
 	
 	private EventListenerList listenerList = new EventListenerList();
@@ -55,8 +57,13 @@ public class QuestionBox extends JPanel {
 		c.gridx = 0; c.gridy = 4;
 		add(answer4,c);
 		
-		returnButton = new JButton("Go Back!");
+		//add event listener for hint/fairy popup here??
+		hint = new JLabel("");
 		c.gridx = 0; c.gridy = 5;
+		add(hint,c);
+		
+		returnButton = new JButton("Go Back!");
+		c.gridx = 0; c.gridy = 6;
 		add(returnButton,c);
 		returnButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -72,7 +79,8 @@ public class QuestionBox extends JPanel {
 		answer1.setText(q.getAnswer1());
 		answer2.setText(q.getAnswer2());
 		answer3.setText(q.getAnswer3());
-		answer4.setText(q.getCorrectAnswer());
+		answer4.setText(q.getAnswer4());
+		hint.setText("Need a Hint?");//connect to a new action listener for hint to appear maybe
 	}
 
 	public void fireQBEvent(QuestionBoxEvent event) {
