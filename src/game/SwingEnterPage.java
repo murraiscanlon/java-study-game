@@ -2,6 +2,7 @@ package game;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
@@ -55,14 +56,13 @@ public class SwingEnterPage {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
+        
         //Sets the button to go to next screen
-        JButton startButton = new JButton("START");
-        startButton.setFont(new Font("Castellar", Font.PLAIN, 27));
-        startButton.setForeground(Color.WHITE);
-        startButton.setBackground(Color.DARK_GRAY);
+        ImageIcon buttonPic = new ImageIcon("startButton.png");
+        JButton startButton = new JButton("", buttonPic);
+        startButton.setPreferredSize(new Dimension(140, 40));
         startButton.setOpaque(true);
-
+        
         //Adds functionality for clicking on Start button
         startButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -74,9 +74,9 @@ public class SwingEnterPage {
 
         });
         frame.getContentPane().setLayout(null);
-        startButton.setBounds(272, 458, 140, 40);
+        startButton.setBounds(272, 458, 140, 49);
         frame.getContentPane().add(startButton);
-
+        
         //Blank text field
         textNameField = new JTextField();
         textNameField.setBackground(Color.LIGHT_GRAY);
@@ -90,10 +90,9 @@ public class SwingEnterPage {
         });
         textNameField.setForeground(Color.WHITE);
         textNameField.setBounds(282, 431, 115, 20);
-        textNameField.setOpaque(false);
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
-
+        
         //Label above blank text field w/instructions to enter name
         JLabel playerNameLabel = new JLabel("Player Name:");
         playerNameLabel.setLabelFor(textNameField);
@@ -104,14 +103,14 @@ public class SwingEnterPage {
         playerNameLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         playerNameLabel.setBounds(294, 400, 91, 30);
         frame.getContentPane().add(playerNameLabel);
-
+        
         gameTitle = new JLabel("J A V E N T U R E");
         gameTitle.setForeground(new Color(112, 128, 144));
         gameTitle.setIcon(null);
-        gameTitle.setFont(new Font("Castellar", Font.BOLD, 43));
+        gameTitle.setFont(new Font("Castellar", gameTitle.getFont().getStyle(), 41));
         gameTitle.setBounds(162, 61, 455, 49);
         frame.getContentPane().add(gameTitle);
-
+        
         Icon icon = new ImageIcon("enterpic.jpg");          
         JLabel image = new JLabel(icon, JLabel.CENTER);
         image.setBounds(0, 49, 768, 463);
@@ -128,7 +127,7 @@ public class SwingEnterPage {
                 try {
                     SwingEnterPage window = new SwingEnterPage();
                     window.frame.setVisible(true);
-
+             
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
