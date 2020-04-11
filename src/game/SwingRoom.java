@@ -204,13 +204,13 @@ public class SwingRoom extends JFrame {
 
 
 		//this will be list of treasures or points
-		JLabel inventory = new JLabel(" Inventory List Placeholder");
-		inventory.setBackground(new Color(0, 100, 0));
-		inventory.setForeground(new Color(255, 255, 255));
-		inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		inventory.setHorizontalAlignment(SwingConstants.CENTER);
-		inventory.setBounds(0, 317, 179, 185);
-		layeredPane.add(inventory);
+		JLabel inventory = new JLabel("Inventory List Placeholder");
+        inventory.setBackground(Color.GRAY);
+        inventory.setForeground(new Color(255, 255, 255));
+        inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        inventory.setHorizontalAlignment(SwingConstants.CENTER);
+        inventory.setBounds(0, 465, 874, 86);
+        layeredPane.add(inventory);
 
 		Icon fairy = new ImageIcon("fairy.png");
 		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
@@ -218,8 +218,9 @@ public class SwingRoom extends JFrame {
 		layeredPane.add(fairyPlace);
 
 		//take treasure button - can't get this to work right now
-		treasureButton = new JButton(new ImageIcon("treasure1.png"));        
-		treasureButton.setBounds(400, 330, 171, 124);
+		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
+		treasureButton.setBackground(Color.BLACK);
+		treasureButton.setBounds(400, 341, 161, 133);
 		
 		treasureButton.addMouseListener(new MouseAdapter() {
 			//write method to have something happen when click on treasure
