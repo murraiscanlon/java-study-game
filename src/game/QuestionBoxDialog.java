@@ -30,6 +30,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);
 		
+		
 		questLabel = new JLabel("Q");
 		radioButtons = new JRadioButton[4];
 		group = new ButtonGroup();

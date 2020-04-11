@@ -83,6 +83,7 @@ public class SwingRoom extends JFrame {
 		//Set up QBDialog
 		
 		qbDialog = new QuestionBoxDialog(this);
+		qbDialog.pack();
 
 		//Set up Question Box
 	
