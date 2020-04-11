@@ -9,10 +9,9 @@ import java.util.HashMap;
  * This class models a room in the Adventure game.  
  * id: Unique ID for each room.
  * name: Name of the room.
- * xCor: x coordinate of the room in a 2D grid
- * yCor: y coordinate of the room in a 2D grid
  * shortDesc: Short description of the room
  * longDesc: Long (detailed) description of the room
+ * image: Background image for each room which will display in GUI
  * visited: Default false until player enters the room
  * adjacentRooms: maps directions (north, east, south, west) to the unique ID of the room in that direction
  * 		Not all rooms will have adjacent rooms in each direction
@@ -23,6 +22,7 @@ public class Room {
 	private String name;
 	private String shortDesc;
 	private String longDesc;
+	private String image;
 	private boolean visited = false;
 	private HashMap<String, Room> adjacentRooms = new HashMap<String, Room>();
 	private Treasure treasure;
@@ -35,11 +35,12 @@ public class Room {
 	 * @param shortDesc : Short description of the room
 	 * @param longDesc : Long (detailed) description of the room
 	 */
-	public Room(int id, String name, String shortDesc, String longDesc) {
+	public Room(int id, String name, String shortDesc, String longDesc, String image) {
 		this.id = id;
 		this.name = name;
 		this.shortDesc = shortDesc;
 		this.longDesc = longDesc;
+		this.image = image;
 	}
 
 	/**
@@ -73,7 +74,13 @@ public class Room {
 	public int getId() {
 		return id;
 	}
-	
+	/**
+	 * Room image getter
+	 * @return
+	 */
+	public String getImage() {
+	    return image;
+	}
 	/**
 	 * Method to return if room was visited
 	 * @return if room was visited before

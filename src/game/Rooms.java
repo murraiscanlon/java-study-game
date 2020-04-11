@@ -74,6 +74,7 @@ public class Rooms {
 		int e = -1;
 		int s = -1;
 		int w = -1;
+		String image = "";
 
 		// If data parsing fails, results are left at their default
 		// Print statements in the catch block are to help find issues with csv file
@@ -83,31 +84,33 @@ public class Rooms {
 			System.out.println("Bad id <" + data[0] + ">");
 		}
 		name = data[1];
-		shortDesc = data[4];
-		longDesc = data[5];
+		shortDesc = data[2];
+		longDesc = data[3];
 
 		try {
-			n = Integer.parseInt(data[6]);
+			n = Integer.parseInt(data[4]);
 		} catch (NumberFormatException e1) {
-			System.out.println("Bad n <" + data[6] + ">");
+			System.out.println("Bad n <" + data[4] + ">");
 		}	
 		try {
-			e = Integer.parseInt(data[7]);
+			e = Integer.parseInt(data[5]);
 		} catch (NumberFormatException e1) {
-			System.out.println("Bad e <" + data[7] + ">");
+			System.out.println("Bad e <" + data[5] + ">");
 		}	
 		try {
-			s = Integer.parseInt(data[8]);
+			s = Integer.parseInt(data[6]);
 		} catch (NumberFormatException e1) {
-			System.out.println("Bad s <" + data[8] + ">");
+			System.out.println("Bad s <" + data[6] + ">");
 		}	
 		try {
-			w = Integer.parseInt(data[9]);
+			w = Integer.parseInt(data[7]);
 		} catch (NumberFormatException e1) {
-			System.out.println("Bad w <" + data[9] + ">");
-		}	
+			System.out.println("Bad w <" + data[7] + ">");
+		}
+		
+		image = data[8];
 
-		Room room = new Room(id, name, shortDesc, longDesc);
+		Room room = new Room(id, name, shortDesc, longDesc, image);
 		
 		// Get the treasure for the room
 //		Treasure treasure = treasures.isTreasureInRoom(id-1);
@@ -178,7 +181,7 @@ public class Rooms {
 	 * This is a temporary Main method used for quick testing.
 	 */
 	public static void main(String[] args) {
-		String roomFilename = "rooms.csv";
+		String roomFilename = "rooms12.csv";
 		Rooms rooms = new Rooms(roomFilename);
 
 		Room currentRoom = rooms.getRoomAtID(1);
