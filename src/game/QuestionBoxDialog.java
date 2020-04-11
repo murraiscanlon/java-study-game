@@ -1,9 +1,10 @@
 package game;
 
-import java.awt.Component;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -11,21 +12,23 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.event.EventListenerList;
 
 
 public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
-	private SwingRoom sw;
-	private JOptionPane optionPane;
 	private JPanel questionPanel;
 	JLabel questLabel;
 	JRadioButton[] radioButtons;
 	ButtonGroup group;
 	JButton selectButton;
+	Treasure treasure;
+	
+	private EventListenerList listenerList = new EventListenerList();
+
 	
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);
@@ -55,6 +58,13 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
         }	
 		radioButtons[0].setSelected(true);
 		selectButton = new JButton("OK!");
+		selectButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String text = "This is the info I want to return.";
+				fireQBEvent(new QuestionBoxEvent(this,text));
+			}
+		});
 		
 		questionPanel = new JPanel();
 		questionPanel.add(questLabel);
@@ -64,6 +74,32 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
         questionPanel.add(selectButton);
         
         setContentPane(questionPanel);
+	}
+	
+	public void setUpQuestion(Question q) {
+		questLabel.setText(q.getQuestion());
+		radioButtons[0].setText(q.getAnswer1());
+		radioButtons[1].setText(q.getAnswer2());
+		radioButtons[2].setText(q.getAnswer3());
+		radioButtons[3].setText(q.getAnswer4());
+	}
+	
+	public void fireQBEvent(QuestionBoxEvent event) {
+		Object[] listeners = listenerList.getListenerList();
+		
+		for(int i = 0; i< listeners.length; i+=2) {
+			if(listeners[i] == QuestionBoxListener.class) {
+				((QuestionBoxListener)listeners[i+1]).questionBoxEventOccurred(event);
+			}
+		}
+	}
+	
+	public void addQuestionBoxListener(QuestionBoxListener listener) {
+		listenerList.add(QuestionBoxListener.class, listener);
+	}
+	
+	public void removeQuestionBoxListener(QuestionBoxListener listener) {
+		listenerList.remove(QuestionBoxListener.class, listener);	
 	}
 	
 	@Override
