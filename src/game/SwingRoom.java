@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToolBar;
 import javax.swing.Icon;
@@ -193,11 +194,14 @@ public class SwingRoom extends JFrame {
 		layeredPane.add(background);
 		background.setBounds(0, 0, 687, 124);
 		background.setLayout(new BorderLayout());
+		
 		scrollLabel = new JLabel();
 		scrollLabel.setText(currentRoom.getLongDesc());
+		scrollLabel.setBounds(10, 10, 600, 100);
 		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollLabel.setOpaque(false);
 		background.add(scrollLabel, BorderLayout.CENTER);
+
 
 		//this will be list of treasures or points
 		JLabel inventory = new JLabel(" Inventory List Placeholder");
@@ -214,8 +218,9 @@ public class SwingRoom extends JFrame {
 		layeredPane.add(fairyPlace);
 
 		//take treasure button - can't get this to work right now
-		treasureButton = new JButton(new ImageIcon("treasure.png"));        
-		treasureButton.setBounds(408, 330, 171, 124);
+		treasureButton = new JButton(new ImageIcon("treasure1.png"));        
+		treasureButton.setBounds(400, 330, 171, 124);
+		
 		treasureButton.addMouseListener(new MouseAdapter() {
 			//write method to have something happen when click on treasure
 			@Override
