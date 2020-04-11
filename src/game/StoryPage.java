@@ -22,6 +22,10 @@ import java.awt.event.MouseEvent;
 
 public class StoryPage extends JFrame {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
     /**
