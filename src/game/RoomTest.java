@@ -6,8 +6,16 @@ import org.junit.jupiter.api.Test;
 
 class RoomTest {
 	
-	Room room1 = new Room(1, "Room1", "Room 1 Short", "Room 1 Long");
-	Room room2 = new Room(2, "Room1", "Room 1 Short", "Room 1 Long");
+	Room room1 = new Room(1, "FOYER", "You are in the FOYER.", 
+	            "You have entered the Foyer. From here you may"
+	            + " traverse many different rooms. Note the "
+	            + "distinct castle architecture reminiscent "
+	            + "of the Baroque era.", "");
+	Room room2 = new Room(2, "DUNGEON", "You are in the DUNGEON.", 
+	            "You have entered the Dungeon-a pit of despair where"
+	            + " untold numbers have reached Index Out of Bounds."
+	            + " Wizard Arvind remains in captivity-only your "
+	            + "knowledge can save him!", "");
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -17,17 +25,20 @@ class RoomTest {
 
 	@Test
 	void testGetName() {
-		assertEquals(room1.getName(), "Room1");
+		assertEquals(room1.getName(), "FOYER");
 	}
 
 	@Test
 	void testGetShortDesc() {
-		assertEquals(room1.getShortDesc(), "Room 1 Short");
+		assertEquals(room1.getShortDesc(), "You are in the FOYER.");
 	}
 
 	@Test
 	void testGetLongDesc() {
-		assertEquals(room1.getLongDesc(), "Room 1 Long");
+		assertEquals(room1.getLongDesc(), "You have entered the Foyer. "
+		        + "From here you may traverse many different rooms. "
+		        + "Note the distinct castle architecture reminiscent "
+		        + "of the Baroque era.");
 	}
 
 	@Test
@@ -49,6 +60,6 @@ class RoomTest {
 
 	@Test
 	void testGetRoomAtDirection_R1_Snull() {
-		assertEquals(room1.getRoomAtDirection("sourth"),null);
+		assertEquals(room1.getRoomAtDirection("south"),null);
 	}
 }
