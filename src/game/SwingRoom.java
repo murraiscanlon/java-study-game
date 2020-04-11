@@ -40,6 +40,7 @@ public class SwingRoom extends JFrame {
 	Questions1 questions;
 	Question q;
 	QuestionBox questionBox;
+	QuestionBoxDialog qbDialog;
 	JLabel question;
 	JLabel answer1;
 	JLabel answer2;
@@ -78,6 +79,10 @@ public class SwingRoom extends JFrame {
 		layeredPane.setOpaque(false);
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
+		
+		//Set up QBDialog
+		
+		qbDialog = new QuestionBoxDialog(this);
 
 		//Set up Question Box
 	
@@ -328,6 +333,7 @@ public class SwingRoom extends JFrame {
 		treasureButton.setVisible(false);
 		questionBox.setUpLabels(q);
 		questionBox.setVisible(true);
+		//qbDialog.setVisible(true);
 	}
 
 
