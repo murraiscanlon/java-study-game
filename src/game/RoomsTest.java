@@ -10,7 +10,7 @@ class RoomsTest {
 	
 	@Test 
 	void testProcessFileLine01() {
-		rooms.processFileLine("5,Room5,5,5,Room 5 Short,Room 5 Long,1,2,3,0");
+		rooms.processFileLine("5,Room5,Room 5 Short,Room 5 Long,1,2,3,0,X");
 		assertEquals(rooms.getRoomAtID(5).getName(), "Room5");
 		assertEquals(rooms.getRoomAtID(5).getShortDesc(), "Room 5 Short");
 		assertEquals(rooms.getRoomAtID(5).getLongDesc(), "Room 5 Long");

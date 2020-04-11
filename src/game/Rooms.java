@@ -63,7 +63,7 @@ public class Rooms {
 	 */
 	public void processFileLine(String line) {
 		String[] data = line.split(",");
-		if (data.length < 10) { return;} // There should be 10 fields in each CSV
+		if (data.length < 9) { return;} // There should be 10 fields in each CSV
 
 		// Set default data for the room object
 		int id = -1;

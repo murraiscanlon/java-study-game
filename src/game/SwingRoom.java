@@ -233,7 +233,7 @@ public class SwingRoom extends JFrame {
 	}
 
 	public void initRooms() {
-		String roomFilename = "rooms9.csv"; // File with rooms
+		String roomFilename = "rooms12.csv"; // File with rooms
 		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
 		questions = new Questions1();
