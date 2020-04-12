@@ -47,6 +47,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	JRadioButton radioButton4;
 	JLabel currentQuestion;
 	JButton submitButton;
+	boolean isCorrect;
 	
 	
 	private EventListenerList listenerList = new EventListenerList();
@@ -158,13 +159,23 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		bg2.add(radioButton3);
 		bg2.add(radioButton4);
 		
-		submitButton = new JButton("Submit");//WORKING HERE MURRAI
+		submitButton = new JButton("Submit");//WORKING HERE
 		submitButton.setBounds(270, 584, 100, 21);
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-			//use a helper method to check correct answer
-			//use helper method to compare (flag)	
+			public void mouseClicked(MouseEvent e) { 
+				String checkAnswerString = "";
+				if (checkAnswer(question)) { //only using this "if" to return a String to the fireQBEvent
+					checkAnswerString = "TRUE";
+				} else {
+					checkAnswerString = "FALSE";
+				}
+				fireQBEvent(new QuestionBoxEvent(this,checkAnswerString));
+				
+				
+				
+				
+				
 			}
 		});
 		layeredPane.add(submitButton);
@@ -174,8 +185,11 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		returnButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String text = "This is the info I want to return.";
-				fireQBEvent(new QuestionBoxEvent(this,text));
+//				String text = "This is the info I want to return.";
+//				fireQBEvent(new QuestionBoxEvent(this,text));
+				
+				
+				
 			}
 		});
 		layeredPane.add(returnButton);
@@ -215,7 +229,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		//LABEL FOR THE JAVA MONSTER BACKGROUND IMAGE 
 		JLabel javaMonsterImageLabel = new JLabel("");
 		javaMonsterImageLabel.setVerticalAlignment(SwingConstants.TOP);
-		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));//WORKING HERE
+		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 		javaMonsterImageLabel.setBounds(0, 0, 645, 695);
 		layeredPane.add(javaMonsterImageLabel);
 		javaMonsterImageLabel.setVisible(true);
@@ -229,6 +243,26 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	}//end constructor
 	
 	/*****************************************************METHODS*******************************************************/
+	
+	public boolean checkAnswer(Question q) {
+			question = q;
+			int correctAnswerNumber = q.getCorrectAnswer();
+			isCorrect = false;
+			switch(correctAnswerNumber) {
+			case 1 :
+				return radioButton1.isSelected();
+			case 2 :
+				return radioButton2.isSelected();
+			case 3 :
+				return radioButton3.isSelected();
+			case 4 :
+				return radioButton4.isSelected();
+			default: 
+				System.out.println("Problem in checkAnswer method");
+				return false;
+			} 
+	}
+	
 	
 	public void setUpQuestion(Question q) {
 		question = q;
