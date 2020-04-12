@@ -2,11 +2,14 @@ package game;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import javax.swing.ImageIcon;
+
 import org.junit.jupiter.api.Test;
 
 class TreasureTest {
 	
-	Treasure t = new Treasure("Diamond", 5, "Entry");
+    ImageIcon diamond;
+	Treasure t = new Treasure("Diamond", 5, "Entry", diamond);
 
 	@Test
 	void testToString() {
@@ -20,7 +23,7 @@ class TreasureTest {
 
 	@Test
 	void testSetTreasureType() {
-		Treasure t1 = new Treasure("Diamond", 5, "Entry");
+		Treasure t1 = new Treasure("Diamond", 5, "Entry", diamond);
 		t1.setTreasureType("Bitcoin");
 		assertEquals(t1.getTreasureType(), "Bitcoin");
 	}
@@ -32,7 +35,7 @@ class TreasureTest {
 
 	@Test
 	void testSetPoints() {
-		Treasure t1 = new Treasure("Diamond", 5, "Entry");
+		Treasure t1 = new Treasure("Diamond", 5, "Entry", diamond);
 		t1.setPoints(15);
 		assertEquals(t1.getPoints(), 15);
 	}
@@ -44,7 +47,7 @@ class TreasureTest {
 
 	@Test
 	void testSetRoomName() {
-		Treasure t1 = new Treasure("Diamond", 5, "Entry");
+		Treasure t1 = new Treasure("Diamond", 5, "Entry", diamond);
 		t1.setRoomName("Kitchen");
 		assertEquals(t1.getRoomName(), "Kitchen");
 	}
@@ -56,7 +59,7 @@ class TreasureTest {
 	
 	@Test
 	void testSetRoomId() {
-		Treasure t1 = new Treasure("Diamond", 5, "Entry");
+		Treasure t1 = new Treasure("Diamond", 5, "Entry", diamond);
 		t1.setRoomId(5);		
 		assertEquals(t1.getRoomId(), 5);
 	}
