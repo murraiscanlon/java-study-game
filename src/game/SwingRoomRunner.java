@@ -82,18 +82,24 @@ public class SwingRoomRunner extends JFrame {
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
 		
-		//Set up QBDialog
+		/************************************************************SET UP QUESTION STUFF*******************************************/
 		
-		qbDialog = new QuestionBoxDialog(this);
-		qbDialog.pack();
+		qbDialog = new QuestionBoxDialog(this);//WORKING HERE
+//		qbDialog.pack();//this doesn't SEEM to affect the layout now
+//		qbDialog.setSize(500, 500);
+		qbDialog.setLocationRelativeTo(null);
+		//qbDialog.setLayout(null); I need Absolute layout instead of flowlayout that is currently default
+		
+		
+		
 		qbDialog.addQuestionBoxListener(new QuestionBoxListener() {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
 				qbDialog.setVisible(false);
-				roomN.setVisible(true);
-				roomS.setVisible(true);
-				roomE.setVisible(true);
-				roomW.setVisible(true);
-				treasureButton.setVisible(true);
+//				roomN.setVisible(true);
+//				roomS.setVisible(true);
+//				roomE.setVisible(true);
+//				roomW.setVisible(true);
+//				treasureButton.setVisible(true);
 				showHideDirButtons();
 				String text = event.getText();
 				System.out.println("Returned text: " + text);
@@ -117,6 +123,9 @@ public class SwingRoomRunner extends JFrame {
 		});
 
 		questionBox.setVisible(false);
+		
+		
+		/******************************************************ROOM DIRECTION BUTTONS**************************************************/
 
 		//these are the room direction buttons - need to link them to backgrounds
 		roomN = new JButton("N");
@@ -180,6 +189,9 @@ public class SwingRoomRunner extends JFrame {
 		roomE.setBounds(777, 394, 80, 41);        
 		layeredPane.add(roomE);
 		//
+		
+		
+		/**********************************************************EXIT BUTTON*******************************************/
 		//Exit button upper right corner
 		JButton exitButton = new JButton("QUIT");        
 		exitButton.addMouseListener(new MouseAdapter() {
@@ -203,6 +215,8 @@ public class SwingRoomRunner extends JFrame {
 		});
 
 		layeredPane.add(exitButton);
+		
+		/**************************************************PANE LABELS****************************************************/
 
 		JLabel background = new JLabel(new ImageIcon("scroll2.png"));
 		layeredPane.add(background);
@@ -251,7 +265,7 @@ public class SwingRoomRunner extends JFrame {
 		layeredPane.add(backgroundLbl); 
 
 		postUISetup();
-	}
+	}//End Constructor
 
 	public void initRooms() {
 		String roomFilename = "rooms12.csv"; // File with rooms
@@ -342,14 +356,15 @@ public class SwingRoomRunner extends JFrame {
 	public void treasureButtonPushed() {
 		System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
-		roomN.setVisible(false);
-		roomS.setVisible(false);
-		roomE.setVisible(false);
-		roomW.setVisible(false);
-		treasureButton.setVisible(false);
+//		roomN.setVisible(false);
+//		roomS.setVisible(false);
+//		roomE.setVisible(false);
+//		roomW.setVisible(false);
+//		treasureButton.setVisible(false);
 		questionBox.setUpLabels(q);
 		//questionBox.setVisible(true);
 		qbDialog.setUpQuestion(q);
+		qbDialog.setUpTreasure(currentRoom.getTreasure());
 		qbDialog.setVisible(true);
 	}
 
