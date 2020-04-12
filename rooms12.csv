@@ -1,14 +1,14 @@
 ﻿id,name,shortDesc,longDesc,n,e,s,w,image
-1,FOYER,You are in the Foyer.,You have entered the Foyer. From here you may traverse  different rooms to find treasure.  ,0,2,4,0,images/Foyer.jpg
-2,DUNGEON,You are in the Dungeon.,You have entered the Dungeon. Only you can save Wizard Arvind from the pit of despair!,0,3,5,1,images/Dungeon.jpg
-3,QUARTERS,You are in the Quarters.,You have entered the Quarters. Guests from other villages use this room for restorative sleep. ,0,2,6,2,images/quarters.jpg
-4,BALCONY,You are on the Balcony.,You have entered the Balcony. Be wary of Java Monsters in the shadows waiting to strike.,1,5,7,0,images/Balcony.jpg
-5,KITCHEN,You are in the Kitchen.,You have entered the Kitchen. Perhaps you will have a meal once your journey is complete. ,2,6,8,4,images/kitchen.jpg
+1,FOYER,You are in the Foyer.,You entered the Foyer. From here you may traverse different rooms to find treasure.  ,0,2,4,0,images/Foyer.jpg
+2,DUNGEON,You are in the Dungeon.,You entered the Dungeon. Only you can save Wizard Arvind from the pit of despair!,0,3,5,1,images/Dungeon.jpg
+3,QUARTERS,You are in the Quarters.,You entered the Quarters. Guests from other villages use this room for restorative sleep. ,0,2,6,2,images/quarters.jpg
+4,BALCONY,You are on the Balcony.,You entered the Balcony. Be wary of Java Monsters in the shadows waiting to strike.,1,5,7,0,images/Balcony.jpg
+5,KITCHEN,You are in the Kitchen.,You entered the Kitchen. Perhaps you will have a meal once your journey is complete. ,2,6,8,4,images/kitchen.jpg
 6,BALLROOM,"You are in the
-Ballroom.",You have entered the Ballroom. Castle occupants once celebrated with mead and dancing.,3,0,9,5,images/Ballroom.jpg
-7,STUDY,You are in the Study.,You have entered the Study. Help Wizard Arvind return to his passion for academic pursuits. ,4,8,10,0,images/study.png
-8,GREAT HALL,You are in the Great Hall.,You have entered the Great Hall. Its ornate visage belies the Java Monsters prowling the castle. ,5,9,11,7,images/GreatHall.jpg
-9,OBSERVATORY,You are in the Observatory.,You have entered the Observatory. Here Wizard Arvind's students study programming dark arts. ,6,8,12,0,images/observatory.jpg
-10,GALLERY,You are in the Gallery.,You have entered the Gallery. No time to gaze upon the artworks-you must defeat Java Monsters. ,7,11,0,0,images/gallery.png
-11,CELLAR,You are in the Cellar.,You have entered the Cellar. Legend has it many souls have perished in the damp encampment. ,8,12,0,10,images/Cellar.jpg
-12,LIBRARY,You are in the Library.,You have entered the Library. Be wary of nefarious characters hiding amidst sacred computer science texts. ,9,0,0,11,images/library.jpg
+Ballroom.",You entered the Ballroom. Castle occupants once celebrated with mead and dancing.,3,0,9,5,images/Ballroom.jpg
+7,STUDY,You are in the Study.,You entered the Study. Help Wizard Arvind return to his passion for academic pursuits. ,4,8,10,0,images/study.png
+8,GREAT HALL,You are in the Great Hall.,You entered the Great Hall. Its ornate visage belies the Java Monsters prowling the castle. ,5,9,11,7,images/GreatHall.jpg
+9,OBSERVATORY,You are in the Observatory.,You entered the Observatory. Here Wizard Arvind's students learn programming dark arts. ,6,8,12,0,images/observatory.jpg
+10,GALLERY,You are in the Gallery.,You entered the Gallery. No time to gaze upon the artworks-you must defeat Java Monsters. ,7,11,0,0,images/gallery.png
+11,CELLAR,You are in the Cellar.,You entered the Cellar. Legend has it many souls have perished in the damp encampment. ,8,12,0,10,images/Cellar.jpg
+12,LIBRARY,You are in the Library.,You entered the Library. Be wary of nefarious characters amidst sacred computer science texts. ,9,0,0,11,images/library.jpg
