@@ -186,21 +186,32 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		});
 		layeredPane.add(returnButton);
 
-		JButton hintButton = new JButton("HINT");
-		hintButton.setBounds(70, 584, 100, 21);
-		layeredPane.add(hintButton);
 
-		JLabel hintRevealedLabel = new JLabel("'" + "HINT METHOD GOES HERE" + "'" + " - your FairyGodTA, Jami");
+
+		JLabel hintRevealedLabel = new JLabel("'" + /*displayHint(question) + */ "'" + " - your FairyGodTA, Jami");
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setBounds(103, 636, 391, 28);
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
 		JLabel fairyRevealLabel = new JLabel("");
-		fairyRevealLabel.setIcon(new ImageIcon("fairy2.png"));
-		fairyRevealLabel.setBounds(465, 547, 180, 163);
+		fairyRevealLabel.setIcon(new ImageIcon("fairy.png"));
+		fairyRevealLabel.setBounds(5, 547, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
+		
+		JButton hintButton = new JButton("HINT");//WORKING HERE
+		hintButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				hintRevealedLabel.setVisible(true);
+				fairyRevealLabel.setVisible(true);
+				hintButton.setVisible(false);
+
+			}
+		});
+		hintButton.setBounds(70, 584, 100, 21);
+		layeredPane.add(hintButton);
 
 		JLabel treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -230,6 +241,13 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	/*****************************************************
 	 * METHODS
 	 *******************************************************/
+	
+	public String displayHint(Question qu) {//this is returning null??
+		question = qu;
+		String currentHint = qu.getHint();
+		return currentHint;
+	}
+	
 
 	public boolean checkAnswer(Question q) {
 		question = q;
