@@ -47,6 +47,8 @@ public class SwingRoom extends JFrame {
 	JLabel answer2;
 	JLabel answer3;
 	JLabel answer4;
+	JLabel backgroundLbl = new JLabel();
+    Icon bgIcon = new ImageIcon();
 
 	/**
 	 * Launch the room template
@@ -190,9 +192,9 @@ public class SwingRoom extends JFrame {
 
 		layeredPane.add(exitButton);
 
-		JLabel background = new JLabel(new ImageIcon("scroll2.png"));
+		JLabel background = new JLabel(new ImageIcon("images/scroll2.png"));
 		layeredPane.add(background);
-		background.setBounds(0, 0, 687, 124);
+		background.setBounds(60, 0, 687, 124);
 		background.setLayout(new BorderLayout());
 		
 		scrollLabel = new JLabel();
@@ -201,7 +203,8 @@ public class SwingRoom extends JFrame {
 		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollLabel.setOpaque(false);
 		background.add(scrollLabel, BorderLayout.CENTER);
-
+		
+		
 
 		//this will be list of treasures or points
 		JLabel inventory = new JLabel("Inventory List Placeholder");
@@ -219,8 +222,9 @@ public class SwingRoom extends JFrame {
 
 		//take treasure button - can't get this to work right now
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
+		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
-		treasureButton.setBounds(400, 341, 161, 133);
+		treasureButton.setBounds(365, 341, 161, 133);
 		
 		treasureButton.addMouseListener(new MouseAdapter() {
 			//write method to have something happen when click on treasure
@@ -234,8 +238,8 @@ public class SwingRoom extends JFrame {
 
 
 		//need to write a method that swaps out background images  
-		Icon bgIcon = new ImageIcon("hallway.jpg");
-		JLabel backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
+		bgIcon = new ImageIcon(currentRoom.getImage());
+		backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
 		backgroundLbl.setForeground(new Color(0, 0, 0));
 		backgroundLbl.setBackground(new Color(128, 128, 0));
 		backgroundLbl.setBounds(0, 0, 900, 600);
@@ -269,18 +273,29 @@ public class SwingRoom extends JFrame {
 			String treasureType = "";
 			if (currentRoom.getTreasure() != null) {
 				treasureType=currentRoom.getTreasureType();
+//			ImageIcon treasurePic = null;
+//			if (currentRoom.getTreasure() != null) {
+//			    treasurePic = currentRoom.getTreasurePic();
+//				
 			}
 			if (currentRoom.wasVisited()) {
-				scrollLabel.setText((currentRoom.getShortDesc()) + " " + treasureType);
+				//scrollLabel.setText((currentRoom.getShortDesc()) + " " + treasureType);       
+			    //scrollLabel.setText(currentRoom.getShortDesc() + " " + treasurePic);
+			    scrollLabel.setText(currentRoom.getShortDesc());
+			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 			}
 			else {
-				scrollLabel.setText((currentRoom.getLongDesc()) + " " + treasureType);
+				//scrollLabel.setText((currentRoom.getLongDesc()) + " " + treasureType);
+				//scrollLabel.setText(currentRoom.getLongDesc()) + " " + treasurePic;
+				scrollLabel.setText(currentRoom.getLongDesc());
+				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 				currentRoom.setVisited();
 			}
 			checkoutLocation();
 			showHideDirButtons();
 		}
-		System.out.println("Next Room: "+ currentRoom.getName());		
+		System.out.println("Next Room: "+ currentRoom.getName());
+		System.out.println("Treasure is:" + currentRoom.getTreasureType());
 	}
 
 	/**
