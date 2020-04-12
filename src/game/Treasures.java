@@ -2,6 +2,8 @@ package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import javax.swing.ImageIcon;
 /**
  * Contains objects the player collects for points
  * Interacts with Room Class
@@ -30,12 +32,12 @@ public class Treasures {
 	 */
 	public ArrayList<Treasure> assignTreasureTypes() {
 
-		treasures.add(new Treasure("Bitcoin", 2, ""));
-		treasures.add(new Treasure("Jewel Editor", 2, ""));
-		treasures.add(new Treasure("Java Sword", 2, ""));
-		treasures.add(new Treasure ("Magic IDE", 2, ""));
-		treasures.add(new Treasure ("Diamond Debugger", 2, ""));
-		treasures.add(new Treasure ("Key Compiler", 2, ""));
+	    treasures.add(new Treasure("Bitcoin", 2, "", (new ImageIcon("bitcoinS.png"))));
+        treasures.add(new Treasure("Jewel Editor", 2, "",(new ImageIcon("jewelS.png"))));
+        treasures.add(new Treasure("Java Sword", 2, "", (new ImageIcon("swordS.png"))));
+        treasures.add(new Treasure ("Magic IDE", 2, "", (new ImageIcon("magicIDES.png"))));
+        treasures.add(new Treasure ("Diamond Debugger", 2, "",(new ImageIcon("diamondS.png"))));
+        treasures.add(new Treasure ("Key Compiler", 2, "",(new ImageIcon("keyCompilerS.png"))));
 		
 		return treasures;
 	}
