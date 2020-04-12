@@ -1,4 +1,7 @@
 package game;
+
+import javax.swing.ImageIcon;
+
 /**
  * Treasure contains objects for player to collect
  * 
@@ -17,6 +20,7 @@ public class Treasure {
     private int points;
     private String roomName;
     private int roomId = -1;
+    private ImageIcon treasurePic;
     
 
 	/**
@@ -25,12 +29,13 @@ public class Treasure {
      * @param points
      * @param roomName
      */
-    public Treasure(String treasureType, int points, String roomName) {
+    public Treasure(String treasureType, int points, String roomName, ImageIcon treasurePic) {
         this.treasureType = treasureType;
         this.points = points;
         this.roomName = roomName;
+        this.treasurePic = treasurePic;
     }
-    
+        
     /**
      * toString method & Getters + Setters
      * @return
@@ -72,5 +77,12 @@ public class Treasure {
 		this.roomId = roomId;
 	}
 
+	public ImageIcon getTreasurePic() {
+        return treasurePic;
+    }
+
+    public void setTreasurePic(ImageIcon treasurePic) {
+        this.treasurePic = treasurePic;
+    }
     
 }
