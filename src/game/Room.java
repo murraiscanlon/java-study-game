@@ -130,13 +130,13 @@ public class Room {
 	 * Method to get treasure picture - not working!
 	 * @return : treasurePic
 	 */
-//	public ImageIcon getTreasurePic() {
-//	    ImageIcon treasurePic = null;
-//	    if (treasure != null) {
-//	        treasurePic = treasure.getTreasurePic();
-//	    }
-//	    return treasurePic;
-//	}
+	public ImageIcon getTreasurePic() {
+	    ImageIcon treasurePic = null;
+	    if (treasure != null) {
+	        treasurePic = treasure.getTreasurePic();
+	    }
+	    return treasurePic;
+	}
 	
 	/**
 	 * Method to set up the adjacent rooms.  Note that all rooms must be created
