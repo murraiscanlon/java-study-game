@@ -27,28 +27,28 @@ import java.awt.Graphics;
 
 public class SwingRoom extends JFrame {
 
-	private static final LayoutManager GridBagLayout = null;
+	private static final long serialVersionUID = 1L;
 	private JPanel roomArea;
-	JLabel scrollLabel = new JLabel();
-	Room currentRoom; // Track current room
-	Rooms rooms;
-	JButton roomN;
-	JButton roomS;
-	JButton roomE;
-	JButton roomW;
-	JButton treasureButton;
-	JButton questionReturnButton;
-	Questions1 questions;
-	Question q;
-	QuestionBox questionBox;
-	QuestionBoxDialog qbDialog;
-	JLabel question;
-	JLabel answer1;
-	JLabel answer2;
-	JLabel answer3;
-	JLabel answer4;
-	JLabel backgroundLbl = new JLabel();
-    Icon bgIcon = new ImageIcon();
+	private JLayeredPane layeredPane;
+	private JLabel scrollLabel = new JLabel();
+	private Room currentRoom; // Track current room
+	private Rooms rooms;
+	private JButton roomN;
+	private JButton roomS;
+	private JButton roomE;
+	private JButton roomW;
+	private JButton treasureButton;
+//	private JButton questionReturnButton;
+	private Questions1 questions;
+	private Question q;
+	private QuestionBoxDialog qbDialog;
+//	private JLabel question;
+//	private JLabel answer1;
+//	private JLabel answer2;
+//	private JLabel answer3;
+//	private JLabel answer4;
+	private JLabel backgroundLbl = new JLabel();
+	private Icon bgIcon = new ImageIcon();
 
 	/**
 	 * Launch the room template
@@ -77,97 +77,27 @@ public class SwingRoom extends JFrame {
 		setContentPane(roomArea);
 		roomArea.setLayout(new CardLayout(0, 0));
 
-		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane = new JLayeredPane();
 		layeredPane.setBackground(Color.GRAY);
 		layeredPane.setOpaque(false);
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
 		
-		//Set up QBDialog
+		/************************************************************SET UP QUESTION STUFF*******************************************/
 		
-		qbDialog = new QuestionBoxDialog(this);
-		qbDialog.pack();
-
-		//Set up Question Box
-	
-		questionBox = new QuestionBox();
-		layeredPane.add(questionBox);
-		questionBox.addQuestionBoxListener(new QuestionBoxListener() {
+		qbDialog = new QuestionBoxDialog(this);//WORKING HERE
+		qbDialog.setLocationRelativeTo(null);
+		qbDialog.addQuestionBoxListener(new QuestionBoxListener() {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
-				questionBox.setVisible(false);
-				roomN.setVisible(true);
-				roomS.setVisible(true);
-				roomE.setVisible(true);
-				roomW.setVisible(true);
-				treasureButton.setVisible(true);
+				qbDialog.setVisible(false);
 				showHideDirButtons();
+				String text = event.getText();
+				System.out.println("Returned text: " + text);
 			}
-		});
+		});		
 
-		questionBox.setVisible(false);
+		setUpDirButtons();
 
-		//these are the room direction buttons - need to link them to backgrounds
-		roomN = new JButton("N");
-		roomN.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("north");
-				processNextRoom(nextRoom);
-			}
-		});
-		roomN.setIcon(null);
-		roomN.setEnabled(true);        
-		roomN.setBackground(new Color(128, 128, 128));        
-		roomN.setOpaque(true);
-		roomN.setBounds(730, 354, 80, 41);        
-		layeredPane.add(roomN);
-
-		roomW = new JButton("W");
-		roomW.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("west");
-				processNextRoom(nextRoom);
-			}
-		});
-		roomW.setIcon(null);
-		roomW.setEnabled(true);
-		roomW.setForeground(new Color(0, 0, 0));         
-		roomW.setBackground(new Color(128, 128, 128));
-		roomW.setOpaque(true);
-		roomW.setBounds(685, 394, 80, 41);        
-		layeredPane.add(roomW);
-
-		roomS = new JButton("S");
-		roomS.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("south");
-				processNextRoom(nextRoom);
-			}
-		});
-		roomS.setIcon(null);
-		roomS.setEnabled(true);        
-		roomS.setBackground(new Color(128, 128, 128));
-		roomS.setOpaque(true);
-		roomS.setBounds(730, 433, 80, 41);        
-		layeredPane.add(roomS);
-
-		roomE = new JButton("E");
-		roomE.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("east");
-				processNextRoom(nextRoom);
-			}
-		});
-		roomE.setIcon(null);
-		roomE.setEnabled(true);        
-		roomE.setBackground(new Color(128, 128, 128));
-		roomE.setOpaque(true);
-		roomE.setBounds(777, 394, 80, 41);        
-		layeredPane.add(roomE);
-		//
 		//Exit button upper right corner
 		JButton exitButton = new JButton("QUIT");        
 		exitButton.addMouseListener(new MouseAdapter() {
@@ -204,8 +134,6 @@ public class SwingRoom extends JFrame {
 		scrollLabel.setOpaque(false);
 		background.add(scrollLabel, BorderLayout.CENTER);
 		
-		
-
 		//this will be list of treasures or points
 		JLabel inventory = new JLabel("Inventory List Placeholder");
         inventory.setBackground(Color.GRAY);
@@ -272,37 +200,64 @@ public class SwingRoom extends JFrame {
 			currentRoom = nextRoom;
 			String treasureType = "";
 			if (currentRoom.getTreasure() != null) {
-				treasureType=currentRoom.getTreasureType();
-//			ImageIcon treasurePic = null;
-//			if (currentRoom.getTreasure() != null) {
-//			    treasurePic = currentRoom.getTreasurePic();
-//				
+				treasureType=currentRoom.getTreasureType();			
 			}
 			if (currentRoom.wasVisited()) {
-				//scrollLabel.setText((currentRoom.getShortDesc()) + " " + treasureType);       
-			    //scrollLabel.setText(currentRoom.getShortDesc() + " " + treasurePic);
 			    scrollLabel.setText(currentRoom.getShortDesc());
 			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 			}
 			else {
-				//scrollLabel.setText((currentRoom.getLongDesc()) + " " + treasureType);
-				//scrollLabel.setText(currentRoom.getLongDesc()) + " " + treasurePic;
 				scrollLabel.setText(currentRoom.getLongDesc());
 				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 				currentRoom.setVisited();
 			}
-			checkoutLocation();
 			showHideDirButtons();
 		}
 		System.out.println("Next Room: "+ currentRoom.getName());
 		System.out.println("Treasure is:" + currentRoom.getTreasureType());
 	}
+	
+	public void setUpDirButtons() {
 
-	/**
-	 * Tester method to check for location 
-	 */
-	public void checkoutLocation() {
-		//		Need to add code to process being a room
+		roomN = new DirectionButton("N", 730, 354);
+		roomN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Room nextRoom = currentRoom.getRoomAtDirection("north");
+				processNextRoom(nextRoom);
+			}
+		});
+		layeredPane.add(roomN);	
+		
+		roomW = new DirectionButton("W", 685, 394);
+		roomW.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Room nextRoom = currentRoom.getRoomAtDirection("west");
+				processNextRoom(nextRoom);
+			}
+		});
+		layeredPane.add(roomW);
+
+		roomS = new DirectionButton("S", 730, 433);
+		roomS.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Room nextRoom = currentRoom.getRoomAtDirection("south");
+				processNextRoom(nextRoom);
+			}
+		});    
+		layeredPane.add(roomS);
+
+		roomE = new DirectionButton("E", 777, 394);
+		roomE.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Room nextRoom = currentRoom.getRoomAtDirection("east");
+				processNextRoom(nextRoom);
+			}
+		});    
+		layeredPane.add(roomE);
 	}
 
 	/**
@@ -348,14 +303,9 @@ public class SwingRoom extends JFrame {
 	public void treasureButtonPushed() {
 		System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
-		roomN.setVisible(false);
-		roomS.setVisible(false);
-		roomE.setVisible(false);
-		roomW.setVisible(false);
-		treasureButton.setVisible(false);
-		questionBox.setUpLabels(q);
-		questionBox.setVisible(true);
-		//qbDialog.setVisible(true);
+		qbDialog.setUpQuestion(q);
+		qbDialog.setUpTreasure(currentRoom.getTreasure());
+		qbDialog.setVisible(true);
 	}
 
 
