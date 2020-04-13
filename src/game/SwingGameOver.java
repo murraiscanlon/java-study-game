@@ -38,7 +38,9 @@ public class SwingGameOver extends JFrame {
     private JLabel wizardPlace1;
     private JEditorPane loseMsg;
     private JEditorPane winMsg;
-   
+    private JButton exitButton;
+    private JButton playAgain;
+    private static SwingGameOver frame;//is this bad practice?
     /**
      * Launch the application.
      */
@@ -46,7 +48,7 @@ public class SwingGameOver extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    SwingGameOver frame = new SwingGameOver();
+                    frame = new SwingGameOver();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -189,7 +191,7 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpQuitButton() {
     //Exit button upper right corner, has same format as Direction Button
-        JButton exitButton = new DirectionButton("QUIT",775, 0);        
+        exitButton = new DirectionButton("QUIT",775, 0);        
         exitButton.setBounds(761, 10, 113, 23);
         
         exitButton.addMouseListener(new MouseAdapter() {
@@ -204,15 +206,18 @@ public class SwingGameOver extends JFrame {
      * Includes button with action
      */
     public void setUpPlayAgainButton() {
-        JButton playAgain = new JButton("PLAY AGAIN");
+        playAgain = new JButton("PLAY AGAIN");
         playAgain.setBackground(Color.GRAY);
         playAgain.setBounds(10, 10, 113, 23);
         
         playAgain.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //opens SwingEnterPage
                 new SwingEnterPage();
-                //close frame here            
+                //close current frame here                
+                frame.setVisible(false);
+                
             }
         });
         contentPane.add(playAgain);
