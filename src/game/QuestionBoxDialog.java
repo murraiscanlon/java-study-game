@@ -50,6 +50,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	Treasure treasure;
 	Question question;
 	Score s;
+	Room treasure1;//testing this out
 	boolean isCorrect;
 
 	// Constructor
@@ -253,9 +254,12 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		 * Replaces the monster background image with a picture of the current treasure
 		 * collected.
 		 */
+		
 		JLabel treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		//Need to link the Room/Treasure association
 		treasureImageLabel.setIcon(new ImageIcon("diamond2.png"));
+		
 		treasureImageLabel.setBounds(212, 50, 243, 180);
 		layeredPane.add(treasureImageLabel);
 		treasureImageLabel.setVisible(true);
@@ -323,7 +327,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton2.setText(q.getAnswer2());
 		radioButton3.setText(q.getAnswer3());
 		radioButton4.setText(q.getAnswer4());
-
+		
+				
 	}
 
 	public void setUpTreasure(Treasure t) {
@@ -340,11 +345,13 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		Random randomMonster = new Random();
 		ArrayList<String> javaMonsters = new ArrayList<String>();
 		javaMonsters.add("assassinBlock.png");
+		javaMonsters.add("headlessBlock.png");
 		javaMonsters.add("ghostBlock.png");
 		javaMonsters.add("ogreBlock.png");
 		javaMonsters.add("gremlinBlock.png");
 		javaMonsters.add("dragonBlock.png");
 		javaMonsters.add("mummyBlock.png");
+		javaMonsters.add("zombieBlock.png");
 		int randomChoice = randomMonster.nextInt(javaMonsters.size());
 		String currentMonster = javaMonsters.get(randomChoice);
 		return currentMonster;
