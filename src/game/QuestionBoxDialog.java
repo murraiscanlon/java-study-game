@@ -45,14 +45,20 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	JRadioButton radioButton3;
 	JRadioButton radioButton4;
 	JLabel currentQuestion;
+	JLabel treasureImageLabel;
 	JButton submitButton;
 	boolean isCorrect;
+	Score s;
 
 	private EventListenerList listenerList = new EventListenerList();
+	
+
 
 	// Constructor
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);// how does this work?
+		
+		
 
 		questLabel = new JLabel("Q");
 		radioButtons = new JRadioButton[4];
@@ -65,7 +71,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		final String a3command = "a3";
 		final String a4command = "a4";
 
-		radioButtons[0] = new JRadioButton("A1");
+		radioButtons[0] = new JRadioButton("A1");//How does this work? -Murrai
 		radioButtons[0].setActionCommand(a1command);
 		radioButtons[1] = new JRadioButton("A2");
 		radioButtons[1].setActionCommand(a2command);
@@ -74,9 +80,9 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButtons[3] = new JRadioButton("A4");
 		radioButtons[3].setActionCommand(a4command);
 
-		for (int i = 0; i < 4; i++) {
-			group.add(radioButtons[i]);
-		}
+//		for (int i = 0; i < 4; i++) {
+//			group.add(radioButtons[i]);
+//		}
 		radioButtons[0].setSelected(true);
 //		selectButton = new JButton("OK!");
 //		selectButton.addMouseListener(new MouseAdapter() {
@@ -87,6 +93,9 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 //			}
 //		});
 
+		
+		
+		
 		questionPanel = new JPanel();
 
 		questionPanel.add(questLabel);
@@ -157,12 +166,22 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 		submitButton = new JButton("Submit");// WORKING HERE
 		submitButton.setBounds(270, 584, 100, 21);
+		
+		/**
+		 * I need help working with this listener.
+		 */
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+							
+				
+				 // only using this "if" to return a String to the fireQBEvent
 				String checkAnswerString = "";
-				if (checkAnswer(question)) { // only using this "if" to return a String to the fireQBEvent
+				if (checkAnswer(question)) {
 					checkAnswerString = "TRUE";
+					//s.addPoints(1);//this should be treasure value
+					//System.out.println(s.getCurrentScore());//just testing
+					
 				} else {
 					checkAnswerString = "FALSE";
 				}
@@ -188,7 +207,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 
 
-		JLabel hintRevealedLabel = new JLabel("'" + /*displayHint(question) + */ "'" + " - your FairyGodTA, Jami");
+		JLabel hintRevealedLabel = new JLabel("'" + /*displayHint(question) + */"'" + " - your FairyGodTA, Jami");//NOT WORKING CORRECTLY
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setBounds(103, 636, 391, 28);
 		layeredPane.add(hintRevealedLabel);
@@ -204,6 +223,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//reduce score by one point
 				hintRevealedLabel.setVisible(true);
 				fairyRevealLabel.setVisible(true);
 				hintButton.setVisible(false);
@@ -212,6 +232,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		});
 		hintButton.setBounds(70, 584, 100, 21);
 		layeredPane.add(hintButton);
+		
+
 
 		JLabel treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -242,9 +264,14 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	 * METHODS
 	 *******************************************************/
 	
-	public String displayHint(Question qu) {//this is returning null??
-		question = qu;
-		String currentHint = qu.getHint();
+	public String dummyMethod(String word) {
+		String x = word;
+		return x;
+	}
+	
+	public String displayHint(Question q) {//this is returning null??
+		question = q;
+		String currentHint = question.getHint();
 		return currentHint;
 	}
 	
@@ -278,6 +305,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton4.setText(q.getAnswer4());
 
 	}
+	
+
 
 	public void setUpTreasure(Treasure t) {
 		treasure = t;
