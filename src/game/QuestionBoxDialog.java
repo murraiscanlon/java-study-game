@@ -212,6 +212,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * Holds the current hint for display once the hint button is clicked.
 		 */
+		// TODO Create GENERIC hint label - do not access question, it has not been created yet.
 		JLabel hintRevealedLabel = new JLabel("'" + /* displayHint(question) + */"'" + " - your FairyGodTA, Jami");// not
 																													// working
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -329,7 +330,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton3.setText(q.getAnswer3());
 		radioButton4.setText(q.getAnswer4());
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-				
+		// TODO Add hint details here		
 	}
 
 	public void setUpTreasure(Treasure t) {
