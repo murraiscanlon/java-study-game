@@ -51,6 +51,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	Question question;
 	Score s;
 	Room treasure1;//testing this out
+	
 	boolean isCorrect;
 
 	// Constructor
@@ -276,14 +277,14 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * Displays monster image as a background for the box frame
 		 */
-		JLabel javaMonsterImageLabel = new JLabel("");
+		javaMonsterImageLabel = new JLabel("");
 		javaMonsterImageLabel.setVerticalAlignment(SwingConstants.TOP);
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 		javaMonsterImageLabel.setBounds(0, 0, 645, 695);
 		layeredPane.add(javaMonsterImageLabel);
 		javaMonsterImageLabel.setVisible(true);
 
-		setContentPane(contentPane);
+		setContentPane(contentPane);//this is listed twice
 
 	}// end constructor
 
@@ -327,7 +328,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton2.setText(q.getAnswer2());
 		radioButton3.setText(q.getAnswer3());
 		radioButton4.setText(q.getAnswer4());
-		
+		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 				
 	}
 
