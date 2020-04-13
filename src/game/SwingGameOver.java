@@ -9,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.glass.ui.Window.Level;
+
 import javax.swing.JLayeredPane;
 import java.awt.Font;
 import java.awt.Window;
@@ -21,6 +24,7 @@ import javax.swing.UIManager;
 import javax.swing.JEditorPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 import java.awt.Color;
 import javax.swing.JTextPane;
 
@@ -40,7 +44,7 @@ public class SwingGameOver extends JFrame {
     private JEditorPane winMsg;
     private JButton exitButton;
     private JButton playAgain;
-    private static SwingGameOver frame;//is this bad practice?
+    
     /**
      * Launch the application.
      */
@@ -48,7 +52,7 @@ public class SwingGameOver extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    frame = new SwingGameOver();
+                    SwingGameOver frame = new SwingGameOver();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -212,11 +216,11 @@ public class SwingGameOver extends JFrame {
         
         playAgain.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {                
+                //close current frame here  
+                dispose();   
                 //opens SwingEnterPage
-                new SwingEnterPage();
-                //close current frame here                
-                frame.setVisible(false);
+                new SwingEnterPage();                          
                 
             }
         });
