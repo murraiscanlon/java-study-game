@@ -12,12 +12,16 @@ public class Score {
     /**
      * Instance Variables for Score class
      */
+	Treasures t = new Treasures();
+	int currentScore;
+	
     
     /**
      * Constructor
      * @param
      */
     public Score() {
+    	//this.currentScore = 0;
         
     }
     
@@ -25,18 +29,29 @@ public class Score {
      * Method adds points when the player correctly answers a question
      * @return
      */
-    public int addPoints() {
-        return 0;
+    public int addPoints(int points) {
+    	currentScore+= points;
+        return currentScore;
     }
+    
+    /**
+     * Method subtracts points when the player uses a hint to help answer a question
+     * @return
+     */
+    public int losePoints(int points) {
+    	currentScore-= points;
+        return currentScore;
+    }
+    
+    
     /**
      * Method returns running score of points received
      * @param addPoints
      * @return
      */
-    public int getCurrentScore(int addPoints) {
-        int runningScore = 0;
+    public int getCurrentScore() {
+        return currentScore;
         
-        return runningScore;
     }
     
    /**
