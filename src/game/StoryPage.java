@@ -23,7 +23,7 @@ import java.awt.event.MouseEvent;
 public class StoryPage extends JFrame {
 
     /**
-     * Class to 
+     * Class to provide game story and play method
      */
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -34,6 +34,7 @@ public class StoryPage extends JFrame {
     private JButton enter;
     private ImageIcon bgImage;
     private JLabel background;
+    
 
     /**
      * Create the frame.
@@ -123,9 +124,13 @@ public class StoryPage extends JFrame {
         enter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                //closes current window
+                dispose();
+                //opens rooms
                 SwingRoom room = new SwingRoom();//link to second page
                 room.setVisible(true); //brings up next screen                
-                //need to figure out how to close current screen
+                
+                
             }
             
         });
