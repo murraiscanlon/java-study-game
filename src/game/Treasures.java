@@ -32,12 +32,12 @@ public class Treasures {
 	 */
 	public ArrayList<Treasure> assignTreasureTypes() {
 
-	    treasures.add(new Treasure("Bitcoin", 2, "", (new ImageIcon("bitcoinS.png"))));
-        treasures.add(new Treasure("Jewel Editor", 2, "",(new ImageIcon("jewelS.png"))));
-        treasures.add(new Treasure("Java Sword", 2, "", (new ImageIcon("swordS.png"))));
-        treasures.add(new Treasure ("Magic IDE", 2, "", (new ImageIcon("magicIDES.png"))));
-        treasures.add(new Treasure ("Diamond Debugger", 2, "",(new ImageIcon("diamondS.png"))));
-        treasures.add(new Treasure ("Key Compiler", 2, "",(new ImageIcon("keyCompilerS.png"))));
+	    treasures.add(new Treasure("Bitcoin", 5, "", (new ImageIcon("bitcoinS.png"))));
+        treasures.add(new Treasure("Jewel Editor", 5, "",(new ImageIcon("jewelS.png"))));
+        treasures.add(new Treasure("Java Sword", 5, "", (new ImageIcon("swordS.png"))));
+        treasures.add(new Treasure ("Magic IDE", 5, "", (new ImageIcon("magicIDES.png"))));
+        treasures.add(new Treasure ("Diamond Debugger", 5, "",(new ImageIcon("diamondS.png"))));
+        treasures.add(new Treasure ("Key Compiler", 5, "",(new ImageIcon("keyCompilerS.png"))));
 		
 		return treasures;
 	}
