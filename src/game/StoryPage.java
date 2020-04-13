@@ -23,15 +23,43 @@ import java.awt.event.MouseEvent;
 public class StoryPage extends JFrame {
 
     /**
-     * 
+     * Class to 
      */
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private JLabel image2;
+    private JTextPane story;
+    private ImageIcon icon2;
+    private ImageIcon buttonPic1;
+    private JButton enter;
+    private ImageIcon bgImage;
+    private JLabel background;
 
     /**
      * Create the frame.
      */
     public StoryPage() {
+        /**Sets up the initial panel**/
+        initializeStoryPage();
+        
+        /**Sets up scroll with story**/
+        setUpScroll();
+        
+        /**Sets up scroll image**/
+        setScrollImage(); 
+        
+        /**Sets up ENTER button**/        
+        setEnterButton();
+        
+        /**Sets up background image**/
+        setUpBackground();
+         
+    }
+    /**
+     * Method to initialize Story Page
+     */
+    public void initializeStoryPage() {
+        //Sets up JPanel on JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 900, 600);
         contentPane = new JPanel();
@@ -39,29 +67,14 @@ public class StoryPage extends JFrame {
         contentPane.setBackground(Color.DARK_GRAY);
         setContentPane(contentPane);
         
-          
-        Icon icon2 = new ImageIcon("scrollpage1.png");       
-        contentPane.setLayout(null);
-        
-        ImageIcon buttonPic1 = new ImageIcon("enterButton.png");
-        JButton enter = new JButton("", buttonPic1);
-        enter.setPreferredSize(new Dimension(140, 35));
-        enter.setOpaque(true);
-        enter.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                SwingRoom room = new SwingRoom();//link to second page
-                room.setVisible(true); //brings up next screen                
-                
-                //need to figure out how to close current screen
-            }
-            
-        });
-        //enter.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        enter.setBounds(640, 360, 130, 40);
-        contentPane.add(enter);
-        
-        JTextPane story = new JTextPane();
+    }
+    
+    /**
+     * Method to set up scroll and background story
+     */
+    public void setUpScroll() {
+        //Creates text pane to hold story text
+        story = new JTextPane();
         story.setEditable(false);
         story.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         story.setText("Before you lies a looming castle, "
@@ -80,20 +93,57 @@ public class StoryPage extends JFrame {
         story.setOpaque(false);
         story.setVisible(true);
         contentPane.add(story);
-        JLabel image2 = new JLabel(icon2, SwingConstants.CENTER);
+        
+        //setScrollImage();
+                
+    }
+    /**
+     * Method to set up the scroll background
+     */
+    public void setScrollImage() {
+        
+        icon2 = new ImageIcon("scrollpage1.png");       
+        contentPane.setLayout(null);       
+        image2 = new JLabel(icon2, SwingConstants.CENTER);
         image2.setFont(new Font("Tahoma", Font.PLAIN, 20));
         image2.setVerticalAlignment(SwingConstants.TOP);
         image2.setBounds(75, 30, 400, 500);
+        image2.setVisible(true);
         contentPane.add(image2);
-        
-        Icon bgImage = new ImageIcon("enterdoor.jpg");
-        
-        JLabel background = new JLabel((Icon) bgImage, JLabel.CENTER);
+    }
+    /**
+     * Method to create ENTER button and add action
+     * Allows player to enter the castle
+     */
+    public void setEnterButton() {
+        buttonPic1 = new ImageIcon("enterButton.png");
+        enter = new JButton("", buttonPic1);
+        enter.setPreferredSize(new Dimension(140, 35));
+        enter.setOpaque(true);
+        enter.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                SwingRoom room = new SwingRoom();//link to second page
+                room.setVisible(true); //brings up next screen                
+                //need to figure out how to close current screen
+            }
+            
+        });
+        //enter.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        enter.setBounds(640, 360, 130, 40);
+        contentPane.add(enter);
+    }
+    /**
+     * Method to set up background image
+     */
+    public void setUpBackground() {
+        bgImage = new ImageIcon("enterdoor.jpg");
+        background = new JLabel(bgImage, JLabel.CENTER);
         background.setBounds(0, 0, 900, 600);
         contentPane.add(background);
-        
-        
+         
     }
+    
 } 
 
 
