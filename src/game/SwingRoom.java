@@ -49,27 +49,57 @@ public class SwingRoom extends JFrame {
 //	private JLabel answer4;
 	private JLabel backgroundLbl = new JLabel();
 	private Icon bgIcon = new ImageIcon();
+	JLabel background;
+	JLabel inventory;
+	Icon fairy;
 
 	/**
-	 * Launch the room template
-	 * 
-	 * Room needs to be a generic type with methods to support
-	 * adding and subtracting components based which Room the player is in
-	 * Required methods to integrate include:
-	 * Inventory display, monster display, treasure, score, room background, room descr.
-	 * Need to figure out how to hide/show objects based on situation
-	 * Event handlers should be able to deal with objects
-	 */
-
-	/**
-	 * Create the frame.
+	 * Create the Swing interface for a room in the game
 	 */
 	public SwingRoom() {
 
-		//initialize rooms
+		/***** Initialize the Rooms  *****/
 		initRooms();
+		/***** Set up the Room UI foundation  *****/
+		setUpUIFoundation();
+		/***** Set up the Question Dialog Window and initialize questions  *****/
+		setUpQuestionDialogWindow();
+		/***** Set up the Direction Buttons  *****/
+		setUpDirButtons();
+		/***** Set up the Quit / Exit Button  *****/
+		setUpQuitButton();
+		/***** Set up the background  *****/
+		setUpBackground();
+		/***** Set up the scroll label  *****/
+		setUpScrollLabel();
+		/***** Set up the inventory label  *****/
+		setUpInventoryLabel();
+		/***** Set up the fairy  *****/
+		setUpFairy();
+		/***** Set up the treasure button  *****/
+		setUpTreasureButton();
+		/***** Final background set up  *****/
+		finalBGSetup();
+		/***** Prepare to start the game  *****/
+		postUISetup();
+	}
 
-		//initial setup
+/** Helper methods **/	
+	
+	/**
+	 * Method initializes all the game rooms and set up the treasures in the rooms
+	 */
+	public void initRooms() {
+		String roomFilename = "rooms12.csv"; // File with rooms
+		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
+		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
+		questions = new Questions1();
+	}
+	
+	/**
+	 * Method to set up the foundation for the UI
+	 */
+	public void setUpUIFoundation(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		roomArea = new JPanel();
@@ -82,141 +112,28 @@ public class SwingRoom extends JFrame {
 		layeredPane.setOpaque(false);
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
-		
-		/************************************************************SET UP QUESTION STUFF*******************************************/
-		
-		qbDialog = new QuestionBoxDialog(this);//WORKING HERE
+	}
+	
+	/**
+	 * Method to set up the Question Dialog Window  
+	 */
+	public void setUpQuestionDialogWindow() {
+		qbDialog = new QuestionBoxDialog(this); // New Dialog Box
 		qbDialog.setLocationRelativeTo(null);
 		qbDialog.addQuestionBoxListener(new QuestionBoxListener() {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
 				qbDialog.setVisible(false);
 				showHideDirButtons();
-				String text = event.getText();
-				System.out.println("Returned text: " + text);
+				String text = event.getText(); // Information to return from Dialog Box
+				System.out.println("Returned text: " + text); 
+				//TODO remove print statement
 			}
-		});		
-
-		setUpDirButtons();
-
-		//Exit button upper right corner
-		JButton exitButton = new JButton("QUIT");        
-		exitButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		exitButton.setEnabled(true);
-		exitButton.setIcon(null);
-
-		exitButton.setForeground(new Color(0, 0, 0));
-		exitButton.setBackground(new Color(128, 128, 128));
-
-		exitButton.setOpaque(true);
-		exitButton.setBounds(775, 0, 100, 41);
-		exitButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
-			}
-		});
-
-		layeredPane.add(exitButton);
-
-		JLabel background = new JLabel(new ImageIcon("images/scroll2.png"));
-		layeredPane.add(background);
-		background.setBounds(60, 0, 687, 124);
-		background.setLayout(new BorderLayout());
-		
-		scrollLabel = new JLabel();
-		scrollLabel.setText(currentRoom.getLongDesc());
-		scrollLabel.setBounds(10, 10, 600, 100);
-		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		scrollLabel.setOpaque(false);
-		background.add(scrollLabel, BorderLayout.CENTER);
-		
-		//this will be list of treasures or points
-		JLabel inventory = new JLabel("Inventory List Placeholder");
-        inventory.setBackground(Color.GRAY);
-        inventory.setForeground(new Color(255, 255, 255));
-        inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        inventory.setHorizontalAlignment(SwingConstants.CENTER);
-        inventory.setBounds(0, 465, 874, 86);
-        layeredPane.add(inventory);
-
-		Icon fairy = new ImageIcon("fairy.png");
-		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
-		fairyPlace.setBounds(218, 152, 180, 185);
-		layeredPane.add(fairyPlace);
-
-		//take treasure button - can't get this to work right now
-		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
-		treasureButton.setToolTipText("Take Treasure");
-		treasureButton.setBackground(Color.BLACK);
-		treasureButton.setBounds(365, 341, 161, 133);
-		
-		treasureButton.addMouseListener(new MouseAdapter() {
-			//write method to have something happen when click on treasure
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				treasureButtonPushed();
-			}
-		});
-		layeredPane.add(treasureButton);
-
-
-
-		//need to write a method that swaps out background images  
-		bgIcon = new ImageIcon(currentRoom.getImage());
-		backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
-		backgroundLbl.setForeground(new Color(0, 0, 0));
-		backgroundLbl.setBackground(new Color(128, 128, 0));
-		backgroundLbl.setBounds(0, 0, 900, 600);
-		layeredPane.add(backgroundLbl); 
-
-		postUISetup();
-	}
-
-	public void initRooms() {
-		String roomFilename = "rooms12.csv"; // File with rooms
-		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
-		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
-		questions = new Questions1();
-	}
-
-	public void postUISetup() {
-		showHideDirButtons();
-	}
-
-
-	/**
-	 * Method processes the next room.  It checks if it exists, and if so if it was 
-	 * visited or not
-	 * @param nextRoom : Room to enter, can be null
-	 */
-	public void processNextRoom(Room nextRoom) {
-		System.out.println("Current Room: "+ currentRoom.getName());
-
-		if(nextRoom != null) {
-			currentRoom = nextRoom;
-			String treasureType = "";
-			if (currentRoom.getTreasure() != null) {
-				treasureType=currentRoom.getTreasureType();			
-			}
-			if (currentRoom.wasVisited()) {
-			    scrollLabel.setText(currentRoom.getShortDesc());
-			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
-			}
-			else {
-				scrollLabel.setText(currentRoom.getLongDesc());
-				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
-				currentRoom.setVisited();
-			}
-			showHideDirButtons();
-		}
-		System.out.println("Next Room: "+ currentRoom.getName());
-		System.out.println("Treasure is:" + currentRoom.getTreasureType());
+		});	
 	}
 	
+	/**
+	 * Method to create and set up the directional buttons
+	 */
 	public void setUpDirButtons() {
 
 		roomN = new DirectionButton("N", 730, 354);
@@ -261,6 +178,132 @@ public class SwingRoom extends JFrame {
 	}
 
 	/**
+	 * Method to setup the Quit / Exit button
+	 */
+	public void setUpQuitButton() {
+		//Exit button upper right corner, has same format as Direction Button
+		JButton exitButton = new DirectionButton("QUIT",775, 0);        
+		exitButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		layeredPane.add(exitButton);
+	}
+	
+	/**
+	 * Method to set up the background
+	 */
+	public void setUpBackground() {
+		background = new JLabel(new ImageIcon("images/scroll2.png"));
+		layeredPane.add(background);
+		background.setBounds(60, 0, 687, 124);
+		background.setLayout(new BorderLayout());
+	}
+	
+	/**
+	 * Method to set up the scroll label that describes the room
+	 */
+	public void setUpScrollLabel() {
+		scrollLabel = new JLabel();
+		scrollLabel.setText(currentRoom.getLongDesc());
+		scrollLabel.setBounds(10, 10, 600, 100);
+		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		scrollLabel.setOpaque(false);
+		background.add(scrollLabel, BorderLayout.CENTER);
+	}
+	
+	/**
+	 * Method to set up the Inventory label
+	 */
+	public void setUpInventoryLabel() {
+		inventory = new JLabel("Inventory List Placeholder");
+        inventory.setBackground(Color.GRAY);
+        inventory.setForeground(new Color(255, 255, 255));
+        inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        inventory.setHorizontalAlignment(SwingConstants.CENTER);
+        inventory.setBounds(0, 465, 874, 86);
+        layeredPane.add(inventory);
+	}
+	
+	/**
+	 * Set up the fairy
+	 */
+	public void setUpFairy() {
+		fairy = new ImageIcon("fairy.png");
+		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
+		fairyPlace.setBounds(218, 152, 180, 185);
+		layeredPane.add(fairyPlace);
+	}
+	
+	public void setUpTreasureButton() {
+		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
+		treasureButton.setToolTipText("Take Treasure");
+		treasureButton.setBackground(Color.BLACK);
+		treasureButton.setBounds(365, 341, 161, 133);
+		
+		treasureButton.addMouseListener(new MouseAdapter() {
+			//write method to have something happen when click on treasure
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				treasureButtonPushed();
+			}
+		});
+		layeredPane.add(treasureButton);
+	}
+	
+	/**
+	 * Method finishes up the background set up
+	 */
+	public void finalBGSetup() {
+		bgIcon = new ImageIcon(currentRoom.getImage());
+		backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
+		backgroundLbl.setForeground(new Color(0, 0, 0));
+		backgroundLbl.setBackground(new Color(128, 128, 0));
+		backgroundLbl.setBounds(0, 0, 900, 600);
+		layeredPane.add(backgroundLbl); 
+	}
+	
+	/**
+	 * Post UI setup
+	 */
+	public void postUISetup() {
+		showHideDirButtons();
+	}
+
+
+	/**
+	 * Method processes the next room.  It checks if it exists, and if so if it was 
+	 * visited or not
+	 * @param nextRoom : Room to enter, can be null
+	 */
+	public void processNextRoom(Room nextRoom) {
+		System.out.println("Current Room: "+ currentRoom.getName());
+
+		if(nextRoom != null) {
+			currentRoom = nextRoom;
+			String treasureType = "";
+			if (currentRoom.getTreasure() != null) {
+				treasureType=currentRoom.getTreasureType();			
+			}
+			if (currentRoom.wasVisited()) {
+			    scrollLabel.setText(currentRoom.getShortDesc());
+			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
+			}
+			else {
+				scrollLabel.setText(currentRoom.getLongDesc());
+				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
+				currentRoom.setVisited();
+			}
+			showHideDirButtons();
+		}
+		System.out.println("Next Room: "+ currentRoom.getName());
+		System.out.println("Treasure is:" + currentRoom.getTreasureType());
+	}
+	
+
+	/**
 	 * Method shows or hides buttons depending on if there is an adjacent room.
 	 */
 	public void showHideDirButtons(){
@@ -300,6 +343,9 @@ public class SwingRoom extends JFrame {
 		}
 	}
 
+	/**
+	 * Method handles calling the question dialog when the treasure button is pushed
+	 */
 	public void treasureButtonPushed() {
 		System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
