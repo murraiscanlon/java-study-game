@@ -11,8 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLayeredPane;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JEditorPane;
@@ -35,6 +38,7 @@ public class SwingGameOver extends JFrame {
     private JLabel wizardPlace1;
     private JEditorPane loseMsg;
     private JEditorPane winMsg;
+   
     /**
      * Launch the application.
      */
@@ -55,28 +59,12 @@ public class SwingGameOver extends JFrame {
      * Create the frame.
      */
     public SwingGameOver() {
-        //Sets up initial frame
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 900, 600);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        /**Sets up initial frame**/
+        initGameOver();
         
-      //Sets Game Over text over scroll
-        scrollText = new JLabel();
-        scrollText.setFont(new Font("Castellar", scrollText.getFont().getStyle(), 30));
-        scrollText.setText("GAME OVER!");
-        scrollText.setBounds(134, 34, 600, 100);
-        scrollText.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(scrollText);
-        
-        //Sets scroll location top center
-        scroll = new JLabel();                        
-        scroll.setIcon(new ImageIcon("images/scroll2.png"));        
-        scroll.setBounds(150, 30, 650, 125);        
-        contentPane.add(scroll);
-        setVisible(true);        
+        /**Sets up scroll**/
+        //Sets Game Over text over scroll
+        setUpScroll();
         
         JButton loseB = new JButton("LOSE");
         loseB.addMouseListener(new MouseAdapter() {
@@ -147,31 +135,98 @@ public class SwingGameOver extends JFrame {
         wizardPlace1.setVisible(false);
         contentPane.add(wizardPlace1);
         
-        //Sets up buttons for Exit and Restarting the game
-        JButton exitButton = new JButton("EXIT");
-        exitButton.setBounds(10, 5, 113, 23);
-        contentPane.add(exitButton);
+        /**Sets up quit game button**/
+        setUpQuitButton();
+        /**Sets up play again button**/
+        setUpPlayAgainButton();
         
-        JButton playAgain = new JButton("PLAY AGAIN");
-        playAgain.setBounds(761, 5, 113, 23);
-        contentPane.add(playAgain);
-        
+        //Score display placeholder until scoring method is written
         JLabel scoreLabel = new JLabel("FINAL SCORE");
         scoreLabel.setBackground(Color.WHITE);
         scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
         scoreLabel.setBounds(10, 156, 88, 370);
         contentPane.add(scoreLabel);
               
-        //Sets background image
+        /***Sets up background image**/
+        setUpBackground();
+        
+    }
+    /**
+     * Helper Methods
+     */
+    
+    /**
+     * Method to initialize Game Over page
+     */
+    public void initGameOver() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 900, 600);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+    }
+    /**
+     * Method to set up Game Over banner
+     */
+    public void setUpScroll() {
+        scrollText = new JLabel();
+        scrollText.setFont(new Font("Castellar", scrollText.getFont().getStyle(), 30));
+        scrollText.setText("GAME OVER!");
+        scrollText.setBounds(134, 34, 600, 100);
+        scrollText.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(scrollText);
+        
+        //Sets scroll location top center with image
+        scroll = new JLabel();                        
+        scroll.setIcon(new ImageIcon("images/scroll2.png"));        
+        scroll.setBounds(150, 30, 650, 125);        
+        contentPane.add(scroll);
+        setVisible(true);        
+    }
+    /**
+     * Method to establish Quit button
+     */
+    public void setUpQuitButton() {
+    //Exit button upper right corner, has same format as Direction Button
+        JButton exitButton = new DirectionButton("QUIT",775, 0);        
+        exitButton.setBounds(761, 10, 113, 23);
+        
+        exitButton.addMouseListener(new MouseAdapter() {
+           @Override
+           public void mouseClicked(MouseEvent e) {
+               System.exit(0);
+           }
+       });
+        contentPane.add(exitButton);
+    }
+    /**Method to set up Play Again option
+     * Includes button with action
+     */
+    public void setUpPlayAgainButton() {
+        JButton playAgain = new JButton("PLAY AGAIN");
+        playAgain.setBackground(Color.GRAY);
+        playAgain.setBounds(10, 10, 113, 23);
+        
+        playAgain.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new SwingEnterPage();
+                //close frame here            
+            }
+        });
+        contentPane.add(playAgain);
+    }
+    /**
+     * Method to set up Background image
+     */
+    public void setUpBackground() {
         bgLabel = new JLabel();
         bgLabel.setIcon(new ImageIcon("images/GameOver.jpg"));
         bgLabel.setBounds(5, 5, 900, 600);
         contentPane.add(bgLabel);
-        
-       
-        
-       
     }
+    
     public void showWizardMessage() {
                 
 //        if (Score == winning number) {
