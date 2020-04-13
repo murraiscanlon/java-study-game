@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -29,77 +28,30 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 	private static final long serialVersionUID = 1L;
 	private EventListenerList listenerList = new EventListenerList();
-	JLayeredPane layeredPane;
-	JPanel contentPane;
-	private JPanel questionPanel;
-	JLabel questLabel;
-	JLabel currentQuestion;
-	JLabel treasureImageLabel;
-	JLabel treasureLabel;
-	JLabel javaMonsterImageLabel;
-	JRadioButton[] radioButtons;
-	JRadioButton radioButton1;
-	JRadioButton radioButton2;
-	JRadioButton radioButton3;
-	JRadioButton radioButton4;
-	JButton returnButton;
-	JButton hintButton;
-	JButton submitButton;
-	ButtonGroup group;
-	ButtonGroup bg2;
-	Treasure treasure;
-	Question question;
-	Score s;
-	Room treasure1;//testing this out
+	private JLayeredPane layeredPane;
+	private JPanel contentPane;
+	private JLabel currentQuestion;
+	private JLabel treasureImageLabel;
+	private JLabel collectTreasureLabel;
+	private JLabel javaMonsterImageLabel;
+	private JRadioButton radioButton1;
+	private JRadioButton radioButton2;
+	private JRadioButton radioButton3;
+	private JRadioButton radioButton4;
+	private JButton returnButton;
+	private JButton hintButton;
+	private JButton submitButton;
+	private ButtonGroup bg2;
+	private Treasure treasure;
+	private Question question;
+	private Score s;
+	private Room treasure1;//testing this out
 	
 	boolean isCorrect;
 
 	// Constructor
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);// how does this work?
-
-		questLabel = new JLabel("Q");
-		radioButtons = new JRadioButton[4];
-		group = new ButtonGroup();
-		treasureLabel = new JLabel("T");
-		returnButton = null;
-
-		final String a1command = "a1";
-		final String a2command = "a2";
-		final String a3command = "a3";
-		final String a4command = "a4";
-
-		radioButtons[0] = new JRadioButton("A1");// How does this work? -Murrai
-		radioButtons[0].setActionCommand(a1command);
-		radioButtons[1] = new JRadioButton("A2");
-		radioButtons[1].setActionCommand(a2command);
-		radioButtons[2] = new JRadioButton("A3");
-		radioButtons[2].setActionCommand(a3command);
-		radioButtons[3] = new JRadioButton("A4");
-		radioButtons[3].setActionCommand(a4command);
-
-//		for (int i = 0; i < 4; i++) {
-//			group.add(radioButtons[i]);
-//		}
-		radioButtons[0].setSelected(true);
-//		selectButton = new JButton("OK!");
-//		selectButton.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				String text = "This is the info I want to return.";
-//				fireQBEvent(new QuestionBoxEvent(this,text));
-//			}
-//		});
-
-		questionPanel = new JPanel();
-
-		questionPanel.add(questLabel);
-		for (int i = 0; i < 4; i++) {
-			questionPanel.add(radioButtons[i]);
-		}
-		// questionPanel.add(selectButton);
-
-		questionPanel.add(treasureLabel);
 
 		// setContentPane(questionPanel);
 
@@ -109,7 +61,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * The base of the QuestionBoxDialog window
 		 */
-		JPanel contentPane = new JPanel();
+		contentPane = new JPanel();
 		contentPane.setSize(500, 500);
 		contentPane.setBackground(Color.black);
 		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
@@ -119,7 +71,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * The layer that holds all of the labels and buttons
 		 */
-		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane = new JLayeredPane();
 		layeredPane.setSize(500, 500);
 		layeredPane.setBackground(Color.red);
 		layeredPane.setBounds(10, 10, 657, 700);
@@ -156,7 +108,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * Groups the answerchoice buttons so that only one can be selected at a time.
 		 */
-		ButtonGroup bg2 = new ButtonGroup();
+		bg2 = new ButtonGroup();
 		bg2.add(radioButton1);
 		bg2.add(radioButton2);
 		bg2.add(radioButton3);
@@ -187,7 +139,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 					checkAnswerString = "FALSE";
 				}
 				bg2.clearSelection();
-				fireQBEvent(new QuestionBoxEvent(this, checkAnswerString));
+				int scoreIndicator = 0;
+				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 
 			}
 		});
@@ -257,7 +210,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		 * collected.
 		 */
 		
-		JLabel treasureImageLabel = new JLabel("");
+		treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		//Need to link the Room/Treasure association
 		treasureImageLabel.setIcon(new ImageIcon("diamond2.png"));
@@ -269,7 +222,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		/**
 		 * Sends a message to the player that they have collected the current treasure.
 		 */
-		JLabel collectTreasureLabel = new JLabel("Message to Player");
+		collectTreasureLabel = new JLabel("Message to Player");
 		collectTreasureLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		collectTreasureLabel.setBounds(212, 200, 267, 98);
 		layeredPane.add(collectTreasureLabel);
@@ -335,8 +288,6 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 	public void setUpTreasure(Treasure t) {
 		treasure = t;
-		treasureLabel.setText(t.getTreasureType());
-
 	}
 
 	/**

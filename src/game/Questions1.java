@@ -58,7 +58,8 @@ public class Questions1 {
 			questionCounter++;
 			return currentQuestion;
 		} else {
-			return null; // game over??
+			questionCounter = 0;
+			return currentQuestion;
 
 		}
 

@@ -11,16 +11,11 @@ import javax.swing.JToolBar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import javax.swing.JLayeredPane;
-import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -38,15 +33,9 @@ public class SwingRoom extends JFrame {
 	private JButton roomE;
 	private JButton roomW;
 	private JButton treasureButton;
-//	private JButton questionReturnButton;
 	private Questions1 questions;
 	private Question q;
 	private QuestionBoxDialog qbDialog;
-//	private JLabel question;
-//	private JLabel answer1;
-//	private JLabel answer2;
-//	private JLabel answer3;
-//	private JLabel answer4;
 	private JLabel backgroundLbl = new JLabel();
 	private Icon bgIcon = new ImageIcon();
 	JLabel background;
@@ -124,8 +113,10 @@ public class SwingRoom extends JFrame {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
 				qbDialog.setVisible(false);
 				showHideDirButtons();
-				String text = event.getText(); // Information to return from Dialog Box
-				System.out.println("Returned text: " + text); 
+//				String text = event.getText(); // Information to return from Dialog Box
+//				System.out.println("Returned text: " + text); 
+				int scoreIndicator = event.getScoreIndicator();
+				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
 			}
 		});	
