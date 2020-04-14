@@ -43,12 +43,12 @@ public class SwingRoom extends JFrame {
 	JLabel background;
 	JLabel inventory;
 	Icon fairy;
-	//	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	private int score = 0;
 	JLabel scoreLabel;
 	private JLabel tLabel;
-	private JLabel tTitle;
-	private ImageIcon tPic;
-	private Score score = new Score();
+    private JLabel tTitle;
+    private ImageIcon tPic;
 	/**
 	 * Create the Swing interface for a room in the game
 	 */
@@ -84,8 +84,8 @@ public class SwingRoom extends JFrame {
 		postUISetup();
 	}
 
-	/** Helper methods **/	
-
+/** Helper methods **/	
+	
 	/**
 	 * Method initializes all the game rooms and set up the treasures in the rooms
 	 */
@@ -95,7 +95,7 @@ public class SwingRoom extends JFrame {
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
 		questions = new Questions1();
 	}
-
+	
 	/**
 	 * Method to set up the foundation for the UI
 	 */
@@ -113,7 +113,7 @@ public class SwingRoom extends JFrame {
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
 	}
-
+	
 	/**
 	 * Method to set up the Question Dialog Window  
 	 */
@@ -124,8 +124,8 @@ public class SwingRoom extends JFrame {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
 				qbDialog.setVisible(false);
 				showHideDirButtons();
-				//				String text = event.getText(); // Information to return from Dialog Box
-				//				System.out.println("Returned text: " + text); 
+//				String text = event.getText(); // Information to return from Dialog Box
+//				System.out.println("Returned text: " + text); 
 				int scoreIndicator = event.getScoreIndicator();
 				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
@@ -133,7 +133,7 @@ public class SwingRoom extends JFrame {
 			}
 		});	
 	}
-
+	
 	/**
 	 * Method to create and set up the directional buttons
 	 */
@@ -148,7 +148,7 @@ public class SwingRoom extends JFrame {
 			}
 		});
 		layeredPane.add(roomN);	
-
+		
 		roomW = new DirectionButton("W", 685, 394);
 		roomW.addMouseListener(new MouseAdapter() {
 			@Override
@@ -194,7 +194,7 @@ public class SwingRoom extends JFrame {
 		});
 		layeredPane.add(exitButton);
 	}
-
+	
 	/**
 	 * Method to set up the background
 	 */
@@ -204,7 +204,7 @@ public class SwingRoom extends JFrame {
 		background.setBounds(60, 0, 687, 124);
 		background.setLayout(new BorderLayout());
 	}
-
+	
 	/**
 	 * Method to set up the scroll label that describes the room
 	 */
@@ -216,12 +216,11 @@ public class SwingRoom extends JFrame {
 		scrollLabel.setOpaque(false);
 		background.add(scrollLabel, BorderLayout.CENTER);
 	}
-
+	
 	/**
 	 * Method to set up the Inventory label
 	 */
 	public void setUpInventoryLabel() {
-<<<<<<< HEAD
 		inventory = new JLabel("");
         inventory.setBackground(Color.GRAY);
         inventory.setForeground(new Color(255, 255, 255));
@@ -229,19 +228,9 @@ public class SwingRoom extends JFrame {
         inventory.setHorizontalAlignment(SwingConstants.CENTER);
         inventory.setBounds(0, 465, 874, 86);
         layeredPane.add(inventory);
-=======
-		inventory = new JLabel("You have no treasures yet!");
-		inventory.setBackground(Color.GRAY);
-		inventory.setForeground(new Color(255, 255, 255));
-		//inventory.setOpaque(true);
-		inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		inventory.setHorizontalAlignment(SwingConstants.CENTER);
-		inventory.setBounds(0, 465, 874, 86);
-		layeredPane.add(inventory);
->>>>>>> 190510853e64e55e71b616116c6dc4620ceb787a
 	}
-
-
+	
+	
 	/*
 	 * Method to place current score on main window.
 	 */
@@ -253,9 +242,9 @@ public class SwingRoom extends JFrame {
 		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreLabel.setBounds(200, 465, 874, 86);
 		layeredPane.add(scoreLabel);
-
+				
 	}
-
+	
 	/**
 	 * Set up the fairy
 	 */
@@ -266,28 +255,28 @@ public class SwingRoom extends JFrame {
 		layeredPane.add(fairyPlace);
 	}
 	/**
-	 * Method to set up Treasure Labels
-	 * 
-	 */
-	//    public void setUpTreasureLabel() {
-	//        tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
-	//        tTitle.setBounds(205, 345, 200, 25);        
-	//        tTitle.setForeground(Color.WHITE);
-	//        tLabel = new JLabel(currentRoom.getTreasurePic());
-	//        tLabel.setBounds(228, 348, 127, 124);
-	//        layeredPane.add(tLabel);
-	//        layeredPane.add(tTitle);
-	//        tTitle.setVisible(false);
-	//        tLabel.setVisible(false);
-	//
-	//    }
-
+     * Method to set up Treasure Labels
+     * 
+     */
+//    public void setUpTreasureLabel() {
+//        tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
+//        tTitle.setBounds(205, 345, 200, 25);        
+//        tTitle.setForeground(Color.WHITE);
+//        tLabel = new JLabel(currentRoom.getTreasurePic());
+//        tLabel.setBounds(228, 348, 127, 124);
+//        layeredPane.add(tLabel);
+//        layeredPane.add(tTitle);
+//        tTitle.setVisible(false);
+//        tLabel.setVisible(false);
+//
+//    }
+	
 	public void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
 		treasureButton.setBounds(365, 341, 161, 133);
-
+		
 		treasureButton.addMouseListener(new MouseAdapter() {
 			//write method to have something happen when click on treasure
 			@Override
@@ -297,7 +286,7 @@ public class SwingRoom extends JFrame {
 		});
 		layeredPane.add(treasureButton);
 	}
-
+	
 	/**
 	 * Method finishes up the background set up
 	 */
@@ -309,7 +298,7 @@ public class SwingRoom extends JFrame {
 		backgroundLbl.setBounds(0, 0, 900, 600);
 		layeredPane.add(backgroundLbl); 
 	}
-
+	
 	/**
 	 * Post UI setup
 	 */
@@ -331,25 +320,25 @@ public class SwingRoom extends JFrame {
 			String treasureType = "";
 			if (currentRoom.getTreasure() != null) {
 				treasureType=currentRoom.getTreasureType();
-				//				tTitle.setText("Treasure is: " + treasureType);
-				//				tLabel.setIcon(currentRoom.getTreasurePic());
-				//				tLabel.setVisible(true);
+//				tTitle.setText("Treasure is: " + treasureType);
+//				tLabel.setIcon(currentRoom.getTreasurePic());
+//				tLabel.setVisible(true);
 			}
 			if (currentRoom.wasVisited()) {
-				scrollLabel.setText(currentRoom.getShortDesc());    
-				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
+			    scrollLabel.setText(currentRoom.getShortDesc());    
+			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 			}
 			else {
 				scrollLabel.setText(currentRoom.getLongDesc());
 				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
-				currentRoom.setVisited();
+                currentRoom.setVisited();
 			}
 			showHideDirButtons();
 		}
 		System.out.println("Next Room: "+ currentRoom.getName());
 		System.out.println("Treasure is:" + currentRoom.getTreasureType());
 	}
-
+	
 
 	/**
 	 * Method shows or hides buttons depending on if there is an adjacent room.
@@ -403,44 +392,27 @@ public class SwingRoom extends JFrame {
 	}
 
 	public void processReturnFromQBD(int scoreIndicator) {
-		if (scoreIndicator == 0) {
-			score.incrementWrongQuestions();
-		}
 		if ((scoreIndicator == 1) || (scoreIndicator == 2)) {
 			if (currentRoom.getTreasure() != null) {
 				Treasure currentTreasure = currentRoom.getTreasure();
 				currentTreasure.setRoomId(0);
-				//treasureInventory.add(currentTreasure);
-				score.addTreasure(currentTreasure);
+				treasureInventory.add(currentTreasure);
 				if(scoreIndicator == 1) {
-					score.addPoints(currentTreasure.getPoints());
+					score += currentTreasure.getPoints();
 				}
 				else if (scoreIndicator == 2) {
-					score.addPoints(currentTreasure.getPoints() - 2);
+					score += currentTreasure.getPoints() - 2;
 				}
 				currentRoom.setTreasure(null);
 				String inventoryString = "";
-				for (int i = 0; i < score.getTreasures().size(); i++) {
-					inventoryString += score.getTreasures().get(i).getTreasureType();
-					if (i < score.getTreasures().size()-1) {
-						inventoryString += ", ";
-					}
+				for (int i = 0; i < treasureInventory.size(); i++) {
+					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
 				}
 				inventory.setText(inventoryString);
+				scoreLabel.setText("Current Score: " + score);//WORKING HERE
 				treasureButton.setVisible(false);
+				// Check score and if greater than 20, show you win screen.
 			} 
-		}
-		scoreLabel.setText("Current Score: " + score.getCurrentScore());//WORKING HERE
-		// Check the game status to see if the player won or lost
-		int gameStatus = score.checkGameStatus();
-		System.out.println("Game Status : " + gameStatus);
-		if (gameStatus == 1) {
-			// Call the winning game over screen
-			System.out.println("*** You Won! ***");
-		}
-		else if (gameStatus == 2) {
-			// Call the losing game over screen					
-			System.out.println("*** You Lost! 8-( ***");
 		}
 	}
 
