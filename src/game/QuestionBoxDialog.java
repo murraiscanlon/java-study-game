@@ -170,7 +170,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		hintRevealedLabel = new JLabel("");
 																													// working
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		hintRevealedLabel.setBounds(150, 636, 391, 28);
+		hintRevealedLabel.setBounds(175, 636, 391, 28);
+		hintRevealedLabel.setForeground(Color.white);
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
@@ -277,7 +278,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton3.setText(q.getAnswer3());
 		radioButton4.setText(q.getAnswer4());
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		hintRevealedLabel.setText(q.getHint());
+		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
 	}
 
 	public void setUpTreasure(Treasure t) {
