@@ -75,7 +75,7 @@ public class SwingRoom extends JFrame {
 		/***** Set up the fairy  *****/
 		setUpFairy();		
 		/*****Set up Treasure Label*****/
-		setUpTreasureLabel();
+		//setUpTreasureLabel();
 		/***** Set up the treasure button  *****/
 		setUpTreasureButton();
 		/***** Final background set up  *****/
@@ -258,18 +258,18 @@ public class SwingRoom extends JFrame {
      * Method to set up Treasure Labels
      * 
      */
-    public void setUpTreasureLabel() {
-        tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
-        tTitle.setBounds(205, 345, 200, 25);        
-        tTitle.setForeground(Color.WHITE);
-        tLabel = new JLabel(currentRoom.getTreasurePic());
-        tLabel.setBounds(228, 348, 127, 124);
-        layeredPane.add(tLabel);
-        layeredPane.add(tTitle);
-        tTitle.setVisible(false);
-        tLabel.setVisible(false);
-
-    }
+//    public void setUpTreasureLabel() {
+//        tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
+//        tTitle.setBounds(205, 345, 200, 25);        
+//        tTitle.setForeground(Color.WHITE);
+//        tLabel = new JLabel(currentRoom.getTreasurePic());
+//        tLabel.setBounds(228, 348, 127, 124);
+//        layeredPane.add(tLabel);
+//        layeredPane.add(tTitle);
+//        tTitle.setVisible(false);
+//        tLabel.setVisible(false);
+//
+//    }
 	
 	public void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
@@ -320,9 +320,9 @@ public class SwingRoom extends JFrame {
 			String treasureType = "";
 			if (currentRoom.getTreasure() != null) {
 				treasureType=currentRoom.getTreasureType();
-				tTitle.setText("Treasure is: " + treasureType);
-				tLabel.setIcon(currentRoom.getTreasurePic());
-				tLabel.setVisible(true);
+//				tTitle.setText("Treasure is: " + treasureType);
+//				tLabel.setIcon(currentRoom.getTreasurePic());
+//				tLabel.setVisible(true);
 			}
 			if (currentRoom.wasVisited()) {
 			    scrollLabel.setText(currentRoom.getShortDesc());    
