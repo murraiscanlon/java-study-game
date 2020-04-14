@@ -40,26 +40,27 @@ public class SwingGameOver extends JFrame {
     private JLabel scrollText;
     private JLabel wizardPlace;
     private JLabel wizardPlace1;
+    private JLabel scoreLabel;
     private JEditorPane loseMsg;
     private JEditorPane winMsg;
     private JButton exitButton;
     private JButton playAgain;
-    
+    private Score score;
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    SwingGameOver frame = new SwingGameOver();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    SwingGameOver frame = new SwingGameOver();
+//                    frame.setVisible(true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
     /**
      * Create the frame.
@@ -68,95 +69,56 @@ public class SwingGameOver extends JFrame {
         /**Sets up initial frame**/
         initGameOver();
         
-        /**Sets up scroll**/
-        //Sets Game Over text over scroll
+        /**Sets up scroll**/        
         setUpScroll();
         
-        JButton loseB = new JButton("LOSE");
-        loseB.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                                
-                loseMsg.setVisible(true);
-                winMsg.setVisible(false);
-                wizardPlace1.setVisible(true);
-                wizardPlace.setVisible(false);
-                
-            }
-        });
-        loseB.setBounds(239, 489, 89, 23);
-        contentPane.add(loseB);
+        /**Sets up Win message when player wins***/
+        setUpWinMsg();
         
-        JButton winB = new JButton("WIN");
-        winB.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                wizardPlace.setVisible(true);
-                wizardPlace1.setVisible(false);
-                winMsg.setVisible(true); 
-                loseMsg.setVisible(false);
-              
-            }
-        });
-        winB.setBounds(503, 489, 89, 23);
-        contentPane.add(winB);
-        
-      //Sets wizard image for winning view
-        wizardPlace = new JLabel();
-        wizardPlace.setHorizontalAlignment(SwingConstants.CENTER);
-        wizardPlace.setIcon(new ImageIcon("images/wizard1S.png"));
-        wizardPlace.setBounds(382, 145, 400, 405);
-        wizardPlace.setVisible(false);
-        contentPane.add(wizardPlace);
-        
-        //Sets winning message
-        winMsg = new JEditorPane();
-        winMsg.setForeground(Color.BLACK);
-        winMsg.setContentType("text/html");
-        winMsg.setEnabled(false);
-        winMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        winMsg.setEditable(false);
-        winMsg.setText("Wizard Arvind: Thank you for saving me! Your exemplary\r\nJava knowledge exceeded my expectations. Best wishes\r\non your journey.");
-        winMsg.setBounds(134, 273, 285, 70);
-        winMsg.setVisible(false);
-        contentPane.add(winMsg);
-        
-        //Sets losing message
-        loseMsg = new JEditorPane();
-        loseMsg.setForeground(Color.BLACK);
-        loseMsg.setContentType("text/html");
-        loseMsg.setText("Wizard Arvind: Your Java knowledge is lacking. \r\nPlay again to free me from the Java Monsters!");
-        loseMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        loseMsg.setEnabled(false);
-        loseMsg.setEditable(false);
-        loseMsg.setVisible(false);
-        loseMsg.setBounds(451, 273, 252, 70);
-        contentPane.add(loseMsg);
-        
-        //Sets wizard image for losing view
-        wizardPlace1 = new JLabel();
-        wizardPlace1.setHorizontalAlignment(SwingConstants.CENTER);
-        wizardPlace1.setIcon(new ImageIcon("images/wizard2S.png"));
-        wizardPlace1.setBounds(108, 145, 400, 405);
-        wizardPlace1.setVisible(false);
-        contentPane.add(wizardPlace1);
+        /***Sets up Lose message when player loses***/
+        setUpLoseMsg();        
         
         /**Sets up quit game button**/
         setUpQuitButton();
+        
         /**Sets up play again button**/
         setUpPlayAgainButton();
         
-        //Score display placeholder until scoring method is written
-        JLabel scoreLabel = new JLabel("FINAL SCORE");
-        scoreLabel.setBackground(Color.WHITE);
-        scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        scoreLabel.setBounds(10, 156, 88, 370);
-        contentPane.add(scoreLabel);
+        /***Sets up score display***/
+        setUpScoreDisplay();
               
         /***Sets up background image**/
         setUpBackground();
         
     }
+    /**
+     * Winner      
+     */
+    public void getWinMsg() {
+        //Displays the winning message and hides losing message
+        wizardPlace.setVisible(true);
+        wizardPlace1.setVisible(false);
+        winMsg.setVisible(true); 
+        loseMsg.setVisible(false);       
+        
+    }
+    /**
+     * Loser
+     */
+    public void getLoseMsg() {
+        //displays the losing message and hides winning message
+        loseMsg.setVisible(true);
+        winMsg.setVisible(false);
+        wizardPlace1.setVisible(true);
+        wizardPlace.setVisible(false);   
+        
+        
+    }
+    //need to check if there's a parseInt for displaying numbers
+//    public void getFinalScore() {
+//        scoreLabel.setText(score.getCurrentScore());//throws NPE 
+//    }
+    
     /**
      * Helper Methods
      */
@@ -227,6 +189,68 @@ public class SwingGameOver extends JFrame {
         contentPane.add(playAgain);
     }
     /**
+     * Method to set up the Win message from Wizard Arvind 
+     */
+    public void setUpWinMsg() {
+        //Places the winning wizard pose 
+        wizardPlace = new JLabel();
+        wizardPlace.setHorizontalAlignment(SwingConstants.CENTER);
+        wizardPlace.setIcon(new ImageIcon("images/wizard1S.png"));
+        wizardPlace.setBounds(382, 145, 400, 405);
+        wizardPlace.setVisible(false);
+        contentPane.add(wizardPlace);
+        
+        //Creates the message player will see
+        winMsg = new JEditorPane();
+        winMsg.setForeground(Color.BLACK);
+        winMsg.setContentType("text/html");
+        winMsg.setEnabled(false);
+        winMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        winMsg.setEditable(false);
+        winMsg.setText("Wizard Arvind: Thank you for saving me! Your exemplary\r\nJava knowledge exceeded my expectations. Best wishes\r\non your journey.");
+        winMsg.setBounds(134, 273, 285, 70);
+        winMsg.setVisible(false);
+        contentPane.add(winMsg);
+         
+    }
+    /**
+     * Method to set up the Lose message from Wizard Arvind
+     */
+    public void setUpLoseMsg() {
+        //Sets losing message
+        loseMsg = new JEditorPane();
+        loseMsg.setForeground(Color.BLACK);
+        loseMsg.setContentType("text/html");
+        loseMsg.setText("Wizard Arvind: Your Java knowledge is lacking. \r\nPlay again to free me from the Java Monsters!");
+        loseMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        loseMsg.setEnabled(false);
+        loseMsg.setEditable(false);
+        loseMsg.setVisible(false);
+        loseMsg.setBounds(451, 273, 252, 70);
+        contentPane.add(loseMsg);
+        
+        //Sets wizard image for losing view
+        wizardPlace1 = new JLabel();
+        wizardPlace1.setHorizontalAlignment(SwingConstants.CENTER);
+        wizardPlace1.setIcon(new ImageIcon("images/wizard2S.png"));
+        wizardPlace1.setBounds(108, 145, 400, 405);
+        wizardPlace1.setVisible(false);
+        contentPane.add(wizardPlace1);
+    }
+    /**
+     * Set up the score display
+     */
+    public void setUpScoreDisplay() {
+        //Score display placeholder until scoring method is written
+          scoreLabel = new JLabel("FINAL SCORE: " );
+          scoreLabel.setBackground(Color.GRAY);
+          scoreLabel.setForeground(Color.WHITE);
+          scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+          scoreLabel.setOpaque(true);
+          scoreLabel.setBounds(360, 123, 160, 81);
+          contentPane.add(scoreLabel);
+      }
+    /**
      * Method to set up Background image
      */
     public void setUpBackground() {
@@ -236,23 +260,5 @@ public class SwingGameOver extends JFrame {
         contentPane.add(bgLabel);
     }
     
-    public void showWizardMessage() {
-                
-//        if (Score == winning number) {
-//          wizard = new ImageIcon("images/wizard1.png");  
-//            winmsg.setText("Thank you for saving me!");
-//        }
-//        else
-//          wizard = new ImageIcon("images/wizard2.png");  
-//            losemsg.setText("Sadly, you did not defeat the Java Monsters,"
-//                        + "and I remain their captive.");
-    }
-    
-    /**
-     * Method to swap out components based on winning game
-     * 
-     */
-    public void displayFinalScore() {
-        
-    }
+  
 }
