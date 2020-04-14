@@ -32,12 +32,12 @@ public class Treasures {
 	 */
 	public ArrayList<Treasure> assignTreasureTypes() {
 
-	    treasures.add(new Treasure("Bitcoin", 5, "", (new ImageIcon("bitcoinS.png"))));
-        treasures.add(new Treasure("Jewel Editor", 5, "",(new ImageIcon("jewelS.png"))));
-        treasures.add(new Treasure("Java Sword", 5, "", (new ImageIcon("swordS.png"))));
-        treasures.add(new Treasure ("Magic IDE", 5, "", (new ImageIcon("magicIDES.png"))));
-        treasures.add(new Treasure ("Diamond Debugger", 5, "",(new ImageIcon("diamondS.png"))));
-        treasures.add(new Treasure ("Key Compiler", 5, "",(new ImageIcon("keyCompilerS.png"))));
+	    treasures.add(new Treasure("Bitcoin", 5, "", (new ImageIcon("images/bitcoinS.png"))));
+        treasures.add(new Treasure("Jewel Editor", 5, "",(new ImageIcon("images/jewelS.png"))));
+        treasures.add(new Treasure("Java Sword", 5, "", (new ImageIcon("images/swordS.png"))));
+        treasures.add(new Treasure ("Magic IDE", 5, "", (new ImageIcon("images/magicIDES.png"))));
+        treasures.add(new Treasure ("Diamond Debugger", 5, "",(new ImageIcon("images/diamondS.png"))));
+        treasures.add(new Treasure ("Key Compiler", 5, "",(new ImageIcon("images/keyCompilerS.png"))));
 		
 		return treasures;
 	}
@@ -67,33 +67,7 @@ public class Treasures {
 		return null;
 	}
 	
-	/**
-	 * HashMap to assign values to treasures
-	 * If we want to use a HashMap instead of ArrayList
-	 * @param 
-	 */ 
-//	public void assignTreasures(){
-//
-//		//Local Variables
-//		String bitcoin = "bitcoin";
-//		String jewel = "jewel";
-//		String sword = "sword";
-//		String magicIDE = "magicIDE";
-//		HashMap<String, Integer> treasurePoints = new HashMap<String, Integer>();
-//
-//		//Instantiate treasure objects
-//		Treasure t = new Treasure(bitcoin, 2, "");
-//		Treasure t1 = new Treasure(jewel, 2, "");     
-//		Treasure t2 = new Treasure(sword, 2, "");
-//		Treasure t3 = new Treasure(magicIDE, 2, "");
-//
-//		//Assigns Treasure type as Key - Integer is point Value
-//		treasurePoints.put(t.getTreasureType(), t.getPoints());
-//		treasurePoints.put(t1.getTreasureType(), t1.getPoints());
-//		treasurePoints.put(t2.getTreasureType(), t2.getPoints());
-//		treasurePoints.put(t3.getTreasureType(), t3.getPoints());         
-//	}
-
+	
 	/**
 	 * Checks if Treasure is in Room
 	 * @param
@@ -106,23 +80,5 @@ public class Treasures {
 		return null;
 	}
 
-	/**
-	 * Adds treasure to Inventory List when player correctly answers question
-	 * @param isCorrect
-	 * @param inventoryList
-	 */ 
-//	public void addTreasure(boolean isCorrect, //checks if answer is correct
-//			ArrayList<Treasure> inventoryList) { 
-//		//Local Variables
-//		Treasure treasure = null;//will be replaced with object in room
-//
-//		if (isCorrect == true) {
-//			inventoryList.add(treasure);
-//		}
-//	}
-	//For local testing purposes only
-	public static void main (String[] args) {
-		Treasures t = new Treasures();
-		System.out.println(t.assignTreasureTypes());
-	}
+
 }
