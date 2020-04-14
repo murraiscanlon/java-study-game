@@ -36,6 +36,7 @@ public class QuestionBoxDialog extends JDialog {
 	private JLabel treasureImageLabel;
 	private JLabel collectTreasureLabel;
 	private JLabel javaMonsterImageLabel;
+	private JLabel fairyRevealLabel;
 	private JRadioButton radioButton1;
 	private JRadioButton radioButton2;
 	private JRadioButton radioButton3;
@@ -47,8 +48,10 @@ public class QuestionBoxDialog extends JDialog {
 	private Treasure treasure;
 	private Question question;
 	private Score s;
+	private boolean isCorrect;
 	private Room treasure1;// testing this out
-	boolean isCorrect;// may not need this
+	boolean hintTaken;
+	
 
 	/**
 	 * This class displays a new window when the player pushed the
@@ -56,12 +59,12 @@ public class QuestionBoxDialog extends JDialog {
 	 * choices, and a hint option.
 	 */
 	public QuestionBoxDialog(Frame aFrame) {
-		super(aFrame, true);// how does this work?
+		super(aFrame, true);
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
 		/***** Positions Current Question *****/
-		setUpCurrentQuestionPosition();
+		setUpCurrentQuestionElements();
 		/***** Positions Answer Choice Buttons *****/
 		setUpAnswerChoiceButtons();
 		/***** Set Up Submit Button *****/
@@ -94,11 +97,22 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane.setBounds(10, 10, 657, 700);
 		contentPane.add(layeredPane);
 	}
+	
+	public void setUpQuestion(Question q) {
+		question = q;
+		currentQuestion.setText(q.getQuestion());
+		radioButton1.setText(q.getAnswer1());
+		radioButton2.setText(q.getAnswer2());
+		radioButton3.setText(q.getAnswer3());
+		radioButton4.setText(q.getAnswer4());
+		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
+		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
+	}
 
 	/*
-	 * This method creates the current question label
+	 * This positions all elements for the current question
 	 */
-	public void setUpCurrentQuestionPosition() {
+	public void setUpCurrentQuestionElements() {
 		currentQuestion = new JLabel("Q");
 		currentQuestion.setOpaque(true);
 		currentQuestion.setBounds(35, 400, 573, 21);
@@ -145,18 +159,36 @@ public class QuestionBoxDialog extends JDialog {
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String checkAnswerString = "";
-				if (checkAnswer(question)) {
-					checkAnswerString = "TRUE";
-				} else {
-					checkAnswerString = "FALSE";
+				int scoreIndicator = 0;
+				if (checkAnswer(question) && (!hintTaken)) {
+					scoreIndicator = 1;
+				} else if (checkAnswer(question) && (hintTaken)) {
+					scoreIndicator = 2;
+				}
+				else {
+					scoreIndicator = 0;
 				}
 				bg2.clearSelection();
-				int scoreIndicator = 1;
+				
+				hintRevealedLabel.setVisible(false);
+				fairyRevealLabel.setVisible(false);
+				hintButton.setVisible(true);
+				
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
 		});
+		
+		
 		layeredPane.add(submitButton);
+	}
+	
+	
+	//hint button click method to help with core indicator in submit button
+	public void hintButtonClicked() {
+		hintTaken = true;
+		hintRevealedLabel.setVisible(true);
+		fairyRevealLabel.setVisible(true);
+		hintButton.setVisible(false);
 	}
 
 	/*
@@ -174,13 +206,14 @@ public class QuestionBoxDialog extends JDialog {
 		});
 		layeredPane.add(returnButton);
 	}
+	
 
 	/*
 	 * This method creates the HINT button and HINT TEXT
 	 */
 	public void setUpHintButton() {
-
 		// reveals the current hint at the bottom of the box
+		
 		hintRevealedLabel = new JLabel("");
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setBounds(175, 636, 391, 28);
@@ -189,32 +222,26 @@ public class QuestionBoxDialog extends JDialog {
 		hintRevealedLabel.setVisible(false);
 
 		// reveals the fairy picture at the bottom of the box
-		JLabel fairyRevealLabel = new JLabel("");
+		fairyRevealLabel = new JLabel("");
 		fairyRevealLabel.setIcon(new ImageIcon("fairy.png"));
 		fairyRevealLabel.setBounds(5, 547, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
-
+		
+		
 		// reveals hint when clicked
-		JButton hintButton = new JButton("HINT");
+		hintButton = new JButton("HINT");
 		hintButton.setBounds(70, 584, 100, 21);
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				if (s.currentScore > 0) {
-//					s.losePoints(1);
-//					System.out.println("current score " + s.getCurrentScore());// testing
-//				} else {
-//					// TODO game over?
-//				}
-				hintRevealedLabel.setVisible(true);
-				fairyRevealLabel.setVisible(true);
-				hintButton.setVisible(false);
-
+				hintButtonClicked();
 			}
 		});
+		
 
 		layeredPane.add(hintButton);
+		
 	}
 
 	/*
@@ -260,16 +287,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * Updates all elements in the question box with current information
 	 */
-	public void setUpQuestion(Question q) {
-		question = q;
-		currentQuestion.setText(q.getQuestion());
-		radioButton1.setText(q.getAnswer1());
-		radioButton2.setText(q.getAnswer2());
-		radioButton3.setText(q.getAnswer3());
-		radioButton4.setText(q.getAnswer4());
-		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
-	}
+
 
 	/*
 	 * Not sure about this one
@@ -319,6 +337,8 @@ public class QuestionBoxDialog extends JDialog {
 		String currentMonster = javaMonsters.get(randomChoice);
 		return currentMonster;
 	}
+	
+
 
 	/*
 	 * Swing listeners that track and process events

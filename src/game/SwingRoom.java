@@ -45,6 +45,7 @@ public class SwingRoom extends JFrame {
 	Icon fairy;
 	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
 	private int score = 0;
+	JLabel scoreLabel;
 
 	/**
 	 * Create the Swing interface for a room in the game
@@ -67,6 +68,8 @@ public class SwingRoom extends JFrame {
 		setUpScrollLabel();
 		/***** Set up the inventory label  *****/
 		setUpInventoryLabel();
+		/***** Set up the scoring label  *****/
+		setUpScoreLabel();
 		/***** Set up the fairy  *****/
 		setUpFairy();
 		/***** Set up the treasure button  *****/
@@ -223,6 +226,21 @@ public class SwingRoom extends JFrame {
         layeredPane.add(inventory);
 	}
 	
+	
+	/*
+	 * Method to place current score on main window.
+	 */
+	public void setUpScoreLabel() {//WORKING HERE
+		scoreLabel = new JLabel("");
+		scoreLabel.setBackground(Color.GRAY);
+		scoreLabel.setForeground(new Color(255, 255, 255));
+		scoreLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		scoreLabel.setBounds(200, 465, 874, 86);
+		layeredPane.add(scoreLabel);
+				
+	}
+	
 	/**
 	 * Set up the fairy
 	 */
@@ -368,6 +386,7 @@ public class SwingRoom extends JFrame {
 					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
 				}
 				inventory.setText(inventoryString);
+				scoreLabel.setText("Current Score: " + score);//WORKING HERE
 				treasureButton.setVisible(false);
 			} 
 		}

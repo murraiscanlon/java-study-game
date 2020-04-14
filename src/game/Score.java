@@ -13,7 +13,7 @@ public class Score {
      * Instance Variables for Score class
      */
 	Treasures t = new Treasures();
-	int currentScore;
+	static int currentScore;
 	
     
     /**

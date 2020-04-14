@@ -15,6 +15,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -39,8 +41,12 @@ public class SwingRoomRunner extends JFrame {
 	private Icon bgIcon = new ImageIcon();
 	JLabel background;
 	JLabel inventory;
+	JLabel scoreLabel;
 	Icon fairy;
 	static SwingRoomRunner window;
+	private int score = 0;
+	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	
 
 	/**
 	 * Launch the room template
@@ -74,6 +80,8 @@ public class SwingRoomRunner extends JFrame {
 		setUpScrollLabel();
 		/***** Set up the inventory label  *****/
 		setUpInventoryLabel();
+		/***** Set up the scoring label  *****/
+		setUpScoreLabel();
 		/***** Set up the fairy  *****/
 		setUpFairy();
 		/***** Set up the treasure button  *****/
@@ -129,8 +137,11 @@ public class SwingRoomRunner extends JFrame {
 				int scoreIndicator = event.getScoreIndicator();
 				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
+				processReturnFromQBD(scoreIndicator);
 			}
+				
 		});	
+		
 	}
 	
 	/**
@@ -227,6 +238,18 @@ public class SwingRoomRunner extends JFrame {
         inventory.setHorizontalAlignment(SwingConstants.CENTER);
         inventory.setBounds(0, 465, 874, 86);
         layeredPane.add(inventory);
+	}
+	
+	public void setUpScoreLabel() {//WORKING HERE
+		scoreLabel = new JLabel("");
+		scoreLabel.setBackground(Color.GRAY);
+		scoreLabel.setForeground(new Color(255, 255, 255));
+		scoreLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		scoreLabel.setBounds(200, 465, 874, 86);
+		
+        layeredPane.add(scoreLabel);
+				
 	}
 	
 	/**
@@ -355,6 +378,31 @@ public class SwingRoomRunner extends JFrame {
 		qbDialog.setUpTreasure(currentRoom.getTreasure());
 		qbDialog.setVisible(true);
 	}
+	
+	public void processReturnFromQBD(int scoreIndicator) {
+		if ((scoreIndicator == 1) || (scoreIndicator == 2)) {
+			if (currentRoom.getTreasure() != null) {
+				Treasure currentTreasure = currentRoom.getTreasure();
+				currentTreasure.setRoomId(0);
+				treasureInventory.add(currentTreasure);
+				if(scoreIndicator == 1) {
+					score += currentTreasure.getPoints();
+				}
+				else if (scoreIndicator == 2) {
+					score += currentTreasure.getPoints() - 2;
+				}
+				currentRoom.setTreasure(null);
+				String inventoryString = "";
+				for (int i = 0; i < treasureInventory.size(); i++) {
+					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
+				}
+				inventory.setText(inventoryString);
+				scoreLabel.setText("Current Score: " + score);//WORKING HERE
+				treasureButton.setVisible(false);
+			} 
+		}
+	}
+
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
