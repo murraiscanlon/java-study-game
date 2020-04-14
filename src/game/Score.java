@@ -12,17 +12,17 @@ public class Score {
     /**
      * Instance Variables for Score class
      */
-	Treasures t = new Treasures();
-	static int currentScore;
-	
+	private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
+	private int currentScore = 0;
+	private int numberOfQuestionsWrong = 0;
+	final int scoreTarget = 20;
+	final int wronqQuestionTarget = 3;
     
     /**
      * Constructor
      * @param
      */
-    public Score() {
-    	//this.currentScore = 0;
-        
+    public Score() {        
     }
     
     /**
@@ -43,7 +43,6 @@ public class Score {
         return currentScore;
     }
     
-    
     /**
      * Method returns running score of points received
      * @param addPoints
@@ -51,16 +50,48 @@ public class Score {
      */
     public int getCurrentScore() {
         return currentScore;
-        
     }
     
-   /**
-    * Method sums up Treasure inventory at end of game
-    * @param inventoryOfTreasures
-    * @return
-    */
-    public int finalScore(ArrayList<Treasure> inventoryOfTreasures) {
-        return 0;
+    /**
+     * Method to increment the number of wrong questions
+     */
+    public void incrementWrongQuestions() {
+    	numberOfQuestionsWrong ++;
+    }
+    
+    /**
+     * Method to add treasure to the list
+     * @param t : treasure to add
+     */
+    public void addTreasure(Treasure t) {
+    	treasures.add(t);
+    }
+    
+    /**
+     * Method to get the ArrayList of treasures
+     * @return ArrayList of treasures
+     */
+    public ArrayList<Treasure> getTreasures(){
+    	return treasures;
+    }
+    
+    /**
+     * Method to return game status
+     * 0 : game in progress
+     * 1 : player received enough point and won
+     * 2 : player had too many wrong questions and lost
+     * @return int with status
+     */
+    public int checkGameStatus() {
+    	if(numberOfQuestionsWrong >= wronqQuestionTarget) {
+    		return 2;
+    	}
+    	else if (currentScore >= scoreTarget) {
+    		return 1;
+    	} 
+    	else {
+    		return 0;
+    	}
     }
 
 }
