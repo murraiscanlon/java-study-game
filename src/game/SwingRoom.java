@@ -411,6 +411,7 @@ public class SwingRoom extends JFrame {
 				inventory.setText(inventoryString);
 				scoreLabel.setText("Current Score: " + score);//WORKING HERE
 				treasureButton.setVisible(false);
+				// Check score and if greater than 20, show you win screen.
 			} 
 		}
 	}
