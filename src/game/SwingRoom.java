@@ -425,10 +425,18 @@ public class SwingRoom extends JFrame {
 		int gameStatus = score.checkGameStatus();
 		System.out.println("Game Status : " + gameStatus);
 		if (gameStatus == 1) {
-			// Call the winning game over screen
+			dispose();
+			SwingGameOver win = new SwingGameOver();
+			win.getWinMsg();
+			//win.getFinalScore();//show score on final page
+		    // Call the winning game over screen
 			System.out.println("*** You Won! ***");
 		}
 		else if (gameStatus == 2) {
+		    dispose();
+		    SwingGameOver lose = new SwingGameOver();
+		    lose.getLoseMsg();
+		    //lose.getFinalScore();//show score on final page
 			// Call the losing game over screen					
 			System.out.println("*** You Lost! 8-( ***");
 		}
