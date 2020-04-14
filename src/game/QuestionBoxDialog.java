@@ -46,22 +46,40 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	private Treasure treasure;
 	private Question question;
 	private Score s;
-	private Room treasure1;//testing this out
-	
-	boolean isCorrect;
+	private Room treasure1;// testing this out
+	boolean isCorrect;// may not need this
 
-	// Constructor
+	/**
+	 * This class displays a new window when the player pushed the
+	 * treasureBoxButton. The new window includes a java question, four answer
+	 * choices, and a hint option.
+	 */
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);// how does this work?
 
-		// setContentPane(questionPanel);
+		/***** Creates the Base Frames *****/
+		setUpUIFoundation();
+		/***** Positions Current Question *****/
+		setUpCurrentQuestionPosition();
+		/***** Positions Answer Choice Buttons *****/
+		setUpAnswerChoiceButtons();
+		/***** Set Up Submit Button *****/
+		setUpSubmitButton();
+		/***** Set Up Return Button *****/
+		setUpReturnButton();
+		/***** Set Up Hint Button *****/
+		setUpHintButton();
+		/***** Set Up Monster Images *****/
+		setUpMonsterImageBackground();
 
+	}
+
+	/*
+	 * This method sets up the base frame components for the main question window
+	 */
+	public void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 691, 762);
-
-		/**
-		 * The base of the QuestionBoxDialog window
-		 */
 		contentPane = new JPanel();
 		contentPane.setSize(500, 500);
 		contentPane.setBackground(Color.black);
@@ -69,27 +87,29 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 
-		/**
-		 * The layer that holds all of the labels and buttons
-		 */
 		layeredPane = new JLayeredPane();
 		layeredPane.setSize(500, 500);
 		layeredPane.setBackground(Color.red);
 		layeredPane.setBounds(10, 10, 657, 700);
 		contentPane.add(layeredPane);
+	}
 
-		/**
-		 * Creates current question position on layedPane background
-		 */
+	/*
+	 * This method creates the current question label
+	 */
+	public void setUpCurrentQuestionPosition() {
 		currentQuestion = new JLabel("Q");
 		currentQuestion.setOpaque(true);
 		currentQuestion.setBounds(35, 400, 573, 21);
 		layeredPane.add(currentQuestion);
+	}
 
-		/**
-		 * Creates answerChoice radio buttons and positions them on the layeredPane
-		 * background
-		 */
+	/*
+	 * This method creates the answer choices
+	 */
+	public void setUpAnswerChoiceButtons() {
+
+		// sets button position and format
 		radioButton1 = new JRadioButton("R1");
 		radioButton1.setBounds(35, 440, 573, 21);
 		layeredPane.add(radioButton1);
@@ -106,51 +126,42 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton4.setBounds(35, 530, 573, 21);
 		layeredPane.add(radioButton4);
 
-		/**
-		 * Groups the answerchoice buttons so that only one can be selected at a time.
-		 */
+		// groups the buttons so only one can be selected at a time
 		bg2 = new ButtonGroup();
 		bg2.add(radioButton1);
 		bg2.add(radioButton2);
 		bg2.add(radioButton3);
 		bg2.add(radioButton4);
 
-		/**
-		 * SUBMIT button checks to see if answer choice is correct and adds treasure
-		 * points to score.
-		 */
-		submitButton = new JButton("Submit");// WORKING HERE
-		submitButton.setBounds(270, 584, 100, 21);
+	}
 
-		/**
-		 * I need help working with this listener.
-		 */
+	/*
+	 * This method creates the SUBMIT button
+	 */
+	public void setUpSubmitButton() {
+		submitButton = new JButton("Submit");
+		submitButton.setBounds(270, 584, 100, 21);
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				// only using this "if" to return a String to the fireQBEvent
 				String checkAnswerString = "";
 				if (checkAnswer(question)) {
 					checkAnswerString = "TRUE";
-					// s.addPoints(1);//this should be treasure value
-					// System.out.println(s.getCurrentScore());//just testing
-
 				} else {
 					checkAnswerString = "FALSE";
 				}
 				bg2.clearSelection();
 				int scoreIndicator = 0;
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
-
 			}
 		});
 		layeredPane.add(submitButton);
+	}
 
-		/**
-		 * Return button that closes the dialog box and returns the user to the last
-		 * visited room.
-		 */
+	/*
+	 * This method creates the RETURN button
+	 */
+	public void setUpReturnButton() {
 		returnButton = new JButton("Return");
 		returnButton.setBounds(475, 584, 100, 21);
 		returnButton.addMouseListener(new MouseAdapter() {
@@ -158,37 +169,34 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 			public void mouseClicked(MouseEvent e) {
 //				String text = "This is the info I want to return.";
 //				fireQBEvent(new QuestionBoxEvent(this,text));
-
 			}
 		});
 		layeredPane.add(returnButton);
+	}
 
-		/**
-		 * Holds the current hint for display once the hint button is clicked.
-		 */
-		// TODO Create GENERIC hint label - do not access question, it has not been created yet.
+	/*
+	 * This method creates the HINT button and HINT TEXT
+	 */
+	public void setUpHintButton() {
+
+		// reveals the current hint at the bottom of the box
 		hintRevealedLabel = new JLabel("");
-																													// working
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setBounds(175, 636, 391, 28);
 		hintRevealedLabel.setForeground(Color.white);
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
-		/**
-		 * Holds the image of the fairy in the frame.
-		 */
+		// reveals the fairy picture at the bottom of the box
 		JLabel fairyRevealLabel = new JLabel("");
 		fairyRevealLabel.setIcon(new ImageIcon("fairy.png"));
 		fairyRevealLabel.setBounds(5, 547, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
 
-		/**
-		 * Hint button displays the current hint, an image of the fairy, and subtracts 1
-		 * point for the players score
-		 */
-		JButton hintButton = new JButton("HINT");// WORKING HERE *************Not working
+		// reveals hint when clicked
+		JButton hintButton = new JButton("HINT");
+		hintButton.setBounds(70, 584, 100, 21);
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -204,31 +212,36 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 			}
 		});
-		hintButton.setBounds(70, 584, 100, 21);
-		layeredPane.add(hintButton);
 
-		/**
-		 * Replaces the monster background image with a picture of the current treasure
-		 * collected.
-		 */
-		
+		layeredPane.add(hintButton);
+	}
+
+	/*
+	 * This method creates the treasure image and message to the player
+	 */
+	public void setUpTreasureImage() {
+
+		// replaces monster picture with the current treasure collected
 		treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		//Need to link the Room/Treasure association
+		// Need to link the Room/Treasure association
 		treasureImageLabel.setIcon(new ImageIcon("diamond2.png"));
-		
 		treasureImageLabel.setBounds(212, 50, 243, 180);
 		layeredPane.add(treasureImageLabel);
 		treasureImageLabel.setVisible(true);
 
-		/**
-		 * Sends a message to the player that they have collected the current treasure.
-		 */
+		// sends the player a message that the treasure has been collected
 		collectTreasureLabel = new JLabel("Message to Player");
 		collectTreasureLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		collectTreasureLabel.setBounds(212, 200, 267, 98);
 		layeredPane.add(collectTreasureLabel);
 		collectTreasureLabel.setVisible(false);
+	}
+
+	/*
+	 * This method creates the monster background
+	 */
+	public void setUpMonsterImageBackground() {
 
 		/**
 		 * Displays monster image as a background for the box frame
@@ -240,15 +253,32 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		layeredPane.add(javaMonsterImageLabel);
 		javaMonsterImageLabel.setVisible(true);
 
-		setContentPane(contentPane);//this is listed twice
-
-	}// end constructor
-
-
+		setContentPane(contentPane);
+	}
 
 	/**
-	 * Compares the selected radioButton/answerchoice to the current
-	 * correctAnswer.
+	 * Updates all elements in the question box with current information
+	 */
+	public void setUpQuestion(Question q) {
+		question = q;
+		currentQuestion.setText(q.getQuestion());
+		radioButton1.setText(q.getAnswer1());
+		radioButton2.setText(q.getAnswer2());
+		radioButton3.setText(q.getAnswer3());
+		radioButton4.setText(q.getAnswer4());
+		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
+		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
+	}
+
+	/*
+	 * Not sure about this one
+	 */
+	public void setUpTreasure(Treasure t) {
+		treasure = t;
+	}
+
+	/**
+	 * Compares the selected radioButton/answerchoice to the current correctAnswer.
 	 */
 	public boolean checkAnswer(Question q) {
 		question = q;
@@ -268,21 +298,6 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 			System.out.println("Problem in checkAnswer method");
 			return false;
 		}
-	}
-
-	public void setUpQuestion(Question q) {
-		question = q;
-		currentQuestion.setText(q.getQuestion());
-		radioButton1.setText(q.getAnswer1());
-		radioButton2.setText(q.getAnswer2());
-		radioButton3.setText(q.getAnswer3());
-		radioButton4.setText(q.getAnswer4());
-		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
-	}
-
-	public void setUpTreasure(Treasure t) {
-		treasure = t;
 	}
 
 	/**
@@ -305,9 +320,9 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		return currentMonster;
 	}
 
-	/*************************************************
-	 * LISTENERS
-	 ********************************************************/
+	/*
+	 * Swing listeners that track and process events
+	 */
 
 	public void fireQBEvent(QuestionBoxEvent event) {
 		Object[] listeners = listenerList.getListenerList();
