@@ -24,7 +24,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.EventListenerList;
 
-public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
+//public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
+public class QuestionBoxDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private EventListenerList listenerList = new EventListenerList();
@@ -152,7 +153,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 					checkAnswerString = "FALSE";
 				}
 				bg2.clearSelection();
-				int scoreIndicator = 0;
+				int scoreIndicator = 1;
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
 		});
@@ -290,7 +291,6 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		isCorrect = false;
 		switch (correctAnswerNumber) {
 		case 1:
-
 			return radioButton1.isSelected();
 		case 2:
 			return radioButton2.isSelected();
@@ -346,16 +346,16 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		listenerList.remove(QuestionBoxListener.class, listener);
 	}
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void propertyChange(PropertyChangeEvent evt) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

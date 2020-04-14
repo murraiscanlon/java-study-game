@@ -16,6 +16,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -41,6 +43,8 @@ public class SwingRoom extends JFrame {
 	JLabel background;
 	JLabel inventory;
 	Icon fairy;
+	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	private int score = 0;
 
 	/**
 	 * Create the Swing interface for a room in the game
@@ -118,6 +122,7 @@ public class SwingRoom extends JFrame {
 				int scoreIndicator = event.getScoreIndicator();
 				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
+				processReturnFromQBD(scoreIndicator);
 			}
 		});	
 	}
@@ -345,6 +350,28 @@ public class SwingRoom extends JFrame {
 		qbDialog.setVisible(true);
 	}
 
+	public void processReturnFromQBD(int scoreIndicator) {
+		if ((scoreIndicator == 1) || (scoreIndicator == 2)) {
+			if (currentRoom.getTreasure() != null) {
+				Treasure currentTreasure = currentRoom.getTreasure();
+				currentTreasure.setRoomId(0);
+				treasureInventory.add(currentTreasure);
+				if(scoreIndicator == 1) {
+					score += currentTreasure.getPoints();
+				}
+				else if (scoreIndicator == 2) {
+					score += currentTreasure.getPoints() - 2;
+				}
+				currentRoom.setTreasure(null);
+				String inventoryString = "";
+				for (int i = 0; i < treasureInventory.size(); i++) {
+					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
+				}
+				inventory.setText(inventoryString);
+				treasureButton.setVisible(false);
+			} 
+		}
+	}
 
 }
 
