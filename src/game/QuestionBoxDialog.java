@@ -31,6 +31,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	private JLayeredPane layeredPane;
 	private JPanel contentPane;
 	private JLabel currentQuestion;
+	private JLabel hintRevealedLabel;
 	private JLabel treasureImageLabel;
 	private JLabel collectTreasureLabel;
 	private JLabel javaMonsterImageLabel;
@@ -166,10 +167,10 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		 * Holds the current hint for display once the hint button is clicked.
 		 */
 		// TODO Create GENERIC hint label - do not access question, it has not been created yet.
-		JLabel hintRevealedLabel = new JLabel("'" + /* displayHint(question) + */"'" + " - your FairyGodTA, Jami");// not
+		hintRevealedLabel = new JLabel("");
 																													// working
 		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		hintRevealedLabel.setBounds(103, 636, 391, 28);
+		hintRevealedLabel.setBounds(150, 636, 391, 28);
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
@@ -242,14 +243,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 	}// end constructor
 
-	/**
-	 * Helper method to display the current hint.
-	 */
-	public String displayHint(Question q) {// this is returning null??
-		question = q;
-		String currentHint = question.getHint();
-		return currentHint;
-	}
+
 
 	/**
 	 * Compares the selected radioButton/answerchoice to the current
@@ -283,7 +277,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		radioButton3.setText(q.getAnswer3());
 		radioButton4.setText(q.getAnswer4());
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		// TODO Add hint details here		
+		hintRevealedLabel.setText(q.getHint());
 	}
 
 	public void setUpTreasure(Treasure t) {
