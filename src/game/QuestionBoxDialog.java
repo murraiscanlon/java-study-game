@@ -35,6 +35,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	private JLabel treasureImageLabel;
 	private JLabel collectTreasureLabel;
 	private JLabel javaMonsterImageLabel;
+	private JLabel fairyRevealLabel;
 	private JRadioButton radioButton1;
 	private JRadioButton radioButton2;
 	private JRadioButton radioButton3;
@@ -55,7 +56,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 	 * choices, and a hint option.
 	 */
 	public QuestionBoxDialog(Frame aFrame) {
-		super(aFrame, true);// how does this work?
+		super(aFrame, true);
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
@@ -155,6 +156,8 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
 		});
+		
+		
 		layeredPane.add(submitButton);
 	}
 
@@ -188,14 +191,14 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 		hintRevealedLabel.setVisible(false);
 
 		// reveals the fairy picture at the bottom of the box
-		JLabel fairyRevealLabel = new JLabel("");
+		fairyRevealLabel = new JLabel("");
 		fairyRevealLabel.setIcon(new ImageIcon("fairy.png"));
 		fairyRevealLabel.setBounds(5, 547, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
 
 		// reveals hint when clicked
-		JButton hintButton = new JButton("HINT");
+		hintButton = new JButton("HINT");
 		hintButton.setBounds(70, 584, 100, 21);
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -212,6 +215,7 @@ public class QuestionBoxDialog extends JDialog implements ActionListener, Proper
 
 			}
 		});
+		
 
 		layeredPane.add(hintButton);
 	}
