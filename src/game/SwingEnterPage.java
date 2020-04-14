@@ -30,36 +30,55 @@ import javax.swing.SwingConstants;
  *
  */
 public class SwingEnterPage {
-
+    
     private JFrame frame;
     private JTextField textNameField;
     private JLabel gameTitle;
-
+    private JLabel playerNameLabel;
+    private JLabel bgImage;
+    private ImageIcon buttonPic;
+    private JButton startButton;
+    
     /**
      * Constructor for SwingEnterPage
      * Creates and initialize the application.
-     * 
+     * Establishes Start button and Text Field to enter name
      */
     public SwingEnterPage() {
-        initialize();
+        /**Initializes the game window**/
+        initFrame();
+        
+        /**Creates the Start button with action**/
+        setUpStartbutton();
+        
+        /**Sets up the name input field and label**/
+        setUpPlayer();
+        
+        /**Sets up the background image and game title**/
+        setUpPageImagery();
     }
 
     /**
-     * Initialize the contents of the frame.
-     * Creates game Title label
-     * Establishes Start button and Text Field to enter name
+     * Helper Methods for SwingEnterPage
      */
-    private void initialize() {
+    /**
+     * Method to establish window frame
+     */
+    private void initFrame() {
         frame = new JFrame();
         frame.setBounds(100, 100, 900, 600);
         frame.setBackground(Color.BLACK);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        
+    }    
+    /**
+     * Method to set up Start button
+     */
+    private void setUpStartbutton() {
         //Sets the button to go to next screen
-        ImageIcon buttonPic = new ImageIcon("startButton.png");
-        JButton startButton = new JButton("", buttonPic);
+        buttonPic = new ImageIcon("startButton.png");
+        startButton = new JButton("", buttonPic);
         startButton.setPreferredSize(new Dimension(140, 35));
         startButton.setOpaque(true);
         
@@ -76,7 +95,11 @@ public class SwingEnterPage {
         frame.getContentPane().setLayout(null);
         startButton.setBounds(330, 458, 140, 45);
         frame.getContentPane().add(startButton);
-        
+    }
+    /**
+     * Method to set up Player Name input
+     */
+    private void setUpPlayer() {
         //Blank text field
         textNameField = new JTextField();
         textNameField.setBackground(Color.LIGHT_GRAY);
@@ -93,33 +116,38 @@ public class SwingEnterPage {
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
         
-        //Label above blank text field w/instructions to enter name
-        JLabel playerNameLabel = new JLabel("Player Name:");
+        //Label above blank text field to enter name
+        playerNameLabel = new JLabel("Player Name:");
         playerNameLabel.setLabelFor(textNameField);
-        playerNameLabel.setIcon(null);
         playerNameLabel.setBackground(SystemColor.window);
         playerNameLabel.setForeground(Color.WHITE);
         playerNameLabel.setOpaque(false);
         playerNameLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         playerNameLabel.setBounds(350, 400, 91, 30);
         frame.getContentPane().add(playerNameLabel);
-        
+         
+    }
+    
+    /**Method to set up background look
+     * Sets title and picture
+     */
+    private void setUpPageImagery() {
+        //Sets up Game title
         gameTitle = new JLabel("J A V E N T U R E");
-        gameTitle.setForeground(Color.GRAY);
-        gameTitle.setIcon(null);
+        gameTitle.setForeground(Color.GRAY);        
         gameTitle.setFont(new Font("Castellar", gameTitle.getFont().getStyle(), 43));
         gameTitle.setBounds(232, 45, 455, 49);
         frame.getContentPane().add(gameTitle);
-        
-        Icon icon = new ImageIcon("enterpic.jpg");          
-        JLabel image = new JLabel(icon, JLabel.CENTER);
-        image.setBounds(0, 0, 900, 600);
-        frame.getContentPane().add(image);        
-    }
 
+        //Sets up background image
+        bgImage = new JLabel(new ImageIcon("enterpic.jpg"), JLabel.CENTER);
+        bgImage.setBounds(0, 0, 900, 600);
+        frame.getContentPane().add(bgImage);  
+        
+    }
     /**
-     * Launches the application window
-     * Will later be linked to other Swing Classes
+     * Launches the game application window
+     *      
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
