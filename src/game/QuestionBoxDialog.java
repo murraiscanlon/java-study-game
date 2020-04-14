@@ -107,6 +107,7 @@ public class QuestionBoxDialog extends JDialog {
 		radioButton4.setText(q.getAnswer4());
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
+		hintTaken = false;
 	}
 
 	/*
