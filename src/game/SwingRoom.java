@@ -46,7 +46,9 @@ public class SwingRoom extends JFrame {
 	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
 	private int score = 0;
 	JLabel scoreLabel;
-
+	private JLabel tLabel;
+    private JLabel tTitle;
+    private ImageIcon tPic;
 	/**
 	 * Create the Swing interface for a room in the game
 	 */
@@ -71,7 +73,9 @@ public class SwingRoom extends JFrame {
 		/***** Set up the scoring label  *****/
 		setUpScoreLabel();
 		/***** Set up the fairy  *****/
-		setUpFairy();
+		setUpFairy();		
+		/*****Set up Treasure Label*****/
+		setUpTreasureLabel();
 		/***** Set up the treasure button  *****/
 		setUpTreasureButton();
 		/***** Final background set up  *****/
@@ -250,6 +254,25 @@ public class SwingRoom extends JFrame {
 		fairyPlace.setBounds(218, 152, 180, 185);
 		layeredPane.add(fairyPlace);
 	}
+	/**
+     * Method to set up Treasure Labels
+     * 
+     */
+    public void setUpTreasureLabel() {
+        tPic = currentRoom.getTreasurePic();
+        tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
+        tTitle.setBounds(205, 345, 200, 25);        
+        tTitle.setForeground(Color.WHITE);
+        tLabel = new JLabel(tPic);
+        tLabel.setBounds(228, 348, 127, 124);
+        layeredPane.add(tLabel);
+        layeredPane.add(tTitle);
+        if (currentRoom.getTreasure() != null) {           
+            
+            tLabel.setVisible(true);
+            tTitle.setVisible(true);
+        }
+    }
 	
 	public void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
