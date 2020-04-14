@@ -259,19 +259,16 @@ public class SwingRoom extends JFrame {
      * 
      */
     public void setUpTreasureLabel() {
-        tPic = currentRoom.getTreasurePic();
         tTitle = new JLabel("Treasure is: " + currentRoom.getTreasureType());
         tTitle.setBounds(205, 345, 200, 25);        
         tTitle.setForeground(Color.WHITE);
-        tLabel = new JLabel(tPic);
+        tLabel = new JLabel(currentRoom.getTreasurePic());
         tLabel.setBounds(228, 348, 127, 124);
         layeredPane.add(tLabel);
         layeredPane.add(tTitle);
-        if (currentRoom.getTreasure() != null) {           
-            
-            tLabel.setVisible(true);
-            tTitle.setVisible(true);
-        }
+        tTitle.setVisible(false);
+        tLabel.setVisible(false);
+
     }
 	
 	public void setUpTreasureButton() {
@@ -322,16 +319,19 @@ public class SwingRoom extends JFrame {
 			currentRoom = nextRoom;
 			String treasureType = "";
 			if (currentRoom.getTreasure() != null) {
-				treasureType=currentRoom.getTreasureType();			
+				treasureType=currentRoom.getTreasureType();
+				tTitle.setText("Treasure is: " + treasureType);
+				tLabel.setIcon(currentRoom.getTreasurePic());
+				tLabel.setVisible(true);
 			}
 			if (currentRoom.wasVisited()) {
-			    scrollLabel.setText(currentRoom.getShortDesc());
+			    scrollLabel.setText(currentRoom.getShortDesc());    
 			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 			}
 			else {
 				scrollLabel.setText(currentRoom.getLongDesc());
 				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
-				currentRoom.setVisited();
+                currentRoom.setVisited();
 			}
 			showHideDirButtons();
 		}
