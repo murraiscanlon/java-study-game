@@ -28,14 +28,13 @@ public class StoryPage extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JLabel image2;
+    private JLabel background;
     private JTextPane story;
     private ImageIcon icon2;
-    private ImageIcon buttonPic1;
-    private JButton enter;
+    private ImageIcon buttonPic1;    
     private ImageIcon bgImage;
-    private JLabel background;
+    private JButton enter; 
     
-
     /**
      * Create the frame.
      */
@@ -59,7 +58,7 @@ public class StoryPage extends JFrame {
     /**
      * Method to initialize Story Page
      */
-    public void initializeStoryPage() {
+    private void initializeStoryPage() {
         //Sets up JPanel on JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 900, 600);
@@ -73,7 +72,7 @@ public class StoryPage extends JFrame {
     /**
      * Method to set up scroll and background story
      */
-    public void setUpScroll() {
+    private void setUpScroll() {
         //Creates text pane to hold story text
         story = new JTextPane();
         story.setEditable(false);
@@ -101,7 +100,7 @@ public class StoryPage extends JFrame {
     /**
      * Method to set up the scroll background
      */
-    public void setScrollImage() {
+    private void setScrollImage() {
         
         icon2 = new ImageIcon("scrollpage1.png");       
         contentPane.setLayout(null);       
@@ -116,7 +115,7 @@ public class StoryPage extends JFrame {
      * Method to create ENTER button and add action
      * Allows player to enter the castle
      */
-    public void setEnterButton() {
+    private void setEnterButton() {
         buttonPic1 = new ImageIcon("enterButton.png");
         enter = new JButton("", buttonPic1);
         enter.setPreferredSize(new Dimension(140, 35));
@@ -128,20 +127,19 @@ public class StoryPage extends JFrame {
                 dispose();
                 //opens rooms
                 SwingRoom room = new SwingRoom();//link to second page
-                room.setVisible(true); //brings up next screen                
+                room.setVisible(true); //brings up next screen             
                 
                 
             }
             
         });
-        //enter.setFont(new Font("Tahoma", Font.PLAIN, 16));
         enter.setBounds(640, 360, 130, 40);
         contentPane.add(enter);
     }
     /**
      * Method to set up background image
      */
-    public void setUpBackground() {
+    private void setUpBackground() {
         bgImage = new ImageIcon("enterdoor.jpg");
         background = new JLabel(bgImage, JLabel.CENTER);
         background.setBounds(0, 0, 900, 600);
