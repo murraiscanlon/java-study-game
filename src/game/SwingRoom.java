@@ -221,10 +221,10 @@ public class SwingRoom extends JFrame {
 	 * Method to set up the Inventory label
 	 */
 	public void setUpInventoryLabel() {
-		inventory = new JLabel("Inventory List Placeholder");
+		inventory = new JLabel("");
         inventory.setBackground(Color.GRAY);
         inventory.setForeground(new Color(255, 255, 255));
-        inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        inventory.setFont(new Font("Tahoma", Font.PLAIN, 16));
         inventory.setHorizontalAlignment(SwingConstants.CENTER);
         inventory.setBounds(0, 465, 874, 86);
         layeredPane.add(inventory);
