@@ -1,7 +1,7 @@
 question,answer1,answer2,answer3,answer4,hint,correct answer
-Which is the correct main method signature?,public static main(String args) {  },public static (String[ ] args) {  },public static main(String[ ] wow) {   },private static void main(String[ ] args) {   },The main thing is to undersand that parameter variable names can be changed.,3
+Which is the correct main method signature?,public static main(String args) {  },public static (String[ ] args) {  },public static main(String[ ] wow) {   },private static void main(String[ ] args) {   },The main thing is to undersand that parameter variable names can be changed.,4
 What is used to debug Java programs? ,JVM,JFX,JDB,PB&J,The acronym describes it's function,3
-What is the initial quantity of a newly-created empty ArrayList?,5,10,15,0,The initial quanitity is the default quantity,2
+What is the initial quantity of a newly-created empty ArrayList?,5,10,15,0,The initial quanitity is the default quantity,4
 Which of the following is a mutable class?,String,Array,Byte,StringBuilder,Mutable means it can be changed after creation,4
 What do you declare a method to keep from overriding it?,static,final,abstract,public,Method will not be changed,2
 What is a more efficient way of doing nested if - else if statements?,switch,break,continue,for loops,You can also use this to turn on a light,1

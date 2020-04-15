@@ -30,7 +30,6 @@ public class Questions1 {
 		}
 	}
 	
-	
 
 	// Methods
 	
@@ -40,12 +39,10 @@ public class Questions1 {
 	 * 
 	 * @param questions
 	 */
-	public void shuffleQuestions(ArrayList<Question> questions) {
+	public void shuffleQuestions() {
 		Collections.shuffle(questions);
 	}
 
-
-	
 	/**
 	 * This method returns all components of the question class
 	 * question, answer1 - 3, hint, and correctAnswer

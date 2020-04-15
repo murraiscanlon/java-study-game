@@ -94,6 +94,7 @@ public class SwingRoom extends JFrame {
 		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
 		questions = new Questions1();
+		questions.shuffleQuestions();
 	}
 
 	/**
