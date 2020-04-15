@@ -72,7 +72,7 @@ public class QuestionBoxDialog extends JDialog {
 		/***** Set Up Submit Button *****/
 		setUpSubmitButton();
 		/***** Set Up Return Button *****/
-		setUpReturnButton();
+		//setUpReturnButton();
 		/***** Set Up Hint Button *****/
 		setUpHintButton();
 		/***** Set Up Monster Images *****/
@@ -88,7 +88,7 @@ public class QuestionBoxDialog extends JDialog {
 		setBounds(100, 100, 691, 762);
 		contentPane = new JPanel();
 		contentPane.setSize(500, 500);
-		contentPane.setBackground(Color.black);
+		contentPane.setBackground(Color.gray);
 		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
@@ -103,11 +103,11 @@ public class QuestionBoxDialog extends JDialog {
 	
 	public void setUpQuestion(Question q) {
 		question = q;
-		currentQuestion.setText(q.getQuestion());
-		radioButton1.setText(q.getAnswer1());
-		radioButton2.setText(q.getAnswer2());
-		radioButton3.setText(q.getAnswer3());
-		radioButton4.setText(q.getAnswer4());
+		currentQuestion.setText("<HTML>" + q.getQuestion() +"</HTML>");//Not sure this is working. . .
+		radioButton1.setText("<HTML>" + q.getAnswer1() + "</HTML>");
+		radioButton2.setText("<HTML>" + q.getAnswer2() + "</HTML>");
+		radioButton3.setText("<HTML>" + q.getAnswer3() + "</HTML>");
+		radioButton4.setText("<HTML>" + q.getAnswer4() + "</HTML>");
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
 		hintTaken = false;
@@ -118,8 +118,9 @@ public class QuestionBoxDialog extends JDialog {
 	 */
 	public void setUpCurrentQuestionElements() {
 		currentQuestion = new JLabel("Q");
+		currentQuestion.setBackground(Color.LIGHT_GRAY);
 		currentQuestion.setOpaque(true);
-		currentQuestion.setBounds(35, 400, 573, 21);
+		currentQuestion.setBounds(35, 390, 573, 30);
 		layeredPane.add(currentQuestion);
 	}
 
@@ -130,19 +131,27 @@ public class QuestionBoxDialog extends JDialog {
 
 		// sets button position and format
 		radioButton1 = new JRadioButton("R1");
-		radioButton1.setBounds(35, 440, 573, 21);
+		radioButton1.setBounds(35, 450, 250, 30);
+		radioButton1.setBackground(Color.LIGHT_GRAY);
+		radioButton1.setOpaque(true);
 		layeredPane.add(radioButton1);
 
 		radioButton2 = new JRadioButton("R2");
-		radioButton2.setBounds(35, 470, 573, 21);
+		radioButton2.setBounds(35, 490, 250, 30);
+		radioButton2.setBackground(Color.LIGHT_GRAY);
+		radioButton2.setOpaque(true);
 		layeredPane.add(radioButton2);
 
 		radioButton3 = new JRadioButton("R3");
-		radioButton3.setBounds(35, 500, 573, 21);
+		radioButton3.setBounds(35, 530, 250, 30);
+		radioButton3.setBackground(Color.LIGHT_GRAY);
+		radioButton3.setOpaque(true);
 		layeredPane.add(radioButton3);
 
 		radioButton4 = new JRadioButton("R4");
-		radioButton4.setBounds(35, 530, 573, 21);
+		radioButton4.setBounds(35, 570, 250, 30);
+		radioButton4.setBackground(Color.LIGHT_GRAY);
+		radioButton4.setOpaque(true);
 		layeredPane.add(radioButton4);
 
 		// groups the buttons so only one can be selected at a time
@@ -151,6 +160,7 @@ public class QuestionBoxDialog extends JDialog {
 		bg2.add(radioButton2);
 		bg2.add(radioButton3);
 		bg2.add(radioButton4);
+		
 
 	}
 
@@ -159,7 +169,7 @@ public class QuestionBoxDialog extends JDialog {
 	 */
 	public void setUpSubmitButton() {
 		submitButton = new JButton("Submit");
-		submitButton.setBounds(270, 584, 100, 21);
+		submitButton.setBounds(505, 584, 100, 21);
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -193,24 +203,24 @@ public class QuestionBoxDialog extends JDialog {
 		hintTaken = true;
 		hintRevealedLabel.setVisible(true);
 		fairyRevealLabel.setVisible(true);
-		hintButton.setVisible(false);
+		//hintButton.setVisible(false);//moved button so don't need this
 	}
 
-	/*
-	 * This method creates the RETURN button
-	 */
-	public void setUpReturnButton() {
-		returnButton = new JButton("Return");
-		returnButton.setBounds(475, 584, 100, 21);
-		returnButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-//				String text = "This is the info I want to return.";
-//				fireQBEvent(new QuestionBoxEvent(this,text));
-			}
-		});
-		layeredPane.add(returnButton);
-	}
+//	/*
+//	 * This method creates the RETURN button
+//	 */
+//	public void setUpReturnButton() {
+//		returnButton = new JButton("Return");
+//		returnButton.setBounds(475, 584, 100, 21);
+//		returnButton.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+////				String text = "This is the info I want to return.";
+////				fireQBEvent(new QuestionBoxEvent(this,text));
+//			}
+//		});
+//		layeredPane.add(returnButton);
+//	}
 	
 
 	/*
@@ -220,23 +230,24 @@ public class QuestionBoxDialog extends JDialog {
 		// reveals the current hint at the bottom of the box
 		
 		hintRevealedLabel = new JLabel("");
-		hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		hintRevealedLabel.setBounds(175, 636, 391, 28);
-		hintRevealedLabel.setForeground(Color.white);
+		hintRevealedLabel.setBounds(100, 650, 390, 30);
+		//hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		hintRevealedLabel.setForeground(Color.black);
+		hintRevealedLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
 		// reveals the fairy picture at the bottom of the box
 		fairyRevealLabel = new JLabel("");
-		fairyRevealLabel.setIcon(new ImageIcon("fairy.png"));
-		fairyRevealLabel.setBounds(5, 547, 180, 163);
+		fairyRevealLabel.setIcon(new ImageIcon("fairyS.png"));
+		fairyRevealLabel.setBounds(5, 580, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
 		
 		
 		// reveals hint when clicked
 		hintButton = new JButton("HINT");
-		hintButton.setBounds(70, 584, 100, 21);
+		hintButton.setBounds(375, 584, 100, 21);
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
