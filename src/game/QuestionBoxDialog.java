@@ -3,15 +3,10 @@ package game;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -42,18 +37,12 @@ public class QuestionBoxDialog extends JDialog {
 	private JRadioButton radioButton2;
 	private JRadioButton radioButton3;
 	private JRadioButton radioButton4;
-	private JButton returnButton;
 	private JButton hintButton;
 	private JButton submitButton;
 	private ButtonGroup bg2;
-	private Treasure treasure;
 	private Question question;
-	private Score s;
-	private boolean isCorrect;
-	private Room treasure1;// testing this out
-	boolean hintTaken;
-	JLabel wrongAnswerMessage;
-	
+	private boolean hintTaken;
+	private JLabel wrongAnswerMessage;
 
 	/**
 	 * This class displays a new window when the player pushed the
@@ -77,7 +66,6 @@ public class QuestionBoxDialog extends JDialog {
 		setUpHintButton();
 		/***** Set Up Monster Images *****/
 		setUpMonsterImageBackground();
-
 	}
 
 	/*
@@ -100,7 +88,10 @@ public class QuestionBoxDialog extends JDialog {
 		contentPane.add(layeredPane);
 	}
 
-	
+	/**
+	 * This methods sets up the question information when the dialog box is shown
+	 * @param q : question object
+	 */
 	public void setUpQuestion(Question q) {
 		question = q;
 		currentQuestion.setText("<HTML>" + q.getQuestion() +"</HTML>");//Not sure this is working. . .
@@ -160,8 +151,6 @@ public class QuestionBoxDialog extends JDialog {
 		bg2.add(radioButton2);
 		bg2.add(radioButton3);
 		bg2.add(radioButton4);
-		
-
 	}
 
 	/*
@@ -173,31 +162,28 @@ public class QuestionBoxDialog extends JDialog {
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int scoreIndicator = 0;
+				GameStatus scoreIndicator = GameStatus.NA; // Default to init the variable
 				if (checkAnswer(question) && (!hintTaken)) {
-					scoreIndicator = 1;
+					scoreIndicator = GameStatus.QuestionCorrect;
 				} else if (checkAnswer(question) && (hintTaken)) {
-					scoreIndicator = 2;
+					scoreIndicator = GameStatus.QuestionWithHint;
 				}
 				else {
-					scoreIndicator = 0;
+					scoreIndicator = GameStatus.QuestionWrong;
 				}
-				
+
 				bg2.clearSelection();
-				
+
 				hintRevealedLabel.setVisible(false);
 				fairyRevealLabel.setVisible(false);
 				hintButton.setVisible(true);
-				
+
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
 		});
-		
-		
 		layeredPane.add(submitButton);
 	}
-	
-	
+
 	//hint button click method to help with core indicator in submit button
 	public void hintButtonClicked() {
 		hintTaken = true;
@@ -206,29 +192,12 @@ public class QuestionBoxDialog extends JDialog {
 		//hintButton.setVisible(false);//moved button so don't need this
 	}
 
-//	/*
-//	 * This method creates the RETURN button
-//	 */
-//	public void setUpReturnButton() {
-//		returnButton = new JButton("Return");
-//		returnButton.setBounds(475, 584, 100, 21);
-//		returnButton.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-////				String text = "This is the info I want to return.";
-////				fireQBEvent(new QuestionBoxEvent(this,text));
-//			}
-//		});
-//		layeredPane.add(returnButton);
-//	}
-	
-
 	/*
 	 * This method creates the HINT button and HINT TEXT
 	 */
 	public void setUpHintButton() {
 		// reveals the current hint at the bottom of the box
-		
+
 		hintRevealedLabel = new JLabel("");
 		hintRevealedLabel.setBounds(100, 650, 390, 30);
 		//hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -243,8 +212,8 @@ public class QuestionBoxDialog extends JDialog {
 		fairyRevealLabel.setBounds(5, 580, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
-		
-		
+
+
 		// reveals hint when clicked
 		hintButton = new JButton("HINT");
 		hintButton.setBounds(375, 584, 100, 21);
@@ -254,10 +223,8 @@ public class QuestionBoxDialog extends JDialog {
 				hintButtonClicked();
 			}
 		});
-		
 
 		layeredPane.add(hintButton);
-		
 	}
 
 	/*
@@ -301,24 +268,12 @@ public class QuestionBoxDialog extends JDialog {
 	}
 
 	/**
-	 * Updates all elements in the question box with current information
-	 */
-
-
-	/*
-	 * Not sure about this one
-	 */
-	public void setUpTreasure(Treasure t) {
-		treasure = t;
-	}
-
-	/**
 	 * Compares the selected radioButton/answerchoice to the current correctAnswer.
 	 */
 	public boolean checkAnswer(Question q) {
 		question = q;
 		int correctAnswerNumber = q.getCorrectAnswer();
-		isCorrect = false;
+		//		isCorrect = false;
 		switch (correctAnswerNumber) {
 		case 1:
 			return radioButton1.isSelected();
@@ -353,8 +308,7 @@ public class QuestionBoxDialog extends JDialog {
 		String currentMonster = javaMonsters.get(randomChoice);
 		return currentMonster;
 	}
-	
-	
+
 	/*
 	 * Swing listeners that track and process events
 	 */
@@ -376,17 +330,4 @@ public class QuestionBoxDialog extends JDialog {
 	public void removeQuestionBoxListener(QuestionBoxListener listener) {
 		listenerList.remove(QuestionBoxListener.class, listener);
 	}
-
-//	@Override
-//	public void propertyChange(PropertyChangeEvent evt) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//
-//	}
-
 }

@@ -33,16 +33,7 @@ public class Score {
     	currentScore+= points;
         return currentScore;
     }
-    
-    /**
-     * Method subtracts points when the player uses a hint to help answer a question
-     * @return
-     */
-    public int losePoints(int points) {
-    	currentScore-= points;
-        return currentScore;
-    }
-    
+
     /**
      * Method returns running score of points received
      * @param addPoints
@@ -57,6 +48,10 @@ public class Score {
      */
     public void incrementWrongQuestions() {
     	numberOfQuestionsWrong ++;
+    }
+    
+    public int getNumberOfQuestionsWrong() {
+    	return numberOfQuestionsWrong;
     }
     
     /**
@@ -74,24 +69,21 @@ public class Score {
     public ArrayList<Treasure> getTreasures(){
     	return treasures;
     }
-    
+
     /**
      * Method to return game status
-     * 0 : game in progress
-     * 1 : player received enough point and won
-     * 2 : player had too many wrong questions and lost
-     * @return int with status
+     * Use GameStatus enum to return the game status
+     * @return GameStatus
      */
-    public int checkGameStatus() {
+    public GameStatus checkGameStatus() {
     	if(numberOfQuestionsWrong >= wronqQuestionTarget) {
-    		return 2;
+    		return GameStatus.GameOverLose;
     	}
     	else if (currentScore >= scoreTarget) {
-    		return 1;
+    		return GameStatus.GameOverWin;
     	} 
     	else {
-    		return 0;
+    		return GameStatus.GameContinue;
     	}
     }
-
 }

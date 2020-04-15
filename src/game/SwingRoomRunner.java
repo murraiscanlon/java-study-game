@@ -41,12 +41,19 @@ public class SwingRoomRunner extends JFrame {
 	private Icon bgIcon = new ImageIcon();
 	JLabel background;
 	JLabel inventory;
-	JLabel scoreLabel;
 	Icon fairy;
-	static SwingRoomRunner window;
-	private int score = 0;
-	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	//	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
+	private JLabel scoreLabel;	
+    private JLabel bitcoin;
+    private JLabel diamond;
+    private JLabel magicIDE;
+    private JLabel sword;
+    private JLabel keyCompiler;
+    private JLabel jewel;
+    private JLabel tList;
+	private Score score = new Score();
 	
+	static SwingRoomRunner window;
 	
 	/**
 	 * Launch the room template
@@ -83,7 +90,9 @@ public class SwingRoomRunner extends JFrame {
 		/***** Set up the scoring label  *****/
 		setUpScoreLabel();
 		/***** Set up the fairy  *****/
-		setUpFairy();
+		setUpFairy();			
+		/*****Set up Treasure Labels*****/
+        setUpTreasures();
 		/***** Set up the treasure button  *****/
 		setUpTreasureButton();
 		/***** Final background set up  *****/
@@ -92,8 +101,8 @@ public class SwingRoomRunner extends JFrame {
 		postUISetup();
 	}
 
-/** Helper methods **/	
-	
+	/** Helper methods **/	
+
 	/**
 	 * Method initializes all the game rooms and set up the treasures in the rooms
 	 */
@@ -102,14 +111,16 @@ public class SwingRoomRunner extends JFrame {
 		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
 		questions = new Questions1();
+		questions.shuffleQuestions();
 	}
-	
+
 	/**
 	 * Method to set up the foundation for the UI
 	 */
 	public void setUpUIFoundation(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
+		setLocationRelativeTo(null);
 		roomArea = new JPanel();
 		roomArea.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(roomArea);
@@ -121,7 +132,7 @@ public class SwingRoomRunner extends JFrame {
 		roomArea.add(layeredPane, "");
 		layeredPane.setLayout(null);
 	}
-	
+
 	/**
 	 * Method to set up the Question Dialog Window  
 	 */
@@ -132,18 +143,14 @@ public class SwingRoomRunner extends JFrame {
 			public void questionBoxEventOccurred(QuestionBoxEvent event) {
 				qbDialog.setVisible(false);
 				showHideDirButtons();
-//				String text = event.getText(); // Information to return from Dialog Box
-//				System.out.println("Returned text: " + text); 
-				int scoreIndicator = event.getScoreIndicator();
+				GameStatus scoreIndicator = event.getScoreIndicator();
 				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
 				processReturnFromQBD(scoreIndicator);
 			}
-				
 		});	
-		
 	}
-	
+
 	/**
 	 * Method to create and set up the directional buttons
 	 */
@@ -158,7 +165,7 @@ public class SwingRoomRunner extends JFrame {
 			}
 		});
 		layeredPane.add(roomN);	
-		
+
 		roomW = new DirectionButton("W", 685, 394);
 		roomW.addMouseListener(new MouseAdapter() {
 			@Override
@@ -195,7 +202,8 @@ public class SwingRoomRunner extends JFrame {
 	 */
 	public void setUpQuitButton() {
 		//Exit button upper right corner, has same format as Direction Button
-		JButton exitButton = new DirectionButton("QUIT",775, 0);        
+		JButton exitButton = new DirectionButton("QUIT",715, 35, 120, 40);
+		exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -204,7 +212,7 @@ public class SwingRoomRunner extends JFrame {
 		});
 		layeredPane.add(exitButton);
 	}
-	
+
 	/**
 	 * Method to set up the background
 	 */
@@ -213,62 +221,139 @@ public class SwingRoomRunner extends JFrame {
 		layeredPane.add(background);
 		background.setBounds(60, 0, 687, 124);
 		background.setLayout(new BorderLayout());
-		
-	}
-	
-	/**
-	 * Method to set up the scroll label that describes the room
-	 */
-	public void setUpScrollLabel() {
-		scrollLabel = new JLabel();
-		scrollLabel.setText(currentRoom.getLongDesc());
-		scrollLabel.setBounds(10, 10, 600, 100);
-		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		scrollLabel.setOpaque(false);
-		background.add(scrollLabel, BorderLayout.CENTER);
-	}
-	
-	/**
-	 * Method to set up the Inventory label
-	 */
-	public void setUpInventoryLabel() {
-		inventory = new JLabel("Inventory List Placeholder");
-        inventory.setBackground(Color.GRAY);
-        inventory.setForeground(new Color(255, 255, 255));
-        inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        inventory.setHorizontalAlignment(SwingConstants.CENTER);
-        inventory.setBounds(0, 465, 874, 86);
-        layeredPane.add(inventory);
-	}
-	
-	public void setUpScoreLabel() {//WORKING HERE
-		scoreLabel = new JLabel("");
-		scoreLabel.setBackground(Color.GRAY);
-		scoreLabel.setForeground(new Color(255, 255, 255));
-		scoreLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreLabel.setBounds(200, 465, 874, 86);
-		
-        layeredPane.add(scoreLabel);
-				
 	}
 	
 	/**
 	 * Set up the fairy
 	 */
 	public void setUpFairy() {
-		fairy = new ImageIcon("fairy.png");
+		fairy = new ImageIcon("images/fairy1.png");
 		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
-		fairyPlace.setBounds(218, 152, 180, 185);
+		fairyPlace.setBounds(694, 75, 180, 185);
 		layeredPane.add(fairyPlace);
 	}
-	
+
+	/**
+	 * Method to set up the scroll label that describes the room
+	 */
+	public void setUpScrollLabel() {
+		scrollLabel = new JLabel();
+		scrollLabel.setText("<HTML>" + currentRoom.getLongDesc() + "</HTML>");
+		scrollLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		scrollLabel.setBounds(10, 10, 600, 100);
+		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		scrollLabel.setOpaque(false);
+		background.add(scrollLabel, BorderLayout.CENTER);//
+	}
+
+	/**
+	 * Method to set up the Inventory label
+	 */
+	public void setUpInventoryLabel() {
+		inventory = new JLabel("You have no treasures yet!");
+		inventory.setHorizontalAlignment(SwingConstants.CENTER);
+		//inventory.setBounds(0, 500, 874, 30);
+		inventory.setLayout(null);
+		inventory.setBackground(new Color(0, 0, 0));
+		inventory.setForeground(new Color(255, 255, 255));
+		inventory.setBounds(84, 509, 790, 41);
+		inventory.setOpaque(true);
+		inventory.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		//inventory.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		layeredPane.add(inventory);
+	}
+
+
+	/*
+	 * Method to place current score on main window.
+	 */
+	public void setUpScoreLabel() {
+		scoreLabel = new JLabel("");
+		scoreLabel.setBounds(349, 86, 435, 86);
+		scoreLabel.setBackground(new Color(0, 0, 0));		
+		scoreLabel.setForeground(new Color(255, 255, 255));
+		scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		//scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		//scoreLabel.setBounds(607, 510, 267, 41);
+		//scoreLabel.setOpaque(true);
+		layeredPane.add(scoreLabel);
+
+	}
+
+
+	/**
+	 * Method to set up Treasure Labels
+	 * 
+	 */
+	public void setUpTreasures() {
+        bitcoin = new JLabel("");
+        bitcoin.setIcon(new ImageIcon("images/bitcoinS.png"));
+        bitcoin.setHorizontalAlignment(SwingConstants.CENTER);
+        bitcoin.setBackground(Color.GRAY);
+        bitcoin.setBounds(0, 38, 84, 79);
+        bitcoin.setVisible(false);
+        layeredPane.add(bitcoin);
+        
+        diamond = new JLabel("");
+        diamond.setForeground(new Color(255, 255, 255));
+        diamond.setIcon(new ImageIcon("images/diamondS.png"));
+        diamond.setHorizontalAlignment(SwingConstants.CENTER);
+        diamond.setBackground(Color.GRAY);
+        diamond.setBounds(4, 130, 80, 80);
+        diamond.setVisible(false);
+        layeredPane.add(diamond);
+        
+        keyCompiler = new JLabel("");
+        keyCompiler.setIcon(new ImageIcon("images/keyCompilerS.png"));
+        keyCompiler.setHorizontalAlignment(SwingConstants.CENTER);
+        keyCompiler.setBackground(Color.GRAY);
+        keyCompiler.setBounds(0, 194, 80, 80);
+        keyCompiler.setVisible(false);
+        layeredPane.add(keyCompiler);
+        
+        magicIDE = new JLabel("");
+        magicIDE.setIcon(new ImageIcon("images/magicIDES.png"));
+        magicIDE.setHorizontalAlignment(SwingConstants.CENTER);
+        magicIDE.setBackground(Color.GRAY);
+        magicIDE.setBounds(4, 269, 80, 80);
+        magicIDE.setVisible(false);
+        layeredPane.add(magicIDE);
+        
+        sword = new JLabel("");
+        sword.setIcon(new ImageIcon("images/swordS.png"));
+        sword.setHorizontalAlignment(SwingConstants.CENTER);
+        sword.setBackground(Color.GRAY);
+        sword.setBounds(4, 355, 80, 80);
+        sword.setVisible(false);
+        layeredPane.add(sword);
+        
+        jewel = new JLabel("");
+        jewel.setIcon(new ImageIcon("images/jewelS.png"));
+        jewel.setHorizontalAlignment(SwingConstants.CENTER);
+        jewel.setBackground(Color.GRAY);
+        jewel.setBounds(0, 446, 80, 80);
+        jewel.setVisible(false);
+        layeredPane.add(jewel);
+        
+        tList = new JLabel("Your Treasures");
+        tList.setVerticalAlignment(SwingConstants.TOP);
+        tList.setFont(new Font("Tahoma", Font.PLAIN, 10));
+        tList.setForeground(new Color(255, 255, 255));
+        tList.setHorizontalAlignment(SwingConstants.CENTER);
+        tList.setBackground(new Color(0, 0, 0));
+        tList.setOpaque(true);
+        tList.setBounds(0, 0, 85, 550);
+        layeredPane.add(tList);
+    }
+    
+
 	public void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
-		treasureButton.setBounds(365, 341, 161, 133);
-		
+		treasureButton.setBounds(371, 274, 161, 133);
+
 		treasureButton.addMouseListener(new MouseAdapter() {
 			//write method to have something happen when click on treasure
 			@Override
@@ -278,7 +363,7 @@ public class SwingRoomRunner extends JFrame {
 		});
 		layeredPane.add(treasureButton);
 	}
-	
+
 	/**
 	 * Method finishes up the background set up
 	 */
@@ -290,7 +375,6 @@ public class SwingRoomRunner extends JFrame {
 		backgroundLbl.setBounds(0, 0, 900, 600);
 		layeredPane.add(backgroundLbl); 
 	}
-	
 
 	/**
 	 * Post UI setup
@@ -310,13 +394,14 @@ public class SwingRoomRunner extends JFrame {
 
 		if(nextRoom != null) {
 			currentRoom = nextRoom;
-			String treasureType = "";
-			if (currentRoom.getTreasure() != null) {
-				treasureType=currentRoom.getTreasureType();			
-			}
+//			String treasureType = "";
+//			if (currentRoom.getTreasure() != null) {
+//				treasureType=currentRoom.getTreasureType();
+//				
+//			}
 			if (currentRoom.wasVisited()) {
-			    scrollLabel.setText(currentRoom.getShortDesc());
-			    backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
+				scrollLabel.setText(currentRoom.getShortDesc());    
+				backgroundLbl.setIcon(new ImageIcon(currentRoom.getImage()));
 			}
 			else {
 				scrollLabel.setText(currentRoom.getLongDesc());
@@ -328,7 +413,7 @@ public class SwingRoomRunner extends JFrame {
 		System.out.println("Next Room: "+ currentRoom.getName());
 		System.out.println("Treasure is:" + currentRoom.getTreasureType());
 	}
-	
+
 
 	/**
 	 * Method shows or hides buttons depending on if there is an adjacent room.
@@ -377,38 +462,77 @@ public class SwingRoomRunner extends JFrame {
 		System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
 		qbDialog.setUpQuestion(q);
-		qbDialog.setUpTreasure(currentRoom.getTreasure());
+//		qbDialog.setUpTreasure(currentRoom.getTreasure());
 		qbDialog.setVisible(true);
 	}
-	
-	public void processReturnFromQBD(int scoreIndicator) {
-		if ((scoreIndicator == 1) || (scoreIndicator == 2)) {
+
+	public void processReturnFromQBD(GameStatus scoreIndicator) {
+		if (scoreIndicator == GameStatus.QuestionWrong) {
+			score.incrementWrongQuestions();
+		}
+		if ((scoreIndicator == GameStatus.QuestionCorrect) || (scoreIndicator == GameStatus.QuestionWithHint)) {
 			if (currentRoom.getTreasure() != null) {
 				Treasure currentTreasure = currentRoom.getTreasure();
 				currentTreasure.setRoomId(0);
-				treasureInventory.add(currentTreasure);
-				
-				if(scoreIndicator == 1) {
-					score += currentTreasure.getPoints();
+				//treasureInventory.add(currentTreasure);
+				score.addTreasure(currentTreasure);
+				if(scoreIndicator == GameStatus.QuestionCorrect) {
+					score.addPoints(currentTreasure.getPoints());
 				}
-				else if (scoreIndicator == 2) {
-					score += currentTreasure.getPoints() - 2;
+				else if (scoreIndicator == GameStatus.QuestionWithHint) {
+					score.addPoints(currentTreasure.getPoints() - 2);
 				}
 				currentRoom.setTreasure(null);
 				String inventoryString = "";
-				for (int i = 0; i < treasureInventory.size(); i++) {
-					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
+				for (int i = 0; i < score.getTreasures().size(); i++) {
+					inventoryString += score.getTreasures().get(i).getTreasureType();
+					if (i < score.getTreasures().size()-1) {
+						inventoryString += ", ";
+					}
 				}
 				inventory.setText(inventoryString);
-				System.out.println("TREASURE TYPE: " + currentTreasure.getTreasureType());
-				scoreLabel.setText("Current Score: " + score);//WORKING HERE
+				if (currentTreasure.getTreasureType() =="Bitcoin") {
+                    bitcoin.setVisible(true);
+                }
+                else if (currentTreasure.getTreasureType() == "Jewel Editor") {
+                    jewel.setVisible(true);
+                }
+                else if (currentTreasure.getTreasureType() == "Java Sword") {
+                    sword.setVisible(true);
+                }
+                else if (currentTreasure.getTreasureType() == "Diamond Debugger") {
+                    diamond.setVisible(true);
+                }
+                else if (currentTreasure.getTreasureType() == "Key Compiler") {
+                    keyCompiler.setVisible(true);
+                }
+                else if (currentTreasure.getTreasureType() == "Magic IDE") {
+                    magicIDE.setVisible(true);
+                }
 				treasureButton.setVisible(false);
 			} 
 		}
+		scoreLabel.setText("Score: " + score.getCurrentScore());
+		// Check the game status to see if the player won or lost
+		GameStatus gameStatus = score.checkGameStatus();
+		System.out.println("Game Status : " + gameStatus);
+		if (gameStatus == GameStatus.GameOverWin) {
+			dispose();
+			SwingGameOver win = new SwingGameOver();
+			win.getWinMsg();
+			//win.getFinalScore();//show score on final page
+		    // Call the winning game over screen
+			System.out.println("*** You Won! ***");
+		}
+		else if (gameStatus == GameStatus.GameOverLose) {
+		    dispose();
+		    SwingGameOver lose = new SwingGameOver();
+		    lose.getLoseMsg();
+		    //lose.getFinalScore();//show score on final page
+			// Call the losing game over screen					
+			System.out.println("*** You Lost! 8-( ***");
+		}
 	}
-	
-
-
 
 
 
