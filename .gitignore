@@ -2,3 +2,15 @@
 .classpath
 .project
 src/game/Rooms.java.orig
+*.jar
+
+.settings/
+diamond.png
+diamond2.png
+fairy2.png
+images/enter3.jpg
+images/ghostBlock.png
+miglayout-src.zip
+src/game/Questions1Test.java
+src/game/murraiscanlon.github.io/
+

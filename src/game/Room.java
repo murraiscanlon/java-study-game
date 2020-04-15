@@ -28,7 +28,7 @@ public class Room {
 	private boolean visited = false;
 	private HashMap<String, Room> adjacentRooms = new HashMap<String, Room>();
 	private Treasure treasure;
-	private HashMap<Direction, Room> adjRoomsEnum = new HashMap<Direction, Room>();
+	
 	
 	/**
 	 * Constructor
@@ -148,15 +148,7 @@ public class Room {
 		adjacentRooms.put(direction, room);
 	}
 	
-	/**
-	 * Method to set up the adjacent rooms.  Note that all rooms must be created
-	 * before you can set up the room connections
-	 * @param direction : direction out of the room
-	 * @param room : room in the direction specified
-	 */
-	public void setAdjRoomEnum(Direction direction, Room room) {
-		adjRoomsEnum.put(direction, room);
-	}
+
 	
 	/**
 	 * Method to return the room in the direction specified
@@ -173,20 +165,6 @@ public class Room {
 		return room;
 	}
 	
-	/**
-	 * Method to return the room in the direction specified
-	 * Note that the room can be null and the caller must handle that case.
-	 * @param direction : direction from the room
-	 * @return : Room object in that direction, can be null
-	 */
-	public Room getRoomAtDirEnum(Direction direction) {
-		Room room = null;
-		
-		if(adjRoomsEnum.containsKey(direction) && adjRoomsEnum.get(direction) != null) {
-			room = adjRoomsEnum.get(direction);
-		}
-		return room;
-	}
-	
+
 
 }

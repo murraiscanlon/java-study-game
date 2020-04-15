@@ -47,7 +47,7 @@ public class SwingRoomRunner extends JFrame {
 	private int score = 0;
 	private ArrayList<Treasure> treasureInventory = new ArrayList<Treasure>();
 	
-
+	
 	/**
 	 * Launch the room template
 	 * 
@@ -213,6 +213,7 @@ public class SwingRoomRunner extends JFrame {
 		layeredPane.add(background);
 		background.setBounds(60, 0, 687, 124);
 		background.setLayout(new BorderLayout());
+		
 	}
 	
 	/**
@@ -290,6 +291,7 @@ public class SwingRoomRunner extends JFrame {
 		layeredPane.add(backgroundLbl); 
 	}
 	
+
 	/**
 	 * Post UI setup
 	 */
@@ -385,6 +387,7 @@ public class SwingRoomRunner extends JFrame {
 				Treasure currentTreasure = currentRoom.getTreasure();
 				currentTreasure.setRoomId(0);
 				treasureInventory.add(currentTreasure);
+				
 				if(scoreIndicator == 1) {
 					score += currentTreasure.getPoints();
 				}
@@ -397,11 +400,16 @@ public class SwingRoomRunner extends JFrame {
 					inventoryString += treasureInventory.get(i).getTreasureType() + " ";
 				}
 				inventory.setText(inventoryString);
+				System.out.println("TREASURE TYPE: " + currentTreasure.getTreasureType());
 				scoreLabel.setText("Current Score: " + score);//WORKING HERE
 				treasureButton.setVisible(false);
 			} 
 		}
 	}
+	
+
+
+
 
 
     public static void main(String[] args) {
