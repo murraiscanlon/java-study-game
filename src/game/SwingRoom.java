@@ -103,6 +103,7 @@ public class SwingRoom extends JFrame {
 	public void setUpUIFoundation(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
+		setLocationRelativeTo(null);
 		roomArea = new JPanel();
 		roomArea.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(roomArea);
@@ -186,7 +187,8 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpQuitButton() {
 		//Exit button upper right corner, has same format as Direction Button
-		JButton exitButton = new DirectionButton("QUIT",775, 0);        
+		JButton exitButton = new DirectionButton("QUIT",715, 35, 120, 40);
+		exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -205,17 +207,28 @@ public class SwingRoom extends JFrame {
 		background.setBounds(60, 0, 687, 124);
 		background.setLayout(new BorderLayout());
 	}
+	
+	/**
+	 * Set up the fairy
+	 */
+	public void setUpFairy() {
+		fairy = new ImageIcon("fairy.png");
+		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
+		fairyPlace.setBounds(0, 80, 180, 185);
+		layeredPane.add(fairyPlace);
+	}
 
 	/**
 	 * Method to set up the scroll label that describes the room
 	 */
 	public void setUpScrollLabel() {
 		scrollLabel = new JLabel();
-		scrollLabel.setText(currentRoom.getLongDesc());
+		scrollLabel.setText("<HTML>" + currentRoom.getLongDesc() + "</HTML>");
+		scrollLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		scrollLabel.setBounds(10, 10, 600, 100);
 		scrollLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollLabel.setOpaque(false);
-		background.add(scrollLabel, BorderLayout.CENTER);
+		background.add(scrollLabel, BorderLayout.CENTER);//
 	}
 
 	/**
@@ -223,12 +236,14 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpInventoryLabel() {
 		inventory = new JLabel("You have no treasures yet!");
-		inventory.setBackground(Color.GRAY);
+		inventory.setBounds(0, 500, 874, 30);
+		inventory.setLayout(null);
+		inventory.setBackground(new Color(60, 0, 0));
 		inventory.setForeground(new Color(255, 255, 255));
-		//inventory.setOpaque(true);
-		inventory.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		inventory.setHorizontalAlignment(SwingConstants.CENTER);
-		inventory.setBounds(0, 465, 874, 86);
+		inventory.setOpaque(true);
+		inventory.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		//inventory.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		layeredPane.add(inventory);
 	}
 
@@ -238,24 +253,17 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpScoreLabel() {//WORKING HERE
 		scoreLabel = new JLabel("");
+		scoreLabel.setBounds(330, 100, 874, 86);
 		scoreLabel.setBackground(Color.GRAY);
 		scoreLabel.setForeground(new Color(255, 255, 255));
-		scoreLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreLabel.setBounds(200, 465, 874, 86);
+		scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		//scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		layeredPane.add(scoreLabel);
 
 	}
 
-	/**
-	 * Set up the fairy
-	 */
-	public void setUpFairy() {
-		fairy = new ImageIcon("fairy.png");
-		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
-		fairyPlace.setBounds(218, 152, 180, 185);
-		layeredPane.add(fairyPlace);
-	}
+
 	/**
 	 * Method to set up Treasure Labels
 	 * 
@@ -410,7 +418,7 @@ public class SwingRoom extends JFrame {
 					score.addPoints(currentTreasure.getPoints() - 2);
 				}
 				currentRoom.setTreasure(null);
-				String inventoryString = "";
+				String inventoryString = "Collected Treasures:  ";
 				for (int i = 0; i < score.getTreasures().size(); i++) {
 					inventoryString += score.getTreasures().get(i).getTreasureType();
 					if (i < score.getTreasures().size()-1) {
@@ -421,7 +429,7 @@ public class SwingRoom extends JFrame {
 				treasureButton.setVisible(false);
 			} 
 		}
-		scoreLabel.setText("Current Score: " + score.getCurrentScore());//WORKING HERE
+		scoreLabel.setText("Current Score: " + score.getCurrentScore());
 		// Check the game status to see if the player won or lost
 		int gameStatus = score.checkGameStatus();
 		System.out.println("Game Status : " + gameStatus);

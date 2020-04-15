@@ -77,10 +77,12 @@ public class SwingEnterPage {
      */
     private void setUpStartbutton() {
         //Sets the button to go to next screen
-        buttonPic = new ImageIcon("startButton.png");
-        startButton = new JButton("", buttonPic);
-        startButton.setPreferredSize(new Dimension(140, 35));
-        startButton.setOpaque(true);
+//        buttonPic = new ImageIcon("startButton.png");
+//        startButton = new JButton("", buttonPic);
+//        startButton.setPreferredSize(new Dimension(140, 35));
+//        startButton.setOpaque(true);
+    	startButton = new DirectionButton("START", 360, 460, 150, 45);
+    	startButton.setHorizontalAlignment(SwingConstants.CENTER);
         
         //Adds functionality for clicking on Start button
         startButton.addMouseListener(new MouseAdapter() {
@@ -93,7 +95,7 @@ public class SwingEnterPage {
 
         });
         frame.getContentPane().setLayout(null);
-        startButton.setBounds(330, 458, 140, 45);
+        //startButton.setBounds(330, 458, 140, 45);
         frame.getContentPane().add(startButton);
     }
     /**
@@ -102,20 +104,24 @@ public class SwingEnterPage {
     private void setUpPlayer() {
         //Blank text field
         textNameField = new JTextField();
+        textNameField.setText("Enter Player Name");//can we make this disappear on mouse click??
         textNameField.setBackground(Color.LIGHT_GRAY);
+        textNameField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         textNameField.setHorizontalAlignment(SwingConstants.CENTER);
         textNameField.addKeyListener(new KeyAdapter() {
             //need to figure out where to store name input
             @Override
             public void keyTyped(KeyEvent type) {
+            	
                 String name = textNameField.getText();
             }
         });
-        textNameField.setForeground(Color.BLACK);
-        textNameField.setBounds(340, 431, 115, 20);
+        textNameField.setForeground(Color.DARK_GRAY);
+        textNameField.setBounds(360, 400, 150, 35);
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
         
+        /*
         //Label above blank text field to enter name
         playerNameLabel = new JLabel("Player Name:");
         playerNameLabel.setLabelFor(textNameField);
@@ -125,7 +131,7 @@ public class SwingEnterPage {
         playerNameLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         playerNameLabel.setBounds(350, 400, 91, 30);
         frame.getContentPane().add(playerNameLabel);
-         
+         */
     }
     
     /**Method to set up background look

@@ -65,6 +65,7 @@ public class StoryPage extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setBackground(Color.DARK_GRAY);
+        setLocationRelativeTo(null);
         setContentPane(contentPane);
         
     }
@@ -116,10 +117,13 @@ public class StoryPage extends JFrame {
      * Allows player to enter the castle
      */
     private void setEnterButton() {
-        buttonPic1 = new ImageIcon("enterButton.png");
-        enter = new JButton("", buttonPic1);
-        enter.setPreferredSize(new Dimension(140, 35));
-        enter.setOpaque(true);
+//        buttonPic1 = new ImageIcon("enterButton.png");
+//        enter = new JButton("", buttonPic1);
+//        enter.setPreferredSize(new Dimension(140, 35));
+//        enter.setOpaque(true);
+        
+    	enter = new DirectionButton("ENTER", 360, 460, 150, 45);
+    	enter.setHorizontalAlignment(SwingConstants.CENTER);
         enter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -133,7 +137,7 @@ public class StoryPage extends JFrame {
             }
             
         });
-        enter.setBounds(640, 360, 130, 40);
+       // enter.setBounds(640, 360, 130, 40);
         contentPane.add(enter);
     }
     /**

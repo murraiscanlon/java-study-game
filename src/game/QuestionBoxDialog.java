@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,6 +52,7 @@ public class QuestionBoxDialog extends JDialog {
 	private boolean isCorrect;
 	private Room treasure1;// testing this out
 	boolean hintTaken;
+	JLabel wrongAnswerMessage;
 	
 
 	/**
@@ -97,6 +99,7 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane.setBounds(10, 10, 657, 700);
 		contentPane.add(layeredPane);
 	}
+
 	
 	public void setUpQuestion(Question q) {
 		question = q;
@@ -169,6 +172,7 @@ public class QuestionBoxDialog extends JDialog {
 				else {
 					scoreIndicator = 0;
 				}
+				
 				bg2.clearSelection();
 				
 				hintRevealedLabel.setVisible(false);
@@ -339,8 +343,7 @@ public class QuestionBoxDialog extends JDialog {
 		return currentMonster;
 	}
 	
-
-
+	
 	/*
 	 * Swing listeners that track and process events
 	 */
