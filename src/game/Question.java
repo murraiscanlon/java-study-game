@@ -7,7 +7,7 @@ public class Question {
      * Fairy GodTA will provide hints on request
      * @author Team 30
      */
-    
+
     private String question;
     private String answer1;
     private String answer2;
@@ -15,7 +15,7 @@ public class Question {
     private String answer4;
     private int correctAnswer;
     private String hint;
-    
+
     /**
      * Constructor
      * @param question
@@ -25,7 +25,7 @@ public class Question {
      * @param hint
      */
     public Question (String question, String answer1, String answer2,
-                     String answer3, String answer4, String hint, int correctAnswer) {
+            String answer3, String answer4, String hint, int correctAnswer) {
         this.question = question;
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -35,15 +35,11 @@ public class Question {
         this.hint = hint;
     }
 
-     public int getCorrectAnswer() {
-		return correctAnswer;
-	}
-
-	/**
+    /**
      * Getters and Setters
      * @return
      */
-    
+
     public String getQuestion() {
         return question;
     }
@@ -72,7 +68,7 @@ public class Question {
     public void setAnswer3(String answer3) {
         this.answer3 = answer3;
     }
-    
+
     public String getAnswer4() {
         return answer4;
     }
@@ -80,7 +76,11 @@ public class Question {
     public void setAnswer4(String answer4) {
         this.answer4 = answer4;
     }
-    
+
+    public int getCorrectAnswer() {
+        return correctAnswer;
+    }
+
     public String getHint() {
         return hint;
     }
@@ -88,11 +88,8 @@ public class Question {
     public void setHint(String hint) {
         this.hint = hint;
     }
-    
-public static void main(String[] args) {
-	
-	
-}
-    
+
+
+
 
 }

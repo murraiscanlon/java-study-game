@@ -59,14 +59,14 @@ public class QuestionReader {
 		return questions;
 	}
 
-	// main method for testing purposes only
-	public static void main(String[] args) {
-
-		for (Question q : QuestionReader.readCSVFile()) {
-			System.out.println(q.getQuestion());
-
-		}
-
-	}
+//	// main method for testing purposes only
+//	public static void main(String[] args) {
+//
+//		for (Question q : QuestionReader.readCSVFile()) {
+//			System.out.println(q.getQuestion());
+//
+//		}
+//
+//	}
 
 }

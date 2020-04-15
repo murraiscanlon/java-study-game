@@ -13,10 +13,10 @@ import javax.swing.ImageIcon;
 public class Treasures {
 
 	/**
-	 * ArrayList of treasures
+	 * Instance Variables
 	 */
 	private  ArrayList<Treasure> treasures = new ArrayList<Treasure>(); 
-	HashMap<Integer, Treasure> roomToTreasures = new HashMap<Integer, Treasure>();
+	private HashMap<Integer, Treasure> roomToTreasures = new HashMap<Integer, Treasure>();
 
 	/**
 	 * Constructor
@@ -41,7 +41,11 @@ public class Treasures {
 		
 		return treasures;
 	}
-
+	/**
+	 * Assigns treasures to rooms randomly
+	 * @param numberRooms
+	 * @param random
+	 */
 	public void setTreasuresToRooms(int numberRooms, boolean random) {
 		
 		int[] roomList = new int[numberRooms];
@@ -59,7 +63,11 @@ public class Treasures {
 			}
 		}
 	}
-	
+	/**
+	 * Gets the treasure for a room
+	 * @param id
+	 * @return
+	 */
 	public Treasure getTreasureForRoom(int id) {
 		if(roomToTreasures.containsKey(id)) {
 			return roomToTreasures.get(id);

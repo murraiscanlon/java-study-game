@@ -4,11 +4,21 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
-
+/**
+ * Class to consolidate button parameters
+ * @author Team 30
+ *
+ */
 public class DirectionButton extends JButton {
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Sets the direction buttons (north, east, south, west)
+	 * @param dir
+	 * @param x
+	 * @param y
+	 */
 	public DirectionButton(String dir, int x, int y) {
 
 		this.setText(dir);

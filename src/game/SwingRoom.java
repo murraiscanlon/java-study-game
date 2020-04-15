@@ -443,7 +443,10 @@ public class SwingRoom extends JFrame {
 		//		qbDialog.setUpTreasure(currentRoom.getTreasure());
 		qbDialog.setVisible(true);
 	}
-
+	/**
+	 * Handles player input and scores questions
+	 * @param scoreIndicator
+	 */
 	public void processReturnFromQBD(GameStatus scoreIndicator) {
 		if (scoreIndicator == GameStatus.QuestionWrong) {
 			score.incrementWrongQuestions();
@@ -469,7 +472,8 @@ public class SwingRoom extends JFrame {
 					}
 				}
 				inventory.setText(inventoryString);
-				if (currentTreasure.getTreasureType() =="Bitcoin") {
+				//Displays treasure that is collected
+				if (currentTreasure.getTreasureType() == "Bitcoin") {
 					bitcoin.setVisible(true);
 				}
 				else if (currentTreasure.getTreasureType() == "Jewel Editor") {

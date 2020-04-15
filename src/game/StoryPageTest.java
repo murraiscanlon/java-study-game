@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 /**
  * Method to test the StoryPage components
- * @author mackl
+ * @author Team 30
  *
  */
 class StoryPageTest {

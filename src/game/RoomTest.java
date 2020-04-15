@@ -3,7 +3,11 @@ package game;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+/**
+ * Test for Room
+ * @author Team 30
+ *
+ */
 class RoomTest {
 	
 	Room room1 = new Room(1, "FOYER", "You are in the FOYER.", 

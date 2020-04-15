@@ -7,18 +7,21 @@ import java.util.HashMap;
 /**
  * The Questions class uses the data from QuestionReader to generate
  * a package of variables using the getCurrentQuestion method.
+ * @author Team 30
  */
 
 public class Questions1 {
-	// Instance variables
-	ArrayList<Question> questions;
-	static int questionCounter;
-	Question currentQuestion;
-	HashMap<String, String> hints;//not currently in use
+	// Instance variables 
+	private ArrayList<Question> questions;
+	static int questionCounter; //does this need to be private?
+	private Question currentQuestion;
+	private HashMap<String, String> hints;//not currently in use
 
 	
-	// Constructor
-	Questions1() {
+	/**
+	 * Constructor
+	 */
+	public Questions1() {
 		this.questions = QuestionReader.readCSVFile();
 		questionCounter = 0;
 		//this.currentHint = " ";
@@ -29,10 +32,6 @@ public class Questions1 {
 			hints.put(q.getQuestion(), q.getHint());
 		}
 	}
-	
-
-	// Methods
-	
 	
 	/**
 	 * Method to provide random questions

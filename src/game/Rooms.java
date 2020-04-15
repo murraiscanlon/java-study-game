@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * MCIT 591 Final Project
  * @author Team 30
- * 3/28/20
+ * 
  * 
  * This class is responsible for setting up the rooms in the game.
  * 		- Loads the room data from a CSV file
@@ -20,9 +20,9 @@ import java.util.Scanner;
  */
 public class Rooms {
 
-	HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
-	HashMap<Integer, Integer[]> roomLinks = new HashMap<Integer, Integer[]>();
-	Treasures treasures = new Treasures();
+	private HashMap<Integer, Room> rooms = new HashMap<Integer, Room>();
+	private HashMap<Integer, Integer[]> roomLinks = new HashMap<Integer, Integer[]>();
+	private Treasures treasures = new Treasures();
 
 	/**
 	 * Rooms Constructor - takes as an argument the file name of the CSV containing the room data

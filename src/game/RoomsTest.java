@@ -3,7 +3,11 @@ package game;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * Test for Rooms
+ * @author Team 30
+ *
+ */
 class RoomsTest {
 	
 	Rooms rooms = new Rooms("roomsTest.csv");

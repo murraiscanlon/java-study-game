@@ -3,24 +3,14 @@ package game;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * Test for Treasures Class
+ * @author Team 30
+ *
+ */
 class TreasuresTest {
 
-	/**
-	 * Test as part of other tests
-	 */
-	//	@Test
-	//	void testAssignTreasureTypes() {
-	//	}
-
-	/**
-	 * Cannot test, it does not return a value or set instance var
-	 */
-	//	@Test
-	//	void testAssignTreasures() {
-	//		fail("Not yet implemented");
-	//	}
-
+	
 	@Test
 	void testIsTreasureInRoom_1() {
 		Treasures treasures = new Treasures();

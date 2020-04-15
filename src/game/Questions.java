@@ -3,19 +3,19 @@ package game;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
+/**
+ * Questions reads in question file and generates question Interacts with
+ * Characters
+ * 
+ * @author Team 30
+ */
 public class Questions {
 
-	/**
-	 * Questions reads in question file and generates question Interacts with
-	 * Characters
-	 * 
-	 * @author Team 30
-	 */
-	HashMap<String, String> hints = new HashMap<String, String>();
+	
+	private HashMap<String, String> hints = new HashMap<String, String>();
 	static ArrayList<Question> questions = new ArrayList<Question>();
 	static int questionCounter;
-	
+	//are these going to be private variables?
 
 	/**
 	 * Constructor
@@ -29,7 +29,9 @@ public class Questions {
 
 	}
 	
-	//Contructor2
+	/**
+	 * Constructor 2
+	 */
 	public Questions() {
 		this.questions = QuestionReader.readCSVFile();
 		this.questionCounter++;
@@ -63,8 +65,12 @@ public class Questions {
 	public void shuffleQuestions(ArrayList<Question> questions) {
 		Collections.shuffle(questions);
 	}
-
-	public boolean isCorrect(String answer) {
+	/**
+	 * Check if answer is correct 
+	 * @param answer
+	 * @return
+	 */
+	public boolean isCorrect(String answer) {//do we need this?
 		if (answer == "correct") {
 			return true;
 		} else
@@ -76,13 +82,13 @@ public class Questions {
 	 * 
 	 * @return
 	 */
-	public String formatQuestionOutput() {
-		// Works with generateQuestion method
-		
-		
-
-		return null;
-	}
+//	public String formatQuestionOutput() {
+//		// Works with generateQuestion method
+//		
+//		
+//
+//		return null;
+//	}
 
 	/**
 	 * Method will allow Player to ask for hint on question

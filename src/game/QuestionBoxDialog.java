@@ -19,10 +19,20 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.EventListenerList;
-
+/**
+ * Class to extend JDialog, implements ActionListener and PropertyChangeListener
+ * Creates a pop-up Question box that generates random questions
+ * Java Monsters are integrated as part of the background of dialog box
+ * User must answer multiple choice question to collect treasure
+ * User may request 'hint' from Fairy GodTA by clicking button
+ * @author Team 30
+ *
+ */
 //public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
 public class QuestionBoxDialog extends JDialog {
-
+    /**
+     * Instance variables
+     */
 	private static final long serialVersionUID = 1L;
 	private EventListenerList listenerList = new EventListenerList();
 	private JLayeredPane layeredPane;
@@ -45,9 +55,11 @@ public class QuestionBoxDialog extends JDialog {
 	private JLabel wrongAnswerMessage;
 
 	/**
+	 * Constructor
 	 * This class displays a new window when the player pushed the
-	 * treasureBoxButton. The new window includes a java question, four answer
-	 * choices, and a hint option.
+     * treasureBoxButton. The new window includes a java question, four answer
+     * choices, and a hint option.
+	 * @param aFrame
 	 */
 	public QuestionBoxDialog(Frame aFrame) {
 		super(aFrame, true);
@@ -235,7 +247,7 @@ public class QuestionBoxDialog extends JDialog {
 		// replaces monster picture with the current treasure collected
 		treasureImageLabel = new JLabel("");
 		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		// Need to link the Room/Treasure association
+		// do we need this part?
 		treasureImageLabel.setIcon(new ImageIcon("diamond2.png"));
 		treasureImageLabel.setBounds(212, 50, 243, 180);
 		layeredPane.add(treasureImageLabel);
@@ -269,6 +281,8 @@ public class QuestionBoxDialog extends JDialog {
 
 	/**
 	 * Compares the selected radioButton/answerchoice to the current correctAnswer.
+	 * @param q
+	 * @return
 	 */
 	public boolean checkAnswer(Question q) {
 		question = q;
@@ -309,8 +323,9 @@ public class QuestionBoxDialog extends JDialog {
 		return currentMonster;
 	}
 
-	/*
+	/**
 	 * Swing listeners that track and process events
+	 * @param event
 	 */
 
 	public void fireQBEvent(QuestionBoxEvent event) {
@@ -322,11 +337,17 @@ public class QuestionBoxDialog extends JDialog {
 			}
 		}
 	}
-
+	/**
+	 * Question Box Listener to add Question to queue
+	 * @param listener
+	 */
 	public void addQuestionBoxListener(QuestionBoxListener listener) {
 		listenerList.add(QuestionBoxListener.class, listener);
 	}
-
+	/**
+	 * Question Box listener to remove question from list
+	 * @param listener
+	 */
 	public void removeQuestionBoxListener(QuestionBoxListener listener) {
 		listenerList.remove(QuestionBoxListener.class, listener);
 	}

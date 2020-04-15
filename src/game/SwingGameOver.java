@@ -27,11 +27,16 @@ import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.awt.Color;
 import javax.swing.JTextPane;
-
+/**
+ * Class to establish the final window of game
+ * Shows win/loss status * 
+ * @author Team 30
+ *
+ */
 public class SwingGameOver extends JFrame {
 
     /**
-     * 
+     * Instance variables
      */
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -63,6 +68,7 @@ public class SwingGameOver extends JFrame {
 //    }
 
     /**
+     * Constructor
      * Create the frame.
      */
     public SwingGameOver() {
@@ -92,10 +98,10 @@ public class SwingGameOver extends JFrame {
         
     }
     /**
-     * Winner      
+     * Displays winning message and hides losing message      
      */
     public void getWinMsg() {
-        //Displays the winning message and hides losing message
+        
         wizardPlace.setVisible(true);
         wizardPlace1.setVisible(false);
         winMsg.setVisible(true); 
@@ -103,10 +109,10 @@ public class SwingGameOver extends JFrame {
         
     }
     /**
-     * Loser
+     * Displays losing message and hides winning message
      */
     public void getLoseMsg() {
-        //displays the losing message and hides winning message
+        
         loseMsg.setVisible(true);
         winMsg.setVisible(false);
         wizardPlace1.setVisible(true);
@@ -115,9 +121,9 @@ public class SwingGameOver extends JFrame {
         
     }
     //need to check if there's a parseInt for displaying numbers
-//    public void getFinalScore() {
-//        scoreLabel.setText(score.getCurrentScore());//throws NPE 
-//    }
+    public void getFinalScore() {
+       // scoreLabel.setText("Score:" + score.getCurrentScore());//throws NPE 
+    }
     
     /**
      * Helper Methods
@@ -242,12 +248,20 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpScoreDisplay() {
         //Score display placeholder until scoring method is written
-          scoreLabel = new JLabel("FINAL SCORE: " );
-          scoreLabel.setBackground(Color.GRAY);
-          scoreLabel.setForeground(Color.WHITE);
-          scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-          scoreLabel.setOpaque(true);
-          scoreLabel.setBounds(360, 123, 160, 81);
+//          scoreLabel = new JLabel("");
+//          scoreLabel.setBackground(Color.GRAY);
+//          scoreLabel.setForeground(Color.WHITE);
+//          //scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//          scoreLabel.setOpaque(true);
+//          scoreLabel.setBounds(360, 123, 160, 81);
+          scoreLabel = new JLabel("");
+          scoreLabel.setBounds(349, 86, 435, 86);
+          scoreLabel.setBackground(new Color(0, 0, 0));       
+          scoreLabel.setForeground(new Color(255, 255, 255));
+          scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+          //scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+          //scoreLabel.setBounds(607, 510, 267, 41);
+          //scoreLabel.setOpaque(true);          
           contentPane.add(scoreLabel);
       }
     /**

@@ -5,7 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import javax.swing.ImageIcon;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * Test for Treasure class
+ * @author Team 30
+ *
+ */
 class TreasureTest {
 	
     ImageIcon diamond;

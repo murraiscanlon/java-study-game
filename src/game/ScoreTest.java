@@ -5,7 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * Test for Score class
+ * @author Team 30
+ *
+ */
 class ScoreTest {
 
 	@Test
