@@ -115,6 +115,9 @@ public class QuestionBoxDialog extends JDialog {
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
 		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
 		hintTaken = false;
+		hintButton.setVisible(true);
+		hintRevealedLabel.setVisible(false);
+		fairyRevealLabel.setVisible(false);
 	}
 
 	/*
