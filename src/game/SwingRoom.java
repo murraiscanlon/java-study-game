@@ -473,6 +473,7 @@ public class SwingRoom extends JFrame {
 					}
 				}
 				inventory.setText(inventoryString);
+				
 				//Displays treasure that is collected
 				if (currentTreasure.getTreasureType() == "Bitcoin") {
 					bitcoin.setVisible(true);
@@ -503,7 +504,7 @@ public class SwingRoom extends JFrame {
 			dispose();
 			SwingGameOver win = new SwingGameOver(score);
 			win.getWinMsg();
-			//win.getFinalScore();//show score on final page
+			
 			// Call the winning game over screen
 			System.out.println("*** You Won! ***");
 		}
@@ -511,7 +512,7 @@ public class SwingRoom extends JFrame {
 			dispose();
 			SwingGameOver lose = new SwingGameOver(score);
 			lose.getLoseMsg();
-			//lose.getFinalScore();//show score on final page
+			
 			// Call the losing game over screen					
 			System.out.println("*** You Lost! 8-( ***");
 		}
