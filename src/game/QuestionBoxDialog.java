@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -53,6 +54,8 @@ public class QuestionBoxDialog extends JDialog {
 	private Question question;
 	private boolean hintTaken;
 	private JLabel wrongAnswerMessage;
+	JOptionPane jp;
+	ImageIcon dragonImage;
 
 	/**
 	 * Constructor
@@ -188,7 +191,12 @@ public class QuestionBoxDialog extends JDialog {
 				}
 				else {
 					scoreIndicator = GameStatus.QuestionWrong;
-					
+					dragonImage = new ImageIcon("images/dragon2.jpg");
+					JOptionPane.showMessageDialog(jp,
+					    "",
+					    "",
+					    JOptionPane.INFORMATION_MESSAGE,
+					    dragonImage);
 				}
 
 				bg2.clearSelection();
