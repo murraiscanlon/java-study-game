@@ -57,7 +57,8 @@ public class SwingGameOver extends JFrame {
     /**
      * Launch the application.
      */
-//    public static void main(String[] args) {
+ //   public static void main(String[] args) {
+  	
 //        EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //                try {
@@ -68,7 +69,7 @@ public class SwingGameOver extends JFrame {
 //                }
 //            }
 //        });
-//    }
+ //   }
 
     /**
      * Constructor
@@ -258,10 +259,13 @@ public class SwingGameOver extends JFrame {
      * Set up the score display
      */
     public void setUpScoreDisplay() {
-        String scoreOutput = "";
-    	if (!score.getName().contentEquals("")) {
-    		scoreOutput += score.getName()+"'s ";
-    	}
+		String scoreOutput = "";
+		if (score.getName().equals("Enter Player Name")) {
+			scoreOutput += "";
+		} else if (!score.getName().contentEquals("")) {
+			scoreOutput += score.getName() + "'s ";
+		}
+        
     	scoreOutput += "Score: " + score.getCurrentScore();
           scoreLabel = new JLabel(scoreOutput);
           scoreLabel.setBorder(new LineBorder(new Color(153, 153, 153), 2));
