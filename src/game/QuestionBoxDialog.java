@@ -106,7 +106,7 @@ public class QuestionBoxDialog extends JDialog {
 	 */
 	public void setUpQuestion(Question q) {
 		question = q;
-		currentQuestion.setText("<HTML>" + q.getQuestion() +"</HTML>");//Not sure this is working. . .
+		currentQuestion.setText("<HTML>" + q.getQuestion() +"</HTML>");
 		radioButton1.setText("<HTML>" + q.getAnswer1() + "</HTML>");
 		radioButton2.setText("<HTML>" + q.getAnswer2() + "</HTML>");
 		radioButton3.setText("<HTML>" + q.getAnswer3() + "</HTML>");
@@ -122,8 +122,9 @@ public class QuestionBoxDialog extends JDialog {
 	public void setUpCurrentQuestionElements() {
 		currentQuestion = new JLabel("Q");
 		currentQuestion.setBackground(Color.LIGHT_GRAY);
+		currentQuestion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		currentQuestion.setOpaque(true);
-		currentQuestion.setBounds(35, 390, 573, 30);
+		currentQuestion.setBounds(35, 350, 573, 40);
 		layeredPane.add(currentQuestion);
 	}
 
@@ -134,26 +135,30 @@ public class QuestionBoxDialog extends JDialog {
 
 		// sets button position and format
 		radioButton1 = new JRadioButton("R1");
-		radioButton1.setBounds(35, 450, 250, 30);
+		radioButton1.setBounds(35, 410, 275, 40);
 		radioButton1.setBackground(Color.LIGHT_GRAY);
+		radioButton1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		radioButton1.setOpaque(true);
 		layeredPane.add(radioButton1);
 
 		radioButton2 = new JRadioButton("R2");
-		radioButton2.setBounds(35, 490, 250, 30);
+		radioButton2.setBounds(35, 460, 275, 40);
 		radioButton2.setBackground(Color.LIGHT_GRAY);
+		radioButton2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		radioButton2.setOpaque(true);
 		layeredPane.add(radioButton2);
 
 		radioButton3 = new JRadioButton("R3");
-		radioButton3.setBounds(35, 530, 250, 30);
+		radioButton3.setBounds(35, 510, 275, 40);
 		radioButton3.setBackground(Color.LIGHT_GRAY);
+		radioButton3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		radioButton3.setOpaque(true);
 		layeredPane.add(radioButton3);
 
 		radioButton4 = new JRadioButton("R4");
-		radioButton4.setBounds(35, 570, 250, 30);
+		radioButton4.setBounds(35, 560, 275, 40);
 		radioButton4.setBackground(Color.LIGHT_GRAY);
+		radioButton4.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		radioButton4.setOpaque(true);
 		layeredPane.add(radioButton4);
 
@@ -169,8 +174,9 @@ public class QuestionBoxDialog extends JDialog {
 	 * This method creates the SUBMIT button
 	 */
 	public void setUpSubmitButton() {
-		submitButton = new JButton("Submit");
-		submitButton.setBounds(505, 584, 100, 21);
+		submitButton = new JButton("SUBMIT");
+		submitButton.setBounds(365, 568, 110, 35);
+		submitButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		submitButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -211,10 +217,10 @@ public class QuestionBoxDialog extends JDialog {
 		// reveals the current hint at the bottom of the box
 
 		hintRevealedLabel = new JLabel("");
-		hintRevealedLabel.setBounds(100, 650, 390, 30);
+		hintRevealedLabel.setBounds(100, 650, 390, 40);
 		//hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setForeground(Color.black);
-		hintRevealedLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		hintRevealedLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		layeredPane.add(hintRevealedLabel);
 		hintRevealedLabel.setVisible(false);
 
@@ -228,7 +234,8 @@ public class QuestionBoxDialog extends JDialog {
 
 		// reveals hint when clicked
 		hintButton = new JButton("HINT");
-		hintButton.setBounds(375, 584, 100, 21);
+		hintButton.setBounds(505, 568, 100, 35);
+		hintButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		hintButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
