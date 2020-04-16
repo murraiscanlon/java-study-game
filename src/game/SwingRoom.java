@@ -29,9 +29,11 @@ public class SwingRoom extends JFrame {
 	private JButton roomE;
 	private JButton roomW;
 	private JButton treasureButton;
+	private JButton helpButton;
 	private Questions1 questions;
 	private Question q;
 	private QuestionBoxDialog qbDialog;
+	private Instructions inst;
 	private JLabel backgroundLbl = new JLabel();
 	private Icon bgIcon = new ImageIcon();
 	private JLabel background;
@@ -58,8 +60,12 @@ public class SwingRoom extends JFrame {
 		setUpUIFoundation();
 		/***** Set up the Question Dialog Window and initialize questions  *****/
 		setUpQuestionDialogWindow();
+		/***** Set up the Instructions Windoe  *****/
+		setUpInstructions(score);
 		/***** Set up the Direction Buttons  *****/
 		setUpDirButtons();
+		/***** Set up the Help Button  *****/
+		setUpHelpButton();
 		/***** Set up the Quit / Exit Button  *****/
 		setUpQuitButton();
 		/***** Set up the background  *****/
@@ -134,6 +140,12 @@ public class SwingRoom extends JFrame {
 		});	
 	}
 
+	public void setUpInstructions(Score score) {
+		inst = new Instructions(this, score);
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
+	}
+	
 	/**
 	 * Method to create and set up the directional buttons
 	 */
@@ -178,6 +190,17 @@ public class SwingRoom extends JFrame {
 			}
 		});    
 		layeredPane.add(roomE);
+	}
+	
+	public void setUpHelpButton() {
+		helpButton = new DirectionButton("Help", 730, 480);
+		helpButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				inst.setVisible(true);
+			}
+		});    
+		layeredPane.add(helpButton);
 	}
 
 	/**
@@ -452,7 +475,7 @@ public class SwingRoom extends JFrame {
 	public void processReturnFromQBD(GameStatus scoreIndicator) {
 		if (scoreIndicator == GameStatus.QuestionWrong) {
 			score.incrementWrongQuestions();
-			PopUpMsg.launchPopUp();
+			//PopUpMsg.launchPopUp();
 		}
 		if ((scoreIndicator == GameStatus.QuestionCorrect) || (scoreIndicator == GameStatus.QuestionWithHint)) {
 			if (currentRoom.getTreasure() != null) {

@@ -16,7 +16,7 @@ public class Score {
 	private int currentScore = 0;
 	private int numberOfQuestionsWrong = 0;
 	final int scoreTarget = 5;
-	final int wronqQuestionTarget = 3;
+	final int wronqQuestionTarget = 20;
 	private String name = "Bob";
     
     /**

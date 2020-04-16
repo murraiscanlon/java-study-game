@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -188,7 +189,6 @@ public class QuestionBoxDialog extends JDialog {
 				}
 				else {
 					scoreIndicator = GameStatus.QuestionWrong;
-					
 				}
 
 				bg2.clearSelection();
