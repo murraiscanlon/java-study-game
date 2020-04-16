@@ -27,6 +27,8 @@ import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import java.awt.Rectangle;
+import javax.swing.border.LineBorder;
 /**
  * Class to establish the final window of game
  * Shows win/loss status * 
@@ -46,11 +48,12 @@ public class SwingGameOver extends JFrame {
     private JLabel wizardPlace;
     private JLabel wizardPlace1;
     private JLabel scoreLabel;
-    private JEditorPane loseMsg;
-    private JEditorPane winMsg;
     private JButton exitButton;
     private JButton playAgain;
     private Score score;
+    private JTextArea winMsg;
+    private JTextArea loseMsg;
+   
     /**
      * Launch the application.
      */
@@ -122,11 +125,7 @@ public class SwingGameOver extends JFrame {
         
         
     }
-//    //need to check if there's a parseInt for displaying numbers
-//    public void getFinalScore() {
-//       scoreLabel.setText("Score:" + score.getCurrentScore());//throws NPE 
-//    }
-    
+   
     /**
      * Helper Methods
      */
@@ -147,7 +146,7 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpScroll() {
         scrollText = new JLabel();
-        scrollText.setFont(new Font("Castellar", scrollText.getFont().getStyle(), 30));
+        scrollText.setFont(new Font("Castellar", Font.PLAIN, 32));
         scrollText.setText("GAME OVER!");
         scrollText.setBounds(134, 34, 600, 100);
         scrollText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -166,7 +165,8 @@ public class SwingGameOver extends JFrame {
     public void setUpQuitButton() {
     //Exit button upper right corner, has same format as Direction Button
         exitButton = new DirectionButton("QUIT",775, 0);        
-        exitButton.setBounds(761, 10, 113, 23);
+        exitButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        exitButton.setBounds(761, 10, 113, 37);
         
         exitButton.addMouseListener(new MouseAdapter() {
            @Override
@@ -181,9 +181,11 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpPlayAgainButton() {
         playAgain = new JButton("PLAY AGAIN");
-        playAgain.setBackground(Color.GRAY);
-        playAgain.setBounds(10, 10, 113, 23);
-        
+        playAgain.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        playAgain.setForeground(new Color(255, 255, 255));
+        playAgain.setBackground(new Color(60, 0, 0));
+        playAgain.setBounds(10, 10, 119, 37);
+        playAgain.setOpaque(true);
         playAgain.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {                
@@ -208,15 +210,17 @@ public class SwingGameOver extends JFrame {
         wizardPlace.setVisible(false);
         contentPane.add(wizardPlace);
         
-        //Creates the message player will see
-        winMsg = new JEditorPane();
-        winMsg.setForeground(Color.BLACK);
-        winMsg.setContentType("text/html");
-        winMsg.setEnabled(false);
-        winMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        winMsg = new JTextArea();
+        winMsg.setBorder(new LineBorder(new Color(204, 204, 204), 2));
+        winMsg.setBounds(new Rectangle(0, 0, 2, 2));
+        winMsg.setLineWrap(true);
+        winMsg.setWrapStyleWord(true);
+        winMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        winMsg.setText("Wizard Arvind: Thank you for saving me! Your exemplary Java knowledge exceeded my expectations.  Best wishes on  your journey.");
+        winMsg.setForeground(UIManager.getColor("Button.light"));
+        winMsg.setBackground(Color.DARK_GRAY);
         winMsg.setEditable(false);
-        winMsg.setText("Wizard Arvind: Thank you for saving me! Your exemplary\r\nJava knowledge exceeded my expectations. Best wishes\r\non your journey.");
-        winMsg.setBounds(134, 273, 285, 70);
+        winMsg.setBounds(123, 253, 297, 61);
         winMsg.setVisible(false);
         contentPane.add(winMsg);
          
@@ -226,16 +230,21 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpLoseMsg() {
         //Sets losing message
-        loseMsg = new JEditorPane();
-        loseMsg.setForeground(Color.BLACK);
-        loseMsg.setContentType("text/html");
-        loseMsg.setText("Wizard Arvind: Your Java knowledge is lacking. \r\nPlay again to free me from the Java Monsters!");
-        loseMsg.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        loseMsg.setEnabled(false);
-        loseMsg.setEditable(false);
-        loseMsg.setVisible(false);
-        loseMsg.setBounds(451, 273, 252, 70);
-        contentPane.add(loseMsg);
+        loseMsg = new JTextArea();
+        loseMsg.setBorder(new LineBorder(new Color(204, 204, 204), 2));
+        loseMsg.setBounds(new Rectangle(0, 0, 2, 2));
+        loseMsg.setLineWrap(true);
+        loseMsg.setWrapStyleWord(true);        
+        loseMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        loseMsg.setText(" Wizard Arvind: Your Java knowledge is lacking. "
+                        + "Play again to free me from the Java Monsters!");
+        loseMsg.setForeground(UIManager.getColor("Button.light"));
+        loseMsg.setBackground(Color.DARK_GRAY);
+        loseMsg.setEditable(false);     
+        loseMsg.setVisible(false);        
+        loseMsg.setBounds(430, 266, 309, 48);
+        contentPane.add(loseMsg);      
+        
         
         //Sets wizard image for losing view
         wizardPlace1 = new JLabel();
@@ -249,18 +258,19 @@ public class SwingGameOver extends JFrame {
      * Set up the score display
      */
     public void setUpScoreDisplay() {
-        //Score display placeholder until scoring method is written
-    	String scoreOutput = "";
+        String scoreOutput = "";
     	if (!score.getName().contentEquals("")) {
     		scoreOutput += score.getName()+"'s ";
     	}
     	scoreOutput += "Score: " + score.getCurrentScore();
           scoreLabel = new JLabel(scoreOutput);
-          scoreLabel.setBackground(Color.GRAY);
+          scoreLabel.setBorder(new LineBorder(new Color(153, 153, 153), 2));
+          scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+          scoreLabel.setBackground(new Color(60, 0, 0));
           scoreLabel.setForeground(Color.WHITE);
           scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
           scoreLabel.setOpaque(true);
-          scoreLabel.setBounds(360, 123, 160, 81);
+          scoreLabel.setBounds(360, 123, 160, 54);
 //          scoreLabel = new JLabel("Score:" + score.getCurrentScore());
 //          scoreLabel.setBounds(349, 86, 435, 86);
 //          scoreLabel.setBackground(new Color(0, 0, 0));       
@@ -282,7 +292,7 @@ public class SwingGameOver extends JFrame {
         bgLabel.setIcon(new ImageIcon("images/GameOver.jpg"));
         bgLabel.setBounds(5, 5, 900, 600);
         contentPane.add(bgLabel);
+        
+        
     }
-    
-  
 }
