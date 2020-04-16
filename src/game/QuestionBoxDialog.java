@@ -226,7 +226,7 @@ public class QuestionBoxDialog extends JDialog {
 
 		// reveals the fairy picture at the bottom of the box
 		fairyRevealLabel = new JLabel("");
-		fairyRevealLabel.setIcon(new ImageIcon("fairyS.png"));
+		fairyRevealLabel.setIcon(new ImageIcon("images/fairyS.png"));
 		fairyRevealLabel.setBounds(5, 580, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
@@ -317,14 +317,14 @@ public class QuestionBoxDialog extends JDialog {
 	public String monsterGenerator() {
 		Random randomMonster = new Random();
 		ArrayList<String> javaMonsters = new ArrayList<String>();
-		javaMonsters.add("assassinBlock.png");
-		javaMonsters.add("headlessBlock.png");
-		javaMonsters.add("ghostBlock.png");
-		javaMonsters.add("ogreBlock.png");
-		javaMonsters.add("gremlinBlock.png");
-		javaMonsters.add("dragonBlock.png");
-		javaMonsters.add("mummyBlock.png");
-		javaMonsters.add("zombieBlock.png");
+		javaMonsters.add("images/assassinBlock.png");
+		javaMonsters.add("images/headlessBlock.png");
+		javaMonsters.add("images/ghostBlock.png");
+		javaMonsters.add("images/ogreBlock.png");
+		javaMonsters.add("images/gremlinBlock.png");
+		javaMonsters.add("images/dragonBlock.png");
+		javaMonsters.add("images/mummyBlock.png");
+		javaMonsters.add("images/zombieBlock.png");
 		int randomChoice = randomMonster.nextInt(javaMonsters.size());
 		String currentMonster = javaMonsters.get(randomChoice);
 		return currentMonster;
