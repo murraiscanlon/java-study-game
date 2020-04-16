@@ -26,6 +26,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 /**
  * Class to initiate Game Start with an entrance page
@@ -81,12 +82,17 @@ public class SwingEnterPage {
      */
     public void setUpStartbutton() {
         //Sets the button to go to next screen
-//        buttonPic = new ImageIcon("startButton.png");
-//        startButton = new JButton("", buttonPic);
-//        startButton.setPreferredSize(new Dimension(140, 35));
-//        startButton.setOpaque(true);
-    	startButton = new DirectionButton("START", 360, 460, 150, 45);
-    	startButton.setHorizontalAlignment(SwingConstants.CENTER);
+        startButton = new JButton("START");
+        startButton.setBorder(new LineBorder(new Color(153, 153, 153), 2));
+        startButton.setFont(new Font("Tahoma", Font.BOLD, 18));
+        startButton.setBackground(new Color(60, 0, 0));
+        startButton.setForeground(Color.WHITE);
+        startButton.setHorizontalAlignment(SwingConstants.CENTER);
+        startButton.setOpaque(true);
+        startButton.setBounds(360, 460, 150, 45);
+        
+        
+             
         
         //Adds functionality for clicking on Start button
         startButton.addMouseListener(new MouseAdapter() {
@@ -100,8 +106,8 @@ public class SwingEnterPage {
             }
 
         });
+        
         frame.getContentPane().setLayout(null);
-        //startButton.setBounds(330, 458, 140, 45);
         frame.getContentPane().add(startButton);
     }
     /**

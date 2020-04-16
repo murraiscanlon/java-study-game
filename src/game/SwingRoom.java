@@ -208,7 +208,7 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpQuitButton() {
 		//Exit button upper right corner, has same format as Direction Button
-		JButton exitButton = new DirectionButton("QUIT",715, 35, 120, 40);
+		JButton exitButton = new DirectionButton("QUIT",715, 35);
 		exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override

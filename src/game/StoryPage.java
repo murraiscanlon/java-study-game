@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
@@ -33,7 +34,7 @@ public class StoryPage extends JFrame {
     private JLabel background;
     private JTextPane story;
     private ImageIcon icon2;
-    //private ImageIcon buttonPic1;// TODO delete if not needed   
+    private ImageIcon buttonPic1; 
     private ImageIcon bgImage;
     private JButton enter; 
     private String playerName = "";
@@ -127,13 +128,17 @@ public class StoryPage extends JFrame {
      * Allows player to enter the castle
      */
     public void setEnterButton() {
-//        buttonPic1 = new ImageIcon("enterButton.png");
-//        enter = new JButton("", buttonPic1);
-//        enter.setPreferredSize(new Dimension(140, 35));
-//        enter.setOpaque(true);
         
-    	enter = new DirectionButton("ENTER", 360, 460, 150, 45);
-    	enter.setHorizontalAlignment(SwingConstants.CENTER);
+        enter = new JButton("ENTER");
+        enter.setBorder(new LineBorder(new Color(153, 153, 153), 2));
+        enter.setFont(new Font("Tahoma", Font.BOLD, 18));
+        enter.setBackground(new Color(60, 0, 0));
+        enter.setForeground(Color.WHITE);
+        enter.setHorizontalAlignment(SwingConstants.CENTER);
+        enter.setOpaque(true);
+        enter.setBounds(360, 460, 150, 45);
+        
+
         enter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -147,7 +152,7 @@ public class StoryPage extends JFrame {
             }
             
         });
-       // enter.setBounds(640, 360, 130, 40);
+      
         contentPane.add(enter);
     }
     /**
