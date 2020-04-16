@@ -146,7 +146,7 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpScroll() {
         scrollText = new JLabel();
-        scrollText.setFont(new Font("Castellar", Font.PLAIN, 32));
+        scrollText.setFont(new Font("Castellar", scrollText.getFont().getStyle(), 32));
         scrollText.setText("GAME OVER!");
         scrollText.setBounds(134, 34, 600, 100);
         scrollText.setHorizontalAlignment(SwingConstants.CENTER);
