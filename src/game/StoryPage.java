@@ -113,7 +113,7 @@ public class StoryPage extends JFrame {
      */
     public void setScrollImage() {
         
-        icon2 = new ImageIcon("scrollpage1.png");       
+        icon2 = new ImageIcon("images/scrollpage1.png");       
         contentPane.setLayout(null);       
         image2 = new JLabel(icon2, SwingConstants.CENTER);
         image2.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -154,7 +154,7 @@ public class StoryPage extends JFrame {
      * Method to set up background image
      */
     public void setUpBackground() {
-        bgImage = new ImageIcon("enterdoor.jpg");
+        bgImage = new ImageIcon("images/enterdoor.jpg");
         background = new JLabel(bgImage, JLabel.CENTER);
         background.setBounds(0, 0, 900, 600);
         contentPane.add(background);
