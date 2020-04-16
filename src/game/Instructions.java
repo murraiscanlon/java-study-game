@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -27,7 +25,7 @@ public class Instructions extends JDialog {
      * Instance variables
      */
 	private static final long serialVersionUID = 1L;
-	private EventListenerList listenerList = new EventListenerList();
+	//private EventListenerList listenerList = new EventListenerList();
 	private JLayeredPane layeredPane;
 	private JPanel contentPane;
 	private JLabel instruction;
@@ -39,9 +37,6 @@ public class Instructions extends JDialog {
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
-		// To add later
-		/***** Positions Current Question *****/
-		setUpInstructionLabel(score);
 		/***** Set Up Submit Button *****/
 		setUpOkButton();
 		/***** Set Up Monster Images *****/
@@ -51,36 +46,23 @@ public class Instructions extends JDialog {
 	
 	public void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 691, 762);
+		setBounds(100, 100, 665, 715);
 		contentPane = new JPanel();
-		contentPane.setSize(500, 500);
+		contentPane.setSize(645, 705);
 		contentPane.setBackground(Color.gray);
-		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setSize(500, 500);
 		layeredPane.setBackground(Color.red);
-		layeredPane.setBounds(10, 10, 657, 700);
+		layeredPane.setBounds(10, 10, 645, 695);
 		contentPane.add(layeredPane);
 	}
 	
 	/*
-	 * This positions all elements for the current question
-	 */
-	public void setUpInstructionLabel(Score score) {
-		String inst = "You have to get " + score.scoreTarget + " points and not more than " + score.wronqQuestionTarget + " quesitons wrong!";
-		instruction = new JLabel(inst);
-		instruction.setBackground(Color.LIGHT_GRAY);
-		instruction.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		instruction.setOpaque(true);
-		instruction.setBounds(35, 350, 573, 40);
-		layeredPane.add(instruction);
-	}
-	
-	/*
-	 * This method creates the SUBMIT button
+	 * This method creates the OK button
 	 */
 	public void setUpOkButton() {
 		okButton = new JButton("OK!");
@@ -95,19 +77,6 @@ public class Instructions extends JDialog {
 		layeredPane.add(okButton);
 	}
 
-
-	
-	
-	
-	
-
-	
-	//  To add later
-	/*
-	 * This method sets up the base frame components for the main question window
-	 */
-
-
 	/*
 	 * This method creates the monster background
 	 */
@@ -118,60 +87,11 @@ public class Instructions extends JDialog {
 		 */
 		javaMonsterImageLabel = new JLabel("");
 		javaMonsterImageLabel.setVerticalAlignment(SwingConstants.TOP);
-		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
+		javaMonsterImageLabel.setIcon(new ImageIcon("images/immortalBlock.png"));
 		javaMonsterImageLabel.setBounds(0, 0, 645, 695);
 		layeredPane.add(javaMonsterImageLabel);
 		javaMonsterImageLabel.setVisible(true);
 
 		setContentPane(contentPane);
-	}
-
-	/**
-	 * Generates a random monster picture for the background of the question dialog
-	 * box
-	 */
-	public String monsterGenerator() {
-		Random randomMonster = new Random();
-		ArrayList<String> javaMonsters = new ArrayList<String>();
-		javaMonsters.add("images/assassinBlock.png");
-		javaMonsters.add("images/headlessBlock.png");
-		javaMonsters.add("images/ghostBlock.png");
-		javaMonsters.add("images/ogreBlock.png");
-		javaMonsters.add("images/gremlinBlock.png");
-		javaMonsters.add("images/dragonBlock.png");
-		javaMonsters.add("images/mummyBlock.png");
-		javaMonsters.add("images/zombieBlock.png");
-		int randomChoice = randomMonster.nextInt(javaMonsters.size());
-		String currentMonster = javaMonsters.get(randomChoice);
-		return currentMonster;
-	}
-
-	/**
-	 * Swing listeners that track and process events
-	 * @param event
-	 */
-
-	public void fireQBEvent(QuestionBoxEvent event) {
-		Object[] listeners = listenerList.getListenerList();
-
-		for (int i = 0; i < listeners.length; i += 2) {
-			if (listeners[i] == QuestionBoxListener.class) {
-				((QuestionBoxListener) listeners[i + 1]).questionBoxEventOccurred(event);
-			}
-		}
-	}
-	/**
-	 * Question Box Listener to add Question to queue
-	 * @param listener
-	 */
-	public void addQuestionBoxListener(QuestionBoxListener listener) {
-		listenerList.add(QuestionBoxListener.class, listener);
-	}
-	/**
-	 * Question Box listener to remove question from list
-	 * @param listener
-	 */
-	public void removeQuestionBoxListener(QuestionBoxListener listener) {
-		listenerList.remove(QuestionBoxListener.class, listener);
 	}
 }
