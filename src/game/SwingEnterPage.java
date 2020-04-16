@@ -19,8 +19,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 
@@ -65,7 +68,7 @@ public class SwingEnterPage {
     /**
      * Method to establish window frame
      */
-    private void initFrame() {
+    public void initFrame() {
         frame = new JFrame();
         frame.setBounds(100, 100, 900, 600);
         frame.setBackground(Color.BLACK);
@@ -76,7 +79,7 @@ public class SwingEnterPage {
     /**
      * Method to set up Start button
      */
-    private void setUpStartbutton() {
+    public void setUpStartbutton() {
         //Sets the button to go to next screen
 //        buttonPic = new ImageIcon("startButton.png");
 //        startButton = new JButton("", buttonPic);
@@ -104,20 +107,35 @@ public class SwingEnterPage {
     /**
      * Method to set up Player Name input
      */
-    private void setUpPlayer() {
-        //Blank text field
+    public void setUpPlayer() {
+        //Text Field for player to enter name
         textNameField = new JTextField();
         textNameField.setText("Enter Player Name");//can we make this disappear on mouse click??
         textNameField.setBackground(Color.LIGHT_GRAY);
         textNameField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         textNameField.setHorizontalAlignment(SwingConstants.CENTER);
-        textNameField.addKeyListener(new KeyAdapter() {
-            //need to figure out where to store name input
+        textNameField.addKeyListener(new KeyListener() {
+        
             @Override
-            public void keyTyped(KeyEvent type) {
-            	
-            	playerName = textNameField.getText();
+            public void keyTyped(KeyEvent arg0) {
+                // Overwrites the prompt when player types in name
+                if(textNameField.getText().trim().equals("Enter Player Name")) {
+                    textNameField.setText("");
+                    playerName = textNameField.getText();
+                }
+                
             }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //Method Not used
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //Method not used                
+            }
+            
         });
         textNameField.setForeground(Color.DARK_GRAY);
         textNameField.setBounds(360, 400, 150, 35);
@@ -140,7 +158,7 @@ public class SwingEnterPage {
     /**Method to set up background look
      * Sets title and picture
      */
-    private void setUpPageImagery() {
+    public void setUpPageImagery() {
         //Sets up Game title
         gameTitle = new JLabel("J A V E N T U R E");
         gameTitle.setForeground(Color.GRAY);        
@@ -149,7 +167,7 @@ public class SwingEnterPage {
         frame.getContentPane().add(gameTitle);
 
         //Sets up background image
-        bgImage = new JLabel(new ImageIcon("enterpic.jpg"), JLabel.CENTER);
+        bgImage = new JLabel(new ImageIcon("images/enterpic.jpg"), JLabel.CENTER);
         bgImage.setBounds(0, 0, 900, 600);
         frame.getContentPane().add(bgImage);  
         
