@@ -23,11 +23,8 @@ public class DirectionButton extends JButton {
 
 		this.setText(dir);
 		this.setIcon(null);
-		this.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		this.setForeground(new Color(0, 0, 0));
 		this.setBackground(new Color(60, 0, 0));
-		this.setForeground(Color.white);
-		//this.setForeground(new Color(0, 0, 0));
-		//this.setBackground(new Color(128, 128, 128));
 		this.setOpaque(true);
 		this.setBounds(x, y, 80, 41);
 		this.setEnabled(true);
@@ -37,7 +34,6 @@ public class DirectionButton extends JButton {
 	public DirectionButton(String text, int x, int y, int h, int w) {
 		this.setText(text);
 		this.setIcon(null);
-		this.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		this.setBackground(new Color(60, 0, 0));
 		this.setForeground(Color.white);
 		//this.setForeground(new Color(0, 0, 0));
@@ -45,36 +41,8 @@ public class DirectionButton extends JButton {
 		this.setOpaque(true);
 		this.setBounds(x, y, h, w);
 		this.setEnabled(true);
-		
-	}
-	
-	public DirectionButton(String text) {
-		this.setText(text);
-		this.setIcon(null);
 		this.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		this.setBackground(new Color(60, 0, 0));
-		this.setForeground(Color.white);
-		//this.setForeground(new Color(0, 0, 0));
-		//this.setBackground(new Color(128, 128, 128));
-		this.setOpaque(true);
-		
-		this.setEnabled(true);
 		
 	}
 	
-
-	//this is very interesting
-	//	public DirectionButton(String text, int h, int w) {
-//		this.setText(text);
-//		this.setIcon(null);
-//		this.setFont(new Font("Times New Roman", Font.BOLD, 25));
-//		this.setBackground(new Color(60, 0, 0));
-//		this.setForeground(Color.white);
-//		//this.setForeground(new Color(0, 0, 0));
-//		//this.setBackground(new Color(128, 128, 128));
-//		this.setOpaque(true);
-//		this.setBounds(x, y, h, w);
-//		this.setEnabled(true);
-//		
-//	}
 }
