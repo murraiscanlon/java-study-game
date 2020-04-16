@@ -15,8 +15,9 @@ public class Score {
 	private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
 	private int currentScore = 0;
 	private int numberOfQuestionsWrong = 0;
-	final int scoreTarget = 20;
+	final int scoreTarget = 5;
 	final int wronqQuestionTarget = 3;
+	private String name = "Bob";
     
     /**
      * Constructor
@@ -68,6 +69,14 @@ public class Score {
      */
     public ArrayList<Treasure> getTreasures(){
     	return treasures;
+    }
+    
+    public String getName() {
+    	return name;
+    }
+    
+    public void setName(String name) {
+    	this.name = name;
     }
 
     /**

@@ -50,10 +50,10 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Create the Swing interface for a room in the game
 	 */
-	public SwingRoom() {
+	public SwingRoom(String playerName) {
 
 		/***** Initialize the Rooms  *****/
-		initRooms();
+		initRooms(playerName);
 		/***** Set up the Room UI foundation  *****/
 		setUpUIFoundation();
 		/***** Set up the Question Dialog Window and initialize questions  *****/
@@ -87,12 +87,13 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method initializes all the game rooms and set up the treasures in the rooms
 	 */
-	public void initRooms() {
+	public void initRooms(String playerName) {
 		String roomFilename = "rooms12.csv"; // File with rooms
 		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
 		questions = new Questions1();
 		questions.shuffleQuestions();
+		score.setName(playerName);
 	}
 
 	/**
@@ -500,7 +501,7 @@ public class SwingRoom extends JFrame {
 		System.out.println("Game Status : " + gameStatus);
 		if (gameStatus == GameStatus.GameOverWin) {
 			dispose();
-			SwingGameOver win = new SwingGameOver();
+			SwingGameOver win = new SwingGameOver(score);
 			win.getWinMsg();
 			//win.getFinalScore();//show score on final page
 			// Call the winning game over screen
@@ -508,7 +509,7 @@ public class SwingRoom extends JFrame {
 		}
 		else if (gameStatus == GameStatus.GameOverLose) {
 			dispose();
-			SwingGameOver lose = new SwingGameOver();
+			SwingGameOver lose = new SwingGameOver(score);
 			lose.getLoseMsg();
 			//lose.getFinalScore();//show score on final page
 			// Call the losing game over screen					

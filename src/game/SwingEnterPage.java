@@ -38,6 +38,7 @@ public class SwingEnterPage {
     private JLabel bgImage;
     private ImageIcon buttonPic;
     private JButton startButton;
+    private String playerName = "";
     
     /**
      * Constructor for SwingEnterPage
@@ -88,7 +89,9 @@ public class SwingEnterPage {
         startButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent click) {
-                StoryPage page2 = new StoryPage();//link to second page
+           //     StoryPage page2 = new StoryPage();//link to second page
+            	playerName = textNameField.getText();
+                StoryPage page2 = new StoryPage(playerName);//link to second page
                 page2.setVisible(true); //brings up next screen 
                 frame.setVisible(false);//closes enter page window
             }
@@ -113,7 +116,7 @@ public class SwingEnterPage {
             @Override
             public void keyTyped(KeyEvent type) {
             	
-                String name = textNameField.getText();
+            	playerName = textNameField.getText();
             }
         });
         textNameField.setForeground(Color.DARK_GRAY);

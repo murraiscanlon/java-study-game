@@ -71,7 +71,9 @@ public class SwingGameOver extends JFrame {
      * Constructor
      * Create the frame.
      */
-    public SwingGameOver() {
+    public SwingGameOver(Score score) {
+    	
+    	this.score = score;
         /**Sets up initial frame**/
         initGameOver();
         
@@ -120,10 +122,10 @@ public class SwingGameOver extends JFrame {
         
         
     }
-    //need to check if there's a parseInt for displaying numbers
-    public void getFinalScore() {
-       // scoreLabel.setText("Score:" + score.getCurrentScore());//throws NPE 
-    }
+//    //need to check if there's a parseInt for displaying numbers
+//    public void getFinalScore() {
+//       scoreLabel.setText("Score:" + score.getCurrentScore());//throws NPE 
+//    }
     
     /**
      * Helper Methods
@@ -248,20 +250,28 @@ public class SwingGameOver extends JFrame {
      */
     public void setUpScoreDisplay() {
         //Score display placeholder until scoring method is written
-//          scoreLabel = new JLabel("");
-//          scoreLabel.setBackground(Color.GRAY);
-//          scoreLabel.setForeground(Color.WHITE);
-//          //scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    	String scoreOutput = "";
+    	if (!score.getName().contentEquals("")) {
+    		scoreOutput += score.getName()+"'s ";
+    	}
+    	scoreOutput += "Score: " + score.getCurrentScore();
+          scoreLabel = new JLabel(scoreOutput);
+          scoreLabel.setBackground(Color.GRAY);
+          scoreLabel.setForeground(Color.WHITE);
+          scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+          scoreLabel.setOpaque(true);
+          scoreLabel.setBounds(360, 123, 160, 81);
+//          scoreLabel = new JLabel("Score:" + score.getCurrentScore());
+//          scoreLabel.setBounds(349, 86, 435, 86);
+//          scoreLabel.setBackground(new Color(0, 0, 0));       
+//          scoreLabel.setForeground(new Color(255, 255, 255));
+//          scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 //          scoreLabel.setOpaque(true);
-//          scoreLabel.setBounds(360, 123, 160, 81);
-          scoreLabel = new JLabel("");
-          scoreLabel.setBounds(349, 86, 435, 86);
-          scoreLabel.setBackground(new Color(0, 0, 0));       
-          scoreLabel.setForeground(new Color(255, 255, 255));
-          scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+//          scoreLabel.setVisible(true);
           //scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
           //scoreLabel.setBounds(607, 510, 267, 41);
-          //scoreLabel.setOpaque(true);          
+          //scoreLabel.setOpaque(true); 
+          //scoreLabel.setText("Score:" + score.getCurrentScore());
           contentPane.add(scoreLabel);
       }
     /**

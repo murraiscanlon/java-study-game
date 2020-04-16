@@ -36,16 +36,17 @@ public class StoryPage extends JFrame {
     //private ImageIcon buttonPic1;// TODO delete if not needed   
     private ImageIcon bgImage;
     private JButton enter; 
+    private String playerName = "";
     
     /**
      * Constructor
      * Creates the frame.
      */
-    public StoryPage() {
+    public StoryPage(String playerName) {
         /**
          * Sets up the initial panel
          */
-        initializeStoryPage();        
+        initializeStoryPage(playerName);        
         /**
          * Sets up scroll with story
          */
@@ -67,7 +68,7 @@ public class StoryPage extends JFrame {
     /**
      * Method to initialize Story Page
      */
-    public void initializeStoryPage() {
+    public void initializeStoryPage(String playerName) {
         //Sets up JPanel on JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 900, 600);
@@ -76,7 +77,7 @@ public class StoryPage extends JFrame {
         contentPane.setBackground(Color.DARK_GRAY);
         setLocationRelativeTo(null);
         setContentPane(contentPane);
-        
+        this.playerName = playerName;
     }
     
     /**
@@ -139,7 +140,7 @@ public class StoryPage extends JFrame {
                 //closes current window
                 dispose();
                 //opens rooms
-                SwingRoom room = new SwingRoom();//link to second page
+                SwingRoom room = new SwingRoom(playerName);//link to second page
                 room.setVisible(true); //brings up next screen             
                 
                 
