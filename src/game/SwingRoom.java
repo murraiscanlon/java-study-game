@@ -129,6 +129,7 @@ public class SwingRoom extends JFrame {
 				System.out.println("Returned score indicator: " + scoreIndicator);
 				//TODO remove print statement
 				processReturnFromQBD(scoreIndicator);
+				
 			}
 		});	
 	}
@@ -451,6 +452,7 @@ public class SwingRoom extends JFrame {
 	public void processReturnFromQBD(GameStatus scoreIndicator) {
 		if (scoreIndicator == GameStatus.QuestionWrong) {
 			score.incrementWrongQuestions();
+			PopUpMsg.launchPopUp();
 		}
 		if ((scoreIndicator == GameStatus.QuestionCorrect) || (scoreIndicator == GameStatus.QuestionWithHint)) {
 			if (currentRoom.getTreasure() != null) {

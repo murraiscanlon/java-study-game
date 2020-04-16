@@ -54,13 +54,13 @@ public class PopUpMsg extends JDialog {
 	 
 
 
-	public static void main(String[] args) {
-		PopUpMsg pop = new PopUpMsg();
-		pop.launchPopUp();	
-		
-	}
+//	public static void main(String[] args) {
+//		PopUpMsg pop = new PopUpMsg();
+//		pop.launchPopUp();	
+//		
+//	}
 
- public void launchPopUp() {
+ public static void launchPopUp() {
 		try {
 			PopUpMsg dialog = new PopUpMsg();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

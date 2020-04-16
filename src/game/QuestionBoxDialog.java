@@ -188,6 +188,7 @@ public class QuestionBoxDialog extends JDialog {
 				}
 				else {
 					scoreIndicator = GameStatus.QuestionWrong;
+					
 				}
 
 				bg2.clearSelection();
@@ -195,6 +196,8 @@ public class QuestionBoxDialog extends JDialog {
 				hintRevealedLabel.setVisible(false);
 				fairyRevealLabel.setVisible(false);
 				hintButton.setVisible(true);
+				
+				
 
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
