@@ -204,7 +204,7 @@ public class QuestionBoxDialog extends JDialog {
 					dragonImage = new ImageIcon("images/dragon2.jpg");
 					JOptionPane.showMessageDialog(jp,
 					    "",
-					    "",
+					    "Incorrect Answer",
 					    JOptionPane.INFORMATION_MESSAGE,
 					    dragonImage);
 				}
