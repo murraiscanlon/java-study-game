@@ -12,6 +12,7 @@ class TreasuresTest {
 
 	
 	@Test
+	//Test to see if treasures 1-6 are in room
 	void testIsTreasureInRoom_1() {
 		Treasures treasures = new Treasures();
 		int roomid = 1;
@@ -24,7 +25,7 @@ class TreasuresTest {
 		Treasures treasures = new Treasures();
 		int roomid = 2;
 		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Jewel");
+		assertEquals(t.getTreasureType(), "Jewel Editor");
 	}
 
 	@Test
@@ -32,7 +33,7 @@ class TreasuresTest {
 		Treasures treasures = new Treasures();
 		int roomid = 3;
 		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Sword");
+		assertEquals(t.getTreasureType(), "Java Sword");
 	}
 
 	@Test
@@ -40,13 +41,29 @@ class TreasuresTest {
 		Treasures treasures = new Treasures();
 		int roomid = 4;
 		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "MagicIDE");
+		assertEquals(t.getTreasureType(), "Magic IDE");
 	}
-
+	
 	@Test
+    void testIsTreasureInRoom_5() {
+        Treasures treasures = new Treasures();
+        int roomid = 5;
+        Treasure t = treasures.isTreasureInRoom(roomid-1);
+        assertEquals(t.getTreasureType(), "Diamond Debugger");
+    }
+	
+	@Test
+    void testIsTreasureInRoom_6() {
+        Treasures treasures = new Treasures();
+        int roomid = 6;
+        Treasure t = treasures.isTreasureInRoom(roomid-1);
+        assertEquals(t.getTreasureType(), "Key Compiler");
+    }
+	@Test
+	//Tests if Treasure is not in Room
 	void testIsTreasureInRoom_null() {
 		Treasures treasures = new Treasures();
-		int roomid = 5;
+		int roomid = 7;
 		Treasure t = treasures.isTreasureInRoom(roomid-1);
 		assertEquals(t, null);
 	}
@@ -68,7 +85,7 @@ class TreasuresTest {
 				assertEquals(t.getTreasureType(), "Bitcoin");
 				break;
 			case 2:
-				assertEquals(t.getTreasureType(), "Jewel");
+				assertEquals(t.getTreasureType(), "Jewel Editor");
 				break;
 			default:
 			}
@@ -95,13 +112,13 @@ class TreasuresTest {
 				assertEquals(t.getTreasureType(), "Bitcoin");
 				break;
 			case 2:
-				assertEquals(t.getTreasureType(), "Jewel");
+				assertEquals(t.getTreasureType(), "Jewel Editor");
 				break;		
 			case 3:
-				assertEquals(t.getTreasureType(), "Sword");
+				assertEquals(t.getTreasureType(), "Java Sword");
 				break;			
 			case 4:
-				assertEquals(t.getTreasureType(), "MagicIDE");
+				assertEquals(t.getTreasureType(), "Magic IDE");
 				break;
 			default:
 			}
@@ -133,13 +150,13 @@ class TreasuresTest {
 				assertEquals(t.getTreasureType(), "Bitcoin");
 				break;
 			case 2:
-				assertEquals(t.getTreasureType(), "Jewel");
+				assertEquals(t.getTreasureType(), "Jewel Editor");
 				break;		
 			case 3:
-				assertEquals(t.getTreasureType(), "Sword");
+				assertEquals(t.getTreasureType(), "Java Sword");
 				break;			
 			case 4:
-				assertEquals(t.getTreasureType(), "MagicIDE");
+				assertEquals(t.getTreasureType(), "Magic IDE");
 				break;
 			default:
 			}
@@ -213,12 +230,6 @@ class TreasuresTest {
 		System.out.println("*****");
 	}
 	
-	//	@Test
-	//	void testAddTreasure() {
-	//		fail("Not yet implemented");
-	//	}
-
-
 }
 
 
