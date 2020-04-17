@@ -49,18 +49,20 @@ public class Instructions extends JDialog {
 	 */
 	public void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 665, 715);
+		setBounds(100, 100, 665, 670);
 		contentPane = new JPanel();
 		contentPane.setSize(645, 705);
 		contentPane.setBackground(Color.gray);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setSize(500, 500);
 		layeredPane.setBackground(Color.red);
-		layeredPane.setBounds(10, 10, 645, 695);
+		layeredPane.setBounds(0, 0, 645, 695);
+		
 		contentPane.add(layeredPane);
 	}
 	
@@ -69,7 +71,7 @@ public class Instructions extends JDialog {
 	 */
 	public void setUpOkButton() {
 		okButton = new JButton("OK!");
-		okButton.setBounds(365, 568, 110, 35);
+		okButton.setBounds(275, 507, 110, 35);
 		okButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		okButton.addMouseListener(new MouseAdapter() {
 			@Override
