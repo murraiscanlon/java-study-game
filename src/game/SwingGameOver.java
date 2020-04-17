@@ -79,28 +79,28 @@ public class SwingGameOver extends JFrame {
     public SwingGameOver(Score score) {
     	
     	this.score = score;
-        /**Sets up initial frame**/
+        /*** Sets up initial frame ***/
         initGameOver();
         
-        /**Sets up scroll**/        
+        /*** Sets up scroll ***/        
         setUpScroll();
         
-        /**Sets up Win message when player wins***/
+        /*** Sets up Win message when player wins ***/
         setUpWinMsg();
         
-        /***Sets up Lose message when player loses***/
+        /*** Sets up Lose message when player loses ***/
         setUpLoseMsg();        
         
-        /**Sets up quit game button**/
+        /*** Sets up quit game button ***/
         setUpQuitButton();
         
-        /**Sets up play again button**/
+        /*** Sets up play again button ***/
         setUpPlayAgainButton();
         
-        /***Sets up score display***/
+        /*** Sets up score display ***/
         setUpScoreDisplay();
               
-        /***Sets up background image**/
+        /*** Sets up background image ***/
         setUpBackground();
         
     }
@@ -123,14 +123,11 @@ public class SwingGameOver extends JFrame {
         loseMsg.setVisible(true);
         winMsg.setVisible(false);
         wizardPlace1.setVisible(true);
-        wizardPlace.setVisible(false);   
-        
+        wizardPlace.setVisible(false);
         
     }
    
-    /**
-     * Helper Methods
-     */
+    /*** Helper Methods ***/
     
     /**
      * Method to initialize Game Over page
@@ -138,8 +135,9 @@ public class SwingGameOver extends JFrame {
     public void initGameOver() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 900, 600);
+        setLocationRelativeTo(null);
         contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));        
         setContentPane(contentPane);
         contentPane.setLayout(null);
     }
@@ -184,8 +182,9 @@ public class SwingGameOver extends JFrame {
     public void setUpPlayAgainButton() {
         playAgain = new JButton("PLAY AGAIN");
         playAgain.setFont(new Font("Times New Roman", Font.BOLD, 12));
-        playAgain.setForeground(new Color(255, 255, 255));
-        playAgain.setBackground(new Color(60, 0, 0));
+        playAgain.setBorder(new LineBorder(new Color(153, 153, 153), 2));
+        playAgain.setForeground(Color.WHITE);
+        playAgain.setBackground(new Color(0, 60, 0));//get color
         playAgain.setBounds(10, 10, 119, 37);
         playAgain.setOpaque(true);
         playAgain.addMouseListener(new MouseAdapter() {
@@ -219,7 +218,7 @@ public class SwingGameOver extends JFrame {
         winMsg.setWrapStyleWord(true);
         winMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
         winMsg.setText("Wizard Arvind: Thank you for saving me! Your exemplary Java knowledge exceeded my expectations.  Best wishes on  your journey.");
-        winMsg.setForeground(UIManager.getColor("Button.light"));
+        winMsg.setForeground(Color.WHITE);
         winMsg.setBackground(Color.DARK_GRAY);
         winMsg.setEditable(false);
         winMsg.setBounds(123, 253, 297, 61);
@@ -240,15 +239,15 @@ public class SwingGameOver extends JFrame {
         loseMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
         loseMsg.setText(" Wizard Arvind: Your Java knowledge is lacking. "
                         + "Play again to free me from the Java Monsters!");
-        loseMsg.setForeground(UIManager.getColor("Button.light"));
+        loseMsg.setForeground(Color.WHITE);
         loseMsg.setBackground(Color.DARK_GRAY);
         loseMsg.setEditable(false);     
         loseMsg.setVisible(false);        
         loseMsg.setBounds(430, 266, 309, 48);
-        contentPane.add(loseMsg);      
+        contentPane.add(loseMsg);  
         
         
-        //Sets wizard image for losing view
+        //Sets wizard image for losing pose
         wizardPlace1 = new JLabel();
         wizardPlace1.setHorizontalAlignment(SwingConstants.CENTER);
         wizardPlace1.setIcon(new ImageIcon("images/wizard2S.png"));
@@ -275,7 +274,7 @@ public class SwingGameOver extends JFrame {
           scoreLabel.setForeground(Color.WHITE);
           scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
           scoreLabel.setOpaque(true);
-          scoreLabel.setBounds(360, 123, 160, 54);
+          scoreLabel.setBounds(360, 123, 200, 54);
           //TODO delete later
 //          scoreLabel = new JLabel("Score:" + score.getCurrentScore());
 //          scoreLabel.setBounds(349, 86, 435, 86);
@@ -297,8 +296,7 @@ public class SwingGameOver extends JFrame {
         bgLabel = new JLabel();
         bgLabel.setIcon(new ImageIcon("images/GameOver.jpg"));
         bgLabel.setBounds(5, 5, 900, 600);
-        contentPane.add(bgLabel);
-        
+        contentPane.add(bgLabel);        
         
     }
 }
