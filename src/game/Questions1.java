@@ -11,7 +11,9 @@ import java.util.HashMap;
  */
 
 public class Questions1 {
-	// Instance variables 
+	/**
+	 * Instance variables 
+	 */
 	private ArrayList<Question> questions;
 	static int questionCounter; //does this need to be private?
 	private Question currentQuestion;
@@ -61,7 +63,7 @@ public class Questions1 {
 
 	}
 		
-
+//TODO delete later
 //	// main method for testing
 //	public static void main(String[] args) {
 //		Questions1 q1 = new Questions1();
