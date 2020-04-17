@@ -23,7 +23,7 @@ public class DirectionButton extends JButton {
 	 */
 	public DirectionButton(String dir, int x, int y) {
 
-
+//TODO delete before submission
 //		this.setText(dir);
 //		this.setIcon(null);
 //		this.setForeground(new Color(0, 0, 0));
