@@ -14,12 +14,16 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Class to establish Incorrect Answer message
+ * @author Team 30
+ *
+ */
 public class PopUpMsg extends JDialog {
 	
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	PopUpMsg dialog;
+	PopUpMsg dialog;//private?
 	
 	 public PopUpMsg() {
 		 
@@ -53,7 +57,7 @@ public class PopUpMsg extends JDialog {
 	 
 	 
 
-
+//TODO delete later
 //	public static void main(String[] args) {
 //		PopUpMsg pop = new PopUpMsg();
 //		pop.launchPopUp();	
