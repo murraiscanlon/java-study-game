@@ -112,10 +112,6 @@ public class Rooms {
 
 		Room room = new Room(id, name, shortDesc, longDesc, image);
 		
-		// Get the treasure for the room
-//		Treasure treasure = treasures.isTreasureInRoom(id-1);
-//		room.setTreasure(treasure);
-		
 		// Add the room to the ArrayList rooms
 		rooms.put(id, room);
 		

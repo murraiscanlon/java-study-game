@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
  * MCIT 591 Final Project
  * @author Team 30
  * 
- * 
  * This class models a room in the Adventure game.  
  * id: Unique ID for each room.
  * name: Name of the room.
@@ -31,7 +30,6 @@ public class Room {
 	private boolean visited = false;
 	private HashMap<String, Room> adjacentRooms = new HashMap<String, Room>();
 	private Treasure treasure;
-	
 	
 	/**
 	 * Constructor
@@ -79,13 +77,15 @@ public class Room {
 	public int getId() {
 		return id;
 	}
+	
 	/**
 	 * Room image getter
-	 * @return
+	 * @return image string
 	 */
 	public String getImage() {
 	    return image;
 	}
+	
 	/**
 	 * Method to return if room was visited
 	 * @return if room was visited before
