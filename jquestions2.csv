@@ -1,24 +1,23 @@
 question,answer1,answer2,answer3,answer4,hint,correct answer
-Which is the correct main method signature?,public static main(String args) {  },public static void main (String[ ] args) {  },public static main(String[ ] wow) {   },private static void main(String[ ] args) {   },Don't be fooled parameter names can be anything.,3
-What would be best when comparing two prinitive data types?,==,=,.equals(),.contains(),An operator will return a memory location of an object.,1
-What is the initial quantity of a newly-created empty ArrayList?,5,10,15,0,The initial quantity is the default quantity,4
-Which of the following is a mutable class?,String,Array,Byte,StringBuilder,Mutable means it can be changed after creation,4
-What is it called when you supply a new implementation for an inherited method?,overloading,overriding,overasrching,oversharing,This happens at run-time not at compile-time.,2
-What is a more efficient way of doing nested if - else if statements?,switch,break,while,for loops,You will use cases.,1
-How many primitive data types are in Java?,6,8,12,14,Primitive types are the most basic types like int and char.,2
-In Java the word 'true' is . . .,not a reserved key word,an instance of a boolean object,a Halloween character,a boolean literal,True only uses about 8 -16 bytes of memory,4
-Which operator will find the remainder when performing division?,*,%,/,#,You have about a 33% chance of getting the correct answer.,2
 What is the value of x? int x = (3 + 4) * 2,7,11,14,24,PEMDAS,3
+Which is the correct main method signature?,public static main(String args) {  },public static main (String[ ] args) {  },public static void main(String[ ] alf) {   },private static void main(String[ ] args) {   },Parameter names can be anything.,3
+What would be best when comparing two primitive data types?,==,=,.equals(),.contains(),Are you looking for the memory location or not?,1
+What is the initial capacity of a newly-created empty ArrayList?,5,10,15,0,Just Google it. . .Trust us.,2
+Which of the following is a mutable class?,String,Array,byte,StringBuilder,Mutable means it can be changed after creation.,4
+What is it called when you supply a new implementation for an inherited method?,overloading,overriding,overarching,oversharing,This happens at run-time not at compile-time.,2
+What is a more efficient way of doing multiple if - else if statements?,switch,break,while,for loops,You will use cases.,1
+How many primitive data types are in Java?,6,8,12,14,Primitive types are the most basic types like int and char.,2
+In Java the word 'true' is . . .,not a reserved key word,an instance of a boolean object,a Halloween character,a boolean literal,True only uses about 8 -16 bytes of memory.,4
+Which operator will find the remainder when performing division?,*,%,/,#,You have about a 25% chance of getting the correct answer.,2
 What must stay the same in order to overload a method?,the return type,the arguments,the name,the statements inside the body,What is the main identifier?,3
-Which option is considered the 'blue print'?,the class,the object,the instance,the subclass,It's not the object or the instance or the subclass,1
-If you try to print an ArrayList directly using System.out.println() only what will be sent to the console?,The items of the arrayList in a String,Only the numeric items in the ArrayList,The memory location of the reference object,Exactly what is called in the parameter list,Is an ArrayList an object? Yep yep it is.,3
-What exception will occur if you try to access item 10 in an array using [10]?,IndexOutOfBounds,NumberFormatException, An ExceptionalException,A HeadlessException,I think it is also a penalty in American football games.,1
-What is wrong with this . . .HashMap<integer> <String> harryHasherson = new HashMap<integer> <String>();,copy right infringement,HashMaps can't be used with two different data types,the angle brackets should be curly braces,HashMaps can't use primitive data types,You don't really need a hint you got this!,4
-What is a good placeholder if you don't know what data type will be passed to your method?,Question,Object,Subject,StringBuilder,The parent class of all Java objects,2
+Which option is considered the 'blue print'?,the class,the object,the instance,the subclass,It's not the object or the instance or the subclass.,1
+If you try to print an ArrayList directly using System.out.println() only what will be sent to the console?,the items of the arrayList in a String,only the numeric items in the ArrayList,the memory location of the reference object,Exactly what is called in the parameter list,Is an ArrayList an object? Yep yep it is.,3
+What exception will occur if you try to access item 10 in an array using [10]?,IndexOutOfBounds,NumberFormatException, an ExceptionalException,A HeadlessException,I think it is also a penalty in American football games.,1
+What is a good placeholder if you don't know what data type will be passed to your method?,Question,Object,Subject,StringBuilder,The parent class of all Java objects.,2
 Which loop would you use with an uncertain number of inputs?,while loop,for loop,for each loop,fruit loop,While you're trying to figure this one out I'll just hang on to this treasure.,1
 With which option(s) can you use a 'break' command?,for,switch,while,all options,If it iterates you can usually break out of it.,4
-Do you need to instantiate a new instance of a static class?,no,yes,sometimes,always,Static means lacking in movement or change.,1
-How should you access private instance variables?,you shouldn't  they are private,getters/setters and public methods,the same way you access public variables,request access via email,public is definitely part of the solution here,2
-How many constructors can a class have?,only one,up to 5,few than its parent class,As many as it needs,Think about how many constructors the println() method has.,4
-What would be the output: System.out.println('2' + 2 + 3);,7,5,25,you will receive an error,Think about concatenation.,3
-If you don't define a constructor for your class Java will define a default constructor for you.,TRUE,FALSE,MAYBE,You don't really need a fourth option.,Could an object be used without a constructor?,1
+Can you instantiate a new instance of an abstract class?,no ,yes,sometimes,only if it doesn't contain abstract methods,What part of abstract don't you understand?,1
+How should you access private instance variables?,you shouldn't  they are private,getters/setters and public methods,the same way you access public variables,request access via email,Public is definitely part of the solution here.,2
+How many constructors can a class have?,only one,up to 5,fewer than its parent class,as many as it needs,Obviously you have been sleeping during lectures.,4
+What would be the output: System.out.println('2' + 0);,50,20,2,error,Think about concatenation and ASCII values.,1
+If you don't define a constructor for your class Java will define a default constructor for you.,true,false,maybe,you don't really need a fourth option,Could an object be used without a constructor?,1
