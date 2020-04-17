@@ -1,13 +1,14 @@
 package game;
-
+/**
+ * Contains the question and multiple choice answers 
+ * Player must correctly answer to retrieve Treasures
+ * Fairy GodTA will provide hints on request
+ * @author Team 30
+ */
 public class Question {
-    /**
-     * Contains the question and multiple choice answers 
-     * Player must correctly answer to retrieve Treasures
-     * Fairy GodTA will provide hints on request
-     * @author Team 30
-     */
-
+   /**
+    * Instance Variables
+    */
     private String question;
     private String answer1;
     private String answer2;
@@ -22,6 +23,7 @@ public class Question {
      * @param answer1
      * @param answer2
      * @param answer3
+     * @param answer4
      * @param hint
      */
     public Question (String question, String answer1, String answer2,
