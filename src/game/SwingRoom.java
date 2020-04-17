@@ -15,9 +15,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-
+/**
+ * Class contains the framework for castle rooms
+ * Main area for game play
+ * @author Team 30
+ *
+ */
 public class SwingRoom extends JFrame {
-
+    /**
+     * Instance Variables
+     */
 	private static final long serialVersionUID = 1L;
 	private JPanel roomArea;
 	private JLayeredPane layeredPane;
@@ -38,57 +45,73 @@ public class SwingRoom extends JFrame {
 	private Icon bgIcon = new ImageIcon();
 	private JLabel background;
 	private JLabel inventory;
-	private Icon fairy;
+	private Icon fairy;	
 	private JLabel scoreLabel;	
 	private JLabel bitcoin;
 	private JLabel diamond;
 	private JLabel magicIDE;
 	private JLabel sword;
 	private JLabel keyCompiler;
-	private JLabel jewel;
-	private JLabel tList;
+	private JLabel jewel;	
+	private JLabel tList;	
 	private Score score = new Score();
 	
 	/**
-	 * Create the Swing interface for a room in the game
+	 * Constructor 
+	 * @param playerName
 	 */
 	public SwingRoom(String playerName) {
 
 		/***** Initialize the Rooms  *****/
 		initRooms(playerName);
+		
 		/***** Set up the Room UI foundation  *****/
 		setUpUIFoundation();
+		
 		/***** Set up the Question Dialog Window and initialize questions  *****/
 		setUpQuestionDialogWindow();
-		/***** Set up the Instructions Windoe  *****/
+		
+		/***** Set up the Instructions Window  *****/
 		setUpInstructions(score);
+		
 		/***** Set up the Direction Buttons  *****/
 		setUpDirButtons();
+		
 		/***** Set up the Help Button  *****/
 		setUpHelpButton();
+		
 		/***** Set up the Quit / Exit Button  *****/
 		setUpQuitButton();
+		
 		/***** Set up the background  *****/
 		setUpBackground();
+		
 		/***** Set up the scroll label  *****/
 		setUpScrollLabel();
+		
 		/***** Set up the inventory label  *****/
 		setUpInventoryLabel();
+		
 		/***** Set up the scoring label  *****/
 		setUpScoreLabel();
+		
 		/***** Set up the fairy  *****/
-		setUpFairy();			
+		setUpFairy();	
+		
 		/*****Set up Treasure Labels*****/
 		setUpTreasures();
+		
 		/***** Set up the treasure button  *****/
 		setUpTreasureButton();
+		
 		/***** Final background set up  *****/
 		finalBGSetup();
+		
 		/***** Prepare to start the game  *****/
 		postUISetup();
 	}
 
-	/** Helper methods **/	
+	/*** Helper methods ***/	
 
 	/**
 	 * Method initializes all the game rooms and set up the treasures in the rooms
@@ -191,7 +214,9 @@ public class SwingRoom extends JFrame {
 		});    
 		layeredPane.add(roomE);
 	}
-	
+	/**
+	 * Method to set up Help / Instructions button
+	 */
 	public void setUpHelpButton() {
 		helpButton = new DirectionButton("Help", 730, 480);
 		helpButton.addMouseListener(new MouseAdapter() {
@@ -258,11 +283,11 @@ public class SwingRoom extends JFrame {
 	public void setUpInventoryLabel() {
 		inventory = new JLabel("You have no treasures yet!");
 		inventory.setHorizontalAlignment(SwingConstants.CENTER);
-		//inventory.setBounds(0, 500, 874, 30);
+		//inventory.setBounds(0, 500, 874, 30);//TODO delete
 		inventory.setLayout(null);
 		inventory.setBackground(new Color(0, 0, 0));
 		inventory.setForeground(new Color(255, 255, 255));
-		inventory.setBounds(84, 509, 790, 41);
+		inventory.setBounds(60, 503, 825, 61);
 		inventory.setOpaque(true);
 		inventory.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		//inventory.setHorizontalAlignment(SwingConstants.CENTER);
@@ -287,56 +312,26 @@ public class SwingRoom extends JFrame {
 
 	/**
 	 * Method to set up Treasure Labels
-	 * 
+	 * Uses TreasureLabel class to generate treasure icons
 	 */
 	public void setUpTreasures() {
-		bitcoin = new JLabel("");
-		bitcoin.setIcon(new ImageIcon("images/bitcoinS.png"));
-		bitcoin.setHorizontalAlignment(SwingConstants.CENTER);
-		bitcoin.setBackground(Color.GRAY);
-		bitcoin.setBounds(0, 38, 84, 79);
-		bitcoin.setVisible(false);
+		
+	    bitcoin = new TreasureLabel(0, 38, "images/bitcoinS.png");	    
 		layeredPane.add(bitcoin);
 
-		diamond = new JLabel("");
-		diamond.setForeground(new Color(255, 255, 255));
-		diamond.setIcon(new ImageIcon("images/diamondS.png"));
-		diamond.setHorizontalAlignment(SwingConstants.CENTER);
-		diamond.setBackground(Color.GRAY);
-		diamond.setBounds(4, 130, 80, 80);
-		diamond.setVisible(false);
+		diamond = new TreasureLabel(0, 130, "images/diamondS.png");
 		layeredPane.add(diamond);
-
-		keyCompiler = new JLabel("");
-		keyCompiler.setIcon(new ImageIcon("images/keyCompilerS.png"));
-		keyCompiler.setHorizontalAlignment(SwingConstants.CENTER);
-		keyCompiler.setBackground(Color.GRAY);
-		keyCompiler.setBounds(0, 194, 80, 80);
-		keyCompiler.setVisible(false);
+		
+		keyCompiler = new TreasureLabel(0, 194, "images/keyCompilerS.png");
 		layeredPane.add(keyCompiler);
-
-		magicIDE = new JLabel("");
-		magicIDE.setIcon(new ImageIcon("images/magicIDES.png"));
-		magicIDE.setHorizontalAlignment(SwingConstants.CENTER);
-		magicIDE.setBackground(Color.GRAY);
-		magicIDE.setBounds(4, 269, 80, 80);
-		magicIDE.setVisible(false);
+		
+		magicIDE = new TreasureLabel(0, 269, "images/magicIDES.png");
 		layeredPane.add(magicIDE);
-
-		sword = new JLabel("");
-		sword.setIcon(new ImageIcon("images/swordS.png"));
-		sword.setHorizontalAlignment(SwingConstants.CENTER);
-		sword.setBackground(Color.GRAY);
-		sword.setBounds(4, 355, 80, 80);
-		sword.setVisible(false);
+		
+		sword = new TreasureLabel(0, 355, "images/swordS.png");
 		layeredPane.add(sword);
-
-		jewel = new JLabel("");
-		jewel.setIcon(new ImageIcon("images/jewelS.png"));
-		jewel.setHorizontalAlignment(SwingConstants.CENTER);
-		jewel.setBackground(Color.GRAY);
-		jewel.setBounds(0, 446, 80, 80);
-		jewel.setVisible(false);
+		
+		jewel = new TreasureLabel(0, 446, "images/jewelS.png");
 		layeredPane.add(jewel);
 
 		tList = new JLabel("Your Treasures");
@@ -346,19 +341,21 @@ public class SwingRoom extends JFrame {
 		tList.setHorizontalAlignment(SwingConstants.CENTER);
 		tList.setBackground(new Color(0, 0, 0));
 		tList.setOpaque(true);
-		tList.setBounds(0, 0, 85, 550);
+		tList.setBounds(0, 0, 85, 564);
 		layeredPane.add(tList);
 	}
 
-
+	/**
+	 * Method to establish Treasure Chest
+	 */
 	public void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
+		treasureButton.setOpaque(true);//delete if doesn't work on Diane's Mac
 		treasureButton.setBounds(371, 274, 161, 133);
-
 		treasureButton.addMouseListener(new MouseAdapter() {
-			//write method to have something happen when click on treasure
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				treasureButtonPushed();
@@ -386,7 +383,8 @@ public class SwingRoom extends JFrame {
 		showHideDirButtons();
 	}
 
-
+	/*** Game Play Methods ***/
+	 
 	/**
 	 * Method processes the next room.  It checks if it exists, and if so if it was 
 	 * visited or not
@@ -397,7 +395,7 @@ public class SwingRoom extends JFrame {
 
 		if(nextRoom != null) {
 			currentRoom = nextRoom;
-			//			String treasureType = "";
+			//			String treasureType = "";//TODO delete later
 			//			if (currentRoom.getTreasure() != null) {
 			//				treasureType=currentRoom.getTreasureType();
 			//				
@@ -465,7 +463,7 @@ public class SwingRoom extends JFrame {
 		System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
 		qbDialog.setUpQuestion(q);
-		//		qbDialog.setUpTreasure(currentRoom.getTreasure());
+		//		qbDialog.setUpTreasure(currentRoom.getTreasure());//TODO delete later
 		qbDialog.setVisible(true);
 	}
 	/**
@@ -525,19 +523,19 @@ public class SwingRoom extends JFrame {
 		// Check the game status to see if the player won or lost
 		GameStatus gameStatus = score.checkGameStatus();
 		System.out.println("Game Status : " + gameStatus);
+		
+		//Sends player to GameOver Page
 		if (gameStatus == GameStatus.GameOverWin) {
 			dispose();
 			SwingGameOver win = new SwingGameOver(score);
-			win.getWinMsg();
-			
+			win.getWinMsg();			
 			// Call the winning game over screen
 			System.out.println("*** You Won! ***");
 		}
 		else if (gameStatus == GameStatus.GameOverLose) {
 			dispose();
 			SwingGameOver lose = new SwingGameOver(score);
-			lose.getLoseMsg();
-			
+			lose.getLoseMsg();			
 			// Call the losing game over screen					
 			System.out.println("*** You Lost! 8-( ***");
 		}
