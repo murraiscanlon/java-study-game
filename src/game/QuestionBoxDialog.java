@@ -53,9 +53,9 @@ public class QuestionBoxDialog extends JDialog {
 	private ButtonGroup bg2;
 	private Question question;
 	private boolean hintTaken;
-	private JLabel wrongAnswerMessage;
-	JOptionPane jp;
-	ImageIcon dragonImage;
+	private JLabel wrongAnswerMessage;//TODO delete?
+	JOptionPane jp; //TODO private?
+	ImageIcon dragonImage; //TODO private?
 
 	/**
 	 * Constructor
@@ -69,16 +69,22 @@ public class QuestionBoxDialog extends JDialog {
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
+		
 		/***** Positions Current Question *****/
 		setUpCurrentQuestionElements();
+		
 		/***** Positions Answer Choice Buttons *****/
 		setUpAnswerChoiceButtons();
+		
 		/***** Set Up Submit Button *****/
 		setUpSubmitButton();
-		/***** Set Up Return Button *****/
+		
+		/***** Set Up Return Button *****///TODO delete?
 		//setUpReturnButton();
+		
 		/***** Set Up Hint Button *****/
 		setUpHintButton();
+		
 		/***** Set Up Monster Images *****/
 		setUpMonsterImageBackground();
 	}
@@ -245,7 +251,6 @@ public class QuestionBoxDialog extends JDialog {
 		fairyRevealLabel.setBounds(5, 580, 180, 163);
 		layeredPane.add(fairyRevealLabel);
 		fairyRevealLabel.setVisible(false);
-
 
 		// reveals hint when clicked
 		hintButton = new JButton("HINT");
