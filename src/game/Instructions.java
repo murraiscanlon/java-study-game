@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.EventListenerList;
 /**
+ * Class to create Instructions Pop-up Box 
  * @author Team 30
  *
  */
@@ -28,7 +29,7 @@ public class Instructions extends JDialog {
 	//private EventListenerList listenerList = new EventListenerList();
 	private JLayeredPane layeredPane;
 	private JPanel contentPane;
-	private JLabel instruction;
+	private JLabel instruction;//TODO delete
 	private JLabel javaMonsterImageLabel;
 	private JButton okButton;
 
@@ -43,7 +44,9 @@ public class Instructions extends JDialog {
 		setUpMonsterImageBackground();
 	}
 
-	
+	/**
+	 * Method to establish the frame background
+	 */
 	public void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 665, 715);
