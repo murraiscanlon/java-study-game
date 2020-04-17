@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 /**
  * MCIT 591 Final Project
  * @author Team 30
- * 3/28/20
+ * 
  * 
  * This class models a room in the Adventure game.  
  * id: Unique ID for each room.
@@ -20,7 +20,10 @@ import javax.swing.ImageIcon;
  * treasure: The treasure in the room.  Could be null
  */
 public class Room {
-	private int id;
+	/**
+	 * Instance Variables
+	 */
+    private int id;
 	private String name;
 	private String shortDesc;
 	private String longDesc;
@@ -147,8 +150,6 @@ public class Room {
 	public void setAdjacentRoom(String direction, Room room) {
 		adjacentRooms.put(direction, room);
 	}
-	
-
 	
 	/**
 	 * Method to return the room in the direction specified
