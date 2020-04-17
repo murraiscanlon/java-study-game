@@ -38,9 +38,9 @@ public class SwingEnterPage {
     private JFrame frame;
     private JTextField textNameField;
     private JLabel gameTitle;
-    private JLabel playerNameLabel;
+    private JLabel playerNameLabel;//TODO delete?
     private JLabel bgImage;
-    private ImageIcon buttonPic;
+    private ImageIcon buttonPic;//TODO delete?
     private JButton startButton;
     private String playerName = "";
     
@@ -63,9 +63,8 @@ public class SwingEnterPage {
         setUpPageImagery();
     }
 
-    /**
-     * Helper Methods for SwingEnterPage
-     */
+    /*** Helper Methods for SwingEnterPage ***/
+    
     /**
      * Method to establish window frame
      */
@@ -90,9 +89,6 @@ public class SwingEnterPage {
         startButton.setHorizontalAlignment(SwingConstants.CENTER);
         startButton.setOpaque(true);
         startButton.setBounds(360, 460, 150, 45);
-        
-        
-             
         
         //Adds functionality for clicking on Start button
         startButton.addMouseListener(new MouseAdapter() {
@@ -148,7 +144,7 @@ public class SwingEnterPage {
         frame.getContentPane().add(textNameField);
         textNameField.setColumns(10);
         
-        /*
+        /*//TODO delete later
         //Label above blank text field to enter name
         playerNameLabel = new JLabel("Player Name:");
         playerNameLabel.setLabelFor(textNameField);
@@ -179,8 +175,8 @@ public class SwingEnterPage {
         
     }
     /**
-     * Launches the game application window
-     *      
+     * Main method
+     * Launches the game application window     *      
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
