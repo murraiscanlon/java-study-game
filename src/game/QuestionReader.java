@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class QuestionReader {
 
-	// instance variables
+	
 
 	/**
 	 * Reads in Java Questions to be answered during game play
@@ -59,6 +59,7 @@ public class QuestionReader {
 		return questions;
 	}
 
+	//TODO delete later
 //	// main method for testing purposes only
 //	public static void main(String[] args) {
 //
