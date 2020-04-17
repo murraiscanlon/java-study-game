@@ -27,7 +27,9 @@ import java.awt.event.MouseEvent;
  *
  */
 public class StoryPage extends JFrame {
-    
+    /**
+     * Instance Variables
+     */
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JLabel image2;
@@ -44,25 +46,19 @@ public class StoryPage extends JFrame {
      * Creates the frame.
      */
     public StoryPage(String playerName) {
-        /**
-         * Sets up the initial panel
-         */
-        initializeStoryPage(playerName);        
-        /**
-         * Sets up scroll with story
-         */
-        setUpScroll();        
-        /**
-         * Sets up scroll image
-         */
-        setScrollImage();         
-        /**
-         * Sets up ENTER button
-         */        
-        setEnterButton();        
-        /**
-         * Sets up background image
-         */
+        /*** Sets up the initial panel ***/
+        initializeStoryPage(playerName);   
+        
+        /*** Sets up scroll with story ***/
+        setUpScroll();    
+        
+        /*** Sets up scroll image ***/
+        setScrollImage();     
+        
+        /*** Sets up ENTER button ***/        
+        setEnterButton();   
+        
+        /*** Sets up background image ***/
         setUpBackground();
          
     }
