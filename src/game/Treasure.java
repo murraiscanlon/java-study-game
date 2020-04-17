@@ -28,6 +28,7 @@ public class Treasure {
      * @param treasureType
      * @param points
      * @param roomName
+     * @param treasurePic
      */
     public Treasure(String treasureType, int points, String roomName, ImageIcon treasurePic) {
         this.treasureType = treasureType;
