@@ -1,0 +1,37 @@
+Team 30 FINAL PROJECT SUMMARY
+
+Team Members: Diane Hoffstetter, Jennifer Macklin, Murrai Scanlon
+
+Javenture Game
+All three team members contributed significantly to every aspect of the program. The team colloborated closely to ensure timelines were being met and development remained on track. Javenture is single player adventure game where the player enters a castle to free Wizard Arvind from Java Monsters. In order to free him, they must take treasures from randomly positioned Java Monsters. A treasure is collected when the player correctly answers a question related to Java programming. The player loses if three questions are answered incorrectly and wins by getting 20 points. 
+
+Project Phases
+
+Planning & Design: Before drafting CRCs, the team established a project planning board on Trello and outlined the development plan.  Basic game logic was discussed and agreed upon prior to coding, although details were refined later in the process. 
+
+Backend Development: The backend of "core" classes form the game structure. Initially there were several more classes, but as the project evolved some were eliminated to streamline code. To start, each member selected a backend problem to tackle such as Room, Question, Treasure or Score. Additional support classes were developed once initial functionality was attained. After methods and classes were merged, the team started piecing together the frontend framework. 
+
+Frontend Development: Java Swing was used to create the frontend, focusing on four main windows: an entry page(SwingEnterPage), the backstory(StoryPage), game play template(SwingRoom) and final window(SwingGameOver). SwingRoom is the largest class because most of the action occurs there. Classes were separated from SwingRoom when it made logical sense to consolidate code. 
+
+Testing: JUnit tests were created for backend code including: Treasures, Rooms, Score, and Questions-associated classes. Each team member wrote tests for at least one class group.
+
+Debugging: With team members distributed across three time zones, we approached debugging holisticly and tackled problems based on availability. Sometimes one team member focused on a bug for a while, and another would finish it up. We also held live coding sessions, talking through the code and modifying the code base in tandem. 
+
+Refinement: Following successful game implementation, we began adding features and refining components' look and layout. Additional features beyond our minimum viable product include a pop-up instructions box and incorrect answer dialog box.
+
+Project Management: We used a combination of tactics and communication methods to stay on track. We held Zoom meetings almost every day to discuss progress, problems and distribute daily tasks. Slack was used to exchange quick updates or ask questions. Trello was used for checklists, bug tracking and capturing ideas.  
+
+New Items Learned: 
+Java Swing - none of the team had worked in Java Swing before, and all members directly contributed to the extensive frontend development synonymous with game development. 
+Overloading - In areas where it made sense, overloading was used to reduce the amount of code needed to run the program. 
+Enums - enums were created to simplify game status
+
+Structure:
+Castle
+12 Rooms
+8 Monsters
+6 Treasures
+Question Database
+Fairy (hint)
+Wizard 
+
