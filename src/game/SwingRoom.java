@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -219,6 +220,7 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpHelpButton() {
 		helpButton = new DirectionButton("Help", 730, 480);
+		helpButton.setLocation(730, 485);
 		helpButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -234,6 +236,7 @@ public class SwingRoom extends JFrame {
 	public void setUpQuitButton() {
 		//Exit button upper right corner, has same format as Direction Button
 		JButton exitButton = new DirectionButton("QUIT",715, 35);
+		exitButton.setLocation(730, 23);
 		exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -300,13 +303,20 @@ public class SwingRoom extends JFrame {
 	 */
 	public void setUpScoreLabel() {
 		scoreLabel = new JLabel("");
-		scoreLabel.setBounds(349, 86, 435, 86);
-		scoreLabel.setBackground(new Color(0, 0, 0));		
-		scoreLabel.setForeground(new Color(255, 255, 255));
-		scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		//scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		//scoreLabel.setBounds(607, 510, 267, 41);
-		//scoreLabel.setOpaque(true);
+		scoreLabel.setBorder(new LineBorder(new Color(153, 153, 153), 2));
+        scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+        scoreLabel.setBackground(new Color(60, 0, 0));
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        scoreLabel.setOpaque(true);
+        scoreLabel.setBounds(328, 99, 200, 54);
+//		scoreLabel.setBounds(349, 86, 435, 86);
+//		scoreLabel.setBackground(new Color(0, 0, 0));		
+//		scoreLabel.setForeground(new Color(255, 255, 255));
+//		scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+//		//scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		//scoreLabel.setBounds(607, 510, 267, 41);
+//		//scoreLabel.setOpaque(true);
 		layeredPane.add(scoreLabel);
 	}
 
@@ -353,7 +363,7 @@ public class SwingRoom extends JFrame {
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
 		treasureButton.setOpaque(true);//delete if doesn't work on Diane's Mac
-		treasureButton.setBounds(371, 274, 161, 133);
+		treasureButton.setBounds(358, 282, 161, 133);
 		treasureButton.addMouseListener(new MouseAdapter() {
 			
 			@Override
