@@ -31,7 +31,7 @@ import java.awt.Rectangle;
 import javax.swing.border.LineBorder;
 /**
  * Class to establish the final window of game
- * Shows win/loss status * 
+ * Shows win/loss status  
  * @author Team 30
  *
  */
@@ -57,6 +57,7 @@ public class SwingGameOver extends JFrame {
     /**
      * Launch the application.
      */
+    //TODO delete later
  //   public static void main(String[] args) {
   	
 //        EventQueue.invokeLater(new Runnable() {
@@ -275,6 +276,7 @@ public class SwingGameOver extends JFrame {
           scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
           scoreLabel.setOpaque(true);
           scoreLabel.setBounds(360, 123, 160, 54);
+          //TODO delete later
 //          scoreLabel = new JLabel("Score:" + score.getCurrentScore());
 //          scoreLabel.setBounds(349, 86, 435, 86);
 //          scoreLabel.setBackground(new Color(0, 0, 0));       
