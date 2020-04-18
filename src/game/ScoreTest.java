@@ -34,8 +34,8 @@ class ScoreTest {
 	@Test
 	void testGetTreasures() {
 		Score score = new Score();
-		Treasure t1 = new Treasure("Gold", 5, null, null);
-		Treasure t2 = new Treasure("Silver", 3, null, null);
+		Treasure t1 = new Treasure("Gold", 5, null);
+		Treasure t2 = new Treasure("Silver", 3, null);
 		score.addTreasure(t1);
 		score.addTreasure(t2);
 		ArrayList<Treasure> ts = score.getTreasures();

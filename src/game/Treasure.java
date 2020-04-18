@@ -16,7 +16,6 @@ public class Treasure {
 	 */
 	private String treasureType;
 	private int points;
-	private String roomName;
 	private int roomId = -1;
 	private ImageIcon treasurePic;
 
@@ -25,14 +24,11 @@ public class Treasure {
 	 * 
 	 * @param treasureType - type of treasure
 	 * @param points       - points each treasure is worth
-	 * @param roomName     - room that the treasure is assigned to
-	 * @param roomId       - id of room that treasure is assigned to
 	 * @param treasurePic
 	 */
-	public Treasure(String treasureType, int points, String roomName, ImageIcon treasurePic) {
+	public Treasure(String treasureType, int points, ImageIcon treasurePic) {
 		this.treasureType = treasureType;
 		this.points = points;
-		this.roomName = roomName;
 		this.treasurePic = treasurePic;
 	}
 
@@ -43,7 +39,7 @@ public class Treasure {
 	 */
 	@Override
 	public String toString() {
-		return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
+		return "Treasure [treasureType=" + treasureType + ", points=" + points + "]";
 	}
 
 	public String getTreasureType() {
@@ -60,14 +56,6 @@ public class Treasure {
 
 	public void setPoints(int points) {
 		this.points = points;
-	}
-
-	public String getRoomName() {
-		return roomName;
-	}
-
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
 	}
 
 	public int getRoomId() {
