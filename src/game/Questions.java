@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @author Team 30
  */
 
-public class Questions1 {
+public class Questions {
 	/**
 	 * Instance variables
 	 */
@@ -23,7 +23,7 @@ public class Questions1 {
 	/**
 	 * Constructor
 	 */
-	public Questions1() {
+	public Questions() {
 		this.questions = QuestionReader.readCSVFile();
 		questionCounter = 0;
 		this.hints = new HashMap<String, String>();

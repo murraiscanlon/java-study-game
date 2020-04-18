@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class Questions1Test {
+class QuestionsTest {
 
 	// Test to confirm that getCurrentQuestion increments the question index
 	// Expected and actual should NOT be the same object
 	@Test
 	void testGetCurrentQuestion() {//testing method as is
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		Question expected = q1.getCurrentQuestion();
 		Question actual = q1.getCurrentQuestion();
 		assertNotSame(expected, actual);
@@ -20,7 +20,7 @@ class Questions1Test {
 	// Note that it is possible that the questions show up in the correct order
 	@Test
 	void testShuffleQuestions() {//testing shuffled questions three at a time. Testing the bounds of randomness!
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		q1.shuffleQuestions();
 		String[] qs = new String[3];
 		
@@ -47,7 +47,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetQuestion() {//testing each question object below this point
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "What is the value of x? int x = (3 + 4) * 2";
 		String actual = q1.getCurrentQuestion().getQuestion();
 		assertEquals(expected, actual);
@@ -57,7 +57,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetHint() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "PEMDAS";
 		String actual = q1.getCurrentQuestion().getHint();
 		assertEquals(expected, actual);
@@ -66,7 +66,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetAnswer1() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "7";
 		String actual = q1.getCurrentQuestion().getAnswer1();
 		assertEquals(expected, actual);
@@ -75,7 +75,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetAnswer2() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "11";
 		String actual = q1.getCurrentQuestion().getAnswer2();
 		assertEquals(expected, actual);
@@ -84,7 +84,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetAnswer3() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "14";
 		String actual = q1.getCurrentQuestion().getAnswer3();
 		assertEquals(expected, actual);
@@ -93,7 +93,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetAnswer4() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		String expected =  "24";
 		String actual = q1.getCurrentQuestion().getAnswer4();
 		assertEquals(expected, actual);
@@ -102,7 +102,7 @@ class Questions1Test {
 	
 	@Test
 	void testGetCorrectAnswer() {
-		Questions1 q1 = new Questions1();
+		Questions q1 = new Questions();
 		int expected =  3;
 		int actual = q1.getCurrentQuestion().getCorrectAnswer();
 		assertEquals(expected, actual);

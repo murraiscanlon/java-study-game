@@ -1,6 +1,5 @@
 package game;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -27,8 +26,7 @@ public class Treasures {
 
 	/**
 	 * Assigns Treasure type, value and room location to ArrayList
-	 * Additional Treasures will be added later
-	 * @param
+	 * @return ArrayList of Treasures
 	 */
 	public ArrayList<Treasure> assignTreasureTypes() {
 
@@ -41,10 +39,11 @@ public class Treasures {
 		
 		return treasures;
 	}
+	
 	/**
 	 * Assigns treasures to rooms randomly
-	 * @param numberRooms
-	 * @param random
+	 * @param numberRooms - total number of rooms in the game
+	 * @param random - set to true to randomize treasures to room, set to false for testing
 	 */
 	public void setTreasuresToRooms(int numberRooms, boolean random) {
 		
@@ -63,10 +62,11 @@ public class Treasures {
 			}
 		}
 	}
+	
 	/**
 	 * Gets the treasure for a room
-	 * @param id
-	 * @return
+	 * @param id - Room ID
+	 * @return - The treasure in the room, could be null to indicate no treasure
 	 */
 	public Treasure getTreasureForRoom(int id) {
 		if(roomToTreasures.containsKey(id)) {
@@ -74,19 +74,4 @@ public class Treasures {
 		}
 		return null;
 	}
-	
-	
-	/**
-	 * Checks if Treasure is in Room
-	 * @param
-	 */
-	public Treasure isTreasureInRoom(int id) {
-
-		if (id < treasures.size()) {
-			return treasures.get(id);
-		}
-		return null;
-	}
-
-
 }

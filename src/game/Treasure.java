@@ -3,74 +3,74 @@ package game;
 import javax.swing.ImageIcon;
 
 /**
- * Treasure contains objects for player to collect
- * 
- * Treasure objects have a points value and a room location
+ * Treasure contains objects for player to collect Treasure objects have a
+ * points value and a room location
  * 
  * @author Team 30
  */
 
 public class Treasure {
-    
-   
-    /**
-     *Instance variables for Treasure Class
-     */
-    private String treasureType;
-    private int points;
-    private String roomName;
-    private int roomId = -1;
-    private ImageIcon treasurePic;
-    
 
 	/**
-     * Constructor       
-     * @param treasureType
-     * @param points
-     * @param roomName
-     * @param treasurePic
-     */
-    public Treasure(String treasureType, int points, String roomName, ImageIcon treasurePic) {
-        this.treasureType = treasureType;
-        this.points = points;
-        this.roomName = roomName;
-        this.treasurePic = treasurePic;
-    }
-        
-    /**
-     * toString method & Getters + Setters
-     * @return
-     */
-    @Override
-    public String toString() {
-        return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
-    }
+	 * Instance variables for Treasure Class
+	 */
+	private String treasureType;
+	private int points;
+	private String roomName;
+	private int roomId = -1;
+	private ImageIcon treasurePic;
 
-    public String getTreasureType() {
-        return treasureType;
-    }
+	/**
+	 * Constructor - creates a treasure
+	 * 
+	 * @param treasureType - type of treasure
+	 * @param points       - points each treasure is worth
+	 * @param roomName     - room that the treasure is assigned to
+	 * @param roomId       - id of room that treasure is assigned to
+	 * @param treasurePic
+	 */
+	public Treasure(String treasureType, int points, String roomName, ImageIcon treasurePic) {
+		this.treasureType = treasureType;
+		this.points = points;
+		this.roomName = roomName;
+		this.treasurePic = treasurePic;
+	}
 
-    public void setTreasureType(String treasureType) {
-        this.treasureType = treasureType;
-    }
+	/**
+	 * toString method & Getters + Setters
+	 * 
+	 * @return String of the treasure
+	 */
+	@Override
+	public String toString() {
+		return "Treasure [treasureType=" + treasureType + ", points=" + points + ", roomName=" + roomName + "]";
+	}
 
-    public int getPoints() {
-        return points;
-    }
+	public String getTreasureType() {
+		return treasureType;
+	}
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
+	public void setTreasureType(String treasureType) {
+		this.treasureType = treasureType;
+	}
 
-    public String getRoomName() {
-        return roomName;
-    }
+	public int getPoints() {
+		return points;
+	}
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-    
-    public int getRoomId() {
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public String getRoomName() {
+		return roomName;
+	}
+
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	public int getRoomId() {
 		return roomId;
 	}
 
@@ -79,11 +79,11 @@ public class Treasure {
 	}
 
 	public ImageIcon getTreasurePic() {
-        return treasurePic;
-    }
+		return treasurePic;
+	}
 
-    public void setTreasurePic(ImageIcon treasurePic) {
-        this.treasurePic = treasurePic;
-    }
-    
+	public void setTreasurePic(ImageIcon treasurePic) {
+		this.treasurePic = treasurePic;
+	}
+
 }

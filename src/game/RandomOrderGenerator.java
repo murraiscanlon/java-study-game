@@ -1,12 +1,13 @@
 package game;
+
 import java.util.*;
 
 public class RandomOrderGenerator {
-	
+
 	/***
-	 * Given n numbers, this method returns an array
-	 * which has a random order of the numbers from 
-	 * 1 to n.
+	 * Given n numbers, this method returns an array which has a random order of the
+	 * numbers from 1 to n.
+	 * 
 	 * @param n
 	 * @return
 	 */
@@ -17,12 +18,7 @@ public class RandomOrderGenerator {
 		}
 		List<Integer> numList = Arrays.asList(numbers);
 		Collections.shuffle(numList);
-		int[] array = numList.stream().mapToInt(i->i).toArray();	
+		int[] array = numList.stream().mapToInt(i -> i).toArray();
 		return array;
 	}
-	//do we need this main method?
-	public static void main(String[] args) {
-		System.out.println(Arrays.toString(RandomOrderGenerator.getRandomOrder(10)));
-	}
-	
 }

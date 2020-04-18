@@ -10,64 +10,6 @@ import org.junit.jupiter.api.Test;
  */
 class TreasuresTest {
 
-	
-	@Test
-	//Test to see if treasures 1-6 are in room
-	void testIsTreasureInRoom_1() {
-		Treasures treasures = new Treasures();
-		int roomid = 1;
-		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Bitcoin");
-	}
-
-	@Test
-	void testIsTreasureInRoom_2() {
-		Treasures treasures = new Treasures();
-		int roomid = 2;
-		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Jewel Editor");
-	}
-
-	@Test
-	void testIsTreasureInRoom_3() {
-		Treasures treasures = new Treasures();
-		int roomid = 3;
-		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Java Sword");
-	}
-
-	@Test
-	void testIsTreasureInRoom_4() {
-		Treasures treasures = new Treasures();
-		int roomid = 4;
-		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t.getTreasureType(), "Magic IDE");
-	}
-	
-	@Test
-    void testIsTreasureInRoom_5() {
-        Treasures treasures = new Treasures();
-        int roomid = 5;
-        Treasure t = treasures.isTreasureInRoom(roomid-1);
-        assertEquals(t.getTreasureType(), "Diamond Debugger");
-    }
-	
-	@Test
-    void testIsTreasureInRoom_6() {
-        Treasures treasures = new Treasures();
-        int roomid = 6;
-        Treasure t = treasures.isTreasureInRoom(roomid-1);
-        assertEquals(t.getTreasureType(), "Key Compiler");
-    }
-	@Test
-	//Tests if Treasure is not in Room
-	void testIsTreasureInRoom_null() {
-		Treasures treasures = new Treasures();
-		int roomid = 7;
-		Treasure t = treasures.isTreasureInRoom(roomid-1);
-		assertEquals(t, null);
-	}
-
 	// Test with 2 rooms, 4 treasures, not random
 	@Test
 	void testSetTreasuresToRooms_02_04_false() {

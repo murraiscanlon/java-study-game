@@ -52,6 +52,7 @@ class RoomTest {
 		assertTrue(room1.wasVisited());		
 	}
 
+	// Test Room links
 	@Test
 	void testGetRoomAtDirection_R1_E2() {
 		assertEquals(room1.getRoomAtDirection("east").getId(),2);
