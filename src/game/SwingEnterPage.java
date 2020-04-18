@@ -51,7 +51,7 @@ public class SwingEnterPage {
 	/**
 	 * Method to establish window frame
 	 */
-	public void initFrame() {
+	private void initFrame() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 600);
 		frame.setBackground(Color.BLACK);
@@ -63,7 +63,7 @@ public class SwingEnterPage {
 	/**
 	 * Method to set up Start button
 	 */
-	public void setUpStartbutton() {
+	private void setUpStartbutton() {
 		// Sets the button to go to next screen
 		startButton = new JButton("START");
 		startButton.setBorder(new LineBorder(new Color(153, 153, 153), 2));
@@ -91,7 +91,7 @@ public class SwingEnterPage {
 	/**
 	 * Method to set up Player Name input
 	 */
-	public void setUpPlayer() {
+	private void setUpPlayer() {
 		// Text Field for player to enter name
 		textNameField = new JTextField();
 		textNameField.setText("Enter Player Name");
@@ -128,7 +128,7 @@ public class SwingEnterPage {
 	/**
 	 * Method to set up background look Sets title and picture
 	 */
-	public void setUpPageImagery() {
+	private void setUpPageImagery() {
 		// Sets up Game title
 		gameTitle = new JLabel("J A V E N T U R E");
 		gameTitle.setForeground(Color.GRAY);

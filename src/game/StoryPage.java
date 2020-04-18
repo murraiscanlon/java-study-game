@@ -61,7 +61,7 @@ public class StoryPage extends JFrame {
 	/**
 	 * Method to initialize Story Page
 	 */
-	public void initializeStoryPage(String playerName) {
+	private void initializeStoryPage(String playerName) {
 		// Sets up JPanel on JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
@@ -76,7 +76,7 @@ public class StoryPage extends JFrame {
 	/**
 	 * Method to set up scroll and background story
 	 */
-	public void setUpScroll() {
+	private void setUpScroll() {
 		// Creates text pane to hold story text
 		story = new JTextPane();
 		story.setEditable(false);
@@ -98,7 +98,7 @@ public class StoryPage extends JFrame {
 	/**
 	 * Method to set up the scroll background
 	 */
-	public void setScrollImage() {
+	private void setScrollImage() {
 
 		icon2 = new ImageIcon("images/scrollpage1.png");
 		contentPane.setLayout(null);
@@ -114,7 +114,7 @@ public class StoryPage extends JFrame {
 	 * Method to create ENTER button and add action Allows player to enter the
 	 * castle
 	 */
-	public void setEnterButton() {
+	private void setEnterButton() {
 
 		enter = new JButton("ENTER");
 		enter.setBorder(new LineBorder(new Color(153, 153, 153), 2));
@@ -141,7 +141,7 @@ public class StoryPage extends JFrame {
 	/**
 	 * Method to set up background image
 	 */
-	public void setUpBackground() {
+	private void setUpBackground() {
 		bgImage = new ImageIcon("images/enterdoor.jpg");
 		background = new JLabel(bgImage, JLabel.CENTER);
 		background.setBounds(0, 0, 900, 600);

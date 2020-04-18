@@ -46,7 +46,7 @@ public class Rooms {
 	 * 
 	 * @param roomFilename
 	 */
-	public void loadRoomCSV(String roomFilename) {
+	private void loadRoomCSV(String roomFilename) {
 		File roomFile = new File(roomFilename);
 		try {
 			Scanner roomFileScanner = new Scanner(roomFile);
