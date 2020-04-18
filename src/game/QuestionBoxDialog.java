@@ -86,7 +86,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This method sets up the base frame components for the main question window
 	 */
-	private void setUpUIFoundation() {
+	public void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 691, 762);
 		contentPane = new JPanel();
@@ -127,7 +127,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This positions all elements for the current question
 	 */
-	private void setUpCurrentQuestionElements() {
+	public void setUpCurrentQuestionElements() {
 		currentQuestion = new JLabel("Q");
 		currentQuestion.setBackground(Color.LIGHT_GRAY);
 		currentQuestion.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -139,7 +139,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This method creates the answer choices
 	 */
-	private void setUpAnswerChoiceButtons() {
+	public void setUpAnswerChoiceButtons() {
 
 		// sets button position and format
 		radioButton1 = new AnswerChoiceFormat(410);
@@ -200,7 +200,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * Hint button click method to help with core indicator in submit button
 	 */
-	private void hintButtonClicked() {
+	public void hintButtonClicked() {
 		hintTaken = true;
 		hintRevealedLabel.setVisible(true);
 		fairyRevealLabel.setVisible(true);
@@ -243,7 +243,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This method creates the monster background
 	 */
-	private void setUpMonsterImageBackground() {
+	public void setUpMonsterImageBackground() {
 
 		/**
 		 * Displays monster image as a background for the box frame
@@ -264,7 +264,7 @@ public class QuestionBoxDialog extends JDialog {
 	 * @param q - current question
 	 * @return - true if the answer is correct, false otherwise
 	 */
-	private boolean checkAnswer(Question q) {
+	public boolean checkAnswer(Question q) {
 		question = q;
 		int correctAnswerNumber = q.getCorrectAnswer();
 		// isCorrect = false;
@@ -286,7 +286,7 @@ public class QuestionBoxDialog extends JDialog {
 	 * Generates a random monster picture for the background of the question dialog
 	 * box
 	 */
-	private String monsterGenerator() {
+	public String monsterGenerator() {
 		Random randomMonster = new Random();
 		ArrayList<String> javaMonsters = new ArrayList<String>();
 		javaMonsters.add("images/assassinBlock.png");
@@ -307,7 +307,7 @@ public class QuestionBoxDialog extends JDialog {
 	 * 
 	 * @param event
 	 */
-	private void fireQBEvent(QuestionBoxEvent event) {
+	public void fireQBEvent(QuestionBoxEvent event) {
 		Object[] listeners = listenerList.getListenerList();
 
 		for (int i = 0; i < listeners.length; i += 2) {
