@@ -117,7 +117,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method initializes all the game rooms and set up the treasures in the rooms
 	 */
-	public void initRooms(String playerName) {
+	private void initRooms(String playerName) {
 		String roomFilename = "rooms12.csv"; // File with rooms
 		rooms = new Rooms(roomFilename); // Instance of Rooms that contains the map of the rooms
 		this.currentRoom = rooms.getRoomAtID(1); // Set the initial room to id 1
@@ -129,7 +129,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the foundation for the UI
 	 */
-	public void setUpUIFoundation() {
+	private void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
@@ -148,7 +148,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the Question Dialog Window
 	 */
-	public void setUpQuestionDialogWindow() {
+	private void setUpQuestionDialogWindow() {
 		qbDialog = new QuestionBoxDialog(this); // New Dialog Box
 		qbDialog.setLocationRelativeTo(null);
 		qbDialog.addQuestionBoxListener(new QuestionBoxListener() {
@@ -164,7 +164,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the instruction pop up window
 	 */
-	public void setUpInstructions() {
+	private void setUpInstructions() {
 		inst = new Instructions(this);
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
@@ -173,7 +173,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to create and set up the directional buttons
 	 */
-	public void setUpDirButtons() {
+	private void setUpDirButtons() {
 
 		roomN = new DirectionButton("N", 730, 354);
 		roomN.addMouseListener(new MouseAdapter() {
@@ -219,7 +219,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up Help / Instructions button
 	 */
-	public void setUpHelpButton() {
+	private void setUpHelpButton() {
 		helpButton = new DirectionButton("Help", 730, 480);
 		helpButton.setLocation(730, 485);
 		helpButton.addMouseListener(new MouseAdapter() {
@@ -234,7 +234,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to setup the Quit / Exit button
 	 */
-	public void setUpQuitButton() {
+	private void setUpQuitButton() {
 		// Exit button upper right corner, has same format as Direction Button
 		JButton exitButton = new DirectionButton("QUIT", 715, 35);
 		exitButton.setLocation(730, 23);
@@ -251,7 +251,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the background
 	 */
-	public void setUpBackground() {
+	private void setUpBackground() {
 		background = new JLabel(new ImageIcon("images/scroll2.png"));
 		layeredPane.add(background);
 		background.setBounds(60, 0, 687, 124);
@@ -261,7 +261,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the fairy
 	 */
-	public void setUpFairy() {
+	private void setUpFairy() {
 		fairy = new ImageIcon("images/fairy1.png");
 		JLabel fairyPlace = new JLabel(fairy, JLabel.CENTER);
 		fairyPlace.setBounds(694, 75, 180, 185);
@@ -271,7 +271,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the scroll label that describes the room
 	 */
-	public void setUpScrollLabel() {
+	private void setUpScrollLabel() {
 		scrollLabel = new JLabel();
 		scrollLabel.setText("<HTML>" + currentRoom.getLongDesc() + "</HTML>");
 		scrollLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -284,7 +284,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to set up the Inventory label
 	 */
-	public void setUpInventoryLabel() {
+	private void setUpInventoryLabel() {
 		inventory = new JLabel("You have no treasures yet!");
 		inventory.setHorizontalAlignment(SwingConstants.CENTER);
 		inventory.setLayout(null);
@@ -299,7 +299,7 @@ public class SwingRoom extends JFrame {
 	/*
 	 * Method to place current score on main window.
 	 */
-	public void setUpScoreLabel() {
+	private void setUpScoreLabel() {
 		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setBorder(new LineBorder(new Color(153, 153, 153), 2));
 		scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -315,7 +315,7 @@ public class SwingRoom extends JFrame {
 	 * Method to set up Treasure Labels Uses TreasureLabel class to generate
 	 * treasure icons
 	 */
-	public void setUpTreasures() {
+	private void setUpTreasures() {
 
 		bitcoin = new TreasureLabel(0, 38, "images/bitcoinS.png");
 		layeredPane.add(bitcoin);
@@ -349,7 +349,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method to establish Treasure Chest
 	 */
-	public void setUpTreasureButton() {
+	private void setUpTreasureButton() {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
@@ -368,7 +368,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Method finishes up the background set up
 	 */
-	public void finalBGSetup() {
+	private void finalBGSetup() {
 		bgIcon = new ImageIcon(currentRoom.getImage());
 		backgroundLbl = new JLabel(bgIcon, JLabel.CENTER);
 		backgroundLbl.setForeground(new Color(0, 0, 0));
@@ -380,7 +380,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Post UI setup
 	 */
-	public void postUISetup() {
+	private void postUISetup() {
 		showHideDirButtons();
 	}
 
