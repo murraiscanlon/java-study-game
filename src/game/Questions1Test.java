@@ -10,23 +10,11 @@ class Questions1Test {
 
 	void testGetCurrentQuestion() {//testing method as is
 		Questions1 q1 = new Questions1();
-		q1.questionCounter = 0;
 		Question expected = q1.getCurrentQuestion();
 		Question actual = q1.getCurrentQuestion();
 		assertNotSame(expected, actual);
 	}
 	
-	@Test
-	void testGetCurrentQuestion2() {//testing method as if no incrementer 
-		Questions1 q1 = new Questions1();
-		q1.questionCounter = 0;
-		Question expected = q1.getCurrentQuestion();
-		q1.questionCounter = 0;
-		Question actual = q1.getCurrentQuestion();
-		assertSame(expected, actual);
-	}
-	
-
 	
 	@Test
 	void testShuffleQuestions() {//testing shuffled questions three at a time. Testing the bounds of randomness!
@@ -39,7 +27,7 @@ class Questions1Test {
 		String actual = null;
 		
 		for (int i = 0; i < 3; i++ ) {
-			q1.questionCounter++;
+			q1.getQuestionCounter();
 			qs[i] = q1.getCurrentQuestion().getQuestion();
 			//System.out.println(qs[i]);
 			}
@@ -65,16 +53,6 @@ class Questions1Test {
 		
 	}
 	
-	
-	@Test
-	void testGetQuestion2() {
-		Questions1 q1 = new Questions1();
-		q1.questionCounter = 1;
-		String expected =  "Which is the correct main method signature?";
-		String actual = q1.getCurrentQuestion().getQuestion();
-		assertEquals(expected, actual);
-		
-	}
 	
 	@Test
 	void testGetHint() {

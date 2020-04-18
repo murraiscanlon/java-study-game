@@ -17,7 +17,7 @@ public class QuestionReader {
 	
 
 	/**
-	 * Reads in Java Questions to be answered during game play
+	 * Reads in Java Questions from jquestions2.csv to be answered during game play
 	 * 
 	 * @return ArrayList of Questions/Answers/Hints
 	 */
@@ -32,7 +32,7 @@ public class QuestionReader {
 			while (fileReader.hasNextLine()) {
 
 				String line = fileReader.nextLine();
-				String[] lineComponents = line.split(",");// may need to add parameters
+				String[] lineComponents = line.split(",");
 				String question = lineComponents[0];
 				String answer1 = lineComponents[1];
 				String answer2 = lineComponents[2];
@@ -58,16 +58,5 @@ public class QuestionReader {
 
 		return questions;
 	}
-
-	//TODO delete later
-//	// main method for testing purposes only
-//	public static void main(String[] args) {
-//
-//		for (Question q : QuestionReader.readCSVFile()) {
-//			System.out.println(q.getQuestion());
-//
-//		}
-//
-//	}
 
 }

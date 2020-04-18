@@ -15,9 +15,9 @@ public class Questions1 {
 	 * Instance variables 
 	 */
 	private ArrayList<Question> questions;
-	static int questionCounter; //does this need to be private?
+	private int questionCounter;
 	private Question currentQuestion;
-	private HashMap<String, String> hints;//not currently in use
+	private HashMap<String, String> hints;
 
 	
 	/**
@@ -61,6 +61,14 @@ public class Questions1 {
 
 		}
 
+	}
+	
+	
+	/*
+	 * Return Question counter for JUnit testing
+	 */
+	public int getQuestionCounter() {
+		return questionCounter;
 	}
 
 }
