@@ -54,8 +54,8 @@ public class QuestionBoxDialog extends JDialog {
 	private Question question;
 	private boolean hintTaken;
 	private JLabel wrongAnswerMessage;//TODO delete?
-	JOptionPane jp; //TODO private?
-	ImageIcon dragonImage; //TODO private?
+	private JOptionPane jp; //TODO private?
+	private ImageIcon dragonImage; //TODO private?
 
 	/**
 	 * Constructor
@@ -121,7 +121,7 @@ public class QuestionBoxDialog extends JDialog {
 		radioButton3.setText("<HTML>" + q.getAnswer3() + "</HTML>");
 		radioButton4.setText("<HTML>" + q.getAnswer4() + "</HTML>");
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		hintRevealedLabel.setText("<HTML>" + q.getHint() + "</HTML>");
+		hintRevealedLabel.setText("<HTML>" + "<em> Your FairyGodTA Jami, says: </em>  " + "\" " + q.getHint() + "\" "  + "</HTML>");
 		hintTaken = false;
 		hintButton.setVisible(true);
 		hintRevealedLabel.setVisible(false);
@@ -202,7 +202,7 @@ public class QuestionBoxDialog extends JDialog {
 					scoreIndicator = GameStatus.QuestionWrong;
 					scoreIndicator = GameStatus.QuestionWrong;
 					dragonImage = new ImageIcon("images/dragon2.jpg");
-					JOptionPane.showMessageDialog(jp,
+					JOptionPane.showMessageDialog(jp,//popUp window for incorrect answer
 					    "",
 					    "Incorrect Answer",
 					    JOptionPane.INFORMATION_MESSAGE,
@@ -238,7 +238,7 @@ public class QuestionBoxDialog extends JDialog {
 		// reveals the current hint at the bottom of the box
 
 		hintRevealedLabel = new JLabel("");
-		hintRevealedLabel.setBounds(100, 650, 390, 40);
+		hintRevealedLabel.setBounds(100, 650, 450, 40);
 		//hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setForeground(Color.black);
 		hintRevealedLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -266,28 +266,7 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane.add(hintButton);
 	}
 
-	/*
-	 * This method creates the treasure image and message to the player
-	 */
-	public void setUpTreasureImage() {
-
-		// replaces monster picture with the current treasure collected
-		treasureImageLabel = new JLabel("");
-		treasureImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		// do we need this part?
-		treasureImageLabel.setIcon(new ImageIcon("diamond2.png"));
-		treasureImageLabel.setBounds(212, 50, 243, 180);
-		layeredPane.add(treasureImageLabel);
-		treasureImageLabel.setVisible(true);
-
-		// sends the player a message that the treasure has been collected
-		collectTreasureLabel = new JLabel("Message to Player");
-		collectTreasureLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		collectTreasureLabel.setBounds(212, 200, 267, 98);
-		layeredPane.add(collectTreasureLabel);
-		collectTreasureLabel.setVisible(false);
-	}
-
+	
 	/*
 	 * This method creates the monster background
 	 */
