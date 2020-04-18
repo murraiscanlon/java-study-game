@@ -73,7 +73,7 @@ public class SwingRoom extends JFrame {
 		setUpQuestionDialogWindow();
 		
 		/***** Set up the Instructions Window  *****/
-		setUpInstructions(score);
+		setUpInstructions();
 		
 		/***** Set up the Direction Buttons  *****/
 		setUpDirButtons();
@@ -164,8 +164,8 @@ public class SwingRoom extends JFrame {
 		});	
 	}
 
-	public void setUpInstructions(Score score) {
-		inst = new Instructions(this, score);
+	public void setUpInstructions() {
+		inst = new Instructions(this);
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
 	}

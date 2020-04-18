@@ -9,7 +9,7 @@ import java.util.EventListener;
 public interface QuestionBoxListener extends EventListener{
     /**
      * Extends the event listener
-     * @param event
+     * @param event - event is button clicked in QuestionBoxDialog Class
      */
 	public void questionBoxEventOccurred(QuestionBoxEvent event);
 }

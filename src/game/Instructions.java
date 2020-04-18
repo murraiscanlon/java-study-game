@@ -14,32 +14,37 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.EventListenerList;
+
 /**
- * Class to create Instructions Pop-up Box 
+ * Class to create Game Play Instructions Pop-up Box
+ * 
  * @author Team 30
  *
  */
-//public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
 public class Instructions extends JDialog {
-    /**
-     * Instance variables
-     */
+	/**
+	 * Instance variables
+	 */
 	private static final long serialVersionUID = 1L;
-	//private EventListenerList listenerList = new EventListenerList();
 	private JLayeredPane layeredPane;
 	private JPanel contentPane;
-	private JLabel instruction;//TODO delete
 	private JLabel javaMonsterImageLabel;
 	private JButton okButton;
 
-	public Instructions(Frame aFrame, Score score) {
+	/**
+	 * Constructor for Instruction Box
+	 * 
+	 * @param aFrame - Frame passed in from caller
+	 */
+	public Instructions(Frame aFrame) {
 		super(aFrame, true);
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
-		/***** Set Up Submit Button *****/
+		
+		/***** Set Up Ok Button *****/
 		setUpOkButton();
+		
 		/***** Set Up Monster Images *****/
 		setUpMonsterImageBackground();
 	}
@@ -62,10 +67,10 @@ public class Instructions extends JDialog {
 		layeredPane.setSize(500, 500);
 		layeredPane.setBackground(Color.red);
 		layeredPane.setBounds(0, 0, 645, 695);
-		
+
 		contentPane.add(layeredPane);
 	}
-	
+
 	/*
 	 * This method creates the OK button
 	 */

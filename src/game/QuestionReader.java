@@ -3,7 +3,6 @@ package game;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -13,8 +12,6 @@ import java.util.Scanner;
  *
  */
 public class QuestionReader {
-
-	
 
 	/**
 	 * Reads in Java Questions from jquestions2.csv to be answered during game play
@@ -44,19 +41,18 @@ public class QuestionReader {
 					correctAnswer = Integer.parseInt(lineComponents[6]);
 				} catch (NumberFormatException e) {
 					System.out.println("Bad input for correctAnswer <" + lineComponents[6] + ">");
+					System.exit(0);
 				}
-
+				// Create the Question object and add it to the ArrayList
 				Question questionAndAnswer = new Question(question, answer1, answer2, answer3, answer4, hint,
 						correctAnswer);
 				questions.add(questionAndAnswer);
 			}
 			fileReader.close();
 		} catch (FileNotFoundException e) {
-
 			e.printStackTrace();
+			System.exit(0);
 		}
-
 		return questions;
 	}
-
 }

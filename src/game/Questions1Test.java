@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 
 class Questions1Test {
 
-
-
+	// Test to confirm that getCurrentQuestion increments the question index
+	// Expected and actual should NOT be the same object
+	@Test
 	void testGetCurrentQuestion() {//testing method as is
 		Questions1 q1 = new Questions1();
 		Question expected = q1.getCurrentQuestion();
@@ -15,7 +16,8 @@ class Questions1Test {
 		assertNotSame(expected, actual);
 	}
 	
-	
+	// Test basic shuffling of 3 questions - do not expect three questions to be in their original order
+	// Note that it is possible that the questions show up in the correct order
 	@Test
 	void testShuffleQuestions() {//testing shuffled questions three at a time. Testing the bounds of randomness!
 		Questions1 q1 = new Questions1();
@@ -42,7 +44,6 @@ class Questions1Test {
 		//System.out.println(actual);
 		assertEquals(noMatch, actual);
 	}
-	
 	
 	@Test
 	void testGetQuestion() {//testing each question object below this point

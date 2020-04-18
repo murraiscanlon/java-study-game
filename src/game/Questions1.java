@@ -5,36 +5,35 @@ import java.util.Collections;
 import java.util.HashMap;
 
 /**
- * The Questions class uses the data from QuestionReader to generate
- * a package of variables using the getCurrentQuestion method.
+ * The Questions class uses the data from QuestionReader to generate a package
+ * of variables using the getCurrentQuestion method.
+ * 
  * @author Team 30
  */
 
 public class Questions1 {
 	/**
-	 * Instance variables 
+	 * Instance variables
 	 */
 	private ArrayList<Question> questions;
 	private int questionCounter;
 	private Question currentQuestion;
 	private HashMap<String, String> hints;
 
-	
 	/**
 	 * Constructor
 	 */
 	public Questions1() {
 		this.questions = QuestionReader.readCSVFile();
 		questionCounter = 0;
-		//this.currentHint = " ";
-		this.hints =  new HashMap<String, String>();
-		
-		//fill hints hashMap
+		this.hints = new HashMap<String, String>();
+
+		// fill hints hashMap
 		for (Question q : questions) {
 			hints.put(q.getQuestion(), q.getHint());
 		}
 	}
-	
+
 	/**
 	 * Method to provide random questions
 	 * 
@@ -45,9 +44,8 @@ public class Questions1 {
 	}
 
 	/**
-	 * This method returns all components of the question class
-	 * question, answer1 - 3, hint, and correctAnswer
-	 * for one question at a time.
+	 * This method returns all components of the question class question, answer1 -
+	 * 4, hint, and correctAnswer for one question at a time.
 	 * 
 	 */
 	public Question getCurrentQuestion() {
@@ -56,19 +54,15 @@ public class Questions1 {
 			questionCounter++;
 			return currentQuestion;
 		} else {
-			questionCounter = 0;
+			questionCounter = 0; // Should not run out of questions but reset counter to avoid null question
 			return currentQuestion;
-
 		}
-
 	}
-	
-	
+
 	/*
 	 * Return Question counter for JUnit testing
 	 */
 	public int getQuestionCounter() {
 		return questionCounter;
 	}
-
 }

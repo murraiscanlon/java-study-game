@@ -20,28 +20,26 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.EventListenerList;
+
 /**
- * Class to extend JDialog, implements ActionListener and PropertyChangeListener
- * Creates a pop-up Question box that generates random questions
- * Java Monsters are integrated as part of the background of dialog box
- * User must answer multiple choice question to collect treasure
- * User may request 'hint' from Fairy GodTA by clicking button
+ * Class to extend JDialog. Creates a pop-up Question box that generates random
+ * questions Java Monsters are integrated as part of the background of dialog
+ * box User must answer multiple choice question to collect treasure User may
+ * request 'hint' from Fairy GodTA by clicking button
+ * 
  * @author Team 30
  *
  */
-//public class QuestionBoxDialog extends JDialog implements ActionListener, PropertyChangeListener {
 public class QuestionBoxDialog extends JDialog {
-    /**
-     * Instance variables
-     */
+	/**
+	 * Instance variables
+	 */
 	private static final long serialVersionUID = 1L;
 	private EventListenerList listenerList = new EventListenerList();
 	private JLayeredPane layeredPane;
 	private JPanel contentPane;
 	private JLabel currentQuestion;
 	private JLabel hintRevealedLabel;
-	private JLabel treasureImageLabel;
-	private JLabel collectTreasureLabel;
 	private JLabel javaMonsterImageLabel;
 	private JLabel fairyRevealLabel;
 	private JRadioButton radioButton1;
@@ -53,15 +51,14 @@ public class QuestionBoxDialog extends JDialog {
 	private ButtonGroup bg2;
 	private Question question;
 	private boolean hintTaken;
-	private JLabel wrongAnswerMessage;//TODO delete?
-	private JOptionPane jp; //TODO private?
-	private ImageIcon dragonImage; //TODO private?
+	private JOptionPane incorrectAnswerJP;
+	private ImageIcon dragonImage;
 
 	/**
-	 * Constructor
-	 * This class displays a new window when the player pushed the
-     * treasureBoxButton. The new window includes a java question, four answer
-     * choices, and a hint option.
+	 * Constructor This class displays a new window when the player pushed the
+	 * treasureBoxButton. The new window includes a java question, four answer
+	 * choices, and a hint option.
+	 * 
 	 * @param aFrame
 	 */
 	public QuestionBoxDialog(Frame aFrame) {
@@ -69,27 +66,24 @@ public class QuestionBoxDialog extends JDialog {
 
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
-		
+
 		/***** Positions Current Question *****/
 		setUpCurrentQuestionElements();
-		
+
 		/***** Positions Answer Choice Buttons *****/
 		setUpAnswerChoiceButtons();
-		
+
 		/***** Set Up Submit Button *****/
 		setUpSubmitButton();
-		
-		/***** Set Up Return Button *****///TODO delete?
-		//setUpReturnButton();
-		
+
 		/***** Set Up Hint Button *****/
 		setUpHintButton();
-		
+
 		/***** Set Up Monster Images *****/
 		setUpMonsterImageBackground();
 	}
 
-	/*
+	/**
 	 * This method sets up the base frame components for the main question window
 	 */
 	public void setUpUIFoundation() {
@@ -111,24 +105,26 @@ public class QuestionBoxDialog extends JDialog {
 
 	/**
 	 * This methods sets up the question information when the dialog box is shown
+	 * 
 	 * @param q : question object
 	 */
 	public void setUpQuestion(Question q) {
 		question = q;
-		currentQuestion.setText("<HTML>" + q.getQuestion() +"</HTML>");
+		currentQuestion.setText("<HTML>" + q.getQuestion() + "</HTML>");
 		radioButton1.setText("<HTML>" + q.getAnswer1() + "</HTML>");
 		radioButton2.setText("<HTML>" + q.getAnswer2() + "</HTML>");
 		radioButton3.setText("<HTML>" + q.getAnswer3() + "</HTML>");
 		radioButton4.setText("<HTML>" + q.getAnswer4() + "</HTML>");
 		javaMonsterImageLabel.setIcon(new ImageIcon(monsterGenerator()));
-		hintRevealedLabel.setText("<HTML>" + "<em> Your FairyGodTA Jami, says: </em>  " + "\" " + q.getHint() + "\" "  + "</HTML>");
+		hintRevealedLabel.setText(
+				"<HTML>" + "<em> Your FairyGodTA Jami, says: </em>  " + "\" " + q.getHint() + "\" " + "</HTML>");
 		hintTaken = false;
 		hintButton.setVisible(true);
 		hintRevealedLabel.setVisible(false);
 		fairyRevealLabel.setVisible(false);
 	}
 
-	/*
+	/**
 	 * This positions all elements for the current question
 	 */
 	public void setUpCurrentQuestionElements() {
@@ -140,7 +136,7 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane.add(currentQuestion);
 	}
 
-	/*
+	/**
 	 * This method creates the answer choices
 	 */
 	public void setUpAnswerChoiceButtons() {
@@ -182,7 +178,7 @@ public class QuestionBoxDialog extends JDialog {
 		bg2.add(radioButton4);
 	}
 
-	/*
+	/**
 	 * This method creates the SUBMIT button
 	 */
 	public void setUpSubmitButton() {
@@ -190,48 +186,43 @@ public class QuestionBoxDialog extends JDialog {
 		submitButton.setBounds(365, 568, 110, 35);
 		submitButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		submitButton.addMouseListener(new MouseAdapter() {
+			// Checks to see if the answer is correct or incorrect and if a hint was used
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				GameStatus scoreIndicator = GameStatus.NA; // Default to init the variable
-				if (checkAnswer(question) && (!hintTaken)) {
+				if (checkAnswer(question) && (!hintTaken)) { // Correct with no hint
 					scoreIndicator = GameStatus.QuestionCorrect;
-				} else if (checkAnswer(question) && (hintTaken)) {
+				} else if (checkAnswer(question) && (hintTaken)) { // Correct with hint
 					scoreIndicator = GameStatus.QuestionWithHint;
-				}
-				else {
+				} else { // Incorrect
 					scoreIndicator = GameStatus.QuestionWrong;
 					scoreIndicator = GameStatus.QuestionWrong;
 					dragonImage = new ImageIcon("images/dragon2.jpg");
-					JOptionPane.showMessageDialog(jp,//popUp window for incorrect answer
-					    "",
-					    "Incorrect Answer",
-					    JOptionPane.INFORMATION_MESSAGE,
-					    dragonImage);
+					JOptionPane.showMessageDialog(incorrectAnswerJP, // popUp window for incorrect answer
+							"", "Incorrect Answer", JOptionPane.INFORMATION_MESSAGE, dragonImage);
 				}
-
+				// Reset hint buttons and labels
 				bg2.clearSelection();
-
 				hintRevealedLabel.setVisible(false);
 				fairyRevealLabel.setVisible(false);
 				hintButton.setVisible(true);
-				
-				
-
+				// Event to send scoreIndicator back to SwingRoom
 				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 			}
 		});
 		layeredPane.add(submitButton);
 	}
 
-	//hint button click method to help with core indicator in submit button
+	/**
+	 * Hint button click method to help with core indicator in submit button
+	 */
 	public void hintButtonClicked() {
 		hintTaken = true;
 		hintRevealedLabel.setVisible(true);
 		fairyRevealLabel.setVisible(true);
-		//hintButton.setVisible(false);//moved button so don't need this
 	}
 
-	/*
+	/**
 	 * This method creates the HINT button and HINT TEXT
 	 */
 	public void setUpHintButton() {
@@ -239,7 +230,6 @@ public class QuestionBoxDialog extends JDialog {
 
 		hintRevealedLabel = new JLabel("");
 		hintRevealedLabel.setBounds(100, 650, 450, 40);
-		//hintRevealedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hintRevealedLabel.setForeground(Color.black);
 		hintRevealedLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		layeredPane.add(hintRevealedLabel);
@@ -266,8 +256,7 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane.add(hintButton);
 	}
 
-	
-	/*
+	/**
 	 * This method creates the monster background
 	 */
 	public void setUpMonsterImageBackground() {
@@ -287,13 +276,14 @@ public class QuestionBoxDialog extends JDialog {
 
 	/**
 	 * Compares the selected radioButton/answerchoice to the current correctAnswer.
-	 * @param q
-	 * @return
+	 * 
+	 * @param q - current question
+	 * @return - true if the answer is correct, false otherwise
 	 */
 	public boolean checkAnswer(Question q) {
 		question = q;
 		int correctAnswerNumber = q.getCorrectAnswer();
-		//		isCorrect = false;
+		// isCorrect = false;
 		switch (correctAnswerNumber) {
 		case 1:
 			return radioButton1.isSelected();
@@ -304,7 +294,6 @@ public class QuestionBoxDialog extends JDialog {
 		case 4:
 			return radioButton4.isSelected();
 		default:
-			System.out.println("Problem in checkAnswer method");
 			return false;
 		}
 	}
@@ -330,10 +319,10 @@ public class QuestionBoxDialog extends JDialog {
 	}
 
 	/**
-	 * Swing listeners that track and process events
+	 * Swing listeners that tracks and processes events
+	 * 
 	 * @param event
 	 */
-
 	public void fireQBEvent(QuestionBoxEvent event) {
 		Object[] listeners = listenerList.getListenerList();
 
@@ -343,15 +332,19 @@ public class QuestionBoxDialog extends JDialog {
 			}
 		}
 	}
+
 	/**
 	 * Question Box Listener to add Question to queue
+	 * 
 	 * @param listener
 	 */
 	public void addQuestionBoxListener(QuestionBoxListener listener) {
 		listenerList.add(QuestionBoxListener.class, listener);
 	}
+
 	/**
 	 * Question Box listener to remove question from list
+	 * 
 	 * @param listener
 	 */
 	public void removeQuestionBoxListener(QuestionBoxListener listener) {
