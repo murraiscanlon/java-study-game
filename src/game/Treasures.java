@@ -28,7 +28,7 @@ public class Treasures {
 	 * Assigns Treasure type, value and room location to ArrayList
 	 * @return ArrayList of Treasures
 	 */
-	public ArrayList<Treasure> assignTreasureTypes() {
+	private ArrayList<Treasure> assignTreasureTypes() {
 
 	    treasures.add(new Treasure("Bitcoin", 5, "", (new ImageIcon("images/bitcoinS.png"))));
         treasures.add(new Treasure("Jewel Editor", 5, "",(new ImageIcon("images/jewelS.png"))));
