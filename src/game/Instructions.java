@@ -52,7 +52,7 @@ public class Instructions extends JDialog {
 	/**
 	 * Method to establish the frame background
 	 */
-	public void setUpUIFoundation() {
+	private void setUpUIFoundation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 665, 670);
 		contentPane = new JPanel();
@@ -74,7 +74,7 @@ public class Instructions extends JDialog {
 	/*
 	 * This method creates the OK button
 	 */
-	public void setUpOkButton() {
+	private void setUpOkButton() {
 		okButton = new JButton("OK!");
 		okButton.setBounds(275, 507, 110, 35);
 		okButton.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -90,7 +90,7 @@ public class Instructions extends JDialog {
 	/*
 	 * This method creates the monster background
 	 */
-	public void setUpMonsterImageBackground() {
+	private void setUpMonsterImageBackground() {
 
 		/**
 		 * Displays monster image as a background for the box frame
