@@ -75,6 +75,7 @@ public class SwingGameOver extends JFrame {
 
 	/**
 	 * Displays winning message and hides losing message
+	 * Called from SwingRoom
 	 */
 	public void getWinMsg() {
 
@@ -86,6 +87,7 @@ public class SwingGameOver extends JFrame {
 
 	/**
 	 * Displays losing message and hides winning message
+	 * Called from SwingRoom
 	 */
 	public void getLoseMsg() {
 
@@ -98,7 +100,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to initialize Game Over page
 	 */
-	public void initGameOver() {
+	private void initGameOver() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
@@ -111,7 +113,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to set up Game Over banner
 	 */
-	public void setUpScroll() {
+	private void setUpScroll() {
 		scrollText = new JLabel();
 		scrollText.setFont(new Font("Castellar", scrollText.getFont().getStyle(), 32));
 		scrollText.setText("GAME OVER!");
@@ -130,7 +132,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to establish Quit button
 	 */
-	public void setUpQuitButton() {
+	private void setUpQuitButton() {
 		// Exit button upper right corner, has same format as Direction Button
 		exitButton = new DirectionButton("QUIT", 775, 0);
 		exitButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -148,7 +150,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to set up Play Again option Includes button with action
 	 */
-	public void setUpPlayAgainButton() {
+	private void setUpPlayAgainButton() {
 		playAgain = new JButton("PLAY AGAIN");
 		playAgain.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		playAgain.setBorder(new LineBorder(new Color(153, 153, 153), 2));
@@ -171,7 +173,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to set up the Win message from Wizard Arvind
 	 */
-	public void setUpWinMsg() {
+	private void setUpWinMsg() {
 		// Places the winning wizard pose
 		wizardPlace = new JLabel();
 		wizardPlace.setHorizontalAlignment(SwingConstants.CENTER);
@@ -199,7 +201,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to set up the Lose message from Wizard Arvind
 	 */
-	public void setUpLoseMsg() {
+	private void setUpLoseMsg() {
 		// Sets losing message
 		loseMsg = new JTextArea();
 		loseMsg.setBorder(new LineBorder(new Color(204, 204, 204), 2));
@@ -228,7 +230,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Set up the score display
 	 */
-	public void setUpScoreDisplay() {
+	private void setUpScoreDisplay() {
 		String scoreOutput = "";
 		if (score.getName().equals("Enter Player Name")) {
 			scoreOutput += "";
@@ -251,7 +253,7 @@ public class SwingGameOver extends JFrame {
 	/**
 	 * Method to set up Background image
 	 */
-	public void setUpBackground() {
+	private void setUpBackground() {
 		bgLabel = new JLabel();
 		bgLabel.setIcon(new ImageIcon("images/GameOver.jpg"));
 		bgLabel.setBounds(5, 5, 900, 600);
