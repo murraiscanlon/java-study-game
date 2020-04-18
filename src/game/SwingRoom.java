@@ -393,7 +393,8 @@ public class SwingRoom extends JFrame {
 	 * @param nextRoom : Room to enter, can be null
 	 */
 	public void processNextRoom(Room nextRoom) {
-		System.out.println("Current Room: " + currentRoom.getName());
+		//Leave print statements in for future testing
+		//System.out.println("Current Room: " + currentRoom.getName());
 
 		if (nextRoom != null) {
 			currentRoom = nextRoom;
@@ -451,7 +452,8 @@ public class SwingRoom extends JFrame {
 	 * Method handles calling the question dialog when the treasure button is pushed
 	 */
 	public void treasureButtonPushed() {
-		System.out.println("TreasureButtonPushed");
+		//Leave print statements in for future testing
+		//System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
 		qbDialog.setUpQuestion(q);
 		qbDialog.setVisible(true);
