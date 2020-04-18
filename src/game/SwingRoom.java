@@ -302,7 +302,7 @@ public class SwingRoom extends JFrame {
 	 * Method to place current score on main window.
 	 */
 	public void setUpScoreLabel() {
-		scoreLabel = new JLabel("");
+		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setBorder(new LineBorder(new Color(153, 153, 153), 2));
         scoreLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
         scoreLabel.setBackground(new Color(60, 0, 0));
