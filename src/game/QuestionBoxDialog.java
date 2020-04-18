@@ -142,32 +142,16 @@ public class QuestionBoxDialog extends JDialog {
 	public void setUpAnswerChoiceButtons() {
 
 		// sets button position and format
-		radioButton1 = new JRadioButton("R1");
-		radioButton1.setBounds(35, 410, 275, 40);
-		radioButton1.setBackground(Color.LIGHT_GRAY);
-		radioButton1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		radioButton1.setOpaque(true);
+		radioButton1 = new AnswerChoiceFormat(410);
 		layeredPane.add(radioButton1);
 
-		radioButton2 = new JRadioButton("R2");
-		radioButton2.setBounds(35, 460, 275, 40);
-		radioButton2.setBackground(Color.LIGHT_GRAY);
-		radioButton2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		radioButton2.setOpaque(true);
+		radioButton2 = new AnswerChoiceFormat(460);
 		layeredPane.add(radioButton2);
 
-		radioButton3 = new JRadioButton("R3");
-		radioButton3.setBounds(35, 510, 275, 40);
-		radioButton3.setBackground(Color.LIGHT_GRAY);
-		radioButton3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		radioButton3.setOpaque(true);
+		radioButton3 = new AnswerChoiceFormat(510);
 		layeredPane.add(radioButton3);
 
-		radioButton4 = new JRadioButton("R4");
-		radioButton4.setBounds(35, 560, 275, 40);
-		radioButton4.setBackground(Color.LIGHT_GRAY);
-		radioButton4.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		radioButton4.setOpaque(true);
+		radioButton4 = new AnswerChoiceFormat(560);
 		layeredPane.add(radioButton4);
 
 		// groups the buttons so only one can be selected at a time
