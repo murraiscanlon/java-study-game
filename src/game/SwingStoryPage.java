@@ -21,7 +21,7 @@ import java.awt.event.MouseEvent;
  * @author Team 30
  *
  */
-public class StoryPage extends JFrame {
+public class SwingStoryPage extends JFrame {
 	/**
 	 * Instance Variables
 	 */
@@ -29,9 +29,7 @@ public class StoryPage extends JFrame {
 	private JPanel contentPane;
 	private JLabel image2;
 	private JLabel background;
-	private JTextPane story;
-	private ImageIcon icon2;
-	private ImageIcon bgImage;
+	private JTextPane story;	
 	private JButton enter;
 	private String playerName = "";
 
@@ -40,7 +38,7 @@ public class StoryPage extends JFrame {
 	 * 
 	 * @param playerName - player name passed in
 	 */
-	public StoryPage(String playerName) {
+	public SwingStoryPage(String playerName) {
 
 		/***** Sets up the initial panel *****/
 		initializeStoryPage(playerName);
@@ -100,9 +98,8 @@ public class StoryPage extends JFrame {
 	 */
 	private void setScrollImage() {
 
-		icon2 = new ImageIcon("images/scrollpage1.png");
 		contentPane.setLayout(null);
-		image2 = new JLabel(icon2, SwingConstants.CENTER);
+		image2 = new JLabel(new ImageIcon("images/scrollpage1.png"), SwingConstants.CENTER);
 		image2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		image2.setVerticalAlignment(SwingConstants.TOP);
 		image2.setBounds(75, 30, 400, 500);
@@ -124,17 +121,13 @@ public class StoryPage extends JFrame {
 		enter.setHorizontalAlignment(SwingConstants.CENTER);
 		enter.setOpaque(true);
 		enter.setBounds(360, 460, 150, 45);
-
-		enter.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// closes current window
-				dispose();
-				// opens rooms
-				SwingRoom room = new SwingRoom(playerName);// link to second page
-				room.setVisible(true); // brings up next screen
-			}
-		});
+		enter.addActionListener(e -> {
+		    // closes current window
+            dispose();
+            // opens rooms
+            SwingRoom room = new SwingRoom(playerName);// link to second page
+            room.setVisible(true); // brings up next screen 
+        });
 		contentPane.add(enter);
 	}
 
@@ -142,8 +135,7 @@ public class StoryPage extends JFrame {
 	 * Method to set up background image
 	 */
 	private void setUpBackground() {
-		bgImage = new ImageIcon("images/enterdoor.jpg");
-		background = new JLabel(bgImage, JLabel.CENTER);
+		background = new JLabel(new ImageIcon("images/enterdoor.jpg"), JLabel.CENTER);
 		background.setBounds(0, 0, 900, 600);
 		contentPane.add(background);
 	}

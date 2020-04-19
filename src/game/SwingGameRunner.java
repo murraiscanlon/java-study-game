@@ -21,7 +21,7 @@ import javax.swing.border.LineBorder;
  * @author Team 30
  *
  */
-public class SwingEnterPage {
+public class SwingGameRunner {
 
 	private JFrame frame;
 	private JTextField textNameField;
@@ -34,7 +34,7 @@ public class SwingEnterPage {
 	 * Constructor for SwingEnterPage Creates and initialize the application.
 	 * Establishes Start button and Text Field to enter name
 	 */
-	public SwingEnterPage() {
+	public SwingGameRunner() {
 		/**** Initializes the game window *****/
 		initFrame();
 
@@ -73,17 +73,13 @@ public class SwingEnterPage {
 		startButton.setHorizontalAlignment(SwingConstants.CENTER);
 		startButton.setOpaque(true);
 		startButton.setBounds(360, 460, 150, 45);
-
-		startButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent click) {
-				// Event closes the Enter Page and brings up the story page
-				playerName = textNameField.getText();
-				StoryPage page2 = new StoryPage(playerName);// link to second page
-				page2.setVisible(true); // brings up next screen
-				frame.setVisible(false);// closes enter page window
-			}
-		});
+		startButton.addActionListener(e -> {
+		    // Event closes the Enter Page and brings up the story page
+            playerName = textNameField.getText();
+            SwingStoryPage page2 = new SwingStoryPage(playerName);// link to second page
+            page2.setVisible(true); // brings up next screen
+            frame.setVisible(false);// closes enter page window
+        });	
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(startButton);
 	}
@@ -149,7 +145,7 @@ public class SwingEnterPage {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SwingEnterPage window = new SwingEnterPage();
+					SwingGameRunner window = new SwingGameRunner();
 					window.frame.setVisible(true);
 
 				} catch (Exception e) {

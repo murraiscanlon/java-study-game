@@ -164,7 +164,7 @@ public class SwingGameOver extends JFrame {
 				// close current frame here
 				dispose();
 				// opens SwingEnterPage
-				new SwingEnterPage();
+				new SwingGameRunner();
 			}
 		});
 		contentPane.add(playAgain);
