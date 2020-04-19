@@ -78,11 +78,8 @@ public class Instructions extends JDialog {
 		okButton = new JButton("OK!");
 		okButton.setBounds(275, 507, 110, 35);
 		okButton.setFont(new Font("Tahoma", Font.BOLD, 18));
-		okButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		okButton.addActionListener(e -> {
 				setVisible(false);
-			}
 		});
 		layeredPane.add(okButton);
 	}

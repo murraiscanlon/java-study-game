@@ -138,11 +138,8 @@ public class SwingGameOver extends JFrame {
 		exitButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		exitButton.setBounds(761, 10, 113, 37);
 
-		exitButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
-			}
+		exitButton.addActionListener(e -> {
+			System.exit(0);
 		});
 		contentPane.add(exitButton);
 	}
@@ -158,14 +155,11 @@ public class SwingGameOver extends JFrame {
 		playAgain.setBackground(new Color(0, 60, 0));// get color
 		playAgain.setBounds(10, 10, 119, 37);
 		playAgain.setOpaque(true);
-		playAgain.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		playAgain.addActionListener(e -> {
 				// close current frame here
 				dispose();
 				// opens SwingEnterPage
 				new SwingGameRunner();
-			}
 		});
 		contentPane.add(playAgain);
 	}
