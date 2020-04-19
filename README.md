@@ -13,14 +13,15 @@ Tired of studying for the Java exam? Are you interested in an alternative method
 
 Javenture is an adventure game where a player traverses a castle, collecting treasure in order to free a great wizard. Lurking in the castle are Java monsters who hold the key to freeing the wizard. The player collects treasure only if they correctly answer a question about Java, the monsters' native language. 
 
-### Technical Requirements
+### Technical Requirements and Information
 
 * Java version 1.8 or later
 * Java Swing (some game components do not render ideally on MacOS)
 * JUnit 5
 * Package game
+* SwingGameRunner includes the main method and is the entry point for the program
 
-*Download and Run Instructions* : blardy, blardy, blar
+*Download and Run Instructions* : Clone the repository and run the SwingGameRunner.java file.
 
 
 ### Graphical Game Play Instructions
@@ -30,8 +31,6 @@ Javenture is an adventure game where a player traverses a castle, collecting tre
 **1. Start Page:** Enter the player's name and click start to begin the learning adventure!
 
 ![Start Screen Image](images/screenstart.png)
-
-
 
 **2. Story Page:** Be sure to read the background story to discover the details of your mission.
 
