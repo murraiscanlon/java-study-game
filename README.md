@@ -67,21 +67,21 @@ The screen you see at the end is determined by your Java prowess. Recover enough
 #### Class Descriptions
 
 
-* AnswerChoiceFormat - Extends JRadioButton to improve code reuse and readability in QuestionBoxDialog class.
-* DirectionButton - Extends JButton to improve code reuse and readability in SwingRoom.
-* GameStatus - Enum provided to streamline game operations.
-* Instructions - Displays game play instructions before the player enters the Foyer and works with SwingRoom to make instructions available through help button. 
-* Question/Questions/QuestionReader - Sets up multiple choice questions with hint, reads in .csv of questions, and populates method to feed questions when player attempts to collect Treasures. 
-* QuestionBoxDialog - Sets up formating and GUI functionality for the user to interact with the Questions.
-* QuestionEvent/QuestionBoxListener - Works with QuestionBoxDialog to communicate user events to other parts of the program.
-* RandomOrderGenerator - Works with SwingRoom and Treasures to place treasures randomly in rooms as the user navigates from room to room.
-* Room/Rooms/SwingRoom - Models a room with room id, loads all room data from csv file, and puts the room links into a separate HashMap to set up connections between rooms. Collaborates with Treasures, QuestionDialogBox, Score, RandomOrderGenerator, and DirectionButton.
-* Score - Keeps track of running score and displays final score at the end of game.
-* StoryPage - Displays the background story for the player.
-* SwingEnterPage - Contains the main method and is the gateway to the game. Also the Splash page and used to collect player name as input.
-* SwingGameOver - Establishes the final window of the game and shows win/loss status.
-* Treasure/Treasures - Sets up treasure attributes and populates an ArrayList of Treasures to go in Rooms.
-* Treasure Label - Extends JLabel to improve code reuse and readability in Treasures.
+* **AnswerChoiceFormat** - Extends JRadioButton to improve code reuse and readability in QuestionBoxDialog class.
+* **DirectionButton** - Extends JButton to improve code reuse and readability in SwingRoom.
+* **GameStatus** - Enum provided to streamline game operations.
+* **Instructions** - Displays game play instructions before the player enters the Foyer and works with SwingRoom to make instructions available through help button. 
+* **Question/Questions/QuestionReader** - Sets up multiple choice questions with hint, reads in .csv of questions, and populates method to feed questions when player attempts to collect Treasures. 
+* **QuestionBoxDialog** - Sets up formating and GUI functionality for the user to interact with the Questions.
+* **QuestionEvent/QuestionBoxListener** - Works with QuestionBoxDialog to communicate user events to other parts of the program.
+* **RandomOrderGenerator** - Works with SwingRoom and Treasures to place treasures randomly in rooms as the user navigates from room to room.
+* **Room/Rooms/SwingRoom** - Models a room with room id, loads all room data from csv file, and puts the room links into a separate HashMap to set up connections between rooms. Collaborates with Treasures, QuestionDialogBox, Score, RandomOrderGenerator, and DirectionButton.
+* **Score** - Keeps track of running score and displays final score at the end of game.
+* **StoryPage** - Displays the background story for the player.
+* **SwingEnterPage** - Contains the main method and is the gateway to the game. Also the Splash page and used to collect player name as input.
+* **SwingGameOver** - Establishes the final window of the game and shows win/loss status.
+* **Treasure/Treasures** - Sets up treasure attributes and populates an ArrayList of Treasures to go in Rooms.
+* **Treasure Label** - Extends JLabel to improve code reuse and readability in Treasures.
 
 
 
