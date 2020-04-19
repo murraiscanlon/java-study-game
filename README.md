@@ -16,12 +16,14 @@ Javenture is an adventure game where a player traverses a castle, collecting tre
 ### Technical Requirements
 
 * Java version 1.8 or later
-* Java Swing
+* Java Swing (some game components do not render ideally on MacOS)
 * JUnit 5
 * Package game
 
+*Download and Run Instructions* : blardy, blardy, blar
 
-### Graphical User Instructions
+
+### Graphical Game Play Instructions
 
 
 
