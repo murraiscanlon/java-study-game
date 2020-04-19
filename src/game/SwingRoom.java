@@ -12,8 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
@@ -39,6 +37,7 @@ public class SwingRoom extends JFrame {
 	private JButton roomW;
 	private JButton treasureButton;
 	private JButton helpButton;
+	private JButton exitButton;
 	private Questions questions;
 	private Question q;
 	private QuestionBoxDialog qbDialog;
@@ -176,42 +175,30 @@ public class SwingRoom extends JFrame {
 	private void setUpDirButtons() {
 
 		roomN = new DirectionButton("N", 730, 354);
-		roomN.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("north");
-				processNextRoom(nextRoom);
-			}
+		roomN.addActionListener(e -> {
+			Room nextRoom = currentRoom.getRoomAtDirection("north");
+			processNextRoom(nextRoom);
 		});
 		layeredPane.add(roomN);
 
 		roomW = new DirectionButton("W", 685, 394);
-		roomW.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("west");
-				processNextRoom(nextRoom);
-			}
+		roomW.addActionListener(e -> {
+			Room nextRoom = currentRoom.getRoomAtDirection("west");
+			processNextRoom(nextRoom);
 		});
 		layeredPane.add(roomW);
 
 		roomS = new DirectionButton("S", 730, 433);
-		roomS.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("south");
-				processNextRoom(nextRoom);
-			}
+		roomS.addActionListener(e -> {
+			Room nextRoom = currentRoom.getRoomAtDirection("south");
+			processNextRoom(nextRoom);
 		});
 		layeredPane.add(roomS);
 
 		roomE = new DirectionButton("E", 777, 394);
-		roomE.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Room nextRoom = currentRoom.getRoomAtDirection("east");
-				processNextRoom(nextRoom);
-			}
+		roomE.addActionListener(e -> {
+			Room nextRoom = currentRoom.getRoomAtDirection("east");
+			processNextRoom(nextRoom);
 		});
 		layeredPane.add(roomE);
 	}
@@ -222,11 +209,8 @@ public class SwingRoom extends JFrame {
 	private void setUpHelpButton() {
 		helpButton = new DirectionButton("Help", 730, 480);
 		helpButton.setLocation(730, 485);
-		helpButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				inst.setVisible(true);
-			}
+		helpButton.addActionListener(e -> {
+			inst.setVisible(true);
 		});
 		layeredPane.add(helpButton);
 	}
@@ -236,14 +220,11 @@ public class SwingRoom extends JFrame {
 	 */
 	private void setUpQuitButton() {
 		// Exit button upper right corner, has same format as Direction Button
-		JButton exitButton = new DirectionButton("QUIT", 715, 35);
+		exitButton = new DirectionButton("QUIT", 715, 35);
 		exitButton.setLocation(730, 23);
 		exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		exitButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
-			}
+		exitButton.addActionListener(e -> {
+			System.exit(0);
 		});
 		layeredPane.add(exitButton);
 	}
@@ -353,14 +334,10 @@ public class SwingRoom extends JFrame {
 		treasureButton = new JButton(new ImageIcon("images/treasureS.png"));
 		treasureButton.setToolTipText("Take Treasure");
 		treasureButton.setBackground(Color.BLACK);
-		treasureButton.setOpaque(true);// delete if doesn't work on Diane's Mac
+		treasureButton.setOpaque(true);
 		treasureButton.setBounds(358, 282, 161, 133);
-		treasureButton.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				treasureButtonPushed();
-			}
+		treasureButton.addActionListener(e -> {
+			treasureButtonPushed();
 		});
 		layeredPane.add(treasureButton);
 	}
@@ -393,8 +370,8 @@ public class SwingRoom extends JFrame {
 	 * @param nextRoom : Room to enter, can be null
 	 */
 	public void processNextRoom(Room nextRoom) {
-		//Leave print statements in for future testing
-		//System.out.println("Current Room: " + currentRoom.getName());
+		// Leave print statements in for future testing
+		// System.out.println("Current Room: " + currentRoom.getName());
 
 		if (nextRoom != null) {
 			currentRoom = nextRoom;
@@ -452,8 +429,8 @@ public class SwingRoom extends JFrame {
 	 * Method handles calling the question dialog when the treasure button is pushed
 	 */
 	public void treasureButtonPushed() {
-		//Leave print statements in for future testing
-		//System.out.println("TreasureButtonPushed");
+		// Leave print statements in for future testing
+		// System.out.println("TreasureButtonPushed");
 		q = questions.getCurrentQuestion();
 		qbDialog.setUpQuestion(q);
 		qbDialog.setVisible(true);

@@ -3,8 +3,6 @@ package game;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ButtonGroup;
@@ -169,30 +167,27 @@ public class QuestionBoxDialog extends JDialog {
 		submitButton = new JButton("SUBMIT");
 		submitButton.setBounds(365, 568, 110, 35);
 		submitButton.setFont(new Font("Tahoma", Font.BOLD, 18));
-		submitButton.addMouseListener(new MouseAdapter() {
-			// Checks to see if the answer is correct or incorrect and if a hint was used
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GameStatus scoreIndicator = GameStatus.NA; // Default to init the variable
-				if (checkAnswer(question) && (!hintTaken)) { // Correct with no hint
-					scoreIndicator = GameStatus.QuestionCorrect;
-				} else if (checkAnswer(question) && (hintTaken)) { // Correct with hint
-					scoreIndicator = GameStatus.QuestionWithHint;
-				} else { // Incorrect
-					scoreIndicator = GameStatus.QuestionWrong;
-					scoreIndicator = GameStatus.QuestionWrong;
-					dragonImage = new ImageIcon("images/dragon2.jpg");
-					JOptionPane.showMessageDialog(incorrectAnswerJP, // popUp window for incorrect answer
-							"", "Incorrect Answer", JOptionPane.INFORMATION_MESSAGE, dragonImage);
-				}
-				// Reset hint buttons and labels
-				bg2.clearSelection();
-				hintRevealedLabel.setVisible(false);
-				fairyRevealLabel.setVisible(false);
-				hintButton.setVisible(true);
-				// Event to send scoreIndicator back to SwingRoom
-				fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
+		
+		submitButton.addActionListener(e -> {
+			GameStatus scoreIndicator = GameStatus.NA; // Default to init the variable
+			if (checkAnswer(question) && (!hintTaken)) { // Correct with no hint
+				scoreIndicator = GameStatus.QuestionCorrect;
+			} else if (checkAnswer(question) && (hintTaken)) { // Correct with hint
+				scoreIndicator = GameStatus.QuestionWithHint;
+			} else { // Incorrect
+				scoreIndicator = GameStatus.QuestionWrong;
+				scoreIndicator = GameStatus.QuestionWrong;
+				dragonImage = new ImageIcon("images/dragon2.jpg");
+				JOptionPane.showMessageDialog(incorrectAnswerJP, // popUp window for incorrect answer
+						"", "Incorrect Answer", JOptionPane.INFORMATION_MESSAGE, dragonImage);
 			}
+			// Reset hint buttons and labels
+			bg2.clearSelection();
+			hintRevealedLabel.setVisible(false);
+			fairyRevealLabel.setVisible(false);
+			hintButton.setVisible(true);
+			// Event to send scoreIndicator back to SwingRoom
+			fireQBEvent(new QuestionBoxEvent(this, scoreIndicator));
 		});
 		layeredPane.add(submitButton);
 	}
@@ -230,13 +225,10 @@ public class QuestionBoxDialog extends JDialog {
 		hintButton = new JButton("HINT");
 		hintButton.setBounds(505, 568, 100, 35);
 		hintButton.setFont(new Font("Tahoma", Font.BOLD, 18));
-		hintButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				hintButtonClicked();
-			}
+		
+		hintButton.addActionListener(e -> {
+			hintButtonClicked();
 		});
-
 		layeredPane.add(hintButton);
 	}
 
