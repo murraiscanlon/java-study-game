@@ -12,7 +12,8 @@ Background Images
 	Gallery: Image by Unknown licensed under Creative Commons by SA
 	Great Hall: Image by Peter H from Pixabay
 	EnterPage/StoryPage background: Image by Cederic X from Unsplash
-
+	GameOver: Image by Joe Ciciarelli from Unsplash
+	
 Characters:
 	Fairy: Image by Unknown licensed under Creative Commons by NC (pngall.com)
 	Wizard: Image by PendleburyAnnette from Pixabay 
@@ -33,7 +34,6 @@ Monsters
 	Mummy: Image by Unknown licensed under Creative Commons by SA
 	Dragon2: Image by Parker West from Pixabay
 	Bug: Image by Pete Linforth from Pixabay
-
 
 Components
 	Scroll: Image by Clker-Free-Vector-Images from Pixabay, free for commercial use 
