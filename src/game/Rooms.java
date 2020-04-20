@@ -36,7 +36,6 @@ public class Rooms {
 	 * @param roomFilename - CSV containing the room data
 	 */
 	public Rooms(String roomFilename) {
-		// treasures.assignTreasureTypes();
 		loadRoomCSV(roomFilename);
 	}
 
