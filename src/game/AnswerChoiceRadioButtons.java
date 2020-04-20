@@ -10,7 +10,7 @@ import javax.swing.JRadioButton;
  * @author Team 30
  *
  */
-public class AnswerChoiceFormat extends JRadioButton {
+public class AnswerChoiceRadioButtons extends JRadioButton {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -18,7 +18,7 @@ public class AnswerChoiceFormat extends JRadioButton {
 	 * This method improves readability in questionBoxDialog class by storing code that is used multiple places.
 	 * @param y - The y coordinate for the answer choice radio button
 	 */
-	public AnswerChoiceFormat(int y) {
+	public AnswerChoiceRadioButtons(int y) {
 		
 		this.setBounds(35, y, 275, 40);
 		this.setBackground(Color.LIGHT_GRAY);

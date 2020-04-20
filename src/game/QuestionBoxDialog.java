@@ -140,16 +140,16 @@ public class QuestionBoxDialog extends JDialog {
 	public void setUpAnswerChoiceButtons() {
 
 		// sets button position and format
-		radioButton1 = new AnswerChoiceFormat(410);
+		radioButton1 = new AnswerChoiceRadioButtons(410);
 		layeredPane.add(radioButton1);
 
-		radioButton2 = new AnswerChoiceFormat(460);
+		radioButton2 = new AnswerChoiceRadioButtons(460);
 		layeredPane.add(radioButton2);
 
-		radioButton3 = new AnswerChoiceFormat(510);
+		radioButton3 = new AnswerChoiceRadioButtons(510);
 		layeredPane.add(radioButton3);
 
-		radioButton4 = new AnswerChoiceFormat(560);
+		radioButton4 = new AnswerChoiceRadioButtons(560);
 		layeredPane.add(radioButton4);
 
 		// groups the buttons so only one can be selected at a time
