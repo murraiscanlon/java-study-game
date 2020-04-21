@@ -3,38 +3,61 @@ Team 30 FINAL PROJECT SUMMARY
 Team Members: Diane Hoffstetter, Jennifer Macklin, Murrai Scanlon
 
 Javenture Game
-All three team members contributed significantly to every aspect of the program. The team colloborated closely to ensure timelines were being met and development remained on track. Javenture is single player adventure game where the player enters a castle to free Wizard Arvind from Java Monsters. In order to free him, they must take treasures from randomly positioned Java Monsters. A treasure is collected when the player correctly answers a question related to Java programming. The player loses if three questions are answered incorrectly and wins by getting 20 points. 
+All three team members contributed significantly to every aspect of the program. The team colloborated closely and frequently to ensure timelines and development remained on track. Javenture is single player adventure game where the player enters a castle to free Wizard Arvind from Java Monsters. In order to free him, they must take treasures from randomly positioned Java Monsters. A treasure is collected when the player correctly answers a question related to Java programming. The player loses if three questions are answered incorrectly and wins by getting 20 points. 
 
-Project Phases
+Github Repository: 
+https://github.com/UPenn-CIT599/final-project-team-30
 
-Planning & Design: Before drafting CRCs, the team established a project planning board on Trello and outlined the development plan.  Basic game logic was discussed and agreed upon prior to coding, although details were refined later in the process. 
+DESIGN BREAKDOWN
+	
+	Core Project Logic - Room | Question | Score | Treasures
+	
+	Treasure sets up the parameters for one treasure.
+		Supporting Classes
+		- Treasures establishes an ArrayList of Treasure objects, each with a type, points value and image
+		- Treasures also has method to place Treasure objects into the rooms
+		- TreasureLabel sets up the standardized code to place and display the Treasure image
+		- RandomOrderGenerator is used for randomly placing Treasures
+	Room sets up the parameters for one Room in the castle.
+		Supporting Classes 
+		- Rooms reads in the .csv containing room data and sets up links to each room
+		- Integrates with Treasures to make sure a Treasure is in room
+		- DirectionButton extends the JButton class to create standardized code for the navigation buttons
+	Question sets up the parameters for one question.
+		Supporting Classes
+		- Questions sets up an ArrayList of Question objects, a Hashmap of hints and contains counter logic
+		- Question Reader reads in the .csv containing the questions, answers and hint
+		- QuestionBoxDialog displays the question with a random monster background
+		- QuestionBoxEvent and QuestionBoxListener support QuestionBoxDialog operations
+		- AnswerChoiceRadioButtons formats the radio button logic to standardize code
+	Score sets up logic for scoring game play and determines win/loss
+		- GameStatus contains enums to simplify code for tracking game play
+	Swing Classes
+		- SwingEnterPage uses Action Listeners to allow player to start the game			
+		- SwingStoryPage linked to EnterPage and SwingRoom and uses Action Listeners
+		- Instructions is linked to SwingStoryPage and SwingRoom with a pop-up dialog box and HELP button
+		- SwingRoom uses backend logic to translate code into visual experience and links to GameOver page
+		- Swing GameOver displays a different message and image depending on win/loss and contains Action Listeners to Quit or Play Again
 
-Backend Development: The backend of "core" classes form the game structure. Initially there were several more classes, but as the project evolved some were eliminated to streamline code. To start, each member selected a backend problem to tackle such as Room, Question, Treasure or Score. Additional support classes were developed once initial functionality was attained. After methods and classes were merged, the team started piecing together the frontend framework. 
+PROJECT PHASES
+
+Planning & Design: Before drafting CRCs, the team established a project planning board on Trello and outlined the development plan.  Basic game logic was agreed upon prior to coding, although details were refined later. 
+
+Backend Development: The backend forms the game structure. To start, each member selected a backend problem to tackle such as Room, Question, Treasure or Score. Additional support classes were developed once initial functionality was attained. After methods and classes were merged, the team started piecing together the frontend framework. 
 
 Frontend Development: Java Swing was used to create the frontend, focusing on four main windows: an entry page(SwingEnterPage), the backstory(StoryPage), game play template(SwingRoom) and final window(SwingGameOver). SwingRoom is the largest class because most of the action occurs there. Classes were separated from SwingRoom when it made logical sense to consolidate code. 
 
 Testing: JUnit tests were created for backend code including: Treasures, Rooms, Score, and Questions-associated classes. Each team member wrote tests for at least one class group.
 
-Debugging: With team members distributed across three time zones, we approached debugging holisticly and tackled problems based on availability. Sometimes one team member focused on a bug for a while, and another would finish it up. We also held live coding sessions, talking through the code and modifying the code base in tandem. 
+Debugging: With team members distributed across three time zones, debugging was tackled holisticly. Sometimes one team member focused on a bug for a while, and another would finish it up. Live coding sessions were held by talking through and modifying the code base in tandem. 
 
-Refinement: Following successful game implementation, we began adding features and refining components' look and layout. Additional features beyond our minimum viable product include a pop-up instructions box and incorrect answer dialog box.
-
-Project Management: We used a combination of tactics and communication methods to stay on track. We held Zoom meetings almost every day to discuss progress, problems and distribute daily tasks. Slack was used to exchange quick updates or ask questions. Trello was used for checklists, bug tracking and capturing ideas.  
+Project Management: The team held Zoom meetings almost every day to discuss progress, problems and distribute daily tasks. Slack was used to exchange quick updates or ask questions. Trello was used for checklists, bug tracking and capturing ideas.  
 
 New Items Learned: 
 Java Swing - none of the team had worked in Java Swing before, and all members directly contributed to the extensive frontend development synonymous with game development. 
-Overloading - In areas where it made sense, overloading was used to reduce the amount of code needed to run the program. 
+Inheritance - extended Swing classes to streamline and reuse code 
 Enums - enums were created to simplify game status
 
-Structure:
-Castle
-12 Rooms
-8 Monsters
-6 Treasures
-Question Database
-Fairy (hint)
-Wizard 
 
-Github Repository: 
-https://github.com/UPenn-CIT599/final-project-team-30
+
 
