@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
  */
 class RoomTest {
 	
+	//Set up two rooms for testing. 
+	
 	Room room1 = new Room(1, "FOYER", "You are in the FOYER.", 
 	            "You have entered the Foyer. From here you may"
 	            + " traverse many different rooms. Note the "
@@ -21,22 +23,26 @@ class RoomTest {
 	            + " Wizard Arvind remains in captivity-only your "
 	            + "knowledge can save him!", "");
 	
+	// Set up connections between two rooms.
 	@BeforeEach
 	void setUp() throws Exception {
 		room1.setAdjacentRoom("east", room2);
 		room2.setAdjacentRoom("west", room1);
 	}
 
+	// Test Room Name getter
 	@Test
 	void testGetName() {
 		assertEquals(room1.getName(), "FOYER");
 	}
 
+	// Test Short Description getter
 	@Test
 	void testGetShortDesc() {
 		assertEquals(room1.getShortDesc(), "You are in the FOYER.");
 	}
 
+	// Test Long Description getter
 	@Test
 	void testGetLongDesc() {
 		assertEquals(room1.getLongDesc(), "You have entered the Foyer. "
@@ -45,6 +51,12 @@ class RoomTest {
 		        + "of the Baroque era.");
 	}
 
+	/*
+	 * Test:
+	 * - Room was initially unvistied
+	 * - Set the rooms as visited 
+	 * - Check that the room was visit boolean is set to true
+	 */
 	@Test
 	void testVisited() {
 		assertFalse(room1.wasVisited());
@@ -52,7 +64,9 @@ class RoomTest {
 		assertTrue(room1.wasVisited());		
 	}
 
-	// Test Room links
+	/* Test Room links
+	 * Check to make sure that the room links set in the BeforeEach above are correctly set
+	 */
 	@Test
 	void testGetRoomAtDirection_R1_E2() {
 		assertEquals(room1.getRoomAtDirection("east").getId(),2);
