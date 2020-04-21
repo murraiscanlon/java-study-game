@@ -180,8 +180,9 @@ public class SwingGameOver extends JFrame {
 		winMsg.setLineWrap(true);
 		winMsg.setWrapStyleWord(true);
 		winMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		winMsg.setText(
-				"Wizard Arvind: Thank you for saving me! Your exemplary Java knowledge exceeded my expectations.  Best wishes on  your journey.");
+		winMsg.setText("Wizard Arvind: Thank you for saving me! "
+		                + "Your exemplary Java knowledge exceeded my expectations."
+		                + "  Best wishes on  your journey.");
 		winMsg.setForeground(Color.WHITE);
 		winMsg.setBackground(Color.DARK_GRAY);
 		winMsg.setEditable(false);
@@ -201,8 +202,8 @@ public class SwingGameOver extends JFrame {
 		loseMsg.setLineWrap(true);
 		loseMsg.setWrapStyleWord(true);
 		loseMsg.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		loseMsg.setText(
-				" Wizard Arvind: Your Java knowledge is lacking. " + "Play again to free me from the Java Monsters!");
+		loseMsg.setText("Wizard Arvind: Your Java knowledge is lacking. " 
+		                + "Play again to free me from the Java Monsters!");
 		loseMsg.setForeground(Color.WHITE);
 		loseMsg.setBackground(Color.DARK_GRAY);
 		loseMsg.setEditable(false);
@@ -248,7 +249,7 @@ public class SwingGameOver extends JFrame {
 	private void setUpBackground() {
 		bgLabel = new JLabel();
 		bgLabel.setIcon(new ImageIcon("images/GameOver.jpg"));
-		bgLabel.setBounds(5, 5, 900, 600);
+		bgLabel.setBounds(0, 0, 900, 600);
 		contentPane.add(bgLabel);
 
 	}
