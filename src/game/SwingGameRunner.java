@@ -8,8 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.SwingConstants;

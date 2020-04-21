@@ -45,8 +45,16 @@ class QuestionsTest {
 		assertEquals(noMatch, actual);
 	}
 	
+	/* 
+	 * The following tests check the following:
+	 * - Reading in the question CSV file in QuestionReader since Questions calls that class as part of its constructor
+	 * - Accessing the current question in Questions class
+	 * - Checking the getter methods from Question class by calling them on the current question object
+	*/
+	
+	// Test the getQuestion method
 	@Test
-	void testGetQuestion() {//testing each question object below this point
+	void testGetQuestion() {
 		Questions q1 = new Questions();
 		String expected =  "What is the value of x? int x = (3 + 4) * 2";
 		String actual = q1.getCurrentQuestion().getQuestion();
@@ -54,7 +62,7 @@ class QuestionsTest {
 		
 	}
 	
-	
+	// Test the getHint method
 	@Test
 	void testGetHint() {
 		Questions q1 = new Questions();
@@ -64,6 +72,7 @@ class QuestionsTest {
 		
 	}
 	
+	// Test the getAnswer1 Method
 	@Test
 	void testGetAnswer1() {
 		Questions q1 = new Questions();
@@ -73,6 +82,7 @@ class QuestionsTest {
 		
 	}
 	
+	// Test the getAnswer2 Method
 	@Test
 	void testGetAnswer2() {
 		Questions q1 = new Questions();
@@ -82,6 +92,7 @@ class QuestionsTest {
 		
 	}
 	
+	// Test the getAnswer3 Method
 	@Test
 	void testGetAnswer3() {
 		Questions q1 = new Questions();
@@ -91,6 +102,7 @@ class QuestionsTest {
 		
 	}
 	
+	// Test the getAnswer4 Method
 	@Test
 	void testGetAnswer4() {
 		Questions q1 = new Questions();
@@ -100,6 +112,7 @@ class QuestionsTest {
 		
 	}
 	
+	// Test getCorrectAnswer method
 	@Test
 	void testGetCorrectAnswer() {
 		Questions q1 = new Questions();
@@ -108,9 +121,5 @@ class QuestionsTest {
 		assertEquals(expected, actual);
 		
 	}
-	
-
-	
-
 
 }

@@ -11,8 +11,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Class which brings up the background Story and game play methodology Allows
