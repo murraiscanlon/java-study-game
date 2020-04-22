@@ -68,7 +68,7 @@ The screen you see at the end is determined by your Java prowess. Recover enough
 #### Class Descriptions
 
 
-* **AnswerChoiceFormat** - Extends JRadioButton to improve code reuse and readability in QuestionBoxDialog class.
+* **AnswerChoiceRadioButtons** - Extends JRadioButton to improve code reuse and readability in QuestionBoxDialog class.
 * **DirectionButton** - Extends JButton to improve code reuse and readability in SwingRoom.
 * **GameStatus** - Enum provided to streamline game operations.
 * **Instructions** - Displays game play instructions before the player enters the Foyer and works with SwingRoom to make instructions available through help button. 
