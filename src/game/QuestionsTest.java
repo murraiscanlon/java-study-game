@@ -31,17 +31,15 @@ class QuestionsTest {
 		for (int i = 0; i < 3; i++ ) {
 			q1.getQuestionCounter();
 			qs[i] = q1.getCurrentQuestion().getQuestion();
-			//System.out.println(qs[i]);
 			}
 		
 		if (qs[0].equals(qs[1]) && qs[1].equals(qs[2])) {
 			match = "All three random questions match";
 			actual = match;		
 		} else {
-			noMatch = "Atleast two of the random questions do not match";
+			noMatch = "At least two of the random questions do not match";
 			actual = noMatch;
 		}
-		//System.out.println(actual);
 		assertEquals(noMatch, actual);
 	}
 	

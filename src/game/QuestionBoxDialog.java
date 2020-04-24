@@ -104,7 +104,7 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This methods sets up the question information when the dialog box is shown
 	 * 
-	 * @param q : question object
+	 * @param q : Question object containing the question the player must answer
 	 */
 	public void setUpQuestion(Question q) {
 		question = q;

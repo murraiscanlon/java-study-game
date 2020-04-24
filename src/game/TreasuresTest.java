@@ -25,7 +25,7 @@ class TreasuresTest {
 		int numberOfRooms = 2;
 		treasures.setTreasuresToRooms(numberOfRooms, false); // set randomizing to false
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, not random");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, not random");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.println("Room: " + (index+1) + "  Treasure: " + t.getTreasureType() + "  RoomID: " + t.getRoomId());;
@@ -51,7 +51,7 @@ class TreasuresTest {
 		int numberOfRooms = 4;
 		treasures.setTreasuresToRooms(numberOfRooms, false);
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, not random");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, not random");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.println("Room: " + (index+1) + "  Treasure: " + t.getTreasureType() + "  RoomID: " + t.getRoomId());;
@@ -90,7 +90,7 @@ class TreasuresTest {
 		int numberOfRooms = 10;
 		treasures.setTreasuresToRooms(numberOfRooms, false);
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, not random");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, not random");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.print("Room: " + (index+1) + "  Treasure: ");
@@ -136,7 +136,7 @@ class TreasuresTest {
 		int numberOfRooms = 2;
 		treasures.setTreasuresToRooms(numberOfRooms, true);
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, RANDOM");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, RANDOM");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.print("Room: " + (index+1) + "  Treasure: ");
@@ -157,7 +157,7 @@ class TreasuresTest {
 		int numberOfRooms = 6;
 		treasures.setTreasuresToRooms(numberOfRooms, true);
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, RANDOM");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, RANDOM");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.print("Room: " + (index+1) + "  Treasure: ");
@@ -178,7 +178,7 @@ class TreasuresTest {
 		int numberOfRooms = 10;
 		treasures.setTreasuresToRooms(numberOfRooms, true);
 
-		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 4, RANDOM");
+		System.out.println("\nRooms: " + numberOfRooms + " Treasures: 6, RANDOM");
 		for(int index = 0; index < numberOfRooms; index++) {
 			Treasure t = treasures.getTreasureForRoom(index + 1);
 			System.out.print("Room: " + (index+1) + "  Treasure: ");

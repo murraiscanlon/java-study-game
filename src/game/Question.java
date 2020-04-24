@@ -21,12 +21,13 @@ public class Question {
 	/**
 	 * Constructor
 	 * 
-	 * @param question
-	 * @param answer1
-	 * @param answer2
-	 * @param answer3
-	 * @param answer4
-	 * @param hint
+	 * @param question - Question to ask the player
+	 * @param answer1 - Answer option 1
+	 * @param answer2 - Answer option 2
+	 * @param answer3 - Answer option 3
+	 * @param answer4 - Answer option 4
+	 * @param hint - Player hint
+	 * @param correctAnswer - contains the number of the correct answer
 	 */
 	public Question(String question, String answer1, String answer2, String answer3, String answer4, String hint,
 			int correctAnswer) {
