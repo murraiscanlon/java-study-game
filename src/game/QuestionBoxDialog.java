@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -53,7 +54,7 @@ public class QuestionBoxDialog extends JDialog {
 	private ImageIcon dragonImage;
 
 	/**
-	 * Constructor This class displays a new window when the player pushed the
+	 * Constructor displays a new window when the player pushed the
 	 * treasureBoxButton. The new window includes a java question, four answer
 	 * choices, and a hint option.
 	 * 
@@ -280,15 +281,14 @@ public class QuestionBoxDialog extends JDialog {
 	 */
 	public String monsterGenerator() {
 		Random randomMonster = new Random();
+		String[] monsterArr = {"images/assassinBlock.png", "images/headlessBlock.png",
+		                       "images/ghostBlock.png","images/ogreBlock.png", 
+		                       "images/gremlinBlock.png", "images/dragonBlock.png",
+		                       "images/mummyBlock.png", "images/zombieBlock.png"
+		        
+		};
 		ArrayList<String> javaMonsters = new ArrayList<String>();
-		javaMonsters.add("images/assassinBlock.png");
-		javaMonsters.add("images/headlessBlock.png");
-		javaMonsters.add("images/ghostBlock.png");
-		javaMonsters.add("images/ogreBlock.png");
-		javaMonsters.add("images/gremlinBlock.png");
-		javaMonsters.add("images/dragonBlock.png");
-		javaMonsters.add("images/mummyBlock.png");
-		javaMonsters.add("images/zombieBlock.png");
+		Collections.addAll(javaMonsters, monsterArr);
 		int randomChoice = randomMonster.nextInt(javaMonsters.size());
 		String currentMonster = javaMonsters.get(randomChoice);
 		return currentMonster;
