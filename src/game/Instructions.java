@@ -40,7 +40,7 @@ public class Instructions extends JDialog {
 		/***** Creates the Base Frames *****/
 		setUpUIFoundation();
 		
-		/***** Set Up Ok Button *****/
+		/***** Set Up OK Button *****/
 		setUpOkButton();
 		
 		/***** Set Up Monster Images *****/

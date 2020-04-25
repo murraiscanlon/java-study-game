@@ -29,8 +29,8 @@ public class Question {
 	 * @param hint - Player hint
 	 * @param correctAnswer - contains the number of the correct answer
 	 */
-	public Question(String question, String answer1, String answer2, String answer3, String answer4, String hint,
-			int correctAnswer) {
+	public Question(String question, String answer1, String answer2, 
+	                String answer3, String answer4, String hint, int correctAnswer) {
 		this.question = question;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
