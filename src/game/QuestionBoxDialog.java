@@ -104,11 +104,11 @@ public class QuestionBoxDialog extends JDialog {
 //		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
 //		contentPane.setLayout(null);
 //		setContentPane(contentPane);
-//
 //		layeredPane = new JLayeredPane();
 //		layeredPane.setSize(500, 500);
 //		layeredPane.setBackground(Color.red);
 //		layeredPane.setBounds(10, 10, 657, 700);
+//		
 //		contentPane.add(layeredPane);
 	}
 

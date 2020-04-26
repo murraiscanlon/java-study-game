@@ -75,7 +75,6 @@ public class Instructions extends JDialog {
 //		contentPane.setLayout(null);
 //		setLocationRelativeTo(null);
 //		setContentPane(contentPane);
-//
 //		layeredPane = new JLayeredPane();
 //		layeredPane.setSize(500, 500);
 //		layeredPane.setBackground(Color.red);
