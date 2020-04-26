@@ -106,11 +106,11 @@ public class Score {
 	 */
 	public GameStatus checkGameStatus() {
 		if (numberOfQuestionsWrong >= wronqQuestionTarget) { // Player loses if too many wrong questions
-			return GameStatus.GameOverLose;
+			return GameStatus.GAME_OVER_LOSE;
 		} else if (currentScore >= scoreTarget) { // Player wins if they get target number of points
-			return GameStatus.GameOverWin;
+			return GameStatus.GAME_OVER_WIN;
 		} else {
-			return GameStatus.GameContinue;
+			return GameStatus.GAME_CONTINUE;
 		}
 	}
 }

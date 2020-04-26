@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.EventListenerList;
 
 /**
@@ -95,22 +94,6 @@ public class QuestionBoxDialog extends JDialog {
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, w, h);
 		contentPane.add(layeredPane);
-		
-		
-//		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//		setBounds(100, 100, 691, 762);
-//		contentPane = new JPanel();
-//		contentPane.setSize(500, 500);
-//		contentPane.setBackground(Color.gray);
-//		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
-//		contentPane.setLayout(null);
-//		setContentPane(contentPane);
-//		layeredPane = new JLayeredPane();
-//		layeredPane.setSize(500, 500);
-//		layeredPane.setBackground(Color.red);
-//		layeredPane.setBounds(10, 10, 657, 700);
-//		
-//		contentPane.add(layeredPane);
 	}
 
 	/**
@@ -183,12 +166,11 @@ public class QuestionBoxDialog extends JDialog {
 		submitButton.addActionListener(e -> {
 			GameStatus scoreIndicator = GameStatus.NA; // Default to init the variable
 			if (checkAnswer(question) && (!hintTaken)) { // Correct with no hint
-				scoreIndicator = GameStatus.QuestionCorrect;
+				scoreIndicator = GameStatus.QUESTION_CORRECT;
 			} else if (checkAnswer(question) && (hintTaken)) { // Correct with hint
-				scoreIndicator = GameStatus.QuestionWithHint;
+				scoreIndicator = GameStatus.QUESTION_WITH_HINT;
 			} else { // Incorrect
-				scoreIndicator = GameStatus.QuestionWrong;
-				scoreIndicator = GameStatus.QuestionWrong;
+				scoreIndicator = GameStatus.QUESTION_WRONG;
 				dragonImage = new ImageIcon("images/dragon2.jpg");
 				JOptionPane.showMessageDialog(incorrectAnswerJP, // popUp window for incorrect answer
 						"", "Incorrect Answer", JOptionPane.INFORMATION_MESSAGE, dragonImage);

@@ -56,9 +56,9 @@ class ScoreTest {
 	void testCheckGameStatus_Win() {
 		Score score = new Score();
 		score.addPoints(score.scoreTarget - 1);
-		assertEquals(score.checkGameStatus(), GameStatus.GameContinue);		
+		assertEquals(score.checkGameStatus(), GameStatus.GAME_CONTINUE);		
 		score.addPoints(1);
-		assertEquals(score.checkGameStatus(), GameStatus.GameOverWin);				
+		assertEquals(score.checkGameStatus(), GameStatus.GAME_OVER_WIN);				
 	}
 	
 	// Increment wrong questions to one less than target to lose and verify game continues
@@ -69,8 +69,8 @@ class ScoreTest {
 		for (int i = 1; i<score.wronqQuestionTarget; i++) {
 			score.incrementWrongQuestions();
 		}
-		assertEquals(score.checkGameStatus(), GameStatus.GameContinue);		
+		assertEquals(score.checkGameStatus(), GameStatus.GAME_CONTINUE);		
 		score.incrementWrongQuestions();
-		assertEquals(score.checkGameStatus(), GameStatus.GameOverLose);				
+		assertEquals(score.checkGameStatus(), GameStatus.GAME_OVER_LOSE);				
 	}
 }
