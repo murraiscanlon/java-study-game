@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import javax.swing.ImageIcon;
@@ -12,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 /**
  * Class to create Game Play Instructions Pop-up Box for the user at the beginning
@@ -63,28 +60,8 @@ public class Instructions extends JDialog {
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, w, h);
 		contentPane.add(layeredPane);
-		
-		
-		
-//		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//		setBounds(100, 100, 665, 670);
-//		contentPane = new JPanel();
-//		contentPane.setSize(645, 705);
-//		contentPane.setBackground(Color.gray);
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setLayout(null);
-//		setLocationRelativeTo(null);
-//		setContentPane(contentPane);
-//		layeredPane = new JLayeredPane();
-//		layeredPane.setSize(500, 500);
-//		layeredPane.setBackground(Color.red);
-//		layeredPane.setBounds(0, 0, 645, 695);
-//
-//		contentPane.add(layeredPane);
 	}
 	
-	
-
 	/*
 	 * This method creates the OK button
 	 */

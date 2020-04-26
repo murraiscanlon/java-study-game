@@ -5,5 +5,5 @@ package game;
  * 
  */
 public enum GameStatus {
-	QuestionCorrect, QuestionWithHint, QuestionWrong, GameOverWin, GameOverLose, GameContinue, NA
+	QUESTION_CORRECT, QUESTION_WITH_HINT, QUESTION_WRONG, GAME_OVER_WIN, GAME_OVER_LOSE, GAME_CONTINUE, NA
 }

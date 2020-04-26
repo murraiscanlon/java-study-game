@@ -443,18 +443,18 @@ public class SwingRoom extends JFrame {
 	 *                       if they used a hint
 	 */
 	public void processReturnFromQBD(GameStatus scoreIndicator) {
-		if (scoreIndicator == GameStatus.QuestionWrong) {
+		if (scoreIndicator == GameStatus.QUESTION_WRONG) {
 			score.incrementWrongQuestions();
 		}
-		if ((scoreIndicator == GameStatus.QuestionCorrect) || (scoreIndicator == GameStatus.QuestionWithHint)) { // Answered
+		if ((scoreIndicator == GameStatus.QUESTION_CORRECT) || (scoreIndicator == GameStatus.QUESTION_WITH_HINT)) { // Answered
 																													// correctly
 			if (currentRoom.getTreasure() != null) {
 				Treasure currentTreasure = currentRoom.getTreasure();
 				currentTreasure.setRoomId(0); // Remove treasure from the room
 				score.addTreasure(currentTreasure); // Add treasure to the players inventory
-				if (scoreIndicator == GameStatus.QuestionCorrect) { // No hint
+				if (scoreIndicator == GameStatus.QUESTION_CORRECT) { // No hint
 					score.addPoints(currentTreasure.getPoints());
-				} else if (scoreIndicator == GameStatus.QuestionWithHint) { // Player needed hint, remove one point
+				} else if (scoreIndicator == GameStatus.QUESTION_WITH_HINT) { // Player needed hint, remove one point
 					score.addPoints(currentTreasure.getPoints() - 1);
 				}
 				currentRoom.setTreasure(null);
@@ -493,14 +493,14 @@ public class SwingRoom extends JFrame {
 		// Check to see if player has won or lost:
 
 		// Sends player to GameOver Page
-		if (gameStatus == GameStatus.GameOverWin) {
+		if (gameStatus == GameStatus.GAME_OVER_WIN) {
 			dispose();
 			SwingGameOver win = new SwingGameOver(score);
 			win.getWinMsg();
 			// Call the winning game over screen
 			// Keep print statement for testing
 			// System.out.println("*** You Won! ***");
-		} else if (gameStatus == GameStatus.GameOverLose) {
+		} else if (gameStatus == GameStatus.GAME_OVER_LOSE) {
 			dispose();
 			SwingGameOver lose = new SwingGameOver(score);
 			lose.getLoseMsg();
