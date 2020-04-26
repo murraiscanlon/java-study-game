@@ -83,6 +83,7 @@ The screen you see at the end is determined by your Java prowess. Recover enough
 * **SwingGameOver** - Establishes the final window of the game and shows win/loss status.
 * **Treasure/Treasures** - Sets up treasure attributes and populates an ArrayList of Treasures to go in Rooms.
 * **Treasure Label** - Extends JLabel to improve code reuse and readability in Treasures.
+* **UIPanel** - Extends JPanel to improve code reuse and readability in QuestionBoxDialog and Instruction classes.
 
 
 
