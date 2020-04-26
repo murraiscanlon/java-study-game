@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 /**
  * Test for Rooms
+ * Make sure that rooms and treasures are assigned properly. 
+ * 
  * @author Team 30
  *
  */
@@ -25,6 +27,11 @@ class RoomsTest {
 		assertEquals(rooms.getRoomAtID(5).getRoomAtDirection("west"), null);
 	}
 	
+	/* The tests below check the methods that assign treasures to rooms.
+	 * Make sure that we don't try to access an array element in treasures or rooms that is out of bounds
+	 * The tests below should not throw an exception. Verify output with print statements. 
+	 */
+	
 	// Case where number of rooms is less than number of treasures (6) with random
 	// Use print out to verify results.  
 	@Test
@@ -35,10 +42,9 @@ class RoomsTest {
 		roomTest.processRoomLinks();	
 		roomTest.processTreasures();
 		System.out.println("\nMore Treasures Than Rooms");
-		int id = 1;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 2;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
+		for(int id = 1; id <= 2; id++) {
+			System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
+		}
 		System.out.println("*****");
 	}
 	
@@ -56,19 +62,9 @@ class RoomsTest {
 		roomTest.processRoomLinks();	
 		roomTest.processTreasures();
 		System.out.println("\nSame number of Treaures and Rooms");
-		int id = 1;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 2;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 3;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 4;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 5;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 6;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		System.out.println("*****");
+		for(int id = 1; id <= 6; id++) {
+			System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
+		}
 	}
 	
 	// Case where number of rooms is greater than number of treasures (6) with random
@@ -88,22 +84,9 @@ class RoomsTest {
 		roomTest.processRoomLinks();	
 		roomTest.processTreasures();
 		System.out.println("\nMore Rooms than Treasures");
-		int id = 1;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 2;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 3;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 4;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 5;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 6;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 7;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
-		id = 8;
-		System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
+		for(int id = 1; id <= 8; id++) {
+			System.out.println("Room" + id + ":" + roomTest.getRoomAtID(id).getTreasureType());
+		}
 		System.out.println("*****");
 	}
 }
