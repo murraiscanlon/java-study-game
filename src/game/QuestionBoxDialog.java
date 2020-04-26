@@ -63,7 +63,7 @@ public class QuestionBoxDialog extends JDialog {
 		super(aFrame, true);
 
 		/***** Creates the Base Frames *****/
-		setUpUIFoundation();
+		setUpUIFoundation(670, 760);
 
 		/***** Positions Current Question *****/
 		setUpCurrentQuestionElements();
@@ -84,21 +84,32 @@ public class QuestionBoxDialog extends JDialog {
 	/**
 	 * This method sets up the base frame components for the main question window
 	 */
-	public void setUpUIFoundation() {
+	public void setUpUIFoundation(int w, int h) {
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 691, 762);
-		contentPane = new JPanel();
-		contentPane.setSize(500, 500);
-		contentPane.setBackground(Color.gray);
-		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
+		setBounds(0, 0, w, h);
+		contentPane = new UIPanel(w, h);
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-
 		layeredPane = new JLayeredPane();
-		layeredPane.setSize(500, 500);
-		layeredPane.setBackground(Color.red);
-		layeredPane.setBounds(10, 10, 657, 700);
+		layeredPane.setBounds(0, 0, w, h);
 		contentPane.add(layeredPane);
+		
+		
+//		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//		setBounds(100, 100, 691, 762);
+//		contentPane = new JPanel();
+//		contentPane.setSize(500, 500);
+//		contentPane.setBackground(Color.gray);
+//		contentPane.setBorder(new EmptyBorder(5, 100, 5, 5));
+//		contentPane.setLayout(null);
+//		setContentPane(contentPane);
+//
+//		layeredPane = new JLayeredPane();
+//		layeredPane.setSize(500, 500);
+//		layeredPane.setBackground(Color.red);
+//		layeredPane.setBounds(10, 10, 657, 700);
+//		contentPane.add(layeredPane);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
@@ -14,7 +15,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Class to create Game Play Instructions Pop-up Box
+ * Class to create Game Play Instructions Pop-up Box for the user at the beginning
+ * of the game as well as being accessible via the help button in the main game screen.
  * 
  * @author Team 30
  *
@@ -28,6 +30,7 @@ public class Instructions extends JDialog {
 	private JPanel contentPane;
 	private JLabel javaMonsterImageLabel;
 	private JButton okButton;
+	
 
 	/**
 	 * Constructor for Instruction Box
@@ -38,7 +41,7 @@ public class Instructions extends JDialog {
 		super(aFrame, true);
 
 		/***** Creates the Base Frames *****/
-		setUpUIFoundation();
+		setUpUIFoundation(670, 670);
 		
 		/***** Set Up Ok Button *****/
 		setUpOkButton();
@@ -50,24 +53,38 @@ public class Instructions extends JDialog {
 	/**
 	 * Method to establish the frame background
 	 */
-	private void setUpUIFoundation() {
+	private void setUpUIFoundation(int w, int h) {
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 665, 670);
-		contentPane = new JPanel();
-		contentPane.setSize(645, 705);
-		contentPane.setBackground(Color.gray);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(null);
+		setBounds(0, 0, w, h);
+		contentPane = new UIPanel(w, h);
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
-
 		layeredPane = new JLayeredPane();
-		layeredPane.setSize(500, 500);
-		layeredPane.setBackground(Color.red);
-		layeredPane.setBounds(0, 0, 645, 695);
-
+		layeredPane.setBounds(0, 0, w, h);
 		contentPane.add(layeredPane);
+		
+		
+		
+//		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//		setBounds(100, 100, 665, 670);
+//		contentPane = new JPanel();
+//		contentPane.setSize(645, 705);
+//		contentPane.setBackground(Color.gray);
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setLayout(null);
+//		setLocationRelativeTo(null);
+//		setContentPane(contentPane);
+//
+//		layeredPane = new JLayeredPane();
+//		layeredPane.setSize(500, 500);
+//		layeredPane.setBackground(Color.red);
+//		layeredPane.setBounds(0, 0, 645, 695);
+//
+//		contentPane.add(layeredPane);
 	}
+	
+	
 
 	/*
 	 * This method creates the OK button
@@ -93,7 +110,7 @@ public class Instructions extends JDialog {
 		javaMonsterImageLabel = new JLabel("");
 		javaMonsterImageLabel.setVerticalAlignment(SwingConstants.TOP);
 		javaMonsterImageLabel.setIcon(new ImageIcon("images/immortalBlock.png"));
-		javaMonsterImageLabel.setBounds(0, 0, 645, 695);
+		javaMonsterImageLabel.setBounds(0, 0, 670, 670);
 		layeredPane.add(javaMonsterImageLabel);
 		javaMonsterImageLabel.setVisible(true);
 
