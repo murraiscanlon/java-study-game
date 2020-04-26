@@ -51,7 +51,7 @@ public class QuestionReader {
 			fileReader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			System.exit(0);
+			System.exit(0); // If the file is not found, exit the game
 		}
 		return questions;
 	}

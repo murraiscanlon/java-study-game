@@ -30,7 +30,8 @@ public class QuestionBoxEvent extends EventObject {
 	/**
 	 * Getter for the score Indicator
 	 * 
-	 * @return scoreIndicator
+	 * @return scoreIndicator - indicator of if the player answered the question
+	 *         correctly and with or without a hint
 	 */
 	public GameStatus getScoreIndicator() {
 		return scoreIndicator;

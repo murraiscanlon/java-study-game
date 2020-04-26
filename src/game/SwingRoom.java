@@ -60,7 +60,7 @@ public class SwingRoom extends JFrame {
 	/**
 	 * Constructor
 	 * 
-	 * @param playerName
+	 * @param playerName - Player name entered in the beginning
 	 */
 	public SwingRoom(String playerName) {
 
@@ -385,7 +385,7 @@ public class SwingRoom extends JFrame {
 			}
 			showHideDirButtons();
 		}
-		// Leave print statements in for future testing
+		// *** Leave print statements in for future testing ***
 		// System.out.println("Next Room: "+ currentRoom.getName());
 		// System.out.println("Treasure is:" + currentRoom.getTreasureType());
 	}
