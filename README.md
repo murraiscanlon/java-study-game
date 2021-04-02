@@ -1,4 +1,4 @@
-# Final Project - Team 30 - Javenture Game
+# Javenture Game
 
 *Team Members*
 
